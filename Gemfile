@@ -14,6 +14,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
+  gem 'bundler-audit'
   gem 'byebug'
   gem 'capybara', '~> 2.13'
   gem 'rspec-rails', '~> 3.6'
