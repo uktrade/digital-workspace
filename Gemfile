@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   gem 'byebug'
   gem 'capybara', '~> 2.13'
+  gem 'rubocop', '~> 0.50.0', require: false
   gem 'selenium-webdriver'
 end
 
