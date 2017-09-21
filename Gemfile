@@ -13,6 +13,9 @@ gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
+gem 'govuk_elements_rails'
+gem 'govuk_template'
+
 group :development, :test do
   gem 'bundler-audit'
   gem 'byebug'
