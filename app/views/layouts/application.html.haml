@@ -1,10 +1,30 @@
-!!!
-%html
-  %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title DigitalWorkspace
-    = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all'
-    = javascript_include_tag 'application'
-  %body
-    = yield
+- content_for :global_header_text, "DIT"
+
+- content_for :page_title, "Digital Workspace"
+
+- content_for :head do
+
+  = stylesheet_link_tag "application", media: "all"
+  = csrf_meta_tag
+
+- content_for :header_class do
+  = "with-proposition"
+
+- content_for :proposition_header do
+  .header-proposition
+    .content
+      = link_to "DIT Digital Workspace", root_path, id: "proposition-name"
+
+      #proposition-link
+        = link_to "Peoplefinder", "http://peoplefinder-dev.herokuapp.com"
+
+
+- content_for :body_end do
+  = javascript_include_tag 'application'
+
+- content_for :content do
+  %wrapper.direction-ltr
+    %main#content
+      = yield
+
+= render file: 'layouts/govuk_template'
