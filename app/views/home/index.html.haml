@@ -104,7 +104,7 @@
     - when 0
       .column-full.news-item
         .column-two-thirds
-          %img{:src => @base_media_uri + p['featured_image']['file']}
+          /%img{:src => @base_media_uri + p['featured_image']['file']}
         .column-third
           - date = DateTime.parse(p["date"])
           - formatted_date = date.strftime('%d %B %Y')
@@ -112,17 +112,17 @@
           = link_to("Category", "#")
           %h3.heading-medium
             = link_to(p["title"]["rendered"].html_safe, "#")
-          = p["excerpt"]["rendered"].html_safe
+          /= p["excerpt"]["rendered"].html_safe
     - when 1..5
       .column-third.news-item
-        %img{:src => @base_media_uri + p['featured_image']['file']}
+        /%img{:src => @base_media_uri + p['featured_image']['file']}
         - date = DateTime.parse(p["date"])
         - formatted_date = date.strftime('%d %B %Y')
         = formatted_date + ' - '
         = link_to("Category", "#")
         %h3.heading-medium
           = link_to(p["title"]["rendered"].html_safe, "#")
-        = p["excerpt"]["rendered"].html_safe
+        /= p["excerpt"]["rendered"].html_safe
   .column-third
     %h2.heading-medium
       More news

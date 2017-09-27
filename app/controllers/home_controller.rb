@@ -7,7 +7,7 @@ class HomeController < ApplicationController
     @api_call = HomePageQueries.new()
     @posts = @api_call.posts
     @posts.each_with_index do |p, index|
-      p['featured_image'] = p['_embedded']['wp:featuredmedia'][0]['media_details']
+      # p['featured_image'] = p['_embedded']['wp:featuredmedia'][0]['media_details']
     end
 
     @howtos = @api_call.howtos
