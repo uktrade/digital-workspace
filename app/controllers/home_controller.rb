@@ -2,7 +2,7 @@ require 'wp_api'
 
 class HomeController < ApplicationController
   def index;
-	@base_media_uri = "http://suresite.wpengine.com/wp-content/uploads/"
+	@base_media_uri = "https://uat-dit.useconnect.co.uk/wp-content/uploads/"
 
     @api_call = HomePageQueries.new()
     @posts = @api_call.posts
