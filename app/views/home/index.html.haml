@@ -9,18 +9,11 @@
     %h2.heading-medium
       What's popular?
 .grid-row
-  .column-third
-    image
-    %h3.heading-small 
-    = link_to("How are we structured", "/how-are-we-structured")
-  .column-third
-    image
-    %h3.heading-small 
-    = link_to("How are we structured", "/how-are-we-structured")
-  .column-third
-    image
-    %h3.heading-small 
-    = link_to("How are we structured", "/how-are-we-structured")
+  - @popular_posts.each do |p|
+    .column-third
+      >> featured image endpoint
+      %h3.heading-small 
+        = link_to(p["title"]["rendered"].html_safe, "/how-are-we-structured")
 %hr{:id => 'popular', :class => 'rule-large'}
 .grid-row
   .column-half
@@ -104,6 +97,7 @@
     - when 0
       .column-full.news-item
         .column-two-thirds
+          >> featured image endpoint
           /%img{:src => @base_media_uri + p['featured_image']['file']}
         .column-third
           - date = DateTime.parse(p["date"])
@@ -115,6 +109,7 @@
           /= p["excerpt"]["rendered"].html_safe
     - when 1..5
       .column-third.news-item
+        >> featured image endpoint
         /%img{:src => @base_media_uri + p['featured_image']['file']}
         - date = DateTime.parse(p["date"])
         - formatted_date = date.strftime('%d %B %Y')

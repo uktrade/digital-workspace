@@ -11,6 +11,7 @@ class HomeController < ApplicationController
     end
 
     @howtos = @api_call.howtos
+    @popular_posts = @api_call.popular_posts
     
   end
 end
