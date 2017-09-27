@@ -1,5 +1,146 @@
 .grid-row
   .column-full
     %h1.heading-xlarge
-      %span.heading-secondary
       Home page
+      %span.heading-secondary
+        subtext
+.grid-row
+  .column-full
+    %h2.heading-medium
+      What's popular?
+.grid-row
+  .column-third
+    image
+    %h3.heading-small 
+    = link_to("How are we structured", "/how-are-we-structured")
+  .column-third
+    image
+    %h3.heading-small 
+    = link_to("How are we structured", "/how-are-we-structured")
+  .column-third
+    image
+    %h3.heading-small 
+    = link_to("How are we structured", "/how-are-we-structured")
+%hr{:id => 'popular', :class => 'rule-large'}
+.grid-row
+  .column-half
+    %h2.heading-medium
+      How are we doing?
+  .column-half
+    %span.fineprint
+    Data provided by Datahub and great.gov.uk
+.grid-row
+  .column-third.graph-teal
+    %span.stat-number
+    21
+    %span.stat-description
+    Chocolate cakes baked
+  .column-third.graph-blue
+    %span.stat-number
+    120
+    %span.stat-description
+    Slices of cake eaten
+  .column-third.graph-pink
+    %span.stat-number
+    5m
+    %span.stat-description
+    Calories added to our waistline
+.grid-row
+  .column-full
+    = link_to("See all stats", "/")
+%hr{:id => 'statistics', :class => 'rule-large'}
+.grid-row
+  .column-full
+    %h2.heading-medium
+      Top 20 How to's
+.grid-row
+  .column-quarter
+    %span.stat-description
+      How to&hellip;
+    %ul
+      - @howtos.each_with_index do |p, index|
+        - case index
+        - when 0..4
+          %li
+            = link_to(p["title"]["rendered"].html_safe, "#")
+  .column-quarter
+    %span.stat-description
+      &nbsp;
+    %ul
+      - @howtos.each_with_index do |p, index|
+        - case index
+        - when 5..9
+          %li
+            = link_to(p["title"]["rendered"].html_safe, "#")
+  .column-quarter
+    %span.stat-description
+      &nbsp;
+    %ul
+      - @howtos.each_with_index do |p, index|
+        - case index
+        - when 10..14
+          %li
+            = link_to(p["title"]["rendered"].html_safe, "#")
+  .column-quarter
+    %span.stat-description
+      &nbsp;
+    %ul
+      - @howtos.each_with_index do |p, index|
+        - case index
+        - when 15..19
+          %li
+            = link_to(p["title"]["rendered"].html_safe, "#")
+.grid-row
+  .column-full
+    = link_to("See all How to's", "/")
+%hr{:id => 'statistics', :class => 'rule-large'}
+.grid-row
+  .column-full
+    %h2.heading-medium
+      Latest news
+.grid-row
+  - @posts.each_with_index do |p, index|
+    - case index
+    - when 0
+      .column-full.news-item
+        .column-two-thirds
+          %img{:src => @base_media_uri + p['featured_image']['file']}
+        .column-third
+          - date = DateTime.parse(p["date"])
+          - formatted_date = date.strftime('%d %B %Y')
+          = formatted_date + ' - '
+          = link_to("Category", "#")
+          %h3.heading-medium
+            = link_to(p["title"]["rendered"].html_safe, "#")
+          = p["excerpt"]["rendered"].html_safe
+    - when 1..5
+      .column-third.news-item
+        %img{:src => @base_media_uri + p['featured_image']['file']}
+        - date = DateTime.parse(p["date"])
+        - formatted_date = date.strftime('%d %B %Y')
+        = formatted_date + ' - '
+        = link_to("Category", "#")
+        %h3.heading-medium
+          = link_to(p["title"]["rendered"].html_safe, "#")
+        = p["excerpt"]["rendered"].html_safe
+  .column-third
+    %h2.heading-medium
+      More news
+    - @posts.each_with_index do |p, index|
+      - case index
+      - when 6..7
+        .news-item
+          %h3.heading-medium
+            = link_to(p["title"]["rendered"].html_safe, "#")
+          - date = DateTime.parse(p["date"])
+          - formatted_date = date.strftime('%d %B %Y')
+          = formatted_date + ' - '
+          = link_to("category", "#")
+.grid-row
+  .column-full
+    = link_to("View all News", "/")
+%hr{:id => 'news', :class => 'rule-large'}
+.grid-row
+  .column-full
+    %h2.heading-medium
+      Latest tweets
