@@ -1,0 +1,17 @@
+hr {
+	&.rule-large {
+		clear: both;
+		background-color: transparent;
+		border: 5px solid #0b0c0c;
+		border-width: 5px 0 0;
+		margin: 30px 0px 15px;
+	}
+}
+
+@media (min-width: 641px) {
+	hr {
+		&.rule-large {
+			margin: 60px 0px 30px;
+		}
+	}
+}
