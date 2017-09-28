@@ -37,7 +37,7 @@
     .grid-row
       - @popular_posts.each do |p|
         .column-third.popular-page-summary
-          %img{:src => 'http://lorempixel.com/300/190/'}
+          %img{:src => p['acf']['image']['sizes']['medium']}
           %h3.heading-small 
             = link_to(p["title"]["rendered"].html_safe, "/how-are-we-structured")
     %hr{:id => 'popular', :class => 'rule-large'}
