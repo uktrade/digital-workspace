@@ -26,9 +26,28 @@
 			background: #005ea5;
 			padding: 15px 20px 5px;
 			margin-top: 30px;
-			margin-left: 20px;
+			margin-left: 27px;
 			min-height: 20em;
 			color: #ffffff;
+			img {
+				max-height: 4em;
+				max-width: 100%;
+			}
+			.heading-small {
+				margin-top: 6px;
+			}
+			span {
+				display: block;
+				&.profile-progress {
+					float: left;
+					width: 50%;
+				}
+				&.profile-link {
+					float: right;
+					text-align: right;
+					width: 50%;
+				}
+			}
 		}
 	}
 	a {
@@ -55,6 +74,10 @@
 // ------------------------------------
 // beta bar
 
+#global-header-bar {
+	background-color: #cd1632;
+}
+
 .beta-bar {
 	font-size: 19px;
 	margin: 0 15px;
@@ -71,7 +94,7 @@
 		font-family: "nta", Arial, sans-serif;
 		font-weight: 700;
 		text-transform: none;
-		font-size: 15px;
+		font-size: 16px;
 		line-height: 1.14286;
 		text-transform: uppercase;
 		letter-spacing: 1px;
@@ -96,6 +119,99 @@
 @media (min-width: 1020px) {
 	.beta-bar {
 		margin: 0 auto;
+	}
+}
+
+// ------------------------------------
+// homepage popular page summaries
+
+.popular-page-summary {
+	margin-bottom: 10px;
+}
+
+// ------------------------------------
+// homepage graph summaries
+
+.graph-summary {
+	color: #ffffff;
+	&.graph-summary-teal {
+		.stat {
+			background-color: #30a197;
+			background-image: url(images/graph-line.png);
+		}
+	}
+	&.graph-summary-blue {
+		.stat {
+			background-color: #318dc2;
+			background-image: url(images/graph-pie.png);
+		}
+	}
+	&.graph-summary-pink {
+		.stat {
+			background-color: #f29abe;
+			background-image: url(images/graph-line.png);
+		}
+	}
+	.stat {
+		padding: 150px 15px 15px 15px;
+		text-align: center;
+	}
+	.stat-number {
+		display: block;
+		font-size: 82px;
+		font-weight: bold;
+		line-height: 90px;
+	}
+	.stat-description {
+		display: block;
+		font-size: 16px;
+		margin-top: 0;
+	}
+}
+
+// ------------------------------------
+// homepage how to links
+
+.how-tos {
+	margin: 10px 0 0;
+	li {
+		font-size: 16px;
+		margin-bottom: 12px;
+	}
+}
+
+// ------------------------------------
+// homepage news items
+
+.news-item {
+	&.news-item-large {
+		.news-item-image {
+			padding: 0 10px 30px 0;
+		}
+	}
+	&.news-item-medium {
+		p {
+			font-size: 16px;
+		}
+	}
+	img {
+		display: block;
+		width: 100%;
+	}
+	.news-item-meta {
+		color: #6f777b;
+		font-size: 16px;
+		margin-top: 20px;
+	}
+	.heading-large,
+	.heading-medium {
+		margin-top: 15px;
+	}
+}
+
+.more-news {
+	.more-news-inner {
+		border-top: 1px solid #b8bcbe;
 	}
 }
 
@@ -150,7 +266,7 @@
 		padding: 0;
 		width: 40px;
 		height: 40px;
-		background-color: #0b0c0c;
+		background-color: #cd1632;
 		background-image: url(https://assets.publishing.service.gov.uk/static/search-button-ca89b2a79f944909ceb7370d3f0b78811d32b96e883348fcd8886f63dd619585.png);
 		background-repeat: no-repeat;
 		background-position: 2px 50%;
@@ -208,7 +324,7 @@ hr {
 		background-color: transparent;
 		border: 5px solid #0b0c0c;
 		border-width: 5px 0 0;
-		margin: 30px 0px 15px;
+		margin: 30px 0px 0px;
 	}
 }
 
@@ -216,7 +332,7 @@ hr {
 	hr {
 		&.rule-large {
 			//margin: 60px 0px 30px;
-			margin: 30px 0px 15px;
+			margin: 30px 0px 0px;
 		}
 	}
 }
@@ -226,6 +342,19 @@ hr {
 
 .section-note {
 	color: #6f777b;
-	font-size: 14px;
+	font-size: 16px;
+	margin-top: 30px;
 	text-align: right;
+	&.section-note-top {
+		margin-top: 15px;
+	}
+	p {
+		margin: 0;
+	}
+}
+
+.footer-wrapper {
+	li {
+		margin-bottom: 10px;
+	}
 }

@@ -19,7 +19,7 @@
                       Search
         .profile-overview
           .profile-overview-inner
-            >> image
+            %img{:src => 'http://lorempixel.com/150/96/'}
             %h3.heading-small
               = link_to("Sample Profile-Username", "#")
             %span
@@ -36,7 +36,7 @@
           What's popular?
     .grid-row
       - @popular_posts.each do |p|
-        .column-third
+        .column-third.popular-page-summary
           %img{:src => 'http://lorempixel.com/300/190/'}
           %h3.heading-small 
             = link_to(p["title"]["rendered"].html_safe, "/how-are-we-structured")
@@ -45,25 +45,28 @@
       .column-half
         %h2.heading-medium
           How are we doing?
-      .column-half.section-note
+      .column-half.section-note.section-note-top
         %p.fineprint
           Data provided by Datahub and great.gov.uk
     .grid-row
-      .column-third.graph-teal
-        %span.stat-number
-        21
-        %span.stat-description
-        Chocolate cakes baked
-      .column-third.graph-blue
-        %span.stat-number
-        120
-        %span.stat-description
-        Slices of cake eaten
-      .column-third.graph-pink
-        %span.stat-number
-        5m
-        %span.stat-description
-        Calories added to our waistline
+      .column-third.graph-summary.graph-summary-teal
+        .stat
+          %span.stat-number
+            21
+          %p.stat-description
+            Chocolate cakes baked
+      .column-third.graph-summary.graph-summary-blue
+        .stat
+          %span.stat-number
+            120
+          %p.stat-description
+            Slices of cake eaten
+      .column-third.graph-summary.graph-summary-pink
+        .stat
+          %span.stat-number
+            5m
+          %p.stat-description
+            Calories added to our waistline
     .grid-row
       .column-full.section-note
         %p
@@ -77,7 +80,7 @@
       .column-quarter
         %span.stat-description
           How to&hellip;
-        %ul
+        %ul.how-tos
           - @howtos.each_with_index do |p, index|
             - case index
             - when 0..4
@@ -86,7 +89,7 @@
       .column-quarter
         %span.stat-description
           &nbsp;
-        %ul
+        %ul.how-tos
           - @howtos.each_with_index do |p, index|
             - case index
             - when 5..9
@@ -95,7 +98,7 @@
       .column-quarter
         %span.stat-description
           &nbsp;
-        %ul
+        %ul.how-tos
           - @howtos.each_with_index do |p, index|
             - case index
             - when 10..14
@@ -104,7 +107,7 @@
       .column-quarter
         %span.stat-description
           &nbsp;
-        %ul
+        %ul.how-tos
           - @howtos.each_with_index do |p, index|
             - case index
             - when 15..19
@@ -123,42 +126,50 @@
       - @posts.each_with_index do |p, index|
         - case index
         - when 0
-          .column-full.news-item
-            .column-two-thirds
-              >> featured image endpoint
+          .column-full.news-item.news-item-large
+            .column-two-thirds.news-item-image
+              %img{:src => 'http://lorempixel.com/640/420/'}
               /%img{:src => @base_media_uri + p['featured_image']['file']}
             .column-third
+              .news-item-meta
+                - date = DateTime.parse(p["date"])
+                - formatted_date = date.strftime('%d %B %Y')
+                = formatted_date + ' - '
+                = link_to("Category", "#")
+              %h3.heading-large
+                = link_to(p["title"]["rendered"].html_safe, "#")
+              /= p["excerpt"]["rendered"].html_safe
+              %p
+                The Prime Minister will hose a business roundtable event in New York today, involving a number of major US investors.
+        - when 1..5
+          .column-third.news-item.news-item-medium
+            %img{:src => 'http://lorempixel.com/300/190/'}
+            /%img{:src => @base_media_uri + p['featured_image']['file']}
+            .news-item-meta
               - date = DateTime.parse(p["date"])
               - formatted_date = date.strftime('%d %B %Y')
               = formatted_date + ' - '
               = link_to("Category", "#")
-              %h3.heading-medium
-                = link_to(p["title"]["rendered"].html_safe, "#")
-              /= p["excerpt"]["rendered"].html_safe
-        - when 1..5
-          .column-third.news-item
-            >> featured image endpoint
-            /%img{:src => @base_media_uri + p['featured_image']['file']}
-            - date = DateTime.parse(p["date"])
-            - formatted_date = date.strftime('%d %B %Y')
-            = formatted_date + ' - '
-            = link_to("Category", "#")
             %h3.heading-medium
               = link_to(p["title"]["rendered"].html_safe, "#")
             /= p["excerpt"]["rendered"].html_safe
-      .column-third
-        %h2.heading-medium
-          More news
-        - @posts.each_with_index do |p, index|
-          - case index
-          - when 6..7
-            .news-item
-              %h3.heading-medium
-                = link_to(p["title"]["rendered"].html_safe, "#")
-              - date = DateTime.parse(p["date"])
-              - formatted_date = date.strftime('%d %B %Y')
-              = formatted_date + ' - '
-              = link_to("category", "#")
+            %p
+              The Prime Minister will hose a business roundtable event in New York today, involving a number of major US investors.
+      .column-third.more-news
+        .more-news-inner
+          %h2.heading-medium
+            More news
+          - @posts.each_with_index do |p, index|
+            - case index
+            - when 6..7
+              .news-item
+                %h3.heading-medium
+                  = link_to(p["title"]["rendered"].html_safe, "#")
+                .news-item-meta
+                  - date = DateTime.parse(p["date"])
+                  - formatted_date = date.strftime('%d %B %Y')
+                  = formatted_date + ' - '
+                  = link_to("category", "#")
     .grid-row
       .column-full.section-note
         %p
