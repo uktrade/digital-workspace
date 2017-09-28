@@ -16,3 +16,10 @@ class HomePageQueries
     JSON.parse(response.body)
   end
 end
+
+class SingleQueries
+  def main_query
+    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/how_tos?slug=how-to-catch-a-bus')
+    JSON.parse(response.body)
+  end
+end

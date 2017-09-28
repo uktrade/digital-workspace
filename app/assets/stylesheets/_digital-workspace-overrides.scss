@@ -1,3 +1,207 @@
+// ------------------------------------
+// homepage intro block
+
+.homepage-top {
+	background: #0b0c0c; //to be replaced with image when approved
+	color: #ffffff;
+	.homepage-top-inner {
+		margin: 0 15px;
+		overflow: hidden;
+		position: relative;
+		max-width: 980px;
+		text-align: left;
+	}
+	.welcome-block {
+		width: 66.66%;
+		.welcome-people-finder {
+			margin: 0 10px;
+		}
+	}
+	.profile-overview {
+		position: absolute;
+		top: 0;
+		right: 10px;
+		width: 33.33%;
+		.profile-overview-inner {
+			background: #005ea5;
+			padding: 15px 20px 5px;
+			margin-top: 30px;
+			margin-left: 20px;
+			min-height: 20em;
+			color: #ffffff;
+		}
+	}
+	a {
+		color: #ffffff;
+	}
+}
+
+@media (min-width: 641px) {
+	.homepage-top {
+		.homepage-top-inner {
+			margin: 0 30px;
+		}
+	}
+}
+
+@media (min-width: 1020px) {
+	.homepage-top {
+		.homepage-top-inner {
+			margin: 0 auto;
+		}
+	}
+}
+
+// ------------------------------------
+// beta bar
+
+.beta-bar {
+	font-size: 19px;
+	margin: 0 15px;
+	padding: 5px 0;
+	position: relative;
+	overflow: hidden;
+	max-width: 960px;
+	text-align: left;
+	.beta-label {
+		display: -moz-inline-stack;
+		display: inline-block;
+		margin: 4px 12px 0 0;
+		padding: 2px 5px 0;
+		font-family: "nta", Arial, sans-serif;
+		font-weight: 700;
+		text-transform: none;
+		font-size: 15px;
+		line-height: 1.14286;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		text-decoration: none;
+		color: #fff;
+		background-color: #005ea5;
+		margin-right: 0;
+		padding-top: 3px;
+	}
+	span {
+		display: inline-block;
+		margin-left: 4px;
+	}
+}
+
+@media (min-width: 641px) {
+	.beta-bar {
+		margin: 0 30px;
+	}
+}
+
+@media (min-width: 1020px) {
+	.beta-bar {
+		margin: 0 auto;
+	}
+}
+
+// ------------------------------------
+// govuk-search
+
+.govuk-search {
+	position: relative;
+	margin-bottom: 30px;
+	.search-label {
+		color: #6f777b;
+		display: block;
+	}
+	.search-wrapper {
+		display: table;
+		width: 100%;
+		background: #fff;
+	}
+	.search-element {
+		position: relative;
+		display: table-cell;
+		vertical-align: top;
+	}
+	.search-input {
+		padding: 6px;
+		margin: 0;
+		width: 100%;
+		height: 40px;
+		border: 0;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		font-family: "nta", Arial, sans-serif;
+		font-weight: 400;
+		text-transform: none;
+		font-size: 16px;
+		line-height: 1.75;
+		background: #fff;
+		border-radius: 0;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		&:focus,
+		&.focus {
+			z-index: 2;
+		}
+	}
+	.search-submit-wrapper {
+		width: 1%;
+	}
+	.search-submit {
+		position: relative;
+		padding: 0;
+		width: 40px;
+		height: 40px;
+		background-color: #0b0c0c;
+		background-image: url(https://assets.publishing.service.gov.uk/static/search-button-ca89b2a79f944909ceb7370d3f0b78811d32b96e883348fcd8886f63dd619585.png);
+		background-repeat: no-repeat;
+		background-position: 2px 50%;
+		border-width: 0px;
+		color: #fff;
+		text-indent: -5000px;
+		overflow: hidden;
+	}
+}
+
+.js-enabled {
+	.govuk-search {
+		.search-label {
+			position: absolute;
+			left: 15px;
+			top: 1px;
+			z-index: 1;
+			font-family: "nta", Arial, sans-serif;
+			font-weight: 400;
+			text-transform: none;
+			font-size: 16px;
+			line-height: 40px;
+			color: #6f777b;
+		}
+	}
+}
+
+input[type="search"] {
+	min-width: 8em;
+}
+
+@media (min-width: 641px) {
+	.js-enabled {
+		.govuk-search {
+			.search-label {
+				font-size: 19px;
+				line-height: 40px;
+			}
+		}
+	}
+	.govuk-search {
+		.search-input {
+			font-size: 19px;
+			line-height: 1.47368em;
+		}
+	}
+}
+
+// ------------------------------------
+// horizontal rules
+
 hr {
 	&.rule-large {
 		clear: both;
@@ -11,7 +215,17 @@ hr {
 @media (min-width: 641px) {
 	hr {
 		&.rule-large {
-			margin: 60px 0px 30px;
+			//margin: 60px 0px 30px;
+			margin: 30px 0px 15px;
 		}
 	}
+}
+
+// ------------------------------------
+// misc. type
+
+.section-note {
+	color: #6f777b;
+	font-size: 14px;
+	text-align: right;
 }

@@ -1,0 +1,43 @@
+>> Single template
+%header.homepage-top
+  .homepage-top-inner
+    .welcome-block
+      .inner-block.floated-children
+        .welcome-people-finder
+          .floated-inner-block
+            %h2.heading-large
+              Find people
+            %p
+              Search for your colleagues across the department
+            .govuk-search
+              /%label.search-label
+              /Search GOV.UK
+              .search-wrapper
+                %input{:type => 'search', :title => 'Search'}
+                .search-element.search-submit-wrapper
+                  %button{:type => 'submit', :class => 'search-submit'}
+                    Search
+        .profile-overview
+          .profile-overview-inner
+            >> image
+            %h3.heading-small
+              = link_to("Sample Profile-Username", "#")
+            %span
+              Digital, IT & Estates
+            %span.profile-progress
+              30% complete
+            %span.profile-link
+              = link_to("Update", "#")
+%div{:id => 'homepage', :class => 'homepage-content'}
+  %main#content.root-index
+    .grid-row
+      .column-full
+        %h2.heading-medium
+          What's popular?
+    .grid-row
+      - @posts.each do |p|
+        .column-full
+          >> featured image endpoint
+          %h3.heading-small 
+            = link_to(p["title"]["rendered"].html_safe, "/how-are-we-structured")
+    %hr{:id => 'popular', :class => 'rule-large'}
