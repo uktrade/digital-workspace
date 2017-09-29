@@ -12,12 +12,13 @@
 		text-align: left;
 	}
 	.welcome-block {
-		width: 66.66%;
+		width: 100%;
 		.welcome-people-finder {
 			margin: 0 10px;
 		}
 	}
 	.profile-overview {
+		display: none;
 		position: absolute;
 		top: 0;
 		right: 10px;
@@ -59,6 +60,12 @@
 	.homepage-top {
 		.homepage-top-inner {
 			margin: 0 30px;
+		}
+		.welcome-block {
+			width: 66.66%;
+		}
+		.profile-overview {
+			display: block;
 		}
 	}
 }
@@ -105,7 +112,7 @@
 		padding-top: 1px;
 	}
 	span {
-		display: inline-block;
+		display: inline;
 		margin-left: 4px;
 	}
 }
@@ -113,6 +120,9 @@
 @media (min-width: 641px) {
 	.beta-bar {
 		margin: 0 30px;
+		span {
+			display: inline-block;
+		}
 	}
 }
 
@@ -126,7 +136,34 @@
 // homepage popular page summaries
 
 .popular-page-summary {
-	margin-bottom: 10px;
+	clear: both;
+	margin-bottom: 30px;
+	overflow: auto;
+	img {
+		float: left;
+		width: 30%;
+	}
+	h3 {
+		float: left;
+		width: 70%;
+		a {
+			margin-left: 20px;
+		}
+	}
+}
+
+@media(min-width: 641px) {
+	.popular-page-summary {
+		clear: none;
+		margin-bottom: 10px;
+		img, h3 {
+			float: none;
+			width: 100%;
+			a {
+				margin-left: 0;
+			}
+		}
+	}
 }
 
 // ------------------------------------
@@ -138,26 +175,23 @@
 	&.graph-summary-teal {
 		.stat {
 			background-color: #30a197;
-			background-image: url(/assets/graph-dots.png);
 		}
 	}
 	&.graph-summary-blue {
 		.stat {
 			background-color: #318dc2;
-			background-image: url(/assets/graph-pie.png);
 		}
 	}
 	&.graph-summary-pink {
 		.stat {
 			background-color: #f29abe;
-			background-image: url(/assets/graph-line.png);
 		}
 	}
 	.stat {
 		background-position: center 30px;
 		background-repeat: no-repeat;
 		background-size: 45%;
-		padding: 150px 15px 15px 15px;
+		padding: 15px 15px 15px 15px;
 		text-align: center;
 	}
 	.stat-number {
@@ -177,6 +211,22 @@
 	.graph-summary {
 		.stat {
 			background-size: 60%;
+			padding-top: 150px;
+		}
+		&.graph-summary-teal {
+			.stat {
+				background-image: url(/assets/graph-dots.png);
+			}
+		}
+		&.graph-summary-blue {
+			.stat {
+				background-image: url(/assets/graph-pie.png);
+			}
+		}
+		&.graph-summary-pink {
+			.stat {
+				background-image: url(/assets/graph-line.png);
+			}
 		}
 	}
 }
@@ -358,11 +408,13 @@ html, body, button, input, main, table, td, th, .heading-xlarge, .heading-large,
 
 .section-note {
 	color: #6f777b;
+	float: right;
 	font-size: 16px;
 	margin-top: 30px;
 	text-align: right;
 	&.section-note-top {
-		margin-top: 15px;
+		margin-bottom: 20px;
+		margin-top: 0px;
 	}
 	p {
 		margin: 0;
@@ -372,5 +424,14 @@ html, body, button, input, main, table, td, th, .heading-xlarge, .heading-large,
 .footer-wrapper {
 	li {
 		margin-bottom: 10px;
+	}
+}
+
+@media (min-width: 641px) {
+	.section-note {
+		&.section-note-top {
+			margin-top: 15px;
+			margin-bottom: 0;
+		}
 	}
 }

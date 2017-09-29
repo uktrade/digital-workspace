@@ -19,7 +19,7 @@
                       Search
         .profile-overview
           .profile-overview-inner
-            %img{:src => 'http://lorempixel.com/150/96/'}
+            %img{:src => 'http://lorempixel.com/150/96/business'}
             %h3.heading-small
               = link_to("Sample Profile-Username", "#")
             %span
@@ -33,6 +33,58 @@
     .grid-row
       .column-full
         %h2.heading-medium
+          Latest news
+    .grid-row
+      .column-third
+        - @posts.each_with_index do |p, index|
+          .news-item.news-item-medium
+            %img{:src => 'http://lorempixel.com/300/190/business'}
+            /%img{:src => @base_media_uri + p['featured_image']['file']}
+            .news-item-meta
+              - date = DateTime.parse(p["date"])
+              - formatted_date = date.strftime('%d %B %Y')
+              = formatted_date + ' - GDS'
+            %h3.heading-medium
+              = link_to(p["title"]["rendered"].html_safe, "#")
+            /= p["excerpt"]["rendered"].html_safe
+            %p
+              The Prime Minister will hose a business roundtable event in New York today, involving a number of major US investors.
+      .column-third
+        - @posts.each_with_index do |p, index|
+          .news-item.news-item-medium
+            %img{:src => 'http://lorempixel.com/300/190/business'}
+            /%img{:src => @base_media_uri + p['featured_image']['file']}
+            .news-item-meta
+              - date = DateTime.parse(p["date"])
+              - formatted_date = date.strftime('%d %B %Y')
+              = formatted_date + ' - GDS'
+            %h3.heading-medium
+              = link_to(p["title"]["rendered"].html_safe, "#")
+            /= p["excerpt"]["rendered"].html_safe
+            %p
+              The Prime Minister will hose a business roundtable event in New York today, involving a number of major US investors.
+      .column-third
+        - @posts.each_with_index do |p, index|
+          .news-item.news-item-medium
+            %img{:src => 'http://lorempixel.com/300/190/business'}
+            /%img{:src => @base_media_uri + p['featured_image']['file']}
+            .news-item-meta
+              - date = DateTime.parse(p["date"])
+              - formatted_date = date.strftime('%d %B %Y')
+              = formatted_date + ' - GDS'
+            %h3.heading-medium
+              = link_to(p["title"]["rendered"].html_safe, "#")
+            /= p["excerpt"]["rendered"].html_safe
+            %p
+              The Prime Minister will hose a business roundtable event in New York today, involving a number of major US investors.
+    .grid-row
+      .column-full.section-note
+        %p
+          = link_to("View all News", "/")
+    %hr{:id => 'news', :class => 'rule-large'}
+    .grid-row
+      .column-full
+        %h2.heading-medium
           What's popular?
     .grid-row
       - @popular_posts.each do |p|
@@ -42,12 +94,12 @@
             = link_to(p["title"]["rendered"].html_safe, "/how-are-we-structured")
     %hr{:id => 'popular', :class => 'rule-large'}
     .grid-row
-      .column-half
-        %h2.heading-medium
-          How are we doing?
       .column-half.section-note.section-note-top
         %p.fineprint
           Data provided by Datahub and great.gov.uk
+      .column-half
+        %h2.heading-medium
+          How are we doing?
     .grid-row
       .column-third.graph-summary.graph-summary-teal
         .stat
@@ -118,63 +170,6 @@
         %p
           = link_to("See all How to's", "/")
     %hr{:id => 'statistics', :class => 'rule-large'}
-    .grid-row
-      .column-full
-        %h2.heading-medium
-          Latest news
-    .grid-row
-      - @posts.each_with_index do |p, index|
-        - case index
-        - when 0
-          .column-full.news-item.news-item-large
-            .column-two-thirds.news-item-image
-              %img{:src => 'http://lorempixel.com/640/420/'}
-              /%img{:src => @base_media_uri + p['featured_image']['file']}
-            .column-third
-              .news-item-meta
-                - date = DateTime.parse(p["date"])
-                - formatted_date = date.strftime('%d %B %Y')
-                = formatted_date + ' - '
-                = link_to("Category", "#")
-              %h3.heading-large
-                = link_to(p["title"]["rendered"].html_safe, "#")
-              /= p["excerpt"]["rendered"].html_safe
-              %p
-                The Prime Minister will hose a business roundtable event in New York today, involving a number of major US investors.
-        - when 1..5
-          .column-third.news-item.news-item-medium
-            %img{:src => 'http://lorempixel.com/300/190/'}
-            /%img{:src => @base_media_uri + p['featured_image']['file']}
-            .news-item-meta
-              - date = DateTime.parse(p["date"])
-              - formatted_date = date.strftime('%d %B %Y')
-              = formatted_date + ' - '
-              = link_to("Category", "#")
-            %h3.heading-medium
-              = link_to(p["title"]["rendered"].html_safe, "#")
-            /= p["excerpt"]["rendered"].html_safe
-            %p
-              The Prime Minister will hose a business roundtable event in New York today, involving a number of major US investors.
-      .column-third.more-news
-        .more-news-inner
-          %h2.heading-medium
-            More news
-          - @posts.each_with_index do |p, index|
-            - case index
-            - when 6..7
-              .news-item
-                %h3.heading-medium
-                  = link_to(p["title"]["rendered"].html_safe, "#")
-                .news-item-meta
-                  - date = DateTime.parse(p["date"])
-                  - formatted_date = date.strftime('%d %B %Y')
-                  = formatted_date + ' - '
-                  = link_to("category", "#")
-    .grid-row
-      .column-full.section-note
-        %p
-          = link_to("View all News", "/")
-    %hr{:id => 'news', :class => 'rule-large'}
     .grid-row
       .column-full
         %h2.heading-medium

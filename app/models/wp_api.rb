@@ -7,7 +7,7 @@ class HomePageQueries
   end
 
   def posts
-    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/news?orderby=date&order=desc&per_page=8&_embed')
+    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/news?orderby=date&order=desc&per_page=2&_embed')
     JSON.parse(response.body)
   end
 
