@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'visit the landing page' do
+describe 'visit the landing page', vcr: true do
   scenario 'in general' do
     visit '/'
 
