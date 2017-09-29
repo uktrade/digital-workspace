@@ -5,6 +5,6 @@ describe 'visit the landing page' do
     visit '/'
 
     expect(page).to have_link('Peoplefinder')
-    expect(page).to have_css('h1', text: 'Home page')
+    expect(page).to have_css('h2', text: 'What\'s popular?')
   end
 end
