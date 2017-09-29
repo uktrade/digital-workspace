@@ -15,6 +15,7 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'govuk_elements_rails'
 gem 'govuk_template'
+gem 'httparty'
 
 group :development, :test do
   gem 'bundler-audit'
