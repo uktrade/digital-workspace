@@ -42,7 +42,7 @@
           Ministers
         - @posts.each_with_index do |p, index|
           .news-item.news-item-medium
-            %img{:src => 'https://lorempixel.com/300/190/business'}
+            %img{:src => p["acf"]["featured_image"]["sizes"]["medium"]}
             /%img{:src => @base_media_uri + p['featured_image']['file']}
             .news-item-meta
               - date = DateTime.parse(p["date"])
@@ -51,14 +51,13 @@
             %h3.heading-medium
               = link_to(p["title"]["rendered"].html_safe, "#")
             /= p["excerpt"]["rendered"].html_safe
-            %p
-              The Prime Minister will host a business roundtable event in New York today, involving a number of major US investors.
+            = p["excerpt"]["rendered"].html_safe
       .column-third.news-column
         %h2.heading-medium
           Antonia
         - @posts.each_with_index do |p, index|
           .news-item.news-item-medium
-            %img{:src => 'https://lorempixel.com/300/190/business'}
+            %img{:src => p["acf"]["featured_image"]["sizes"]["medium"]}
             /%img{:src => @base_media_uri + p['featured_image']['file']}
             .news-item-meta
               - date = DateTime.parse(p["date"])
@@ -67,14 +66,13 @@
             %h3.heading-medium
               = link_to(p["title"]["rendered"].html_safe, "#")
             /= p["excerpt"]["rendered"].html_safe
-            %p
-              The Prime Minister will host a business roundtable event in New York today, involving a number of major US investors.
+            = p["excerpt"]["rendered"].html_safe
       .column-third.news-column
         %h2.heading-medium
           Departmental Board
         - @posts.each_with_index do |p, index|
           .news-item.news-item-medium
-            %img{:src => 'https://lorempixel.com/300/190/business'}
+            %img{:src => p["acf"]["featured_image"]["sizes"]["medium"]}
             /%img{:src => @base_media_uri + p['featured_image']['file']}
             .news-item-meta
               - date = DateTime.parse(p["date"])
@@ -83,8 +81,7 @@
             %h3.heading-medium
               = link_to(p["title"]["rendered"].html_safe, "#")
             /= p["excerpt"]["rendered"].html_safe
-            %p
-              The Prime Minister will host a business roundtable event in New York today, involving a number of major US investors.
+            = p["excerpt"]["rendered"].html_safe
     .grid-row
       .column-full.section-note
         %p
@@ -182,3 +179,20 @@
       .column-full
         %h2.heading-medium
           Latest tweets  
+    .grid-row
+      - TwitterApi.public_tweets.each_with_index do |tweet, index|
+        - case index
+          - when 0..2
+            .column-third.tweet
+              .tweet-profile-image
+                %img{:src => tweet.user.profile_image_url_https}
+              .tweet-body
+                .tweet-meta
+                  %span.tweet-username
+                    = tweet.user.name
+                  %a{:href => 'https://www.twitter.com/' + tweet.user.screen_name }
+                    = '@' + tweet.user.screen_name
+                  %date.tweet-date
+                    = tweet.created_at.strftime('%b %d')
+                %p.tweet-content
+                  = tweet.text

@@ -6,6 +6,9 @@
 		background-image: url(/assets/dit-logo.png);
 		background-size: 112px 53px;
 	}
+	#proposition-name {
+		float: left;
+	}
 }
 
 // ------------------------------------
@@ -34,7 +37,7 @@
 		right: 10px;
 		width: 33.33%;
 		.profile-overview-inner {
-			background: #005ea5;
+			background: #0b0c0c;
 			padding: 105px 20px 5px;
 			position: relative;
 			margin-left: 27px;
@@ -42,7 +45,7 @@
 			color: #ffffff;
 			overflow: auto;
 			.profile-link {
-				background: #0b0c0c;
+				background: #005ea5;
 				display: block;
 				position: absolute;
 				right: 0;
@@ -319,6 +322,43 @@
 }
 
 // ------------------------------------
+// homepage tweets
+
+.tweet {
+	.tweet-profile-image {
+		float: left;
+		width: 17%;
+	}
+	.tweet-body {
+		float: left;
+		font-size: 16px;
+		width: 83%;
+		.tweet-meta {
+			margin-left: 20px;
+		}
+		.tweet-content {
+			color: #6f777b;
+			font-size: 16px;
+			margin-left: 20px;
+			padding-top: 4px;
+		}
+		a, date, span {
+			display: inline-block;
+			padding-right: 0.25em;
+		}
+		.tweet-username {
+			font-weight: bold;
+		}
+		.tweet-date {
+			color: #6f777b;
+			&:before {
+				content: '\2022';
+			}
+		}
+	}
+}
+
+// ------------------------------------
 // govuk-search
 
 .govuk-search {
@@ -377,6 +417,13 @@
 		color: #fff;
 		text-indent: -5000px;
 		overflow: hidden;
+	}
+	&.proposition-search {
+		float: right;
+		width: 47.5%;
+		.search-submit {
+			background-color: #005ea5;
+		}
 	}
 }
 

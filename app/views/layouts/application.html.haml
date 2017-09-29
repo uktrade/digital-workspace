@@ -15,6 +15,15 @@
   .header-proposition
     .content
       = link_to "DIT Digital Workspace", root_path, id: "proposition-name"
+      %form{:action => "/search", :method => "get", :role => "search"}
+        .proposition-search.govuk-search
+          %label.search-label
+            Search GOV.UK
+          .search-wrapper
+            %input{:type => 'search', :title => 'Search', :class => 'search-element search-input js-class-toggle'}
+            .search-element.search-submit-wrapper
+              %button{:type => 'submit', :class => 'search-submit'}
+                Search
 
       /#proposition-link
       /= link_to "Peoplefinder", "http://peoplefinder-dev.herokuapp.com"

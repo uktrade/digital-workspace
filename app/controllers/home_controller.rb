@@ -1,4 +1,5 @@
 require 'wp_api'
+require 'twitter'
 
 class HomeController < ApplicationController
   def index
