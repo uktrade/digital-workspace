@@ -19,7 +19,7 @@
                       Search
         .profile-overview
           .profile-overview-inner
-            %img{:src => 'http://lorempixel.com/150/96/business'}
+            %img{:src => 'https://lorempixel.com/150/96/business'}
             %h3.heading-small
               = link_to("Sample Profile-Username", "#")
             %span
@@ -38,7 +38,7 @@
       .column-third
         - @posts.each_with_index do |p, index|
           .news-item.news-item-medium
-            %img{:src => 'http://lorempixel.com/300/190/business'}
+            %img{:src => 'https://lorempixel.com/300/190/business'}
             /%img{:src => @base_media_uri + p['featured_image']['file']}
             .news-item-meta
               - date = DateTime.parse(p["date"])
@@ -52,7 +52,7 @@
       .column-third
         - @posts.each_with_index do |p, index|
           .news-item.news-item-medium
-            %img{:src => 'http://lorempixel.com/300/190/business'}
+            %img{:src => 'https://lorempixel.com/300/190/business'}
             /%img{:src => @base_media_uri + p['featured_image']['file']}
             .news-item-meta
               - date = DateTime.parse(p["date"])
@@ -66,7 +66,7 @@
       .column-third
         - @posts.each_with_index do |p, index|
           .news-item.news-item-medium
-            %img{:src => 'http://lorempixel.com/300/190/business'}
+            %img{:src => 'https://lorempixel.com/300/190/business'}
             /%img{:src => @base_media_uri + p['featured_image']['file']}
             .news-item-meta
               - date = DateTime.parse(p["date"])
