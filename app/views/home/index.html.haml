@@ -1,5 +1,181 @@
-.grid-row
-  .column-full
-    %h1.heading-xlarge
-      %span.heading-secondary
-      Home page
+%header.homepage-top
+  .homepage-top-inner
+    .welcome-block
+      .inner-block.floated-children
+        .welcome-people-finder
+          .floated-inner-block
+            %h2.heading-large
+              Find people
+            %p
+              Search for your colleagues across the department
+            %form{:action => "/search", :method => "get", :role => "search"}
+              .govuk-search
+                %label.search-label
+                  Search GOV.UK
+                .search-wrapper
+                  %input{:type => 'search', :title => 'Search', :class => 'search-element search-input js-class-toggle'}
+                  .search-element.search-submit-wrapper
+                    %button{:type => 'submit', :class => 'search-submit'}
+                      Search
+        .profile-overview
+          .profile-overview-inner
+            %img{:src => 'http://lorempixel.com/150/96/'}
+            %h3.heading-small
+              = link_to("Sample Profile-Username", "#")
+            %span
+              Digital, IT & Estates
+            %span.profile-progress
+              30% complete
+            %span.profile-link
+              = link_to("Update", "#")
+%div{:id => 'homepage', :class => 'homepage-content'}
+  %main#content.root-index
+    .grid-row
+      .column-full
+        %h2.heading-medium
+          What's popular?
+    .grid-row
+      - @popular_posts.each do |p|
+        .column-third.popular-page-summary
+          %img{:src => p['acf']['image']['sizes']['medium']}
+          %h3.heading-small 
+            = link_to(p["title"]["rendered"].html_safe, "/how-are-we-structured")
+    %hr{:id => 'popular', :class => 'rule-large'}
+    .grid-row
+      .column-half
+        %h2.heading-medium
+          How are we doing?
+      .column-half.section-note.section-note-top
+        %p.fineprint
+          Data provided by Datahub and great.gov.uk
+    .grid-row
+      .column-third.graph-summary.graph-summary-teal
+        .stat
+          %span.stat-number
+            21
+          %p.stat-description
+            Chocolate cakes baked
+      .column-third.graph-summary.graph-summary-blue
+        .stat
+          %span.stat-number
+            120
+          %p.stat-description
+            Slices of cake eaten
+      .column-third.graph-summary.graph-summary-pink
+        .stat
+          %span.stat-number
+            5m
+          %p.stat-description
+            Calories added to our waistline
+    .grid-row
+      .column-full.section-note
+        %p
+          = link_to("See all stats", "/")
+    %hr{:id => 'statistics', :class => 'rule-large'}
+    .grid-row
+      .column-full
+        %h2.heading-medium
+          Top 20 How to's
+    .grid-row
+      .column-quarter
+        %span.stat-description
+          How to&hellip;
+        %ul.how-tos
+          - @howtos.each_with_index do |p, index|
+            - case index
+            - when 0..4
+              %li
+                = link_to(p["title"]["rendered"].html_safe, "#")
+      .column-quarter
+        %span.stat-description
+          &nbsp;
+        %ul.how-tos
+          - @howtos.each_with_index do |p, index|
+            - case index
+            - when 5..9
+              %li
+                = link_to(p["title"]["rendered"].html_safe, "#")
+      .column-quarter
+        %span.stat-description
+          &nbsp;
+        %ul.how-tos
+          - @howtos.each_with_index do |p, index|
+            - case index
+            - when 10..14
+              %li
+                = link_to(p["title"]["rendered"].html_safe, "#")
+      .column-quarter
+        %span.stat-description
+          &nbsp;
+        %ul.how-tos
+          - @howtos.each_with_index do |p, index|
+            - case index
+            - when 15..19
+              %li
+                = link_to(p["title"]["rendered"].html_safe, "#")
+    .grid-row
+      .column-full.section-note
+        %p
+          = link_to("See all How to's", "/")
+    %hr{:id => 'statistics', :class => 'rule-large'}
+    .grid-row
+      .column-full
+        %h2.heading-medium
+          Latest news
+    .grid-row
+      - @posts.each_with_index do |p, index|
+        - case index
+        - when 0
+          .column-full.news-item.news-item-large
+            .column-two-thirds.news-item-image
+              %img{:src => 'http://lorempixel.com/640/420/'}
+              /%img{:src => @base_media_uri + p['featured_image']['file']}
+            .column-third
+              .news-item-meta
+                - date = DateTime.parse(p["date"])
+                - formatted_date = date.strftime('%d %B %Y')
+                = formatted_date + ' - '
+                = link_to("Category", "#")
+              %h3.heading-large
+                = link_to(p["title"]["rendered"].html_safe, "#")
+              /= p["excerpt"]["rendered"].html_safe
+              %p
+                The Prime Minister will hose a business roundtable event in New York today, involving a number of major US investors.
+        - when 1..5
+          .column-third.news-item.news-item-medium
+            %img{:src => 'http://lorempixel.com/300/190/'}
+            /%img{:src => @base_media_uri + p['featured_image']['file']}
+            .news-item-meta
+              - date = DateTime.parse(p["date"])
+              - formatted_date = date.strftime('%d %B %Y')
+              = formatted_date + ' - '
+              = link_to("Category", "#")
+            %h3.heading-medium
+              = link_to(p["title"]["rendered"].html_safe, "#")
+            /= p["excerpt"]["rendered"].html_safe
+            %p
+              The Prime Minister will hose a business roundtable event in New York today, involving a number of major US investors.
+      .column-third.more-news
+        .more-news-inner
+          %h2.heading-medium
+            More news
+          - @posts.each_with_index do |p, index|
+            - case index
+            - when 6..7
+              .news-item
+                %h3.heading-medium
+                  = link_to(p["title"]["rendered"].html_safe, "#")
+                .news-item-meta
+                  - date = DateTime.parse(p["date"])
+                  - formatted_date = date.strftime('%d %B %Y')
+                  = formatted_date + ' - '
+                  = link_to("category", "#")
+    .grid-row
+      .column-full.section-note
+        %p
+          = link_to("View all News", "/")
+    %hr{:id => 'news', :class => 'rule-large'}
+    .grid-row
+      .column-full
+        %h2.heading-medium
+          Latest tweets  
