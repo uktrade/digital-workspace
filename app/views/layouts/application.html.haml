@@ -1,4 +1,5 @@
-- content_for :global_header_text, "DIT"
+- content_for :global_header_text do
+  %img{:src => '/assets/dit-logo.png', :alt => 'Department for International Trade'}
 
 - content_for :page_title, "Digital Workspace"
 
@@ -62,7 +63,7 @@
           = link_to("Womans", "")
         %li
           = link_to("Muslim Womans", "")
-    .column-half
+    .column-quarter
       %h2.heading-medium
         Latest Publications
       %hr{:class => 'rule-footer'}
@@ -79,6 +80,19 @@
           = link_to("White paper of Bank of China on cross-border e-commerce service", "")
         %li
           = link_to("Open general export licence (exports in support of Turkish Aerospace Industries TF-X Programme)", "")
+    .column-quarter
+      %h2.heading-medium
+        Sectors
+      %hr{:class => 'rule-footer'}
+      %ul
+        %li
+          = link_to("Sector Content", "")
+        %li
+          = link_to("Sector Content", "")
+        %li
+          = link_to("Sector Content", "")
+        %li
+          = link_to("Sector Content", "")
     .column-quarter
       %h2.heading-medium
         Regions

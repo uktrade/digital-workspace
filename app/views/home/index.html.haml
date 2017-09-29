@@ -19,15 +19,17 @@
                       Search
         .profile-overview
           .profile-overview-inner
-            %img{:src => 'https://lorempixel.com/150/96/business'}
-            %h3.heading-small
-              = link_to("Sample Profile-Username", "#")
-            %span
-              Digital, IT & Estates
-            %span.profile-progress
-              30% complete
             %span.profile-link
               = link_to("Update", "#")
+            .profile-image
+              %img{:src => 'https://lorempixel.com/150/96/business'}
+            .profile-meta
+              %h3.heading-small
+                = link_to("Sample Profile-Username", "#")
+              %span
+                Digital, IT & Estates
+              %span.profile-progress
+                30% complete
 %div{:id => 'homepage', :class => 'homepage-content'}
   %main#content.root-index
     .grid-row
@@ -35,7 +37,9 @@
         %h2.heading-medium
           Latest news
     .grid-row
-      .column-third
+      .column-third.news-column
+        %h2.heading-medium
+          Ministers
         - @posts.each_with_index do |p, index|
           .news-item.news-item-medium
             %img{:src => 'https://lorempixel.com/300/190/business'}
@@ -48,8 +52,10 @@
               = link_to(p["title"]["rendered"].html_safe, "#")
             /= p["excerpt"]["rendered"].html_safe
             %p
-              The Prime Minister will hose a business roundtable event in New York today, involving a number of major US investors.
-      .column-third
+              The Prime Minister will host a business roundtable event in New York today, involving a number of major US investors.
+      .column-third.news-column
+        %h2.heading-medium
+          Antonia
         - @posts.each_with_index do |p, index|
           .news-item.news-item-medium
             %img{:src => 'https://lorempixel.com/300/190/business'}
@@ -62,8 +68,10 @@
               = link_to(p["title"]["rendered"].html_safe, "#")
             /= p["excerpt"]["rendered"].html_safe
             %p
-              The Prime Minister will hose a business roundtable event in New York today, involving a number of major US investors.
-      .column-third
+              The Prime Minister will host a business roundtable event in New York today, involving a number of major US investors.
+      .column-third.news-column
+        %h2.heading-medium
+          Departmental Board
         - @posts.each_with_index do |p, index|
           .news-item.news-item-medium
             %img{:src => 'https://lorempixel.com/300/190/business'}
@@ -76,7 +84,7 @@
               = link_to(p["title"]["rendered"].html_safe, "#")
             /= p["excerpt"]["rendered"].html_safe
             %p
-              The Prime Minister will hose a business roundtable event in New York today, involving a number of major US investors.
+              The Prime Minister will host a business roundtable event in New York today, involving a number of major US investors.
     .grid-row
       .column-full.section-note
         %p

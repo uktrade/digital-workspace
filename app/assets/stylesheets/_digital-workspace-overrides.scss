@@ -1,8 +1,18 @@
 // ------------------------------------
+// Global header
+
+#global-header {
+	#logo {
+		background-image: url(/assets/dit-logo.png);
+		background-size: 112px 53px;
+	}
+}
+
+// ------------------------------------
 // homepage intro block
 
 .homepage-top {
-	background: #0b0c0c; //to be replaced with image when approved
+	background: #454a4c;
 	color: #ffffff;
 	.homepage-top-inner {
 		margin: 0 15px;
@@ -25,11 +35,42 @@
 		width: 33.33%;
 		.profile-overview-inner {
 			background: #005ea5;
-			padding: 15px 20px 5px;
-			margin-top: 30px;
+			padding: 105px 20px 5px;
+			position: relative;
 			margin-left: 27px;
 			min-height: 20em;
 			color: #ffffff;
+			overflow: auto;
+			.profile-link {
+				background: #0b0c0c;
+				display: block;
+				position: absolute;
+				right: 0;
+				text-align: right;
+				top: 0;
+				width: 100%;
+				a {
+					display: inline-block;
+					padding: 15px 20px 50px;
+				}
+			}
+			.profile-image {
+				float: left;
+				width: 33.33%;
+			}
+			.profile-meta {
+				float: left;
+				width: 66.66%;
+				h3 {
+					margin-top: 0;
+				}
+				span {
+					font-size: 14px;
+				}
+				h3, span {
+					padding-left: 15px;
+				}
+			}
 			img {
 				max-height: 4em;
 				max-width: 100%;
@@ -39,15 +80,6 @@
 			}
 			span {
 				display: block;
-				&.profile-progress {
-					float: left;
-					width: 50%;
-				}
-				&.profile-link {
-					float: right;
-					text-align: right;
-					width: 50%;
-				}
 			}
 		}
 	}
@@ -245,7 +277,16 @@
 // ------------------------------------
 // homepage news items
 
+.news-column {
+	h2 {
+		border-top: 1px solid #6f777b;
+		margin-top: 0;
+		padding-top: 0.8333333333em;
+	}
+}
+
 .news-item {
+	margin-bottom: 30px;
 	&.news-item-large {
 		.news-item-image {
 			padding: 0 10px 30px 0;
