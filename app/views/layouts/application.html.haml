@@ -25,8 +25,20 @@
               %button{:type => 'submit', :class => 'search-submit'}
                 Search
 
-      /#proposition-link
-      /= link_to "Peoplefinder", "http://peoplefinder-dev.herokuapp.com"
+      %a{:href => "#proposition-links", :class => "js-header-toggle menu"}
+        Menu
+      %nav{:id => "proposition-menu"}
+        %ul{:id => "proposition-links"}
+          %li
+            = link_to "Peoplefinder", "http://peoplefinder-dev.herokuapp.com"
+          %li
+            = link_to "Peoplefinder", "http://peoplefinder-dev.herokuapp.com"
+          %li
+            = link_to "Peoplefinder", "http://peoplefinder-dev.herokuapp.com"
+          %li
+            = link_to "Peoplefinder", "http://peoplefinder-dev.herokuapp.com"
+          %li
+            = link_to "Peoplefinder", "http://peoplefinder-dev.herokuapp.com"
 
 
 - content_for :body_end do
