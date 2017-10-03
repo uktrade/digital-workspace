@@ -162,31 +162,24 @@
 		width: 33.33%;
 		.profile-overview-inner {
 			background: #0b0c0c;
-			padding: 125px 20px 5px;
+			padding: 107px 20px 5px;
 			position: relative;
 			margin-left: 27px;
 			min-height: 20em;
 			color: #ffffff;
 			overflow: auto;
-			.profile-link {
+			.profile-flair {
 				background-color: #005ea5;
 				background-image: url(http://dit-prototype.preview3.co.uk/assets/PURCHASE-STOCK-profile-bg.png);
 				background-repeat: none;
 				background-size: cover;
 				display: block;
-				height: 110px;
+				height: 90px;
 				position: absolute;
 				right: 0;
 				text-align: right;
 				top: 0;
 				width: 100%;
-				a {
-					display: inline-block;
-					font-size: 14px;
-					position: absolute;
-					top: 48px;
-					right: 20px;
-				}
 			}
 			.profile-image {
 				display: none;
@@ -197,6 +190,7 @@
 				float: left;
 				width: 100%;
 				h3 {
+					line-height: 1em;
 					margin-top: 0;
 					a {
 						word-break: break-all;
@@ -204,6 +198,10 @@
 				}
 				span {
 					font-size: 14px;
+					&.profile-update {
+						display: block;
+						text-align: right;
+					}
 				}
 			}
 			img {

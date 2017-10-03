@@ -11,7 +11,7 @@
             %form{:action => "/search", :method => "get", :role => "search"}
               .govuk-search
                 %label.search-label
-                  Search GOV.UK
+                  Search people
                 .search-wrapper
                   %input{:type => 'search', :title => 'Search', :class => 'search-element search-input js-class-toggle'}
                   .search-element.search-submit-wrapper
@@ -19,8 +19,7 @@
                       Search
         .profile-overview
           .profile-overview-inner
-            %span.profile-link
-              = link_to("Update", "#")
+            %span.profile-flair
             .profile-image
               %img{:src => 'http://dit-prototype.preview3.co.uk/assets/profile-warren.png'}
             .profile-meta
@@ -30,6 +29,9 @@
                 Digital, IT & Estates
               %span.profile-progress
                 30% complete
+              %span.profile-update
+                %a{:href => "/update-profile"}
+                  Update
 %div{:id => 'homepage', :class => 'homepage-content'}
   %main#content.root-index
     .grid-row
