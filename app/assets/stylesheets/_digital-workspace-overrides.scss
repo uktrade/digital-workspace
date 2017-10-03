@@ -349,6 +349,9 @@
 	p {
 		font-size: 12px;
 	}
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 
 .popular-page-summary {
@@ -378,6 +381,12 @@
 		padding-top: 1.65em;
 		padding-bottom: 4px;
 	}
+	p {
+		font-size: 14px;
+	}
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 
 @media(min-width: 641px) {
@@ -392,19 +401,19 @@
 			width: 100%;
 		}
 		.news-item-meta {
-			font-size: 18px;
+			font-size: 14px;
 			padding-top: 0px;
 			padding-bottom: 0px;
 			margin-top: 20px;
 		}
 		.heading-medium {
-			font-size: 24px;
+			font-size: 19px;
 			margin: 0;
 			padding-top: 6px;
 			padding-bottom: 4px;
 		}
 		p {
-			font-size: 16px;
+			font-size: 14px;
 		}
 	}
 
@@ -418,7 +427,7 @@
 			}
 		}
 		.heading-medium {
-			font-size: 24px;
+			font-size: 19px;
 			margin: 0;
 			padding-top: 6px;
 			padding-bottom: 4px;
@@ -544,7 +553,7 @@
 
 .govuk-search {
 	position: relative;
-	margin-bottom: 30px;
+	margin-bottom: 52px;
 	.search-label {
 		color: #6f777b;
 		display: block;
@@ -655,7 +664,7 @@ hr {
 		background-color: transparent;
 		border: 5px solid #0b0c0c;
 		border-width: 5px 0 0;
-		margin: 30px 0px 0px;
+		margin: 15px 0px 0px;
 	}
 }
 
@@ -663,7 +672,7 @@ hr {
 	hr {
 		&.rule-large {
 			//margin: 60px 0px 30px;
-			margin: 30px 0px 0px;
+			margin: 15px 0px 0px;
 		}
 	}
 }
@@ -678,8 +687,8 @@ html, body, button, input, main, table, td, th, .heading-xlarge, .heading-large,
 .section-note {
 	color: #6f777b;
 	float: right;
-	font-size: 16px;
-	margin-top: 30px;
+	font-size: 14px;
+	margin-top: 15px;
 	text-align: right;
 	&.section-note-top {
 		margin-bottom: 20px;
