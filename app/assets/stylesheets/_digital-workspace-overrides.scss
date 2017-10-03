@@ -9,6 +9,12 @@
 		}
 		.header-proposition {
 			padding-top: 0;
+			position: relative;
+			.search {
+				position: absolute;
+				right: 15px;
+				top: 0px;
+			}
 			#proposition-name {
 				font-size: 16px;
 			}
@@ -51,7 +57,7 @@
 		}
 	}
 	#logo {
-		background-image: url(/assets/dit-logo.png);
+		background-image: url(http://dit-prototype.preview3.co.uk/assets/dit-logo.png);
 		background-size: 112px 53px;
 		img {
 			max-width: 100%;
@@ -65,7 +71,7 @@
 	}
 }
 
-@media (min-width: 641px) {
+@media (min-width: 769px) {
 	#global-header {
 		.header-wrapper {
 			.header-global {
@@ -74,6 +80,9 @@
 			}
 			.header-proposition {
 				padding-top: 10px;
+				.search {
+					top: 9px;
+				}
 				#proposition-name {
 					font-size: 18px;
 				}
@@ -112,7 +121,6 @@
 		}
 	}
 }
-
 
 // ------------------------------------
 // homepage intro block
@@ -161,20 +169,21 @@
 				}
 			}
 			.profile-image {
+				display: none;
 				float: left;
 				width: 33.33%;
 			}
 			.profile-meta {
 				float: left;
-				width: 66.66%;
+				width: 100%;
 				h3 {
 					margin-top: 0;
+					a {
+						word-break: break-all;
+					}
 				}
 				span {
 					font-size: 14px;
-				}
-				h3, span {
-					padding-left: 15px;
 				}
 			}
 			img {
@@ -204,6 +213,24 @@
 		}
 		.profile-overview {
 			display: block;
+		}
+	}
+}
+
+@media (min-width: 769px) {
+	.homepage-top {
+		.profile-overview {
+			.profile-overview-inner {
+				.profile-image {
+					display: block;
+				}
+				.profile-meta {
+					width: 66.66%;
+					h3, span {
+						padding-left: 15px;
+					}
+				}
+			}
 		}
 	}
 }
@@ -448,17 +475,17 @@
 		}
 		&.graph-summary-teal {
 			.stat {
-				background-image: url(/assets/graph-dots.png);
+				background-image: url(http://dit-prototype.preview3.co.uk/assets/graph-dots.png);
 			}
 		}
 		&.graph-summary-blue {
 			.stat {
-				background-image: url(/assets/graph-pie.png);
+				background-image: url(http://dit-prototype.preview3.co.uk/assets/graph-pie.png);
 			}
 		}
 		&.graph-summary-pink {
 			.stat {
-				background-image: url(/assets/graph-line.png);
+				background-image: url(http://dit-prototype.preview3.co.uk/assets/graph-line.png);
 			}
 		}
 	}
