@@ -22,10 +22,10 @@
             %span.profile-link
               = link_to("Update", "#")
             .profile-image
-              %img{:src => 'https://lorempixel.com/150/96/business'}
+              %img{:src => 'http://dit-prototype.preview3.co.uk/assets/profile-warren.png'}
             .profile-meta
               %h3.heading-small
-                = link_to("Sample Profile-Username", "#")
+                = link_to("Warren Hobden", "#")
               %span
                 Digital, IT & Estates
               %span.profile-progress
@@ -203,4 +203,4 @@
                   %date.tweet-date
                     = tweet.created_at.strftime('%b %d')
                 %p.tweet-content
-                  = tweet.text
+                  = parsed_tweet tweet

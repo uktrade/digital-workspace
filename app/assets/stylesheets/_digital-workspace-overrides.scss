@@ -1,7 +1,7 @@
 // ------------------------------------
 // Global header
 
-#global-header {
+#global-header.with-proposition {
 	.header-wrapper {
 		.header-global {
 			float: left;
@@ -57,7 +57,7 @@
 		}
 	}
 	#logo {
-		background-image: url(http://dit-prototype.preview3.co.uk/assets/dit-logo.png);
+		background-image: url(http://dit-prototype.preview3.co.uk/assets/dit-logo-2x.png);
 		background-size: 112px 53px;
 		img {
 			max-width: 100%;
@@ -72,7 +72,7 @@
 }
 
 @media (min-width: 641px) {
-	#global-header {
+	#global-header.with-proposition {
 		.header-wrapper {
 			.header-proposition {
 				#proposition-name {
@@ -84,14 +84,15 @@
 }
 
 @media (min-width: 769px) {
-	#global-header {
+	#global-header.with-proposition {
 		.header-wrapper {
 			.header-global {
-				float: none;
-				width: auto;
+				float: left;
+				width: 25%;
 			}
 			.header-proposition {
 				padding-top: 10px;
+				width: 75%;
 				.search {
 					top: 9px;
 				}
@@ -107,7 +108,7 @@
 					float: none;
 					.govuk-search {
 						&.proposition-search {
-							width: 47.5%;
+							width: 41.187%;
 						}
 						.search-label {
 							display: block;
@@ -161,15 +162,19 @@
 		width: 33.33%;
 		.profile-overview-inner {
 			background: #0b0c0c;
-			padding: 105px 20px 5px;
+			padding: 125px 20px 5px;
 			position: relative;
 			margin-left: 27px;
 			min-height: 20em;
 			color: #ffffff;
 			overflow: auto;
 			.profile-link {
-				background: #005ea5;
+				background-color: #005ea5;
+				background-image: url(http://dit-prototype.preview3.co.uk/assets/PURCHASE-STOCK-profile-bg.png);
+				background-repeat: none;
+				background-size: cover;
 				display: block;
+				height: 110px;
 				position: absolute;
 				right: 0;
 				text-align: right;
@@ -177,7 +182,10 @@
 				width: 100%;
 				a {
 					display: inline-block;
-					padding: 15px 20px 50px;
+					font-size: 14px;
+					position: absolute;
+					top: 48px;
+					right: 20px;
 				}
 			}
 			.profile-image {
@@ -231,6 +239,12 @@
 
 @media (min-width: 769px) {
 	.homepage-top {
+		.welcome-block {
+			.heading-large {
+				margin-top: 0.9em;
+				margin-bottom: 0.4em;
+			}
+		}
 		.profile-overview {
 			.profile-overview-inner {
 				.profile-image {
@@ -336,6 +350,8 @@
 	.image-holder {
 		float: left;
 		width: 33.33333%;
+		max-height: 195px;
+		overflow: hidden;
 		.img {
 			display: block;
 			padding: 5px 15px 0 0;
@@ -377,6 +393,8 @@
 	.image-holder {
 		float: left;
 		width: 33.33333%;
+		max-height: 195px;
+		overflow: hidden;
 		.img {
 			display: block;
 			padding: 5px 15px 0 0;
@@ -570,14 +588,14 @@
 
 .govuk-search {
 	position: relative;
-	margin-bottom: 28px;
+	margin-bottom: 40px;
 	.search-label {
 		color: #6f777b;
 		display: block;
 	}
 	.search-wrapper {
 		display: table;
-		width: 100%;
+		width: 87%;
 		background: #fff;
 	}
 	.search-element {
@@ -627,7 +645,7 @@
 	}
 	&.proposition-search {
 		float: right;
-		width: 47.5%;
+		width: 41.187%;
 		.search-submit {
 			background-color: #005ea5;
 		}
