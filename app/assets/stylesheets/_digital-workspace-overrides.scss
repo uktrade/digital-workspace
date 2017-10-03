@@ -71,6 +71,18 @@
 	}
 }
 
+@media (min-width: 641px) {
+	#global-header {
+		.header-wrapper {
+			.header-proposition {
+				#proposition-name {
+					font-size: 18px;
+				}
+			}
+		}
+	}
+}
+
 @media (min-width: 769px) {
 	#global-header {
 		.header-wrapper {
@@ -84,7 +96,7 @@
 					top: 9px;
 				}
 				#proposition-name {
-					font-size: 18px;
+					font-size: 24px;
 				}
 				#proposition-menu {
 					clear: both;
@@ -419,18 +431,23 @@
 
 	.popular-page-summary {
 		clear: none;
-		margin-bottom: 10px;
+		margin-bottom: 30px;
 		.image-holder {
 			width: 100%;
 			.img {
 				padding: 0;
 			}
+		}.popular-page-text {
+			width: 100%
 		}
 		.heading-medium {
 			font-size: 19px;
 			margin: 0;
-			padding-top: 6px;
+			padding-top: 20px;
 			padding-bottom: 4px;
+		}
+		&:last-child {
+			margin-bottom: 30px;
 		}
 	}
 }
@@ -553,7 +570,7 @@
 
 .govuk-search {
 	position: relative;
-	margin-bottom: 52px;
+	margin-bottom: 28px;
 	.search-label {
 		color: #6f777b;
 		display: block;
@@ -688,7 +705,7 @@ html, body, button, input, main, table, td, th, .heading-xlarge, .heading-large,
 	color: #6f777b;
 	float: right;
 	font-size: 14px;
-	margin-top: 15px;
+	margin-top: 30px;
 	text-align: right;
 	&.section-note-top {
 		margin-bottom: 20px;

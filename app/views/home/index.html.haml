@@ -49,10 +49,9 @@
             .news-item-text
               .news-item-meta
                 - date = DateTime.parse(p["date"])
-                - formatted_date = date.strftime('%d %B %Y')
-                = formatted_date + ' - GDS'
+                = date.strftime('%d %B %Y')
               %h3.heading-medium
-                = link_to(p["title"]["rendered"].html_safe, "#")
+                = link_to(p["title"]["rendered"].html_safe, p["slug"])
               /= p["excerpt"]["rendered"].html_safe
               = p["excerpt"]["rendered"].html_safe
       .column-third.news-column
@@ -67,10 +66,9 @@
             .news-item-text
               .news-item-meta
                 - date = DateTime.parse(p["date"])
-                - formatted_date = date.strftime('%d %B %Y')
-                = formatted_date + ' - GDS'
+                = date.strftime('%d %B %Y')
               %h3.heading-medium
-                = link_to(p["title"]["rendered"].html_safe, "#")
+                = link_to(p["title"]["rendered"].html_safe, p["slug"])
               /= p["excerpt"]["rendered"].html_safe
               = p["excerpt"]["rendered"].html_safe
       .column-third.news-column
@@ -84,10 +82,9 @@
             .news-item-text
               .news-item-meta
                 - date = DateTime.parse(p["date"])
-                - formatted_date = date.strftime('%d %B %Y')
-                = formatted_date + ' - GDS'
+                = date.strftime('%d %B %Y')
               %h3.heading-medium
-                = link_to(p["title"]["rendered"].html_safe, "#")
+                = link_to(p["title"]["rendered"].html_safe, p["slug"])
               /= p["excerpt"]["rendered"].html_safe
               = p["excerpt"]["rendered"].html_safe
     .grid-row
@@ -107,39 +104,39 @@
               %img{:src => p['acf']['image']['sizes']['medium']}
           .popular-page-text
             %h3.heading-medium 
-              = link_to(p["title"]["rendered"].html_safe, "/how-are-we-structured")
+              = link_to(p["title"]["rendered"].html_safe, p["slug"])
     %hr{:id => 'popular', :class => 'rule-large'}
-    .grid-row
-      .column-half.section-note.section-note-top
-        %p.fineprint
-          Data provided by Datahub and great.gov.uk
-      .column-half
-        %h2.heading-medium
-          How are we doing?
-    .grid-row
-      .column-third.graph-summary.graph-summary-teal
-        .stat
-          %span.stat-number
-            21
-          %p.stat-description
-            Chocolate cakes baked
-      .column-third.graph-summary.graph-summary-blue
-        .stat
-          %span.stat-number
-            120
-          %p.stat-description
-            Slices of cake eaten
-      .column-third.graph-summary.graph-summary-pink
-        .stat
-          %span.stat-number
-            5m
-          %p.stat-description
-            Calories added to our waistline
-    .grid-row
-      .column-full.section-note
-        %p
-          = link_to("See all stats", "/")
-    %hr{:id => 'statistics', :class => 'rule-large'}
+    -# .grid-row
+    -#  .column-half.section-note.section-note-top
+    -#    %p.fineprint
+    -#      Data provided by Datahub and great.gov.uk
+    -#  .column-half
+    -#    %h2.heading-medium
+    -#      How are we doing?
+    -#.grid-row
+    -#  .column-third.graph-summary.graph-summary-teal
+    -#    .stat
+    -#      %span.stat-number
+    -#        21
+    -#      %p.stat-description
+    -#        Chocolate cakes baked
+    -#  .column-third.graph-summary.graph-summary-blue
+    -#    .stat
+    -#      %span.stat-number
+    -#        120
+    -#      %p.stat-description
+    -#        Slices of cake eaten
+    -#  .column-third.graph-summary.graph-summary-pink
+    -#    .stat
+    -#      %span.stat-number
+    -#        5m
+    -#      %p.stat-description
+    -#        Calories added to our waistline
+    -#.grid-row
+    -#  .column-full.section-note
+    -#    %p
+    -#      = link_to("See all stats", "/")
+    -#%hr{:id => 'statistics', :class => 'rule-large'}
     .grid-row
       .column-full
         %h2.heading-medium
@@ -153,7 +150,7 @@
             - case index
             - when 0..4
               %li
-                = link_to(p["title"]["rendered"].html_safe, "#")
+                = link_to(p["title"]["rendered"].html_safe, p["slug"])
       .column-quarter
         %span.stat-description
           &nbsp;
@@ -162,7 +159,7 @@
             - case index
             - when 5..9
               %li
-                = link_to(p["title"]["rendered"].html_safe, "#")
+                = link_to(p["title"]["rendered"].html_safe, p["slug"])
       .column-quarter
         %span.stat-description
           &nbsp;
@@ -171,7 +168,7 @@
             - case index
             - when 10..14
               %li
-                = link_to(p["title"]["rendered"].html_safe, "#")
+                = link_to(p["title"]["rendered"].html_safe, p["slug"])
       .column-quarter
         %span.stat-description
           &nbsp;
@@ -180,7 +177,7 @@
             - case index
             - when 15..19
               %li
-                = link_to(p["title"]["rendered"].html_safe, "#")
+                = link_to(p["title"]["rendered"].html_safe, p["slug"])
     .grid-row
       .column-full.section-note
         %p
