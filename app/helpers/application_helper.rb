@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def parsed_tweet(tweet)
     parsed_tweet = tweet.text.dup
 
