@@ -1,8 +1,145 @@
 // ------------------------------------
+// Global header
+
+#global-header.with-proposition {
+	.header-wrapper {
+		.header-global {
+			float: left;
+			width: 38%;
+		}
+		.header-proposition {
+			padding-top: 0;
+			position: relative;
+			.search {
+				position: absolute;
+				right: 15px;
+				top: 0px;
+			}
+			#proposition-name {
+				font-size: 16px;
+			}
+			#proposition-menu {
+				clear: none;
+				float: right;
+				padding-top: 10px;
+			}
+			a.menu {
+				clear: right;
+				margin-top: 5px;
+			}
+			form {
+				float: right;
+				.govuk-search {
+					&.proposition-search {
+						margin-bottom: 0;
+						width: auto;
+					}
+					.search-label {
+						display: none;
+					}
+					.search-wrapper {
+						background: transparent;
+						display: inline-block;
+						width: auto;
+					}
+					.search-element {
+						display: inline-block;
+					}
+					.search-input {
+						display: none;
+					}
+					.search-submit {
+						height: 32px;
+						width: 38px;
+					}
+				}
+			}
+		}
+	}
+	#logo {
+		background-image: url(http://dit-prototype.preview3.co.uk/assets/dit-logo-2x.png);
+		background-size: 112px 53px;
+		img {
+			max-width: 100%;
+			&:first-child {
+				display: none;
+			}
+		}
+	}
+	#proposition-name {
+		float: left;
+	}
+}
+
+@media (min-width: 641px) {
+	#global-header.with-proposition {
+		.header-wrapper {
+			.header-proposition {
+				#proposition-name {
+					font-size: 18px;
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 769px) {
+	#global-header.with-proposition {
+		.header-wrapper {
+			.header-global {
+				float: left;
+				width: 25%;
+			}
+			.header-proposition {
+				padding-top: 10px;
+				width: 75%;
+				.search {
+					top: 9px;
+				}
+				#proposition-name {
+					font-size: 24px;
+				}
+				#proposition-menu {
+					clear: both;
+					float: left;
+					padding-top: 5px;
+				}
+				form {
+					float: none;
+					.govuk-search {
+						&.proposition-search {
+							width: 41.187%;
+						}
+						.search-label {
+							display: block;
+						}
+						.search-wrapper {
+							background: transparent;
+							display: table;
+							width: auto;
+						}
+						.search-element {
+							display: table-cell;
+						}
+						.search-input {
+							display: table-cell;
+						}
+						.search-submit {
+							height: 40px;
+							width: 40px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// ------------------------------------
 // homepage intro block
 
 .homepage-top {
-	background: #0b0c0c; //to be replaced with image when approved
+	background: #454a4c;
 	color: #ffffff;
 	.homepage-top-inner {
 		margin: 0 15px;
@@ -12,23 +149,63 @@
 		text-align: left;
 	}
 	.welcome-block {
-		width: 66.66%;
+		width: 100%;
 		.welcome-people-finder {
 			margin: 0 10px;
 		}
 	}
 	.profile-overview {
+		display: none;
 		position: absolute;
 		top: 0;
 		right: 10px;
 		width: 33.33%;
 		.profile-overview-inner {
-			background: #005ea5;
-			padding: 15px 20px 5px;
-			margin-top: 30px;
+			background: #0b0c0c;
+			padding: 125px 20px 5px;
+			position: relative;
 			margin-left: 27px;
 			min-height: 20em;
 			color: #ffffff;
+			overflow: auto;
+			.profile-link {
+				background-color: #005ea5;
+				background-image: url(http://dit-prototype.preview3.co.uk/assets/PURCHASE-STOCK-profile-bg.png);
+				background-repeat: none;
+				background-size: cover;
+				display: block;
+				height: 110px;
+				position: absolute;
+				right: 0;
+				text-align: right;
+				top: 0;
+				width: 100%;
+				a {
+					display: inline-block;
+					font-size: 14px;
+					position: absolute;
+					top: 48px;
+					right: 20px;
+				}
+			}
+			.profile-image {
+				display: none;
+				float: left;
+				width: 33.33%;
+			}
+			.profile-meta {
+				float: left;
+				width: 100%;
+				h3 {
+					margin-top: 0;
+					a {
+						word-break: break-all;
+					}
+				}
+				span {
+					font-size: 14px;
+				}
+			}
 			img {
 				max-height: 4em;
 				max-width: 100%;
@@ -38,15 +215,6 @@
 			}
 			span {
 				display: block;
-				&.profile-progress {
-					float: left;
-					width: 50%;
-				}
-				&.profile-link {
-					float: right;
-					text-align: right;
-					width: 50%;
-				}
 			}
 		}
 	}
@@ -59,6 +227,36 @@
 	.homepage-top {
 		.homepage-top-inner {
 			margin: 0 30px;
+		}
+		.welcome-block {
+			width: 66.66%;
+		}
+		.profile-overview {
+			display: block;
+		}
+	}
+}
+
+@media (min-width: 769px) {
+	.homepage-top {
+		.welcome-block {
+			.heading-large {
+				margin-top: 0.9em;
+				margin-bottom: 0.4em;
+			}
+		}
+		.profile-overview {
+			.profile-overview-inner {
+				.profile-image {
+					display: block;
+				}
+				.profile-meta {
+					width: 66.66%;
+					h3, span {
+						padding-left: 15px;
+					}
+				}
+			}
 		}
 	}
 }
@@ -79,7 +277,7 @@
 }
 
 .beta-bar {
-	font-size: 19px;
+	font-size: 16px;
 	margin: 0 15px;
 	padding: 5px 0;
 	position: relative;
@@ -105,7 +303,7 @@
 		padding-top: 1px;
 	}
 	span {
-		display: inline-block;
+		display: inline;
 		margin-left: 4px;
 	}
 }
@@ -113,6 +311,9 @@
 @media (min-width: 641px) {
 	.beta-bar {
 		margin: 0 30px;
+		span {
+			display: inline-block;
+		}
 	}
 }
 
@@ -123,10 +324,150 @@
 }
 
 // ------------------------------------
-// homepage popular page summaries
+// homepage news, what's popular
+
+.news-column {
+	h2 {
+		border-top: 1px solid #bfc1c3;
+		margin-top: 0;
+		padding-top: 0.8333333333em;
+	}
+}
+
+.more-news {
+	.more-news-inner {
+		border-top: 1px solid #b8bcbe;
+	}
+}
+
+.news-item {
+	margin-bottom: 30px;
+	overflow: auto;
+	img {
+		display: block;
+		width: 100%;
+	}
+	.image-holder {
+		float: left;
+		width: 33.33333%;
+		max-height: 195px;
+		overflow: hidden;
+		.img {
+			display: block;
+			padding: 5px 15px 0 0;
+		}
+	}
+	.news-item-text {
+		float: left;
+		width: 66.66667%
+	}
+	.news-item-meta {
+		color: #6f777b;
+		font-size: 12px;
+		padding-top: 4px;
+		padding-bottom: 1px;
+		margin-top: 0px;
+	}
+	.heading-medium {
+		font-size: 16px;
+		margin: 0;
+		padding-top: 6px;
+		padding-bottom: 4px;
+	}
+	p {
+		font-size: 12px;
+	}
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
 
 .popular-page-summary {
-	margin-bottom: 10px;
+	clear: both;
+	margin-bottom: 30px;
+	overflow: auto;
+	img {
+		display: block;
+		width: 100%;
+	}
+	.image-holder {
+		float: left;
+		width: 33.33333%;
+		max-height: 195px;
+		overflow: hidden;
+		.img {
+			display: block;
+			padding: 5px 15px 0 0;
+		}
+	}
+	.popular-page-text {
+		float: left;
+		width: 66.66667%
+	}
+	.heading-medium {
+		font-size: 16px;
+		margin: 0;
+		//padding-top: 6px;
+		padding-top: 1.65em;
+		padding-bottom: 4px;
+	}
+	p {
+		font-size: 14px;
+	}
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+@media(min-width: 641px) {
+	.news-item {
+		.image-holder {
+			width: 100%;
+			.img {
+				padding: 0;
+			}
+		}
+		.news-item-text {
+			width: 100%;
+		}
+		.news-item-meta {
+			font-size: 14px;
+			padding-top: 0px;
+			padding-bottom: 0px;
+			margin-top: 20px;
+		}
+		.heading-medium {
+			font-size: 19px;
+			margin: 0;
+			padding-top: 6px;
+			padding-bottom: 4px;
+		}
+		p {
+			font-size: 14px;
+		}
+	}
+
+	.popular-page-summary {
+		clear: none;
+		margin-bottom: 30px;
+		.image-holder {
+			width: 100%;
+			.img {
+				padding: 0;
+			}
+		}.popular-page-text {
+			width: 100%
+		}
+		.heading-medium {
+			font-size: 19px;
+			margin: 0;
+			padding-top: 20px;
+			padding-bottom: 4px;
+		}
+		&:last-child {
+			margin-bottom: 30px;
+		}
+	}
 }
 
 // ------------------------------------
@@ -138,26 +479,23 @@
 	&.graph-summary-teal {
 		.stat {
 			background-color: #30a197;
-			background-image: url(/assets/graph-dots.png);
 		}
 	}
 	&.graph-summary-blue {
 		.stat {
 			background-color: #318dc2;
-			background-image: url(/assets/graph-pie.png);
 		}
 	}
 	&.graph-summary-pink {
 		.stat {
 			background-color: #f29abe;
-			background-image: url(/assets/graph-line.png);
 		}
 	}
 	.stat {
 		background-position: center 30px;
 		background-repeat: no-repeat;
 		background-size: 45%;
-		padding: 150px 15px 15px 15px;
+		padding: 15px 15px 15px 15px;
 		text-align: center;
 	}
 	.stat-number {
@@ -177,6 +515,22 @@
 	.graph-summary {
 		.stat {
 			background-size: 60%;
+			padding-top: 150px;
+		}
+		&.graph-summary-teal {
+			.stat {
+				background-image: url(http://dit-prototype.preview3.co.uk/assets/graph-dots.png);
+			}
+		}
+		&.graph-summary-blue {
+			.stat {
+				background-image: url(http://dit-prototype.preview3.co.uk/assets/graph-pie.png);
+			}
+		}
+		&.graph-summary-pink {
+			.stat {
+				background-image: url(http://dit-prototype.preview3.co.uk/assets/graph-line.png);
+			}
 		}
 	}
 }
@@ -193,37 +547,39 @@
 }
 
 // ------------------------------------
-// homepage news items
+// homepage tweets
 
-.news-item {
-	&.news-item-large {
-		.news-item-image {
-			padding: 0 10px 30px 0;
-		}
+.tweet {
+	.tweet-profile-image {
+		float: left;
+		width: 17%;
 	}
-	&.news-item-medium {
-		p {
-			font-size: 16px;
-		}
-	}
-	img {
-		display: block;
-		width: 100%;
-	}
-	.news-item-meta {
-		color: #6f777b;
+	.tweet-body {
+		float: left;
 		font-size: 16px;
-		margin-top: 20px;
-	}
-	.heading-large,
-	.heading-medium {
-		margin-top: 15px;
-	}
-}
-
-.more-news {
-	.more-news-inner {
-		border-top: 1px solid #b8bcbe;
+		width: 83%;
+		.tweet-meta {
+			margin-left: 20px;
+		}
+		.tweet-content {
+			color: #6f777b;
+			font-size: 16px;
+			margin-left: 20px;
+			padding-top: 4px;
+		}
+		a, date, span {
+			display: inline-block;
+			padding-right: 0.25em;
+		}
+		.tweet-username {
+			font-weight: bold;
+		}
+		.tweet-date {
+			color: #6f777b;
+			&:before {
+				content: '\2022';
+			}
+		}
 	}
 }
 
@@ -232,14 +588,14 @@
 
 .govuk-search {
 	position: relative;
-	margin-bottom: 30px;
+	margin-bottom: 40px;
 	.search-label {
 		color: #6f777b;
 		display: block;
 	}
 	.search-wrapper {
 		display: table;
-		width: 100%;
+		width: 87%;
 		background: #fff;
 	}
 	.search-element {
@@ -286,6 +642,13 @@
 		color: #fff;
 		text-indent: -5000px;
 		overflow: hidden;
+	}
+	&.proposition-search {
+		float: right;
+		width: 41.187%;
+		.search-submit {
+			background-color: #005ea5;
+		}
 	}
 }
 
@@ -336,7 +699,7 @@ hr {
 		background-color: transparent;
 		border: 5px solid #0b0c0c;
 		border-width: 5px 0 0;
-		margin: 30px 0px 0px;
+		margin: 15px 0px 0px;
 	}
 }
 
@@ -344,7 +707,7 @@ hr {
 	hr {
 		&.rule-large {
 			//margin: 60px 0px 30px;
-			margin: 30px 0px 0px;
+			margin: 15px 0px 0px;
 		}
 	}
 }
@@ -358,19 +721,45 @@ html, body, button, input, main, table, td, th, .heading-xlarge, .heading-large,
 
 .section-note {
 	color: #6f777b;
-	font-size: 16px;
+	float: right;
+	font-size: 14px;
 	margin-top: 30px;
 	text-align: right;
 	&.section-note-top {
-		margin-top: 15px;
+		margin-bottom: 20px;
+		margin-top: 0px;
 	}
 	p {
 		margin: 0;
 	}
 }
 
+#footer {
+	border-top: 16px solid #0c60a3;
+}
+
 .footer-wrapper {
-	li {
-		margin-bottom: 10px;
+	ul {
+		margin-bottom: 30px;
+		li {
+			margin-bottom: 10px;
+		}
+	}
+}
+
+@media (min-width: 641px) {
+	.section-note {
+		&.section-note-top {
+			margin-top: 15px;
+			margin-bottom: 0;
+		}
+	}
+
+	#footer {
+		border-top: 1px solid #a1acb2;
+	}
+
+	.footer-wrapper {
+		margin-bottom: 0;
 	}
 }

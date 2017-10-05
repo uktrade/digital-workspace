@@ -19,17 +19,79 @@
                       Search
         .profile-overview
           .profile-overview-inner
-            %img{:src => 'http://lorempixel.com/150/96/'}
-            %h3.heading-small
-              = link_to("Sample Profile-Username", "#")
-            %span
-              Digital, IT & Estates
-            %span.profile-progress
-              30% complete
             %span.profile-link
               = link_to("Update", "#")
+            .profile-image
+              %img{:src => 'http://dit-prototype.preview3.co.uk/assets/profile-warren.png'}
+            .profile-meta
+              %h3.heading-small
+                = link_to("Warren Hobden", "#")
+              %span
+                Digital, IT & Estates
+              %span.profile-progress
+                30% complete
 %div{:id => 'homepage', :class => 'homepage-content'}
   %main#content.root-index
+    .grid-row
+      .column-full
+        %h2.heading-medium
+          Latest news
+    .grid-row
+      .column-third.news-column
+        %h2.heading-medium
+          Ministers
+        - @posts_ministers.each_with_index do |p, index|
+          .news-item.news-item-medium
+            %span{:class => "image-holder"}
+              %a{:title => p["title"], :class => "img", :href => p["slug"]} 
+                %img{:src => p["acf"]["featured_image"]["sizes"]["medium"]}
+            /%img{:src => @base_media_uri + p['featured_image']['file']}
+            .news-item-text
+              .news-item-meta
+                - date = DateTime.parse(p["date"])
+                = date.strftime('%d %B %Y')
+              %h3.heading-medium
+                = link_to(p["title"]["rendered"].html_safe, p["slug"])
+              /= p["excerpt"]["rendered"].html_safe
+              = p["excerpt"]["rendered"].html_safe
+      .column-third.news-column
+        %h2.heading-medium
+          Antonia
+        - @posts_antonia.each_with_index do |p, index|
+          .news-item.news-item-medium
+            %span{:class => "image-holder"}
+              %a{:title => p["title"], :class => "img", :href => p["slug"]} 
+                %img{:src => p["acf"]["featured_image"]["sizes"]["medium"]}
+            /%img{:src => @base_media_uri + p['featured_image']['file']}
+            .news-item-text
+              .news-item-meta
+                - date = DateTime.parse(p["date"])
+                = date.strftime('%d %B %Y')
+              %h3.heading-medium
+                = link_to(p["title"]["rendered"].html_safe, p["slug"])
+              /= p["excerpt"]["rendered"].html_safe
+              = p["excerpt"]["rendered"].html_safe
+      .column-third.news-column
+        %h2.heading-medium
+          Departmental Board
+        - @posts_departmental.each_with_index do |p, index|
+          .news-item.news-item-medium
+            %span{:class => "image-holder"}
+              %a{:title => p["title"], :class => "img", :href => p["slug"]} 
+                %img{:src => p["acf"]["featured_image"]["sizes"]["medium"]}
+            .news-item-text
+              .news-item-meta
+                - date = DateTime.parse(p["date"])
+                = date.strftime('%d %B %Y')
+              %h3.heading-medium
+                = link_to(p["title"]["rendered"].html_safe, p["slug"])
+              /= p["excerpt"]["rendered"].html_safe
+              = p["excerpt"]["rendered"].html_safe
+    .grid-row
+      .column-full.section-note
+        %p
+          = link_to("View all News", "/")
+    %hr{:id => 'news', :class => 'rule-large'}
     .grid-row
       .column-full
         %h2.heading-medium
@@ -37,41 +99,44 @@
     .grid-row
       - @popular_posts.each do |p|
         .column-third.popular-page-summary
-          %img{:src => p['acf']['image']['sizes']['medium']}
-          %h3.heading-small 
-            = link_to(p["title"]["rendered"].html_safe, "/how-are-we-structured")
+          %span{:class => "image-holder"}
+            %a{:title => p["title"], :class => "img", :href => p["slug"]}
+              %img{:src => p['acf']['image']['sizes']['medium']}
+          .popular-page-text
+            %h3.heading-medium 
+              = link_to(p["title"]["rendered"].html_safe, p["slug"])
     %hr{:id => 'popular', :class => 'rule-large'}
-    .grid-row
-      .column-half
-        %h2.heading-medium
-          How are we doing?
-      .column-half.section-note.section-note-top
-        %p.fineprint
-          Data provided by Datahub and great.gov.uk
-    .grid-row
-      .column-third.graph-summary.graph-summary-teal
-        .stat
-          %span.stat-number
-            21
-          %p.stat-description
-            Chocolate cakes baked
-      .column-third.graph-summary.graph-summary-blue
-        .stat
-          %span.stat-number
-            120
-          %p.stat-description
-            Slices of cake eaten
-      .column-third.graph-summary.graph-summary-pink
-        .stat
-          %span.stat-number
-            5m
-          %p.stat-description
-            Calories added to our waistline
-    .grid-row
-      .column-full.section-note
-        %p
-          = link_to("See all stats", "/")
-    %hr{:id => 'statistics', :class => 'rule-large'}
+    -# .grid-row
+    -#  .column-half.section-note.section-note-top
+    -#    %p.fineprint
+    -#      Data provided by Datahub and great.gov.uk
+    -#  .column-half
+    -#    %h2.heading-medium
+    -#      How are we doing?
+    -#.grid-row
+    -#  .column-third.graph-summary.graph-summary-teal
+    -#    .stat
+    -#      %span.stat-number
+    -#        21
+    -#      %p.stat-description
+    -#        Chocolate cakes baked
+    -#  .column-third.graph-summary.graph-summary-blue
+    -#    .stat
+    -#      %span.stat-number
+    -#        120
+    -#      %p.stat-description
+    -#        Slices of cake eaten
+    -#  .column-third.graph-summary.graph-summary-pink
+    -#    .stat
+    -#      %span.stat-number
+    -#        5m
+    -#      %p.stat-description
+    -#        Calories added to our waistline
+    -#.grid-row
+    -#  .column-full.section-note
+    -#    %p
+    -#      = link_to("See all stats", "/")
+    -#%hr{:id => 'statistics', :class => 'rule-large'}
     .grid-row
       .column-full
         %h2.heading-medium
@@ -85,7 +150,7 @@
             - case index
             - when 0..4
               %li
-                = link_to(p["title"]["rendered"].html_safe, "#")
+                = link_to(p["title"]["rendered"].html_safe, p["slug"])
       .column-quarter
         %span.stat-description
           &nbsp;
@@ -94,7 +159,7 @@
             - case index
             - when 5..9
               %li
-                = link_to(p["title"]["rendered"].html_safe, "#")
+                = link_to(p["title"]["rendered"].html_safe, p["slug"])
       .column-quarter
         %span.stat-description
           &nbsp;
@@ -103,7 +168,7 @@
             - case index
             - when 10..14
               %li
-                = link_to(p["title"]["rendered"].html_safe, "#")
+                = link_to(p["title"]["rendered"].html_safe, p["slug"])
       .column-quarter
         %span.stat-description
           &nbsp;
@@ -112,7 +177,7 @@
             - case index
             - when 15..19
               %li
-                = link_to(p["title"]["rendered"].html_safe, "#")
+                = link_to(p["title"]["rendered"].html_safe, p["slug"])
     .grid-row
       .column-full.section-note
         %p
@@ -121,61 +186,21 @@
     .grid-row
       .column-full
         %h2.heading-medium
-          Latest news
-    .grid-row
-      - @posts.each_with_index do |p, index|
-        - case index
-        - when 0
-          .column-full.news-item.news-item-large
-            .column-two-thirds.news-item-image
-              %img{:src => 'http://lorempixel.com/640/420/'}
-              /%img{:src => @base_media_uri + p['featured_image']['file']}
-            .column-third
-              .news-item-meta
-                - date = DateTime.parse(p["date"])
-                - formatted_date = date.strftime('%d %B %Y')
-                = formatted_date + ' - '
-                = link_to("Category", "#")
-              %h3.heading-large
-                = link_to(p["title"]["rendered"].html_safe, "#")
-              /= p["excerpt"]["rendered"].html_safe
-              %p
-                The Prime Minister will hose a business roundtable event in New York today, involving a number of major US investors.
-        - when 1..5
-          .column-third.news-item.news-item-medium
-            %img{:src => 'http://lorempixel.com/300/190/'}
-            /%img{:src => @base_media_uri + p['featured_image']['file']}
-            .news-item-meta
-              - date = DateTime.parse(p["date"])
-              - formatted_date = date.strftime('%d %B %Y')
-              = formatted_date + ' - '
-              = link_to("Category", "#")
-            %h3.heading-medium
-              = link_to(p["title"]["rendered"].html_safe, "#")
-            /= p["excerpt"]["rendered"].html_safe
-            %p
-              The Prime Minister will hose a business roundtable event in New York today, involving a number of major US investors.
-      .column-third.more-news
-        .more-news-inner
-          %h2.heading-medium
-            More news
-          - @posts.each_with_index do |p, index|
-            - case index
-            - when 6..7
-              .news-item
-                %h3.heading-medium
-                  = link_to(p["title"]["rendered"].html_safe, "#")
-                .news-item-meta
-                  - date = DateTime.parse(p["date"])
-                  - formatted_date = date.strftime('%d %B %Y')
-                  = formatted_date + ' - '
-                  = link_to("category", "#")
-    .grid-row
-      .column-full.section-note
-        %p
-          = link_to("View all News", "/")
-    %hr{:id => 'news', :class => 'rule-large'}
-    .grid-row
-      .column-full
-        %h2.heading-medium
           Latest tweets  
+    .grid-row
+      - TwitterApi.public_tweets.each_with_index do |tweet, index|
+        - case index
+          - when 0..2
+            .column-third.tweet
+              .tweet-profile-image
+                %img{:src => tweet.user.profile_image_url_https}
+              .tweet-body
+                .tweet-meta
+                  %span.tweet-username
+                    = tweet.user.name
+                  %a{:href => 'https://www.twitter.com/' + tweet.user.screen_name }
+                    = '@' + tweet.user.screen_name
+                  %date.tweet-date
+                    = tweet.created_at.strftime('%b %d')
+                %p.tweet-content
+                  = parsed_tweet tweet

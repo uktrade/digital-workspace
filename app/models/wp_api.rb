@@ -6,8 +6,18 @@ class HomePageQueries
     JSON.parse(response.body)
   end
 
-  def posts
-    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/news?orderby=date&order=desc&per_page=8&_embed')
+  def posts_ministers
+    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/news?orderby=date&order=desc&per_page=2&filter[news_category]=ministers&_embed')
+    JSON.parse(response.body)
+  end
+
+  def posts_antonia
+    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/news?orderby=date&order=desc&per_page=2&filter[news_category]=antonia&_embed')
+    JSON.parse(response.body)
+  end
+
+  def posts_departmental
+    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/news?orderby=date&order=desc&per_page=2&filter[news_category]=departmental&_embed')
     JSON.parse(response.body)
   end
 

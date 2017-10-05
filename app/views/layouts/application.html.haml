@@ -1,4 +1,5 @@
-- content_for :global_header_text, "DIT"
+- content_for :global_header_text do
+  %img{:src => 'http://dit-prototype.preview3.co.uk/assets/dit-logo.png', :alt => 'Department for International Trade'}
 
 - content_for :page_title, "Digital Workspace"
 
@@ -13,10 +14,32 @@
 - content_for :proposition_header do
   .header-proposition
     .content
-      = link_to "DIT Digital Workspace", root_path, id: "proposition-name"
+      = link_to "Digital Workspace", root_path, id: "proposition-name"
 
-      /#proposition-link
-      /= link_to "Peoplefinder", "http://peoplefinder-dev.herokuapp.com"
+      / %a{:href => "#proposition-links", :class => "js-header-toggle menu"}
+      /   Menu
+      / %nav{:id => "proposition-menu"}
+      /   %ul{:id => "proposition-links"}
+      /     %li
+      /       = link_to "Peoplefinder", "http://peoplefinder-dev.herokuapp.com"
+      /     %li
+      /       = link_to "Link Two", "http://peoplefinder-dev.herokuapp.com"
+      /     %li
+      /       = link_to "Link Three", "http://peoplefinder-dev.herokuapp.com"
+      /     %li
+      /       = link_to "Link Four", "http://peoplefinder-dev.herokuapp.com"
+      /     %li
+      /       = link_to "Link Five", "http://peoplefinder-dev.herokuapp.com"
+    .search
+      %form{:action => "/search", :method => "get", :role => "search"}
+        .proposition-search.govuk-search
+          %label.search-label
+            Search GOV.UK
+          .search-wrapper
+            %input{:type => 'search', :title => 'Search', :class => 'search-element search-input js-class-toggle'}
+            .search-element.search-submit-wrapper
+              %button{:type => 'submit', :class => 'search-submit'}
+                Search
 
 
 - content_for :body_end do
@@ -62,7 +85,7 @@
           = link_to("Womans", "")
         %li
           = link_to("Muslim Womans", "")
-    .column-half
+    .column-quarter
       %h2.heading-medium
         Latest Publications
       %hr{:class => 'rule-footer'}
@@ -79,6 +102,19 @@
           = link_to("White paper of Bank of China on cross-border e-commerce service", "")
         %li
           = link_to("Open general export licence (exports in support of Turkish Aerospace Industries TF-X Programme)", "")
+    .column-quarter
+      %h2.heading-medium
+        Sectors
+      %hr{:class => 'rule-footer'}
+      %ul
+        %li
+          = link_to("Sector Content", "")
+        %li
+          = link_to("Sector Content", "")
+        %li
+          = link_to("Sector Content", "")
+        %li
+          = link_to("Sector Content", "")
     .column-quarter
       %h2.heading-medium
         Regions
