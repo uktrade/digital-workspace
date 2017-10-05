@@ -12,3 +12,15 @@ A typical VCR error message might say:
  /path/to/a/vcr/cassette.yml
 ```
 Delete the casette `rm /path/to/a/vcr/cassette.yml` and VCR should create a new one that can be committed to the repo.
+
+## Local environment variables
+
+dotenv
+
+## DIT SSO Authentication
+
+Authentication to Log in to People Finder in the various environments (dev/staging/prod) is by setting the following environment variables:
+
+`DITSSO_INTERNAL_PROVIDER`
+`DITSSO_INTERNAL_CLIENT_ID`
+`DITSSO_INTERNAL_CLIENT_SECRET`
