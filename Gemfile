@@ -19,6 +19,7 @@ gem 'twitter'
 gem 'govuk_elements_rails'
 gem 'govuk_template'
 gem 'httparty'
+gem 'omniauth-oauth2'
 
 group :development, :test do
   gem 'bundler-audit'
