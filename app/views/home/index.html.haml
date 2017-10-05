@@ -46,7 +46,7 @@
           .news-item.news-item-medium
             %span{:class => "image-holder"}
               %a{:title => p["title"]["rendered"], :class => "img", :href => p["slug"]} 
-                %img{:src => p["acf"]["featured_image"]["sizes"]["medium"], :alt => p["title"]["rendered"]}
+                %img{:src => p["acf"]["image"]["sizes"]["medium"], :alt => p["title"]["rendered"]}
             /%img{:src => @base_media_uri + p['featured_image']['file']}
             .news-item-text
               .news-item-meta
@@ -63,7 +63,7 @@
           .news-item.news-item-medium
             %span{:class => "image-holder"}
               %a{:title => p["title"]["rendered"], :class => "img", :href => p["slug"]} 
-                %img{:src => p["acf"]["featured_image"]["sizes"]["medium"], :alt => p["title"]["rendered"]}
+                %img{:src => p["acf"]["image"]["sizes"]["medium"], :alt => p["title"]["rendered"]}
             /%img{:src => @base_media_uri + p['featured_image']['file']}
             .news-item-text
               .news-item-meta
@@ -80,7 +80,7 @@
           .news-item.news-item-medium
             %span{:class => "image-holder"}
               %a{:title => p["title"]["rendered"], :class => "img", :href => p["slug"]} 
-                %img{:src => p["acf"]["featured_image"]["sizes"]["medium"], :alt => p["title"]["rendered"]}
+                %img{:src => p["acf"]["image"]["sizes"]["medium"], :alt => p["title"]["rendered"]}
             .news-item-text
               .news-item-meta
                 - date = DateTime.parse(p["date"])
