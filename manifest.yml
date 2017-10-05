@@ -1,0 +1,5 @@
+---
+applications:
+- name: digital-workspace
+  memory: 1G
+  command : python manage.py distributed_migrate --noinput && python manage.py collectstatic --noinput && waitress-serve --port=$PORT api.wsgi:application
