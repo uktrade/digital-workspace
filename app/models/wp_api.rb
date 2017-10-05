@@ -22,14 +22,14 @@ class HomePageQueries
   end
 
   def howtos
-    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/pages?type=howtos?orderby=date&order=desc&per_page=20')
+    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/pages?type=howto&orderby=date&order=desc&per_page=20')
     JSON.parse(response.body)
   end
 end
 
 class SingleQueries
   def main_query
-    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/how_tos?slug=how-to-catch-a-bus')
+    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/pages?type=howto&slug=how-to-catch-a-bus')
     JSON.parse(response.body)
   end
 end
