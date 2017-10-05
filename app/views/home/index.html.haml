@@ -11,7 +11,7 @@
             %form{:action => "/search", :method => "get", :role => "search"}
               .govuk-search
                 %label.search-label
-                  Search GOV.UK
+                  Search people
                 .search-wrapper
                   %input{:type => 'search', :title => 'Search', :class => 'search-element search-input js-class-toggle'}
                   .search-element.search-submit-wrapper
@@ -19,10 +19,9 @@
                       Search
         .profile-overview
           .profile-overview-inner
-            %span.profile-link
-              = link_to("Update", "#")
+            %span.profile-flair
             .profile-image
-              %img{:src => 'http://dit-prototype.preview3.co.uk/assets/profile-warren.png'}
+              %img{:src => 'http://dit-prototype.preview3.co.uk/assets/profile-warren.png', :alt => 'GET_PROFILE_NAME'}
             .profile-meta
               %h3.heading-small
                 = link_to("Warren Hobden", "#")
@@ -30,6 +29,9 @@
                 Digital, IT & Estates
               %span.profile-progress
                 30% complete
+              %span.profile-update
+                %a{:href => "/update-profile"}
+                  Update
 %div{:id => 'homepage', :class => 'homepage-content'}
   %main#content.root-index
     .grid-row
@@ -43,8 +45,8 @@
         - @posts_ministers.each_with_index do |p, index|
           .news-item.news-item-medium
             %span{:class => "image-holder"}
-              %a{:title => p["title"], :class => "img", :href => p["slug"]} 
-                %img{:src => p["acf"]["featured_image"]["sizes"]["medium"]}
+              %a{:title => p["title"]["rendered"], :class => "img", :href => p["slug"]} 
+                %img{:src => p["acf"]["image"]["sizes"]["medium"], :alt => p["title"]["rendered"]}
             /%img{:src => @base_media_uri + p['featured_image']['file']}
             .news-item-text
               .news-item-meta
@@ -60,8 +62,8 @@
         - @posts_antonia.each_with_index do |p, index|
           .news-item.news-item-medium
             %span{:class => "image-holder"}
-              %a{:title => p["title"], :class => "img", :href => p["slug"]} 
-                %img{:src => p["acf"]["featured_image"]["sizes"]["medium"]}
+              %a{:title => p["title"]["rendered"], :class => "img", :href => p["slug"]} 
+                %img{:src => p["acf"]["image"]["sizes"]["medium"], :alt => p["title"]["rendered"]}
             /%img{:src => @base_media_uri + p['featured_image']['file']}
             .news-item-text
               .news-item-meta
@@ -77,8 +79,8 @@
         - @posts_departmental.each_with_index do |p, index|
           .news-item.news-item-medium
             %span{:class => "image-holder"}
-              %a{:title => p["title"], :class => "img", :href => p["slug"]} 
-                %img{:src => p["acf"]["featured_image"]["sizes"]["medium"]}
+              %a{:title => p["title"]["rendered"], :class => "img", :href => p["slug"]} 
+                %img{:src => p["acf"]["image"]["sizes"]["medium"], :alt => p["title"]["rendered"]}
             .news-item-text
               .news-item-meta
                 - date = DateTime.parse(p["date"])
@@ -100,8 +102,8 @@
       - @popular_posts.each do |p|
         .column-third.popular-page-summary
           %span{:class => "image-holder"}
-            %a{:title => p["title"], :class => "img", :href => p["slug"]}
-              %img{:src => p['acf']['image']['sizes']['medium']}
+            %a{:title => p["title"]["rendered"], :class => "img", :href => p["slug"]}
+              %img{:src => p['acf']['image']['sizes']['medium'], :alt => p["title"]["rendered"]}
           .popular-page-text
             %h3.heading-medium 
               = link_to(p["title"]["rendered"].html_safe, p["slug"])
@@ -193,7 +195,7 @@
           - when 0..2
             .column-third.tweet
               .tweet-profile-image
-                %img{:src => tweet.user.profile_image_url_https}
+                %img{:src => tweet.user.profile_image_url_https, :alt => tweet.user.screen_name}
               .tweet-body
                 .tweet-meta
                   %span.tweet-username

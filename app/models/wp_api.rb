@@ -7,22 +7,22 @@ class HomePageQueries
   end
 
   def posts_ministers
-    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/news?orderby=date&order=desc&per_page=2&filter[news_category]=ministers&_embed')
+    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/pages?type=news&orderby=date&order=desc&per_page=2&filter[news_category]=ministers&_embed')
     JSON.parse(response.body)
   end
 
   def posts_antonia
-    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/news?orderby=date&order=desc&per_page=2&filter[news_category]=antonia&_embed')
+    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/pages?type=news&orderby=date&order=desc&per_page=2&filter[news_category]=antonia&_embed')
     JSON.parse(response.body)
   end
 
   def posts_departmental
-    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/news?orderby=date&order=desc&per_page=2&filter[news_category]=departmental&_embed')
+    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/pages?type=news&orderby=date&order=desc&per_page=2&filter[news_category]=departmental&_embed')
     JSON.parse(response.body)
   end
 
   def howtos
-    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/how_tos?orderby=date&order=desc&per_page=20')
+    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/pages?type=howtos?orderby=date&order=desc&per_page=20')
     JSON.parse(response.body)
   end
 end
