@@ -63,75 +63,36 @@
         Networks
       %hr{:class => 'rule-footer'}
       %ul
-        %li
-          = link_to("Age", "")
-        %li
-          = link_to("Disability", "")
-        %li
-          = link_to("Ethnicity", "")
-        %li
-          = link_to("EU Nationals", "")
-        %li
-          = link_to("LGBTI", "")
-        %li
-          = link_to("Parents", "")
-        %li
-          = link_to("Advisory Group for race", "")
-        %li
-          = link_to("Equality (AGRE)", "")
-        %li
-          = link_to("Faith Group", "")
-        %li
-          = link_to("Womans", "")
-        %li
-          = link_to("Muslim Womans", "")
+        -if !@footer_menu_1_content.nil?
+          - @footer_menu_1_content.each do |menu_link|
+            %li
+              = link_to(menu_link['menu_item']['title'], menu_link['menu_item']['url'], target: menu_link['menu_item']['target'])
     .column-quarter
       %h2.heading-medium
         Publications
       %hr{:class => 'rule-footer'}
       %ul
-        %li
-          = link_to("Joint Ministerial Committee communiqué: 30 January 2017", "")
-        %li
-          = link_to("Cross-Government Prosperity Fund Programme", "")
-        %li
-          = link_to("Overseas Business Risk - Cayman Islands", "")
-        %li
-          = link_to("UK food and drink: international action plan 2016 to 2020", "")
-        %li
-          = link_to("White paper of Bank of China on cross-border e-commerce service", "")
-        %li
-          = link_to("Open general export licence (exports in support of Turkish Aerospace Industries TF-X Programme)", "")
+        -if !@footer_menu_2_content.nil?
+          - @footer_menu_2_content.each do |menu_link|
+            %li
+              = link_to(menu_link['menu_item']['title'], menu_link['menu_item']['url'], target: menu_link['menu_item']['target'])
     .column-quarter
       %h2.heading-medium
         Sectors
       %hr{:class => 'rule-footer'}
       %ul
-        %li
-          = link_to("Sector Content", "")
-        %li
-          = link_to("Sector Content", "")
-        %li
-          = link_to("Sector Content", "")
-        %li
-          = link_to("Sector Content", "")
+        -if !@footer_menu_3_content.nil?
+          - @footer_menu_3_content.each do |menu_link|
+            %li
+              = link_to(menu_link['menu_item']['title'], menu_link['menu_item']['url'], target: menu_link['menu_item']['target'])
     .column-quarter
       %h2.heading-medium
         Regions
       %hr{:class => 'rule-footer'}
-      %ul
-        %li
-          = link_to("Europe", "")
-        %li
-          = link_to("North America", "")
-        %li
-          = link_to("South America", "")
-        %li
-          = link_to("Africa", "")
-        %li
-          = link_to("Asia", "")
-        %li
-          = link_to("Australia", "")
+        -if !@footer_menu_4_content.nil?
+          - @footer_menu_4_content.each do |menu_link|
+            %li
+              = link_to(menu_link['menu_item']['title'], menu_link['menu_item']['url'], target: menu_link['menu_item']['target'])
   %hr{:class => 'rule-footer'}
 
 - content_for :footer_support_links do
