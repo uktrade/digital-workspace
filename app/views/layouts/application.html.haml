@@ -16,20 +16,20 @@
     .content
       = link_to "Digital Workspace", root_path, id: "proposition-name"
 
-      / %a{:href => "#proposition-links", :class => "js-header-toggle menu"}
-      /   Menu
-      / %nav{:id => "proposition-menu"}
-      /   %ul{:id => "proposition-links"}
-      /     %li
-      /       = link_to "Peoplefinder", "http://peoplefinder-dev.herokuapp.com"
-      /     %li
-      /       = link_to "Link Two", "http://peoplefinder-dev.herokuapp.com"
-      /     %li
-      /       = link_to "Link Three", "http://peoplefinder-dev.herokuapp.com"
-      /     %li
-      /       = link_to "Link Four", "http://peoplefinder-dev.herokuapp.com"
-      /     %li
-      /       = link_to "Link Five", "http://peoplefinder-dev.herokuapp.com"
+      %a{:href => "#proposition-links", :class => "js-header-toggle menu"}
+        Menu
+      %nav{:id => "proposition-menu"}
+        %ul{:id => "proposition-links"}
+          %li
+            = link_to "Peoplefinder", "http://peoplefinder-dev.herokuapp.com"
+          %li
+            = link_to "Link Two", "http://peoplefinder-dev.herokuapp.com"
+          %li
+            = link_to "Link Three", "http://peoplefinder-dev.herokuapp.com"
+          %li
+            = link_to "Link Four", "http://peoplefinder-dev.herokuapp.com"
+          %li
+            = link_to "Link Five", "http://peoplefinder-dev.herokuapp.com"
     .search
       %form{:action => "/search", :method => "get", :role => "search"}
         .proposition-search.govuk-search

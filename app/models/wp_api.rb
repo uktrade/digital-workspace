@@ -27,9 +27,31 @@ class HomePageQueries
   end
 end
 
-class SingleQueries
+class PageQueries
+  def initialize(slug)
+    @slug = slug
+  end
+
   def main_query
-    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/pages?type=howto&slug=how-to-catch-a-bus')
+    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/pages?slug=' + @slug)
+    JSON.parse(response.body)
+  end
+end
+
+class NewsQueries
+  def main_query
+    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/pages?type=news&_embed')
+    JSON.parse(response.body)
+  end
+end
+
+class NewsTypeQueries
+  def initialize(slug)
+    @slug = slug
+  end
+
+  def main_query
+    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/pages?type=news&_embed&filter[news_category]=' + @slug)
     JSON.parse(response.body)
   end
 end
