@@ -51,7 +51,7 @@ class NewsTypeQueries
   end
 
   def main_query
-    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/pages?type=news&_embed&filter[news_category]=' + @slug)
+    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/pages?type=news&_embed&filter[news_category]=' + @slug) # rubocop:disable Metrics/LineLength
     JSON.parse(response.body)
   end
 end
