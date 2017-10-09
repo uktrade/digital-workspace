@@ -46,6 +46,10 @@ class ApplicationController < ActionController::Base
 
   before_action :ensure_sso_user
 
+  def current_user
+    User.new(session[:auth_user])
+  end
+
   private
 
   def ensure_sso_user
