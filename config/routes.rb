@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  match '/auth/:provider/callback', to: 'sessions#create', via: %i[get post]
+
   root to: 'home#index'
   get '/news', to: 'archive#index'
   get '/news/category/', to: 'archive#index'
