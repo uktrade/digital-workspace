@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'visit the landing page', vcr: true do
   before do
-    login_as_omni_auth_user
+    login_as_omniauth_user
   end
 
   scenario 'in general' do
