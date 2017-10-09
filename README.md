@@ -26,3 +26,5 @@ Authentication to Log in to People Finder in the various environments (dev/stagi
 `DITSSO_INTERNAL_PROVIDER`
 `DITSSO_INTERNAL_CLIENT_ID`
 `DITSSO_INTERNAL_CLIENT_SECRET`
+
+In development, you will need to ensure that these environment variables are configured in `.env`. You will also need to ensure that you can log into the DIT SSO provider.
