@@ -22,14 +22,36 @@ class HomePageQueries
   end
 
   def howtos
-    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/pages?type=howtos?orderby=date&order=desc&per_page=20')
+    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/pages?type=howto&orderby=date&order=desc&per_page=20')
     JSON.parse(response.body)
   end
 end
 
-class SingleQueries
+class PageQueries
+  def initialize(slug)
+    @slug = slug
+  end
+
   def main_query
-    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/how_tos?slug=how-to-catch-a-bus')
+    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/pages?slug=' + @slug)
+    JSON.parse(response.body)
+  end
+end
+
+class NewsQueries
+  def main_query
+    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/pages?type=news&_embed')
+    JSON.parse(response.body)
+  end
+end
+
+class NewsTypeQueries
+  def initialize(slug)
+    @slug = slug
+  end
+
+  def main_query
+    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/pages?type=news&_embed&filter[news_category]=' + @slug) # rubocop:disable Metrics/LineLength
     JSON.parse(response.body)
   end
 end

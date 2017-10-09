@@ -1,0 +1,15 @@
+>> All News Template
+%div{:id => 'page', :class => 'page-content'}
+  %main#content.root-index
+    .grid-row
+      .column-full
+        %h2.heading-medium
+          News
+    .grid-row
+      - @posts.each do |p|
+        .column-full
+          %h3.heading-small 
+            = link_to(p["title"]["rendered"].html_safe, p["slug"])
+          %pre{:style => 'width: 100%; display: block; font-family: Courier New;'}
+            = p
+    %hr{:id => 'popular', :class => 'rule-large'}

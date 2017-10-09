@@ -21,16 +21,16 @@
           .profile-overview-inner
             %span.profile-flair
             .profile-image
-              %img{:src => 'http://dit-prototype.preview3.co.uk/assets/profile-warren.png', :alt => 'GET_PROFILE_NAME'}
+              %img{:src => @people_finder_profile["data"]["links"]["profile-image-url"], :alt => @people_finder_profile["data"]["attributes"]["name"]}
             .profile-meta
               %h3.heading-small
-                = link_to("Warren Hobden", "#")
+                = link_to(@people_finder_profile["data"]["attributes"]["name"], @people_finder_profile["data"]["links"]["profile"])
               %span
-                Digital, IT & Estates
+                = @people_finder_profile["data"]["attributes"]["team"]
               %span.profile-progress
-                30% complete
+                #{@people_finder_profile["data"]["attributes"]["completion-score"]}% complete
               %span.profile-update
-                %a{:href => "/update-profile"}
+                %a{:href => @people_finder_profile["data"]["links"]["edit-profile"]}
                   Update
 %div{:id => 'homepage', :class => 'homepage-content'}
   %main#content.root-index

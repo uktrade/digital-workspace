@@ -2,9 +2,14 @@ require 'wp_api'
 
 class SingleController < ApplicationController
   def index
-    @base_media_uri = 'https://uat-dit.useconnect.co.uk/wp-content/uploads/'
+    @slug = params[:path].split('/').last
+    @api_call = PageQueries.new(@slug)
+    @posts = @api_call.main_query
+  end
 
-    @api_call = SingleQueries.new
+  def news
+    @slug = params[:path].split('/').last
+    @api_call = PageQueries.new(@slug)
     @posts = @api_call.main_query
   end
 end
