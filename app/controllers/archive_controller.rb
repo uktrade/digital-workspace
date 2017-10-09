@@ -7,7 +7,7 @@ class ArchiveController < ApplicationController
   end
 
   def news_type
-  	@slug = params[:path].split('/').last
+    @slug = params[:path].split('/').last
     @api_call = NewsTypeQueries.new(@slug)
     @posts = @api_call.main_query
   end
