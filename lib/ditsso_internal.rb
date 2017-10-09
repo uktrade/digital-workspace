@@ -6,9 +6,9 @@ module OmniAuth
       SSO_PROVIDER = ENV['DITSSO_INTERNAL_PROVIDER']
 
       option :client_options,
-        site:          SSO_PROVIDER,
-        authorize_url: "#{SSO_PROVIDER}/o/authorize/",
-        token_url: "#{SSO_PROVIDER}/o/token/"
+             site: SSO_PROVIDER,
+             authorize_url: "#{SSO_PROVIDER}/o/authorize/",
+             token_url: "#{SSO_PROVIDER}/o/token/"
 
       uid do
         raw_info['id']
