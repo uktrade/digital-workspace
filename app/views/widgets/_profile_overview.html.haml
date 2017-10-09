@@ -1,0 +1,15 @@
+.profile-overview
+  .profile-overview-inner
+    %span.profile-flair
+    .profile-image
+      %img{:src => @people_finder_profile["data"]["links"]["profile-image-url"], :alt => @people_finder_profile["data"]["attributes"]["name"]}
+    .profile-meta
+      %h3.heading-small
+        = link_to(@people_finder_profile["data"]["attributes"]["name"], @people_finder_profile["data"]["links"]["profile"])
+      %span
+        = @people_finder_profile["data"]["attributes"]["team"]
+      %span.profile-progress
+        #{@people_finder_profile["data"]["attributes"]["completion-score"]}% complete
+      %span.profile-update
+        %a{:href => @people_finder_profile["data"]["links"]["edit-profile"]}
+          Update

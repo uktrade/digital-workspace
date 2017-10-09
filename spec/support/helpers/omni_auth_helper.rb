@@ -8,3 +8,8 @@ def valid_omnni_auth_user
     }
   )
 end
+
+def login_as_omni_auth_user
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:ditsso_internal] = valid_omnni_auth_user
+end
