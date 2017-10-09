@@ -1,15 +1,35 @@
->> All News Template
 %div{:id => 'page', :class => 'page-content'}
-  %main#content.root-index
-    .grid-row
-      .column-full
-        %h2.heading-medium
-          News
-    .grid-row
-      - @posts.each do |p|
-        .column-full
-          %h3.heading-small 
-            = link_to(p["title"]["rendered"].html_safe, p["slug"])
-          %pre{:style => 'width: 100%; display: block; font-family: Courier New;'}
-            = p
-    %hr{:id => 'popular', :class => 'rule-large'}
+	%main#content.root-index.news-section
+		.grid-row
+			.column-full
+				%h2.heading-medium
+					All news
+		.grid-row
+			.column-two-thirds
+				- @posts.each do |p|
+					.news-item
+						%h3.heading-small
+							%hr{:class => 'rule-small'}
+							= link_to(p["title"]["rendered"].html_safe, p["slug"])
+						.news-item-text
+							.news-item-meta
+								- date = DateTime.parse(p["date"])
+								= date.strftime('%d %B %Y')
+								= date.strftime('@ %I:%M')
+							.news-item-excerpt
+								= p["excerpt"]["rendered"].html_safe
+								= link_to("Read more", p["slug"])
+						-#%pre{:style => 'width: 100%; display: block; font-family: Courier New;'}
+						-#  = p
+			.column-third.news-category
+				%hr{:class => 'rule-large'}
+				%h3.heading-small
+					All categories
+
+					%ul
+						- @news_category.each do |p|
+							%li
+								= link_to( p["name"].html_safe )
+								= p["count"]
+
+		%hr{:id => 'popular', :class => 'rule-large'}
