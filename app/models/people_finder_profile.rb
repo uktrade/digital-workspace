@@ -30,8 +30,10 @@ class PeopleFinderProfile
           'Authorization' => "Token token=#{AUTH_TOKEN}"
         }
       )
-      @links = JSON.parse(response.body)['data']['links']
-      @attributes = JSON.parse(response.body)['data']['attributes']
+
+      response = JSON.parse(response.body)
+      @links = response['data'] ? response['data']['links'] : {}
+      @attributes = response['data'] ? response['data']['attributes'] : {}
     end
 
     def assign_user
