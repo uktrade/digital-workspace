@@ -43,6 +43,11 @@ class NewsQueries
     response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/pages?type=news&_embed')
     JSON.parse(response.body)
   end
+
+  def news_category
+    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/news_category')
+    JSON.parse(response.body)
+  end
 end
 
 class NewsTypeQueries

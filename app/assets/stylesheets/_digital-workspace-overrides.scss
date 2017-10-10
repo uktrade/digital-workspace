@@ -762,3 +762,21 @@ html, body, button, input, main, table, td, th, .heading-xlarge, .heading-large,
 		margin-bottom: 0;
 	}
 }
+
+// ------------------------------------
+// News pages
+
+.news-section {
+	.news-category {
+		.rule-large {
+			margin-top: 0;
+		}
+	}
+
+	.news-item:first-of-type {
+		.heading-small,
+		.rule-small {
+			margin-top: 0;
+		}
+	}
+}

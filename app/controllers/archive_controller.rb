@@ -4,6 +4,7 @@ class ArchiveController < ApplicationController
   def index
     @api_call = NewsQueries.new
     @posts = @api_call.main_query
+    @news_category = @api_call.news_category
   end
 
   def news_type
