@@ -1,0 +1,35 @@
+%clearfix {
+	*zoom : 1;
+	&:before,
+	&:after {
+		display: table;
+		content : "";
+	}
+	&:after {
+		clear : both;
+	}
+}
+
+.hero-news {
+	background-color: $brand_chrome_a;
+	padding: 30px 20px;
+	margin-bottom: 30px;
+
+	@extend %clearfix;
+}
+
+.hero-news-copy {
+	box-sizing: border-box;
+	float: left;
+	width: 33.3333%;
+	padding-right: 20px;
+}
+
+.hero-news-image-container {
+	float: left;
+	width: 66.6666%;
+}
+
+.news-category-count {
+	color: $brand_chrome_b;
+}

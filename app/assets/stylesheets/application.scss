@@ -41,4 +41,9 @@
 @import "elements/components";                    // GOV.UK prefixed styles - blue highlighted box
 @import "elements/shame";                         // Hacks and workarounds that will go away eventually
 
-@import "digital-workspace-overrides"			   // Additional styles either new or over-riding for the Digital Workspace
+@import "digital-workspace-overrides";			   // Additional styles either new or over-riding for the Digital Workspace
+
+@import "util/colours";
+
+// News section
+@import "news/news-index";
