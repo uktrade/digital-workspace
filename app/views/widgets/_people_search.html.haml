@@ -9,6 +9,8 @@
         %label.search-label
           Search people
         .search-wrapper
+          %input#search_filters_{:name => "search_filters[]", :type => "hidden", :value => "people"}/
+          %input#search_filters_{:name => "search_filters[]", :type => "hidden", :value => "teams"}/
           %input{name: 'query', type: 'search', title: 'Search', class: 'search-element search-input js-class-toggle'}
           .search-element.search-submit-wrapper
             %button{type: 'submit', class: 'search-submit', id:'people_search_submit' }
