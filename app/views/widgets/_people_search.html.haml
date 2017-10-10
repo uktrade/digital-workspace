@@ -4,12 +4,12 @@
       Find people
     %p
       Search for your colleagues across the department
-    %form{:action => "/search", :method => "get", :role => "search"}
+    %form{action: "#{ENV['PEOPLEFINDER_URL']}/search", method: 'get', role: 'search', id: 'people_search' }
       .govuk-search
         %label.search-label
           Search people
         .search-wrapper
-          %input{:type => 'search', :title => 'Search', :class => 'search-element search-input js-class-toggle'}
+          %input{name: 'query', type: 'search', title: 'Search', class: 'search-element search-input js-class-toggle'}
           .search-element.search-submit-wrapper
-            %button{:type => 'submit', :class => 'search-submit'}
+            %button{type: 'submit', class: 'search-submit', id:'people_search_submit' }
               Search
