@@ -27,8 +27,9 @@
               %h1.heading-small
                 = link_to(p["title"]["rendered"].html_safe, p["slug"])
               .hero-news-excerpt
-                = p["excerpt"]["rendered"].html_safe
-                = link_to("Read more", p["slug"])
+                %p
+                  = truncate_excerpt(p["excerpt"]["rendered"])
+                = read_more(p["slug"])
             .hero-news-image-container
               %img{:src => p["acf"]["image"]["sizes"]["large"], :alt => p["title"]["rendered"]}
 
@@ -45,7 +46,8 @@
                 = date.strftime('%d %B %Y')
                 = date.strftime('@ %I:%M')
               .news-item-excerpt
-                = p["excerpt"]["rendered"].html_safe
+                %p
+                  = truncate_excerpt(p["excerpt"]["rendered"])
                 = link_to("Read more", p["slug"])
             -#%pre{:style => 'width: 100%; display: block; font-family: Courier New;'}
             -#= p
