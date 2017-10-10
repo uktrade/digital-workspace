@@ -1,0 +1,33 @@
+module FooterMenuHelper
+  def footer_menu_1
+    WpApi.get_json('menus?slug=footer-menu-1')
+  end
+
+  def footer_menu_1_content
+    footer_menu_1.first['acf']['menu']
+  end
+
+  def footer_menu_2
+    WpApi.get_json('menus?slug=footer-menu-2')
+  end
+
+  def footer_menu_2_content
+    footer_menu_2.first['acf']['menu']
+  end
+
+  def footer_menu_3
+    WpApi.get_json('menus?slug=footer-menu-3')
+  end
+
+  def footer_menu_3_content
+    footer_menu_3.first['acf']['menu']
+  end
+
+  def footer_menu_4
+    WpApi.get_json('menus?slug=footer-menu-4')
+  end
+
+  def footer_menu_4_content
+    footer_menu_4.first['acf']['menu']
+  end
+end

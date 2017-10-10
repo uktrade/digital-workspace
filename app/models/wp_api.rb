@@ -1,29 +1,43 @@
-require 'httparty'
+class WpApi
+  require 'httparty'
+  BASE_URI = ENV['WP_API_URL']
+
+  class << self
+    def get_json(path)
+      uri = URI.join(BASE_URI, path).to_s
+      response = HTTParty.get(uri)
+      JSON.parse(response.body)
+    end
+  end
+end
 
 class HomePageQueries
   def popular_posts
-    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/popular_pages?orderby=menu_order&order=asc&per_page=3&_embed')
-    JSON.parse(response.body)
+    WpApi.get_json(
+      'popular_pages?orderby=menu_order&order=asc&per_page=3&_embed'
+    )
   end
 
   def posts_ministers
-    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/pages?type=news&orderby=date&order=desc&per_page=2&filter[news_category]=ministers&_embed')
-    JSON.parse(response.body)
+    WpApi.get_json(
+      'pages?type=news&orderby=date&order=desc&per_page=2&filter[news_category]=ministers&_embed'
+    )
   end
 
   def posts_antonia
-    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/pages?type=news&orderby=date&order=desc&per_page=2&filter[news_category]=antonia&_embed')
-    JSON.parse(response.body)
+    WpApi.get_json(
+      'pages?type=news&orderby=date&order=desc&per_page=2&filter[news_category]=antonia&_embed'
+    )
   end
 
   def posts_departmental
-    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/pages?type=news&orderby=date&order=desc&per_page=2&filter[news_category]=departmental&_embed')
-    JSON.parse(response.body)
+    WpApi.get_json(
+      'pages?type=news&orderby=date&order=desc&per_page=2&filter[news_category]=departmental&_embed'
+    )
   end
 
   def howtos
-    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/pages?type=howto&orderby=date&order=desc&per_page=20')
-    JSON.parse(response.body)
+    WpApi.get_json('pages?type=howto&orderby=date&order=desc&per_page=20')
   end
 end
 
@@ -33,20 +47,17 @@ class PageQueries
   end
 
   def main_query
-    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/pages?slug=' + @slug)
-    JSON.parse(response.body)
+    WpApi.get_json("pages?slug=#{@slug}")
   end
 end
 
 class NewsQueries
   def main_query
-    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/pages?type=news&_embed')
-    JSON.parse(response.body)
+    WpApi.get_json('pages?type=news&_embed')
   end
 
   def other_categories_query
-    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/news_category')
-    JSON.parse(response.body)
+    WpApi.get_json('news_category')
   end
 end
 
@@ -56,12 +67,11 @@ class NewsTypeQueries
   end
 
   def main_query
-    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/pages?type=news&_embed&filter[news_category]=' + @slug) # rubocop:disable Metrics/LineLength
+    WpApi.get_json("pages?type=news&_embed&filter[news_category]=#{@slug}")
     JSON.parse(response.body)
   end
 
   def other_categories_query
-    response = HTTParty.get('https://uat-dit.useconnect.co.uk/wp-json/wp/v2/news_category')
-    JSON.parse(response.body)
+    WpApi.get_json('news_category')
   end
 end

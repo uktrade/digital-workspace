@@ -35,3 +35,7 @@ The Peoplefinder Profile for the authenticated user can be retrieved by:
 Ensure that the environment variables are defined:
 `PEOPLEFINDER_URL`
 `PEOPLEFINDER_AUTH_TOKEN`
+
+## Word Press API
+The Word Press API URL should be defined as an environment variable:
+`WP_API_URL`
