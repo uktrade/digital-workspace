@@ -15,5 +15,10 @@ describe 'visit the landing page', vcr: true do
       expect(page).to have_css('h3', text: 'Alice Arnold')
       expect(page).to have_link('Update')
     end
+
+    within('.welcome-people-finder') do
+      form = find('form#people_search')
+      expect(form['action']).to eq("#{ENV['PEOPLEFINDER_URL']}/search")
+    end
   end
 end
