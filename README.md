@@ -31,7 +31,21 @@ In development, you will need to ensure that these environment variables are con
 
 ## Peoplefinder Profile
 The Peoplefinder Profile for the authenticated user can be retrieved by:
-`PeopleFinderProfile.from_api(current_user)`
+`PeopleFinderProfile.from_api(current_user)` where `current_user` is a User object or just an email address.
+
+e.g.
+```
+PeopleFinderProfile.from_api(User.new(email: 'alice@example.com)
+or
+PeopleFinderProfile.from_api('alice@example.com')
+```
+
+With a PeopleFinderProfile object, you have can, for example, retrieve the person's name:
+```
+profile = PeopleFinderProfile.from_api('alice@example.com')
+puts profile.name
+#=> Alice Arnold
+```
 Ensure that the environment variables are defined:
 `PEOPLEFINDER_URL`
 `PEOPLEFINDER_AUTH_TOKEN`

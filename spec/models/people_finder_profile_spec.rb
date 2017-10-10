@@ -36,6 +36,14 @@ describe PeopleFinderProfile do
       it 'assigns the profile_url' do
         expect(subject.profile_url).to eq('alice-profile-url')
       end
+
+      context 'when the parameter is an email address' do
+        let(:user) { 'alice@example.com' }
+
+        it 'assigns the name' do
+          expect(subject.name).to eq('Alice Arnold')
+        end
+      end
     end
 
     context 'when that person is not found in peoplefinder' do
