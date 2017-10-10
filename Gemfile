@@ -19,11 +19,13 @@ gem 'twitter'
 gem 'govuk_elements_rails'
 gem 'govuk_template'
 gem 'httparty'
+gem 'omniauth-oauth2'
 
 group :development, :test do
   gem 'bundler-audit'
   gem 'byebug'
   gem 'capybara', '~> 2.13'
+  gem 'dotenv-rails'
   gem 'rspec-rails', '~> 3.6'
   gem 'rubocop', '~> 0.50.0', require: false
 end
