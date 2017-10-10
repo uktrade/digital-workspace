@@ -1,35 +1,65 @@
-%div{:id => 'page', :class => 'page-content'}
-	%main#content.root-index.news-section
-		.grid-row
-			.column-full
-				%h2.heading-medium
-					All news
-		.grid-row
-			.column-two-thirds
-				- @posts.each do |p|
-					.news-item
-						%h3.heading-small
-							%hr{:class => 'rule-small'}
-							= link_to(p["title"]["rendered"].html_safe, p["slug"])
-						.news-item-text
-							.news-item-meta
-								- date = DateTime.parse(p["date"])
-								= date.strftime('%d %B %Y')
-								= date.strftime('@ %I:%M')
-							.news-item-excerpt
-								= p["excerpt"]["rendered"].html_safe
-								= link_to("Read more", p["slug"])
-						-#%pre{:style => 'width: 100%; display: block; font-family: Courier New;'}
-						-#  = p
-			.column-third.news-category
-				%hr{:class => 'rule-large'}
-				%h3.heading-small
-					All categories
+%div{:id => 'category', :class => 'page-content'}
+  %main#content.root-index.news-section
+    .grid-row
+      .column-half
+        .breadcrumb
+          Breadcrumb
+      .column-half
+        .form-group.select-category
+          %label{:class => 'form-label', :for => 'select-category'}
+          %select{:class => 'form-control', :id => 'select-category', :name => 'select-category'}
+            %option{:value => ""}
+              \ Select Category
+            - @categories.each do |c|
+              %option{:value => "/news/category/" + c["slug"]}
+                = link_to( c["name"] )
 
-					%ul
-						- @news_category.each do |p|
-							%li
-								= link_to( p["name"].html_safe )
-								= p["count"]
+      .column-full
+        %hr{:class => 'rule-large'}
+        %h2.heading-medium
+          All news
+    .grid-row
+      .column-full
 
-		%hr{:id => 'popular', :class => 'rule-large'}
+        .hero-news
+          -# @posts.each do |p|
+          - @posts[0..0].each_with_index do |p, i|
+            .hero-news-copy
+              %h1.heading-small
+                = link_to(p["title"]["rendered"].html_safe, p["slug"])
+              .hero-news-excerpt
+                = p["excerpt"]["rendered"].html_safe
+                = link_to("Read more", p["slug"])
+            .hero-news-image-container
+              %img{:src => p["acf"]["image"]["sizes"]["large"], :alt => p["title"]["rendered"]}
+
+
+      .column-two-thirds
+        - @posts.each do |p|
+          .news-item
+            %h3.heading-small
+              %hr{:class => 'rule-small'}
+              = link_to(p["title"]["rendered"].html_safe, p["slug"])
+            .news-item-text
+              .news-item-meta
+                - date = DateTime.parse(p["date"])
+                = date.strftime('%d %B %Y')
+                = date.strftime('@ %I:%M')
+              .news-item-excerpt
+                = p["excerpt"]["rendered"].html_safe
+                = link_to("Read more", p["slug"])
+            -#%pre{:style => 'width: 100%; display: block; font-family: Courier New;'}
+            -#= p
+      .column-third.news-category
+        %hr{:class => 'rule-large'}
+        %h3.heading-small
+          All categories
+
+          %ul.list.font-small
+            - @categories.each do |c|
+              %li
+                = link_to( c["name"], "/news/category/" + c["slug"])
+                %span.news-category-count.font-xsmall
+                  = "(#{c["count"]})"
+
+    %hr{:id => 'popular', :class => 'rule-large'}

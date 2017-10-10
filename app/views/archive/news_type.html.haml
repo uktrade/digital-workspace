@@ -1,15 +1,28 @@
 >> News Type Template {#@slug}
-%div{:id => 'page', :class => 'page-content'}
+%div{:id => 'category', :class => 'page-content'}
   %main#content.root-index
     .grid-row
-      .column-full
+      .column-third
+        %h2.heading-medium
+          Categories
+          %ul
+            - @categories.each do |c|
+              %li
+                = link_to(c["name"], "/news/category/" + c["slug"])
+                %span{:class => 'category-count'}
+                  = c["count"]
+          %select{:id => "category-selector"}
+            %option{:value => ""}
+              \-- Select A Category
+            - @categories.each do |c|
+              %option{:value => "/news/category/" + c["slug"]}
+                = c["name"]
+      .column-two-thirds
         %h2.heading-medium
           News
-    .grid-row
-      - @posts.each do |p|
-        .column-full
-          %h3.heading-small 
-            = link_to(p["title"]["rendered"].html_safe, p["slug"])
-          %pre{:style => 'width: 100%; display: block; font-family: Courier New; word-break: '}
-            = p
+          - @posts.each do |p|
+            %h3.heading-small 
+              = link_to(p["title"]["rendered"].html_safe, p["slug"])
+            %pre{:style => 'width: 100%; display: block; font-family: Courier New; word-break: '}
+              = p
     %hr{:id => 'popular', :class => 'rule-large'}
