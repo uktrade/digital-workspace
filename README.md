@@ -17,7 +17,7 @@ Delete the casette `rm /path/to/a/vcr/cassette.yml` and VCR should create a new 
 
 In development, environment variables can be defined in `.env`. To determine which environment variables to set, refer to `.env.example`.
 
-When implement environment variables that app will depend on, be sure to keep the `env.example` up to date!
+When implementing environment variables that the app will depend on, be sure to keep the `env.example` up to date!
 
 ## DIT SSO Authentication
 
