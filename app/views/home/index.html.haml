@@ -17,21 +17,7 @@
                   .search-element.search-submit-wrapper
                     %button{:type => 'submit', :class => 'search-submit'}
                       Search
-        .profile-overview
-          .profile-overview-inner
-            %span.profile-flair
-            .profile-image
-              %img{:src => @people_finder_profile["data"]["links"]["profile-image-url"], :alt => @people_finder_profile["data"]["attributes"]["name"]}
-            .profile-meta
-              %h3.heading-small
-                = link_to(@people_finder_profile["data"]["attributes"]["name"], @people_finder_profile["data"]["links"]["profile"])
-              %span
-                = @people_finder_profile["data"]["attributes"]["team"]
-              %span.profile-progress
-                #{@people_finder_profile["data"]["attributes"]["completion-score"]}% complete
-              %span.profile-update
-                %a{:href => @people_finder_profile["data"]["links"]["edit-profile"]}
-                  Update
+        = render partial: "widgets/profile_overview"
 %div{:id => 'homepage', :class => 'homepage-content'}
   %main#content.root-index
     .grid-row
@@ -45,7 +31,7 @@
         - @posts_ministers.each_with_index do |p, index|
           .news-item.news-item-medium
             %span{:class => "image-holder"}
-              %a{:title => p["title"]["rendered"], :class => "img", :href => p["slug"]} 
+              %a{:title => p["title"]["rendered"], :class => "img", :href => p["slug"]}
                 %img{:src => p["acf"]["image"]["sizes"]["medium"], :alt => p["title"]["rendered"]}
             /%img{:src => @base_media_uri + p['featured_image']['file']}
             .news-item-text
@@ -62,7 +48,7 @@
         - @posts_antonia.each_with_index do |p, index|
           .news-item.news-item-medium
             %span{:class => "image-holder"}
-              %a{:title => p["title"]["rendered"], :class => "img", :href => p["slug"]} 
+              %a{:title => p["title"]["rendered"], :class => "img", :href => p["slug"]}
                 %img{:src => p["acf"]["image"]["sizes"]["medium"], :alt => p["title"]["rendered"]}
             /%img{:src => @base_media_uri + p['featured_image']['file']}
             .news-item-text
@@ -79,7 +65,7 @@
         - @posts_departmental.each_with_index do |p, index|
           .news-item.news-item-medium
             %span{:class => "image-holder"}
-              %a{:title => p["title"]["rendered"], :class => "img", :href => p["slug"]} 
+              %a{:title => p["title"]["rendered"], :class => "img", :href => p["slug"]}
                 %img{:src => p["acf"]["image"]["sizes"]["medium"], :alt => p["title"]["rendered"]}
             .news-item-text
               .news-item-meta
@@ -105,7 +91,7 @@
             %a{:title => p["title"]["rendered"], :class => "img", :href => p["slug"]}
               %img{:src => p['acf']['image']['sizes']['medium'], :alt => p["title"]["rendered"]}
           .popular-page-text
-            %h3.heading-medium 
+            %h3.heading-medium
               = link_to(p["title"]["rendered"].html_safe, p["slug"])
     %hr{:id => 'popular', :class => 'rule-large'}
     -# .grid-row
@@ -188,7 +174,7 @@
     .grid-row
       .column-full
         %h2.heading-medium
-          Latest tweets  
+          Latest tweets
     .grid-row
       - TwitterApi.public_tweets.each_with_index do |tweet, index|
         - case index

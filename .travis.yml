@@ -5,3 +5,5 @@ install:
   - bundle install --retry=3
 script:
 - bundle exec rake ci
+env:
+  PEOPLEFINDER_URL: 'https://peoplefinder-dev.herokuapp.com'

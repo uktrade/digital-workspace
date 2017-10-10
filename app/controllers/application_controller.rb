@@ -43,4 +43,16 @@ class ApplicationController < ActionController::Base
   def footer_menu_4_content
     footer_menu_4.first['acf']['menu']
   end
+
+  before_action :ensure_sso_user
+
+  def current_user
+    User.new(session[:auth_user])
+  end
+
+  private
+
+  def ensure_sso_user
+    session[:auth_user] || redirect_to('/auth/ditsso_internal/')
+  end
 end

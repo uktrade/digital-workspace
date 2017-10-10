@@ -10,3 +10,5 @@ AllCops:
     - spec/spec_helper.rb
 Documentation:
   Enabled: false
+BlockLength:
+  Enabled: false
