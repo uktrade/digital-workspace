@@ -8,3 +8,6 @@ script:
 env:
   PEOPLEFINDER_URL: 'https://peoplefinder-dev.herokuapp.com'
   WP_API_URL: 'https://uat-dit.useconnect.co.uk/wp-json/wp/v2/'
+notifications:
+  on_success: never
+  on_failure: always
