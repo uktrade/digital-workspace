@@ -1,4 +1,3 @@
->> News Type Template {#@slug}
 %div{:id => 'category', :class => 'page-content'}
   %main#content.root-index.news-section
     .grid-row
@@ -8,7 +7,7 @@
       .column-half
         .form-group.select-category
           %label{:class => 'form-label', :for => 'select-category'}
-          %select{:class => 'form-control', :id => 'select-category', :name => 'select-category'}
+          %select{:class => 'form-control', :id => 'select_category', :name => 'select-category'}
             %option{:value => ""}
               \ Select Category
             - @categories.each do |c|
@@ -33,6 +32,7 @@
                   %p
                     = truncate_excerpt(p["excerpt"]["rendered"])
                   = read_more(p["slug"])
+                  = comments(p["slug"], 0)
               .hero-news-image-container
                 %img{:src => p["acf"]["image"]["sizes"]["medium"], :alt => p["title"]["rendered"]}
 
