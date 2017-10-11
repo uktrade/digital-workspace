@@ -376,7 +376,7 @@
 		font-size: 14px;
 	}
 	&:last-child {
-		margin-bottom: 0;
+		/*margin-bottom: 0;*/
 	}
 }
 
@@ -464,7 +464,7 @@
 			padding-bottom: 4px;
 		}
 		&:last-child {
-			margin-bottom: 30px;
+			/*margin-bottom: 30px;*/
 		}
 	}
 }
@@ -773,7 +773,7 @@ html, body, button, input, main, table, td, th, .heading-xlarge, .heading-large,
 		}
 	}
 
-	.news-item:first-of-type {
+	.news-item {
 		.heading-small,
 		.rule-small {
 			margin-top: 0;
