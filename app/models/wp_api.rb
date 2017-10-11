@@ -68,7 +68,6 @@ class NewsTypeQueries
 
   def main_query
     WpApi.get_json("pages?type=news&_embed&filter[news_category]=#{@slug}")
-    JSON.parse(response.body)
   end
 
   def other_categories_query
