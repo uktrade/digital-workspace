@@ -43,7 +43,12 @@
 
 @import "digital-workspace-overrides";			   // Additional styles either new or over-riding for the Digital Workspace
 
+// Utilites
+@import "util/utilities";
 @import "util/colours";
+
+// Partials
+@import "header";
 
 // News section
 @import "news/news-index";
