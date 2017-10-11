@@ -32,6 +32,7 @@
                   %p
                     = truncate_excerpt(p["excerpt"]["rendered"])
                   = read_more(p["slug"])
+                  = comments(p["slug"], 0)
               .hero-news-image-container
                 %img{:src => p["acf"]["image"]["sizes"]["medium"], :alt => p["title"]["rendered"]}
 
