@@ -1,6 +1,12 @@
 ---
 applications:
-- name: digital-workspace
+- name: digital-workspace-dev
   buildpack: ruby_buildpack
   command: bundle exec unicorn -p $PORT -c ./config/unicorn.rb
+- name: digital-workspace-staging
+  buildpack: ruby_buildpack
+  command: bundle exec unicorn -p $PORT -c ./config/unicorn.rb
+- name: digital-workspace-production
+  buildpack: ruby_buildpack
+  command: bundle exec unicorn -p $PORT -c ./config/unicorn.rb  
   
