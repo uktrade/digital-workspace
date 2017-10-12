@@ -58,6 +58,23 @@
                 = comments(p["slug"], 2)
             -#%pre{:style => 'width: 100%; display: block; font-family: Courier New;'}
             -#= p
+        .pagination-a
+          %hr{:class => 'rule-small'}
+          .prev
+            %a
+              Prev page
+          .pages
+            %a
+              1
+            %a
+              2
+            %a
+              &hellip;
+            %a
+              85
+          .next
+            %a
+              Next page
       .column-third.news-category
         %hr{:class => 'rule-large'}
         %h3.heading-small
@@ -70,4 +87,3 @@
                 %span.news-category-count.font-xsmall
                   = "(#{c["count"]})"
 
-    %hr{:id => 'popular', :class => 'rule-large'}
