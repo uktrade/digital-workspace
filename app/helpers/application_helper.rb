@@ -13,7 +13,7 @@ module ApplicationHelper
   end
 
   def comments(link, count)
-    return '' if count.zero?
+    return if count.zero?
 
     text = count == 1 ? 'comment' : 'comments'
     link_to("#{count} #{text}", link + '#comments', class: 'cta-comments')
