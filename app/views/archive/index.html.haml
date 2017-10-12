@@ -35,7 +35,7 @@
                   = comments(p["slug"], 0)
 
               .hero-news-image-container
-                %img{:src => p["acf"]["image"]["sizes"]["medium"], :alt => p["title"]["rendered"]}
+                = large_image_tag(p)
 
       .column-two-thirds
         - @posts[1..-1].each_with_index do |p, i|
