@@ -1,17 +1,77 @@
 .pagination-a {
+	a {
+		display: inline-block;
+
+		&:link {
+			colour: $brand_color_a;
+			text-decoration: underline;
+		}
+
+		&:hover {
+			colour: $brand_color_a;
+			text-decoration: none;
+		}
+	}
+
 	.prev {
-		display: inline-block;
+		box-sizing: border-box;
+		position: relative;
+		float: left;
 		text-align: left;
-		width: 20%;
+		width: 30%;
+		padding-left: 30px;
+
+		&:before {
+			content: '';
+			position: absolute;
+			left: 0px;
+			/*background-image: url('http://dit-prototype.preview3.co.uk/images/arrow-left.png');*/
+			/*background-repeat: no-repeat;*/
+			background-color: $brand_color_a;
+			width: 19px;
+			height: 14px;
+			margin: 4px 0px;
+
+			@media (min-width: 641px) {
+				margin: 7px 0px;
+			}
+		}
 	}
+
 	.pages {
-		display: inline-block;
+		box-sizing: border-box;
+		float: left;
 		text-align: center;
-		width: 55%;
+		width: 40%;
 	}
+
+	.page-number {
+		text-align: center;
+		padding: 0 4px;
+	}
+
 	.next {
-		display: inline-block;
+		box-sizing: border-box;
+		position: relative;
+		float: left;
 		text-align: right;
-		width: 20%;
+		width: 30%;
+		padding-right: 30px;
+
+		&:after {
+			content: '';
+			position: absolute;
+			right: 0px;
+			/*background-image: url('http://dit-prototype.preview3.co.uk/images/arrow-right.png');*/
+			/*background-repeat: no-repeat;*/
+			background-color: $brand_color_a;
+			width: 19px;
+			height: 14px;
+			margin: 4px 0px;
+
+			@media (min-width: 641px) {
+				margin: 7px 0px;
+			}
+		}
 	}
 }
