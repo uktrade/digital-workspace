@@ -1,5 +1,3 @@
-require 'wp_api'
-
 class SingleController < ApplicationController
   def index
     @slug = params[:path].split('/').last

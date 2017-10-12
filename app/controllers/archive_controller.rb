@@ -1,5 +1,3 @@
-require 'wp_api'
-
 class ArchiveController < ApplicationController
   def index
     @api_call = NewsQueries.new
