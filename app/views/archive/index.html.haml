@@ -27,33 +27,69 @@
             - @posts[0..0].each_with_index do |p, i|
               .hero-news-copy
                 %h1.heading-small
-                  = link_to(p["title"]["rendered"].html_safe, p["slug"])
+                  = link_to(p["title"]["rendered"].html_safe, "/news/" + p["slug"])
                 .hero-news-excerpt
                   %p
                     = truncate_excerpt(p["excerpt"]["rendered"])
-                  = read_more(p["slug"])
-                  = comments(p["slug"], 0)
+                  = read_more("/news/" + p["slug"])
+                  = comments("/news/" + p["slug"], 0)
+
               .hero-news-image-container
-                %img{:src => p["acf"]["image"]["sizes"]["medium"], :alt => p["title"]["rendered"]}
+                = large_image_tag(p)
 
       .column-two-thirds
         - @posts[1..-1].each_with_index do |p, i|
           .news-item
             %h3.heading-medium
               %hr{:class => 'rule-small'}
-              = link_to(p["title"]["rendered"].html_safe, p["slug"])
+              = link_to(p["title"]["rendered"].html_safe, "/news/" + p["slug"])
             .news-item-text
               .news-item-meta
+                - profile = PeopleFinderProfile.from_api('alice@example.com')
+                = succeed ', ' do
+                  = profile.name || "Unknown"
                 - date = DateTime.parse(p["date"])
                 = date.strftime('%d %B %Y')
                 = date.strftime('@ %I:%M')
               .news-item-excerpt
                 %p
                   = truncate_excerpt(p["excerpt"]["rendered"])
-                = read_more(p["slug"])
-                = comments(p["slug"], 2)
+                = read_more("/news/" + p["slug"])
+                = comments("/news/" + p["slug"], 2)
             -#%pre{:style => 'width: 100%; display: block; font-family: Courier New;'}
             -#= p
+
+        .pagination-a
+
+          %hr{:class => 'rule-small'}
+
+          %pre
+            headers: #{@posts_headers}
+          %pre
+            x-wp-totalpages: #{@posts_headers["x-wp-totalpages"]}
+          %pre
+            x-wp-total: #{@posts_headers["x-wp-total"]}
+
+
+          %hr{:class => 'rule-small'}
+          .prev
+            %a
+              Prev page
+          .pages
+            %span.page-number
+              1
+            %span.page-number
+              %a
+                2
+            %span.page-number
+              %a
+                &hellip;
+            %span.page-number
+              %a
+                85
+          .next
+            %a
+              Next page
       .column-third.news-category
         %hr{:class => 'rule-large'}
         %h3.heading-small
@@ -66,4 +102,3 @@
                 %span.news-category-count.font-xsmall
                   = "(#{c["count"]})"
 
-    %hr{:id => 'popular', :class => 'rule-large'}

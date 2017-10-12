@@ -7,8 +7,8 @@ class WpApi
       JSON.parse(get_json(path).body)
     end
 
-    def get_json_headers(path)
-      JSON.parse(get_json(path).headers)
+    def get_headers(path)
+      get_json(path).headers
     end
 
     def get_json(path)
