@@ -25,15 +25,14 @@
 			content: '';
 			position: absolute;
 			left: 0px;
-			/*background-image: url('http://dit-prototype.preview3.co.uk/images/arrow-left.png');*/
-			/*background-repeat: no-repeat;*/
-			background-color: $brand_color_a;
+			background-image: asset-url("assets/arrow-left.png");
+			background-repeat: no-repeat;
 			width: 19px;
 			height: 14px;
 			margin: 4px 0px;
 
 			@media (min-width: 641px) {
-				margin: 7px 0px;
+				margin: 6px 0px;
 			}
 		}
 	}
@@ -62,15 +61,14 @@
 			content: '';
 			position: absolute;
 			right: 0px;
-			/*background-image: url('http://dit-prototype.preview3.co.uk/images/arrow-right.png');*/
-			/*background-repeat: no-repeat;*/
-			background-color: $brand_color_a;
+			background-image: asset-url("assets/arrow-right.png");
+			background-repeat: no-repeat;
 			width: 19px;
 			height: 14px;
 			margin: 4px 0px;
 
 			@media (min-width: 641px) {
-				margin: 7px 0px;
+				margin: 6px 0px;
 			}
 		}
 	}
