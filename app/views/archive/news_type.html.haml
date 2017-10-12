@@ -41,7 +41,7 @@
           .news-item
             %h3.heading-small
               %hr{:class => 'rule-small'}
-              = link_to(p["title"]["rendered"].html_safe, "/" + p["slug"])
+              = link_to(p["title"]["rendered"].html_safe, "/news/" + p["slug"])
             .news-item-text
               .news-item-meta
                 - profile = PeopleFinderProfile.from_api('alice@example.com')
@@ -60,6 +60,27 @@
                 = comments(p["slug"], 2)
             -#%pre{:style => 'width: 100%; display: block; font-family: Courier New;'}
             -#= p
+
+        .pagination-a
+          %hr{:class => 'rule-small'}
+          .prev
+            %a
+              Prev page
+          .pages
+            %span.page-number
+              1
+            %span.page-number
+              %a
+                2
+            %span.page-number
+              %a
+                &hellip;
+            %span.page-number
+              %a
+                85
+          .next
+            %a
+              Next page
       .column-third.news-category
         %hr{:class => 'rule-large'}
         %h3.heading-small

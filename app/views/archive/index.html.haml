@@ -27,7 +27,7 @@
             - @posts[0..0].each_with_index do |p, i|
               .hero-news-copy
                 %h1.heading-small
-                  = link_to(p["title"]["rendered"].html_safe, "/" + p["slug"])
+                  = link_to(p["title"]["rendered"].html_safe, "/news/" + p["slug"])
                 .hero-news-excerpt
                   %p
                     = truncate_excerpt(p["excerpt"]["rendered"])
@@ -42,7 +42,7 @@
           .news-item
             %h3.heading-medium
               %hr{:class => 'rule-small'}
-              = link_to(p["title"]["rendered"].html_safe, "/" + p["slug"])
+              = link_to(p["title"]["rendered"].html_safe, "/news/" + p["slug"])
             .news-item-text
               .news-item-meta
                 - profile = PeopleFinderProfile.from_api('alice@example.com')
