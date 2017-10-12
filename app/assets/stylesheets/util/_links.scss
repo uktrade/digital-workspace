@@ -1,8 +1,6 @@
 a {
-	&:link {
-		color: $brand_color_a;
-		text-decoration: underline;
-	}
+	color: $brand_color_a;
+	text-decoration: underline;
 
 	&:hover {
 		color: $brand_color_a;
