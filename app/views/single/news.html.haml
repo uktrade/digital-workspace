@@ -1,13 +1,33 @@
 %div{:id => 'page', :class => 'page-content'}
   %main#content.root-index
     .grid-row
-      .column-full
-        %h2.heading-medium
-          = @slug
-    .grid-row
-      .column-full
-        - @posts.each do |p|
-          = p
-    #comments.comments-area
-      %h2
-        Comments
+      - @posts.each do |p|
+        .column-two-thirds
+          .news-item
+            %h2.heading-large
+              = p["title"]["rendered"]
+            .news-item-text
+              .news-item-meta
+                - profile = PeopleFinderProfile.from_api('alice@example.com')
+                = succeed ', ' do
+                  = profile.name || "Unknown"
+                - date = DateTime.parse(p["date"])
+                = date.strftime('%d %B %Y')
+                = date.strftime('@ %I:%M')
+
+            %img{:src => p["acf"]["image"]["sizes"]["large"], :alt => p["title"]["rendered"]}
+        = p["content"]["rendered"].html_safe
+        .column-two-thirds
+          %hr{class: 'rule-small'}
+          -#= p
+          #comments.comments-area
+            .posted-comments
+              %h2.heading-medium
+                Comments
+              .leave-comment
+                %h2
+                  Leave a comment
+                %form{class: 'comment-post', id: 'comment_post'}
+                  %textarea{class: 'text-area'}
+                  %input{type: 'submit', value: 'Submit comment', class: 'button'}
+
