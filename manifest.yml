@@ -1,5 +1,5 @@
 ---
 applications:
 - name: digital-workspace
-  buildpack: ruby_buildpack
-  command: bundle exec unicorn -p $PORT -c ./config/unicorn.rb
+  memory: 1G
+  command : bundle exec rails server -p $PORT
