@@ -10,5 +10,4 @@ class NewsTypeQueries
   def other_categories_query
     WpApi.get_json_body('news_category')
   end
-
 end
