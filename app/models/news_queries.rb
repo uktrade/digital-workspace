@@ -10,4 +10,8 @@ class NewsQueries
   def other_categories_query
     WpApi.get_json_body('news_category')
   end
+
+  def main_comments_headers
+    WpApi.get_headers('comments')
+  end
 end

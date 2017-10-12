@@ -18,7 +18,6 @@
 
         = p["content"]["rendered"].html_safe
         .column-two-thirds
-
           .pagination-b
             %hr{:class => 'rule-small'}
             .prev
@@ -30,8 +29,19 @@
           -#= p
           #comments.comments-area
             .posted-comments
+              %pre
+                headers: #{@comments_headers}
+              %pre
+                x-wp-totalpages: #{@comments_headers["x-wp-totalpages"]}
+              %pre
+                x-wp-total: #{@comments_headers["x-wp-total"]}
+
+
               %h2.heading-medium
-                Comments
+                #{@comments_headers["x-wp-total"]} Comments
+              - @comments.each do |comment|
+                = comment["content"]["rendered"].html_safe
+                -#= comment
               .leave-comment
                 %h2
                   Leave a comment

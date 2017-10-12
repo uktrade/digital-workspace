@@ -31,8 +31,8 @@
                 .hero-news-excerpt
                   %p
                     = truncate_excerpt(p["excerpt"]["rendered"])
-                  = read_more(p["slug"])
-                  = comments(p["slug"], 0)
+                  = read_more("/news/" + p["slug"])
+                  = comments("/news/" + p["slug"], 0)
 
               .hero-news-image-container
                 = large_image_tag(p)
@@ -54,8 +54,8 @@
               .news-item-excerpt
                 %p
                   = truncate_excerpt(p["excerpt"]["rendered"])
-                = read_more(p["slug"])
-                = comments(p["slug"], 2)
+                = read_more("/news/" + p["slug"])
+                = comments("/news/" + p["slug"], 2)
             -#%pre{:style => 'width: 100%; display: block; font-family: Courier New;'}
             -#= p
 
