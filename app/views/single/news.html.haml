@@ -18,7 +18,15 @@
 
         = p["content"]["rendered"].html_safe
         .column-two-thirds
-          %hr{class: 'rule-small'}
+
+          .pagination-b
+            %hr{:class => 'rule-small'}
+            .prev
+              %a
+                Prev page title
+            .next
+              %a
+                Next page title
           -#= p
           #comments.comments-area
             .posted-comments
