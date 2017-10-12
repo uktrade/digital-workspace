@@ -58,6 +58,9 @@
                 = comments(p["slug"], 2)
             -#%pre{:style => 'width: 100%; display: block; font-family: Courier New;'}
             -#= p
+        headers: #{@posts_headers}
+        x-wp-totalpages: #{@posts_headers["x-wp-totalpages"]}
+        x-wp-total: #{@posts_headers["x-wp-total"]}
         .pagination-a
           %hr{:class => 'rule-small'}
           .prev
