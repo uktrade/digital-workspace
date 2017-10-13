@@ -1,16 +1,19 @@
 .profile-overview
   .profile-overview-inner
     %span.profile-flair
-    .profile-image
-      - if @people_finder_profile.profile_image_url
-        = image_tag @people_finder_profile.profile_image_url, alt: @people_finder_profile.name
-    .profile-meta
-      %h3.heading-small
-        - if @people_finder_profile.name
-          = link_to(@people_finder_profile.name, @people_finder_profile.profile_url)
-      %span
-        = @people_finder_profile.team
-      %span.profile-progress
-        #{@people_finder_profile.completion_score || 0}% complete
-      %span.profile-update
-        = link_to "Update", @people_finder_profile.profile_url
+    %span.profile-content
+      %div.profile-details
+        .profile-image
+          - if @people_finder_profile.profile_image_url
+            = image_tag @people_finder_profile.profile_image_url, alt: @people_finder_profile.name
+        .profile-meta
+          %h3.heading-small
+            - if @people_finder_profile.name
+              = link_to(@people_finder_profile.name, @people_finder_profile.profile_url)
+          %span
+            = @people_finder_profile.team
+      %div
+        %span.profile-progress
+          #{@people_finder_profile.completion_score || 0}% complete
+        %span.profile-update
+          = link_to "Update", @people_finder_profile.profile_url
