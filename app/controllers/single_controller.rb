@@ -11,5 +11,6 @@ class SingleController < ApplicationController
     @posts = @api_call.main_query
     @comments = @api_call.main_comments_query
     @comments_headers = @api_call.main_comment_headers
+    @categories = @api_call.other_categories_query
   end
 end
