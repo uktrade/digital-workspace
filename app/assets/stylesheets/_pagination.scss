@@ -61,6 +61,7 @@
 .pagination-a,
 .pagination-b {
 	@extend %clearfix;
+	margin-bottom: 50px;
 
 	a {
 		display: inline-block;

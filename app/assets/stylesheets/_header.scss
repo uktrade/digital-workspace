@@ -1,3 +1,43 @@
-.select-category .form-control {
-	float: right;
+.select-category {
+	margin: 0px;
+
+	.form-control {
+
+	}
+
+	.form-label {
+		display: inline-block;
+		margin-left: 120px;
+		margin-right: 10px;
+		font-weight: 700;
+	}
 }
+
+ul.breadcrumb {
+	padding: 6px 0px;
+
+	li {
+		position: relative;
+		display: inline-block;
+		padding: 0px 20px;
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 7px;
+			left: -7px;
+			background-image: asset-url("assets/spacer.png");
+			background-repeat: no-repeat;
+			width: 7px;
+			height: 12px;
+		}
+
+		&:first-of-type {
+			padding: 0px 20px 0px 0px;
+			&:before {
+				background-image: none;
+			}
+		}
+	}
+}
+
