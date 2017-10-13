@@ -1,19 +1,40 @@
 %div{:id => 'page', :class => 'page-content'}
-  %main#content.root-index
+  %main#content.root-index.news-section
+    .grid-row
+      .column-half
+        %ul.breadcrumb
+          %li
+            = link_to( 'Home', "/" )
+          %li
+            = link_to( 'News', "/news/" )
+
+      .column-half
+        .form-group.select-category
+          %label{:class => 'form-label', :for => 'select-category'} Categories
+          %select{:class => 'form-control', :id => 'select_category', :name => 'select-category'}
+            %option{:value => ""}
+              \ Select Category
+            - @categories.each do |c|
+              %option{:value => "/news/category/" + c["slug"]}
+                = link_to( c["name"] )
     .grid-row
       - @posts.each do |p|
         .column-two-thirds
           .news-item
             %h2.heading-large
+              %hr{:class => 'rule-small'}
               = p["title"]["rendered"]
             .news-item-text
               .news-item-meta
-                - profile = PeopleFinderProfile.from_api('alice@example.com')
+                - profile = PeopleFinderProfile.from_api(p["author_email"])
                 = succeed ', ' do
                   = profile.name || "Unknown"
-                - date = DateTime.parse(p["date"])
-                = date.strftime('%d %B %Y')
-                = date.strftime('@ %I:%M')
+                = succeed ' - ' do
+                  - date = DateTime.parse(p["date"])
+                  = date.strftime('%d %B %Y')
+                  = date.strftime('@ %I:%M')
+                - p["news_category"].each do |cat|
+                  = news_cats( cat["name"], cat["slug"] )
             = large_image_tag(p)
 
         = p["content"]["rendered"].html_safe
@@ -26,26 +47,37 @@
             .next
               %a
                 Next page title
-          -#= p
           #comments.comments-area
             .posted-comments
-              %pre
-                headers: #{@comments_headers}
-              %pre
-                x-wp-totalpages: #{@comments_headers["x-wp-totalpages"]}
-              %pre
-                x-wp-total: #{@comments_headers["x-wp-total"]}
-
+              -#%pre
+              -#  headers: #{@comments_headers}
+              -#%pre
+              -#  x-wp-totalpages: #{@comments_headers["x-wp-totalpages"]}
+              -#%pre
+              -#  x-wp-total: #{@comments_headers["x-wp-total"]}
 
               %h2.heading-medium
                 #{@comments_headers["x-wp-total"]} Comments
               - @comments.each do |comment|
                 = comment["content"]["rendered"].html_safe
+                %a.cta-comment-reply
+                  Reply
+                .comment-replies
+                  .comment-meta
+                    %span.reply-name Angela
+                    %span.reply-date
+                      = precede ', ' do
+                        5 Oct 2017 @ 13:25
+
+                  %p
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui accusamus deserunt, nam, tenetur, accusantium numquam molestias mollitia totam voluptas quasi beatae! Recusandae quae, officiis amet delectus iste pariatur dolor rem.
+
+                  %a.cta-comment-reply
+                    Reply
                 -#= comment
               .leave-comment
-                %h2
+                %h2.heading-medium
                   Leave a comment
                 %form{class: 'comment-post', id: 'comment_post'}
-                  %textarea{class: 'text-area'}
+                  %textarea{class: 'leave-comment-textarea'}
                   %input{type: 'submit', value: 'Submit comment', class: 'button'}
-
