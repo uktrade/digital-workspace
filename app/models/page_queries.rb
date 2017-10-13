@@ -14,4 +14,8 @@ class PageQueries
   def main_comment_headers
     WpApi.get_headers('comments')
   end
+
+  def other_categories_query
+    WpApi.get_json_body('news_category')
+  end
 end
