@@ -15,6 +15,8 @@
   .header-proposition
     .content
       = link_to "Digital Workspace", root_path, id: "proposition-name"
+      %strong.beta-label
+        BETA
 
       %a{:href => "#proposition-links", :class => "js-header-toggle menu"}
         Menu
@@ -25,11 +27,15 @@
           %li
             = link_to "News", "/news/"
           %li
-            = link_to "Link Three", "http://peoplefinder-dev.herokuapp.com"
+            = link_to "How do I", "http://peoplefinder-dev.herokuapp.com"
           %li
-            = link_to "Link Four", "http://peoplefinder-dev.herokuapp.com"
+            = link_to "Guidance", "http://peoplefinder-dev.herokuapp.com"
           %li
-            = link_to "Link Five", "http://peoplefinder-dev.herokuapp.com"
+            = link_to "Policy", "http://peoplefinder-dev.herokuapp.com"
+          %li
+            = link_to "Tools", "http://peoplefinder-dev.herokuapp.com"
+          %li
+            = link_to "Data hub", "http://peoplefinder-dev.herokuapp.com"
     .search
       %form{:action => "/search", :method => "get", :role => "search"}
         .proposition-search.govuk-search
@@ -45,16 +51,16 @@
 - content_for :body_end do
   = javascript_include_tag 'application'
 
-- content_for :content do
-  .beta-bar
-    %strong.beta-label
-      BETA
-    %span
-      This is a new service - your
-      = link_to("feedback", "#")
-      will help us to improve it.
-  %wrapper.direction-ltr
-    = yield
+-#- content_for :content do
+-#  .beta-bar
+-#    %strong.beta-label
+-#      BETA
+-#    %span
+-#      This is a new service - your
+-#      = link_to("feedback", "#")
+-#      will help us to improve it.
+-#  %wrapper.direction-ltr
+-#    = yield
 
 - content_for :footer_top do
   - @footer_menu_1_content = footer_menu_1_content
