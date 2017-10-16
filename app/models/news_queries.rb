@@ -1,10 +1,12 @@
 class NewsQueries
-  def main_query
-    WpApi.get_json_body('pages?type=news&_embed')
+  def main_query(page)
+    path = "pages?type=news&_embed&per_page=#{Paginator::PER_PAGE}&page=#{page}"
+    WpApi.get_json_body(path)
   end
 
-  def main_query_headers
-    WpApi.get_headers('pages?type=news&_embed')
+  def main_query_headers(page)
+    path = "pages?type=news&_embed&per_page=#{Paginator::PER_PAGE}&page=#{page}"
+    WpApi.get_headers(path)
   end
 
   def other_categories_query

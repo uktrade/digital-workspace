@@ -3,12 +3,16 @@ class NewsTypeQueries
     @slug = slug
   end
 
-  def main_query
-    WpApi.get_json_body("pages?type=news&_embed&filter[news_category]=#{@slug}")
+  def main_query(page)
+    path = "pages?type=news&_embed&filter[news_category]=#{@slug}"
+    path += "&per_page=#{Paginator::PER_PAGE}&page=#{page}"
+    WpApi.get_json_body(path)
   end
 
-  def main_query_headers
-    WpApi.get_headers('pages?type=news&_embed')
+  def main_query_headers(page)
+    path = "pages?type=news&_embed&filter[news_category]=#{@slug}"
+    path += "&per_page=#{Paginator::PER_PAGE}&page=#{page}"
+    WpApi.get_headers(path)
   end
 
   def main_comments_headers
