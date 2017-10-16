@@ -64,7 +64,11 @@
                   %p
                     = truncate_excerpt(p["excerpt"]["rendered"])
                   = read_more("/news/" + p["slug"])
-                  = comments("/news/" + p["slug"], 2)
+
+                  - if @comments_headers["x-wp-total"].present?
+                    - comment_count = Integer(@comments_headers["x-wp-total"])
+                    = comments("/news/" + p["slug"], comment_count)
+
               -#%pre{:style => 'width: 100%; display: block; font-family: Courier New;'}
               -#= p
 
