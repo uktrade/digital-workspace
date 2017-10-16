@@ -18,11 +18,11 @@ class ArchiveController < ApplicationController
 
   def init_defaults
     @page = (params[:page] || 1).to_i
+
     init_pagination
     init_posts
-
-    @categories = @api_call.other_categories_query
-    @comments_headers = @api_call.main_comments_headers
+    init_categories
+    init_comment_headers
   end
 
   def init_pagination
@@ -36,5 +36,13 @@ class ArchiveController < ApplicationController
 
     @hero_post = @posts.first if @posts.first.is_a?(Hash)
     @posts = @posts[1..-1] || []
+  end
+
+  def init_categories
+    @categories = @api_call.other_categories_query
+  end
+
+  def init_comment_headers
+    @comments_headers = @api_call.main_comments_headers
   end
 end
