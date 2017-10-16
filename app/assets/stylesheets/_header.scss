@@ -1,5 +1,6 @@
 .select-category {
 	margin: 0px;
+	padding: 15px 0px;
 
 	.form-control {
 
@@ -14,12 +15,17 @@
 }
 
 ul.breadcrumb {
-	padding: 6px 0px;
+	padding: 19px 0px;
 
 	li {
 		position: relative;
 		display: inline-block;
 		padding: 0px 20px;
+		font-size: 16px;
+
+		a {
+			color: #000000;
+		}
 
 		&:before {
 			content: '';
@@ -41,3 +47,55 @@ ul.breadcrumb {
 	}
 }
 
+.people-search-inner-page {
+	background: #454a4c;
+	background-image: asset-url("assets/find-people-pattern.png");
+	@extend %clearfix;
+
+	.homepage-top-inner {
+		overflow: hidden;
+		position: relative;
+		max-width: 960px;
+		text-align: left;
+		margin: 0 auto;
+		padding: 0 15px;
+	}
+
+	.govuk-search {
+		margin: 10px 0 10px 10px;
+	}
+
+	.search-people-form {
+		width: 50%;
+		float: left;
+	}
+
+	.user-account {
+		width: 31%;
+		float: right;
+		background-color: $brand_color_c;
+		text-align: right;
+
+		a {
+			position: relative;
+			padding: 18px 40px 18px 0px;
+			display: inline-block;
+			font-weight: 700;
+			text-decoration: none;
+			color: #FFFFFF;
+
+			&:before {
+				content: '';
+				display: block;
+				position: absolute;
+				top: 18px;
+				left: -30px;
+				background-image: asset-url("assets/icon-user.png");
+				background-repeat: no-repeat;
+
+				width: 16px;
+				height: 20px;
+			}
+		}
+	}
+}
