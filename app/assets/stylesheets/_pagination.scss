@@ -70,8 +70,7 @@
 		}
 	}
 
-.pagination-a,
-.pagination-b {
+.pagination{
 	@extend %clearfix;
 	margin-bottom: 50px;
 
@@ -87,11 +86,5 @@
 			colour: $brand_color_a;
 			text-decoration: none;
 		}
-	}
-}
-
-.pagination-b {
-	.next {
-		float: right
 	}
 }
