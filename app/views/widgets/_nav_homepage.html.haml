@@ -3,7 +3,7 @@
 %nav{:id => "proposition-menu"}
   %ul{:id => "proposition-links"}
     %li
-      = link_to "Peoplefinder", "http://peoplefinder-dev.herokuapp.com"
+      = link_to "Peoplefinder", ENV['PEOPLEFINDER_URL']
     %li
       = link_to "News and views", "/news/"
     %li
