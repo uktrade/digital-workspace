@@ -28,7 +28,7 @@ class HomePageQueries
   end
 
   def main_query
-    WpApi.get_json_body("pages?type=news")
+    WpApi.get_json_body('pages?type=news')
   end
 
   def main_comments_headers
