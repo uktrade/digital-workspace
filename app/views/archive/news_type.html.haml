@@ -58,25 +58,23 @@
 
                 - p["news_category"].each do |cat|
                   = news_cats( cat["name"], cat["slug"] )
+            .news-item-excerpt
+              %p
+                = truncate_excerpt(p["excerpt"]["rendered"])
+              = read_more("/news/" + p["slug"])
 
-                  = comments("/news/" + p["slug"], 2)
+              - if @comments_headers["x-wp-total"].present?
+                - comment_count = Integer(@comments_headers["x-wp-total"])
+                = comments("/news/" + p["slug"], comment_count)
 
-                  - if @comments_headers["x-wp-total"].present?
-                    - comment_count = Integer(@comments_headers["x-wp-total"])
-                    = comments("/news/" + p["slug"], comment_count)
-
-                  - if @comments_headers["x-wp-total"].present?
-                    - comment_count = Integer(@comments_headers["x-wp-total"])
-                    = comments("/news/" + p["slug"], comment_count)
-
+        %hr{:class => 'rule-small'}
         .pagination
-          %hr{:class => 'rule-small'}
-            .prev
-              - if @paginator.previous_page_no
-                = link_to( "Prev Page", "/news/category/#{@slug}?page=#{@paginator.previous_page_no}" )
-            .next
-              - if @paginator.next_page_no
-                = link_to( "Next Page", "/news/category/#{@slug}?page=#{@paginator.next_page_no}" )
+          .prev
+            - if @paginator.previous_page_no
+              = link_to( "Prev Page", "/news/category/#{@slug}?page=#{@paginator.previous_page_no}" )
+          .next
+            - if @paginator.next_page_no
+              = link_to( "Next Page", "/news/category/#{@slug}?page=#{@paginator.next_page_no}" )
 
 
       .column-third.news-category
