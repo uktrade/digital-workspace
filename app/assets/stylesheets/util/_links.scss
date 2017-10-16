@@ -1,7 +1,10 @@
 a {
 	cursor: pointer;
-	color: $brand_color_a;
-	text-decoration: underline;
+
+	&:link {
+		color: $brand_color_a;
+		text-decoration: underline;
+	}
 
 	&:hover {
 		color: $brand_color_a;

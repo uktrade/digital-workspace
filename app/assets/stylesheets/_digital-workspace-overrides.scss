@@ -80,7 +80,7 @@
 		}
 	}
 	#logo {
-		background-image: asset-url("assets/dit-logo_000@2x.png");
+		background-image: asset-url("#{$image_path}dit-logo_000@2x.png");
 		background-size: 137px 65px;
 		margin-top: 15px;
 
@@ -168,7 +168,7 @@
 
 .homepage-top {
 	background: #454a4c;
-	background-image: asset-url("assets/find-people-pattern.png");
+	background-image: asset-url("#{$image_path}find-people-pattern.png");
 	color: #ffffff;
 
 	.homepage-top-inner {
