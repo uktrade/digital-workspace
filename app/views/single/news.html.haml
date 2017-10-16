@@ -1,4 +1,5 @@
 %div{:id => 'page', :class => 'page-content'}
+  = render partial: "widgets/people_search_inner_page"
   %main#content.root-index.news-section
     .grid-row
       .column-half
@@ -18,8 +19,8 @@
               %option{:value => "/news/category/" + c["slug"]}
                 = link_to( c["name"] )
     .grid-row
-      - @posts.each do |p|
-        .column-two-thirds
+      .column-two-thirds
+        - @posts.each do |p|
           .news-item
             %h2.heading-large
               %hr{:class => 'rule-small'}
@@ -37,16 +38,10 @@
                   = news_cats( cat["name"], cat["slug"] )
             = large_image_tag(p)
 
-        = p["content"]["rendered"].html_safe
-        .column-two-thirds
-          .pagination-b
-            %hr{:class => 'rule-small'}
-            .prev
-              %a
-                Prev page title
-            .next
-              %a
-                Next page title
+          = p["content"]["rendered"].html_safe
+
+          = render partial: "widgets/pagination_b"
+
           #comments.comments-area
             .posted-comments
               -#%pre
@@ -81,3 +76,5 @@
                 %form{class: 'comment-post', id: 'comment_post'}
                   %textarea{class: 'leave-comment-textarea'}
                   %input{type: 'submit', value: 'Submit comment', class: 'button'}
+      .column-third.news-category
+        %hr{class: 'rule-large'}

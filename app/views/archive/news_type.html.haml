@@ -1,4 +1,5 @@
 %div{:id => 'category', :class => 'page-content'}
+  = render partial: "widgets/people_search_inner_page"
   %main#content.root-index.news-section
     .grid-row
       .column-half
@@ -17,75 +18,58 @@
             - @categories.each do |c|
               %option{:value => "/news/category/" + c["slug"]}
                 = link_to( c["name"] )
-
+    .grid-row
       .column-full
-        %hr{:class => 'rule-large'}
+        %hr{:class => 'rule-large rule-top'}
         %h2.heading-medium
           #@slug
     .grid-row
       .column-full
-
         .hero-news
           .news-item
             -# @posts.each do |p|
-            - @posts[0..0].each_with_index do |p, i|
-              .hero-news-copy
-                %h1.heading-small
-                  = link_to(p["title"]["rendered"].html_safe, "/news/" + p["slug"])
-                .hero-news-excerpt
+            - if @posts.present?
+              - @posts[0..0].each_with_index do |p, i|
+                .hero-news-copy
+                  %h1.heading-small
+                    = link_to(p["title"]["rendered"].html_safe, "/news/" + p["slug"])
+                  .hero-news-excerpt
+                    %p
+                      = truncate_excerpt(p["excerpt"]["rendered"])
+                    = read_more("/news/" + p["slug"])
+                    = comments("/news/" + p["slug"], 0)
+                .hero-news-image-container
+                  = large_image_tag(p)
+
+      .column-two-thirds
+        - if @posts.present?
+          - @posts[1..-1].each_with_index do |p, i|
+            .news-item
+              %h3.heading-small
+                %hr{:class => 'rule-small'}
+                = link_to(p["title"]["rendered"].html_safe, "/news/" + p["slug"])
+              .news-item-text
+                .news-item-meta
+                  - profile = PeopleFinderProfile.from_api(p["author_email"])
+                  = succeed ', ' do
+                    = profile.name || "Unknown"
+                  = succeed ' - ' do
+                    - date = DateTime.parse(p["date"])
+                    = date.strftime('%d %B %Y')
+                    = date.strftime('@ %I:%M')
+                  - p["news_category"].each do |cat|
+                    = news_cats( cat["name"], cat["slug"] )
+
+                .news-item-excerpt
                   %p
                     = truncate_excerpt(p["excerpt"]["rendered"])
                   = read_more("/news/" + p["slug"])
-                  = comments("/news/" + p["slug"], 0)
-              .hero-news-image-container
-                = large_image_tag(p)
+                  = comments("/news/" + p["slug"], 2)
+              -#%pre{:style => 'width: 100%; display: block; font-family: Courier New;'}
+              -#= p
 
-      .column-two-thirds
-        - @posts[1..-1].each_with_index do |p, i|
-          .news-item
-            %h3.heading-small
-              %hr{:class => 'rule-small'}
-              = link_to(p["title"]["rendered"].html_safe, "/news/" + p["slug"])
-            .news-item-text
-              .news-item-meta
-                - profile = PeopleFinderProfile.from_api(p["author_email"])
-                = succeed ', ' do
-                  = profile.name || "Unknown"
-                = succeed ' - ' do
-                  - date = DateTime.parse(p["date"])
-                  = date.strftime('%d %B %Y')
-                  = date.strftime('@ %I:%M')
-                - p["news_category"].each do |cat|
-                  = news_cats( cat["name"], cat["slug"] )
+        = render partial: "widgets/pagination_a"
 
-              .news-item-excerpt
-                %p
-                  = truncate_excerpt(p["excerpt"]["rendered"])
-                = read_more("/news/" + p["slug"])
-                = comments("/news/" + p["slug"], 2)
-            -#%pre{:style => 'width: 100%; display: block; font-family: Courier New;'}
-            -#= p
-
-        .pagination-a
-          %hr{:class => 'rule-small'}
-          .prev
-            %a
-              Prev page
-          .pages
-            %span.page-number
-              1
-            %span.page-number
-              %a
-                2
-            %span.page-number
-              %a
-                &hellip;
-            %span.page-number
-              %a
-                85
-          .next
-            %a
-              Next page
       .column-third.news-category
         %hr{:class => 'rule-large'}
         %h3.heading-small
