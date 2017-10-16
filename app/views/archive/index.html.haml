@@ -46,6 +46,7 @@
                   = large_image_tag(p)
 
       .column-two-thirds
+<<<<<<< HEAD
         - @posts[1..-1].each_with_index do |p, i|
           .news-item
             %h3.heading-medium
@@ -75,6 +76,34 @@
         .pagination-a
 
           %hr{:class => 'rule-small'}
+
+        - if @posts.present?
+          - @posts[1..-1].each_with_index do |p, i|
+            .news-item
+              %h3.heading-medium
+                %hr{:class => 'rule-small'}
+                = link_to(p["title"]["rendered"].html_safe, "/news/" + p["slug"])
+              .news-item-text
+                .news-item-meta
+                  - profile = PeopleFinderProfile.from_api(p["author_email"])
+                  = succeed ', ' do
+                    = profile.name || "Unknown"
+                  = succeed ' - ' do
+                    - date = DateTime.parse(p["date"])
+                    = date.strftime('%d %B %Y')
+                    = date.strftime('@ %I:%M')
+
+                  - p["news_category"].each do |cat|
+                    = news_cats( cat["name"], cat["slug"] )
+                .news-item-excerpt
+                  %p
+                    = truncate_excerpt(p["excerpt"]["rendered"])
+                  = read_more("/news/" + p["slug"])
+                  - if @comments_headers["x-wp-total"].present?
+                    - comment_count = Integer(@comments_headers["x-wp-total"])
+                    = comments("/news/" + p["slug"], comment_count)
+              %pre{:style => 'width: 100%; display: block; font-family: Courier New;'}
+                = p
 
         - if @posts.present?
           - @posts[1..-1].each_with_index do |p, i|
