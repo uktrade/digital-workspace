@@ -2,7 +2,9 @@
 // Global header
 
 #global-header.with-proposition {
+	background-color: #FFFFFF;
 	.header-wrapper {
+		background-color: #FFFFFF;
 		.header-global {
 			float: left;
 			width: 38%;
@@ -18,6 +20,27 @@
 			#proposition-name {
 				font-size: 16px;
 			}
+
+			.beta-label {
+				display: -moz-inline-stack;
+				display: inline-block;
+				margin: 4px 12px 0 0;
+				padding: 2px 5px 0;
+				//font-family: "nta", Arial, sans-serif;
+				font-weight: 100;
+				text-transform: none;
+				font-size: 16px;
+				line-height: 1;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				text-decoration: none;
+				color: #fff;
+				background-color: #005ea5;
+				margin-top: 13px;
+				margin-left: 7px;
+				padding: 3px 6px;
+			}
+
 			#proposition-menu {
 				clear: none;
 				float: right;
@@ -57,8 +80,13 @@
 		}
 	}
 	#logo {
-		background-image: url(http://dit-prototype.preview3.co.uk/assets/dit-logo-2x.png);
-		background-size: 112px 53px;
+		background-image: asset-url("assets/dit-logo_000@2x.png");
+		background-size: 137px 65px;
+		margin-top: 15px;
+
+		width: 137px;
+		height: 65px;
+
 		img {
 			max-width: 100%;
 			&:first-child {
@@ -97,7 +125,7 @@
 					top: 9px;
 				}
 				#proposition-name {
-					font-size: 24px;
+					font-size: 34px;
 				}
 				#proposition-menu {
 					clear: both;
@@ -140,7 +168,9 @@
 
 .homepage-top {
 	background: #454a4c;
+	background-image: asset-url("assets/find-people-pattern.png");
 	color: #ffffff;
+
 	.homepage-top-inner {
 		margin: 0 15px;
 		overflow: hidden;
@@ -161,26 +191,38 @@
 		right: 10px;
 		width: 33.33%;
 		.profile-overview-inner {
-			background: #0b0c0c;
-			padding: 107px 20px 5px;
+			/*padding: 107px 20px 5px;*/
 			position: relative;
 			margin-left: 27px;
 			min-height: 20em;
 			color: #ffffff;
 			overflow: auto;
 			.profile-flair {
-				background-color: #005ea5;
-				background-image: url(http://dit-prototype.preview3.co.uk/assets/PURCHASE-STOCK-profile-bg.png);
-				background-repeat: none;
-				background-size: cover;
+				background: $brand_color_c; /* For unsupported browsers */
+				background: rgba($brand_color_c, 0.3); /* IE8 */
+				-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=$brand_color_c, endColorstr=$brand_color_c)"; /* IE8 */
+				filter: alpha(opacity=30); /* IE8 */
+				zoom: 1; /* IE8 */
 				display: block;
-				height: 90px;
+				height: 70px;
 				position: absolute;
 				right: 0;
 				text-align: right;
 				top: 0;
 				width: 100%;
 			}
+
+			.profile-content {
+				background: $brand_color_c;
+				margin: 67px 0;
+				padding: 20px 20px 20px;
+				@extend %clearfix;
+			}
+
+			.profile-details {
+				@extend %clearfix;
+			}
+
 			.profile-image {
 				display: none;
 				float: left;
@@ -204,8 +246,18 @@
 					}
 				}
 			}
+
+			.profile-progress,
+			.profile-update {
+				display: inline-block;
+			}
+			.profile-update {
+				font-size: 14px;
+				padding-left: 90px;
+			}
+
 			img {
-				max-height: 4em;
+				max-height: 5em;
 				max-width: 100%;
 			}
 			.heading-small {
@@ -375,7 +427,11 @@
 	p {
 		font-size: 14px;
 	}
-	&:last-child {
+	&:first-child {
+		.heading-medium {
+			margin-top: 0px;
+			padding-top: 0px;
+		}
 		/*margin-bottom: 0;*/
 	}
 }
@@ -598,6 +654,11 @@
 		width: 87%;
 		background: #fff;
 	}
+
+	&.proposition-search .search-wrapper {
+		border: 2px solid #000000;
+	}
+
 	.search-element {
 		position: relative;
 		display: table-cell;
@@ -697,9 +758,12 @@ hr {
 	&.rule-large {
 		clear: both;
 		background-color: transparent;
-		border: 5px solid #0b0c0c;
+		border: 5px solid $brand_color_c;
 		border-width: 5px 0 0;
 		margin: 15px 0px 0px;
+	}
+	&.rule-top {
+		margin: 0;
 	}
 }
 
@@ -709,6 +773,9 @@ hr {
 			//margin: 60px 0px 30px;
 			margin: 15px 0px 0px;
 		}
+		&.rule-top {
+			margin: 0;
+		}
 	}
 }
 
@@ -716,8 +783,14 @@ hr {
 // misc. type
 
 html, body, button, input, main, table, td, th, .heading-xlarge, .heading-large, .heading-medium, .heading-small, #footer .footer-meta .footer-meta-inner ul, #footer .footer-meta .footer-meta-inner .open-government-licence p, #footer .footer-meta .copyright, #footer h2, .govuk-search .search-input, #global-header .header-proposition #proposition-name, #global-header .header-proposition #proposition-link a, #global-header .header-proposition #proposition-links a {
+	color: #000000;
 	font-family: Arial, sans-serif;
 }
+
+.homepage-top .heading-large {
+	color: #FFFFFF !important;
+}
+
 
 .section-note {
 	color: #6f777b;
@@ -778,7 +851,7 @@ html, body, button, input, main, table, td, th, .heading-xlarge, .heading-large,
 		.heading-small,
 		.heading-large,
 		.rule-small {
-			margin-top: 10px;
+			margin-top: 0px;
 		}
 	}
 }
