@@ -5,7 +5,7 @@ class ArchiveController < ApplicationController
     @categories = @api_call.other_categories_query
     @posts_headers = @api_call.main_query_headers
     @comments_headers = @api_call.main_comments_headers
-    @people_finder_profile = PeopleFinderProfile.from_api(current_user)
+    @id = params[:id]
   end
 
   def news_type
@@ -15,6 +15,5 @@ class ArchiveController < ApplicationController
     @categories = @api_call.other_categories_query
     @posts_headers = @api_call.main_query_headers
     @comments_headers = @api_call.main_comments_headers
-    @people_finder_profile = PeopleFinderProfile.from_api(current_user)
   end
 end
