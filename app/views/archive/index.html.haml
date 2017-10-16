@@ -69,7 +69,15 @@
             %pre{:style => 'width: 100%; display: block; font-family: Courier New;'}
               = p
 
-        = render partial: "widgets/pagination"
+        .pagination
+          %hr{:class => 'rule-small'}
+          .prev
+            - if @paginator.previous_page_no
+              = link_to( "Prev Page", "/news/?page=#{@paginator.previous_page_no}" )
+          .next
+            - if @paginator.next_page_no
+              = link_to( "Next Page", "/news/?page=#{@paginator.next_page_no}" )
+
 
       .column-third.news-category
         %hr{:class => 'rule-large'}

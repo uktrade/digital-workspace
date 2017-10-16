@@ -40,7 +40,7 @@
                 = large_image_tag(@hero_post)
 
       .column-two-thirds
-        - @posts.each_with_index do |p|
+        - @posts.each do |p|
           .news-item
             %h3.heading-small
               %hr{:class => 'rule-small'}
@@ -69,7 +69,15 @@
                     - comment_count = Integer(@comments_headers["x-wp-total"])
                     = comments("/news/" + p["slug"], comment_count)
 
-        = render partial: "widgets/pagination"
+        .pagination
+          %hr{:class => 'rule-small'}
+            .prev
+              - if @paginator.previous_page_no
+                = link_to( "Prev Page", "/news/category/#{@slug}?page=#{@paginator.previous_page_no}" )
+            .next
+              - if @paginator.next_page_no
+                = link_to( "Next Page", "/news/category/#{@slug}?page=#{@paginator.next_page_no}" )
+
 
       .column-third.news-category
         %hr{:class => 'rule-large'}
