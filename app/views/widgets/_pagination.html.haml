@@ -10,8 +10,8 @@
   %hr{:class => 'rule-small'}
   - if @posts_headers.present?
     .prev
-      - if @posts_headers["x-wp-totalpages"] > "1"
-        = link_to( "Prev Page", "/news/" )
+      - if @page > 1
+        = link_to( "Prev Page", "/news/?page=#{@page-1}" )
     .pages
       %span.page-number
         1

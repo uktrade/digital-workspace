@@ -1,0 +1,14 @@
+.hero-news
+  .news-item
+    .hero-news-copy
+      %h1.heading-small
+        = link_to(post["title"]["rendered"].html_safe, "/news/" + post["slug"])
+      .hero-news-excerpt
+        %p
+          = truncate_excerpt(post["excerpt"]["rendered"])
+        = read_more("/news/" + post["slug"])
+        - if @comments_headers["x-wp-total"].present?
+          - comment_count = Integer(@comments_headers["x-wp-total"])
+          = comments("/news/" + post["slug"], comment_count)
+    .hero-news-image-container
+      = large_image_tag(post)

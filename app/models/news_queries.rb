@@ -1,6 +1,6 @@
 class NewsQueries
   def main_query(page = 1)
-    WpApi.get_json_body("pages?type=news&_embed&per_page=10&page=#{page}")
+    WpApi.get_json_body("pages?type=news&_embed&per_page=3&page=#{page}")
   end
 
   def main_query_headers

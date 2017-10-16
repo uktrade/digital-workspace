@@ -17,7 +17,12 @@ class ArchiveController < ApplicationController
   protected
 
   def init_defaults
-    @posts = @api_call.main_query(params[:page] || 1)
+    @page = (params[:page] || 1).to_i
+    @posts = @api_call.main_query(@page)
+
+    @hero_post = @posts.first
+    @posts = @posts[1..-1]
+
     @categories = @api_call.other_categories_query
     @posts_headers = @api_call.main_query_headers
     @comments_headers = @api_call.main_comments_headers

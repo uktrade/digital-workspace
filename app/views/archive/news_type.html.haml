@@ -24,53 +24,23 @@
         %h2.heading-medium
           #@slug
     .grid-row
-      .column-full
-        .hero-news
-          .news-item
-            -# @posts.each do |p|
-            - if @posts.present?
-              - @posts[0..0].each_with_index do |p, i|
-                .hero-news-copy
-                  %h1.heading-small
-                    = link_to(p["title"]["rendered"].html_safe, "/news/" + p["slug"])
-                  .hero-news-excerpt
-                    %p
-                      = truncate_excerpt(p["excerpt"]["rendered"])
-                    = read_more("/news/" + p["slug"])
-                    = comments("/news/" + p["slug"], 0)
-                .hero-news-image-container
-                  = large_image_tag(p)
-
-      .column-two-thirds
-        - if @posts.present?
-          - @posts[1..-1].each_with_index do |p, i|
+      - if @hero_post
+        .column-full
+          .hero-news
             .news-item
-              %h3.heading-small
-                %hr{:class => 'rule-small'}
-                = link_to(p["title"]["rendered"].html_safe, "/news/" + p["slug"])
-              .news-item-text
-                .news-item-meta
-                  - profile = PeopleFinderProfile.from_api(p["author_email"])
-                  = succeed ', ' do
-                    = profile.name || "Unknown"
-                  = succeed ' - ' do
-                    - date = DateTime.parse(p["date"])
-                    = date.strftime('%d %B %Y')
-                    = date.strftime('@ %I:%M')
-                  - p["news_category"].each do |cat|
-                    = news_cats( cat["name"], cat["slug"] )
-
-                .news-item-excerpt
+              .hero-news-copy
+                %h1.heading-small
+                  = link_to(@hero_post["title"]["rendered"].html_safe, "/news/" + @hero_post["slug"])
+                .hero-news-excerpt
                   %p
-                    = truncate_excerpt(p["excerpt"]["rendered"])
-                  = read_more("/news/" + p["slug"])
-
-                  = comments("/news/" + p["slug"], 0)
+                    = truncate_excerpt(@hero_post["excerpt"]["rendered"])
+                  = read_more("/news/" + @hero_post["slug"])
+                  = comments("/news/" + @hero_post["slug"], 0)
               .hero-news-image-container
-                = large_image_tag(p)
+                = large_image_tag(@hero_post)
 
       .column-two-thirds
-        - @posts[1..-1].each_with_index do |p, i|
+        - @posts.each_with_index do |p|
           .news-item
             %h3.heading-small
               %hr{:class => 'rule-small'}
@@ -95,15 +65,9 @@
                     - comment_count = Integer(@comments_headers["x-wp-total"])
                     = comments("/news/" + p["slug"], comment_count)
 
-              -#%pre{:style => 'width: 100%; display: block; font-family: Courier New;'}
-              -#= p
-
                   - if @comments_headers["x-wp-total"].present?
                     - comment_count = Integer(@comments_headers["x-wp-total"])
                     = comments("/news/" + p["slug"], comment_count)
-
-              -#%pre{:style => 'width: 100%; display: block; font-family: Courier New;'}
-              -#= p
 
         = render partial: "widgets/pagination"
 
