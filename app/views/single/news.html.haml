@@ -52,7 +52,9 @@
               -#  x-wp-total: #{@comments_headers["x-wp-total"]}
 
               %h2.heading-medium
-                #{@comments_headers["x-wp-total"]} Comments
+                - if @comments_headers["x-wp-total"].present?
+                  - comment_count = Integer(@comments_headers["x-wp-total"])
+                  = comments_heading(comment_count)
               - @comments.each do |comment|
                 = comment["content"]["rendered"].html_safe
                 %a.cta-comment-reply
