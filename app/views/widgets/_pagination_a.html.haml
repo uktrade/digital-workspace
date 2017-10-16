@@ -1,0 +1,28 @@
+.pagination-a
+
+  -#%pre
+  -#  headers: #{@posts_headers}
+  -#%pre
+  -#  x-wp-totalpages: #{@posts_headers["x-wp-totalpages"]}
+  -#%pre
+  -#  x-wp-total: #{@posts_headers["x-wp-total"]}
+
+  %hr{:class => 'rule-small'}
+  - if @posts_headers.present?
+    .prev
+      - if @posts_headers["x-wp-totalpages"] > "1"
+        = link_to( "Prev Page", "/news/" )
+    .pages
+      %span.page-number
+        1
+      %span.page-number
+        %a
+          2
+      %span.page-number
+        %a
+          &hellip;
+      %span.page-number
+        %a
+          85
+    .next
+      = link_to( "Next Page",  "/news/")
