@@ -78,7 +78,7 @@ ul.breadcrumb {
 
 		a {
 			position: relative;
-			padding: 18px 40px 18px 0px;
+			padding: 18px 18px 18px 0px;
 			display: inline-block;
 			font-weight: 700;
 			text-decoration: none;
@@ -97,5 +97,11 @@ ul.breadcrumb {
 				height: 20px;
 			}
 		}
+	}
+
+	.user-account-profile-img {
+		width: 60px;
+		max-height: 100%;
+		float: right;
 	}
 }
