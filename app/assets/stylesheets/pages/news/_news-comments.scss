@@ -16,11 +16,12 @@
 		width: 4px;
 		background-color: $brand_color_c;
 	}
+}
 
-	.reply-name {
-		font-size: 19px;
-		font-weight: 700;
-	}
+.comment-name {
+	color: #000000;
+	font-size: $text_small;
+	font-weight: 700;
 }
 
 .leave-comment-textarea {
@@ -30,9 +31,4 @@
 	margin: 0px 0px 20px 0px;
 	min-height: 100px;
 	font-size: 16px;
-}
-
-.comment-meta {
-	font-size: 16px;
-	margin-bottom: 10px;
 }
