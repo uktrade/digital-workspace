@@ -109,52 +109,6 @@
     -#      = link_to("See all stats", "/")
     -#%hr{:id => 'statistics', :class => 'rule-large'}
 
-    / .grid-row
-    /   .column-full
-    /     %h2.heading-medium
-    /       Top 20 How to's
-    / .grid-row
-    /   .column-quarter
-    /     %span.stat-description
-    /       How to&hellip;
-    /     %ul.how-tos
-    /       - @howtos.each_with_index do |p, index|
-    /         - case index
-    /         - when 0..4
-    /           %li
-    /             = link_to(p["title"]["rendered"].html_safe, p["slug"])
-    /   .column-quarter
-    /     %span.stat-description
-    /       &nbsp;
-    /     %ul.how-tos
-    /       - @howtos.each_with_index do |p, index|
-    /         - case index
-    /         - when 5..9
-    /           %li
-    /             = link_to(p["title"]["rendered"].html_safe, p["slug"])
-    /   .column-quarter
-    /     %span.stat-description
-    /       &nbsp;
-    /     %ul.how-tos
-    /       - @howtos.each_with_index do |p, index|
-    /         - case index
-    /         - when 10..14
-    /           %li
-    /             = link_to(p["title"]["rendered"].html_safe, p["slug"])
-    /   .column-quarter
-    /     %span.stat-description
-    /       &nbsp;
-    /     %ul.how-tos
-    /       - @howtos.each_with_index do |p, index|
-    /         - case index
-    /         - when 15..19
-    /           %li
-    /             = link_to(p["title"]["rendered"].html_safe, p["slug"])
-    / .grid-row
-    /   .column-full.section-note
-    /     %p
-    /       = link_to("See all How to's", "/")
-    / %hr{:id => 'statistics', :class => 'rule-large'}
 
     .grid-row
       .column-half
@@ -186,6 +140,54 @@
       .column-full.section-note
         %p
           = link_to("See all stats", "/")
+    %hr{:id => 'statistics', :class => 'rule-large'}
+
+
+    .grid-row
+      .column-full
+        %h2.heading-medium
+          How do I?
+        %span.howdoi-description
+          This is the most visited 20 &quot;How do I?&quot; content
+    .grid-row
+      .column-quarter
+        %ul.how-tos
+          - @howtos.each_with_index do |p, index|
+            - case index
+            - when 0..4
+              %li
+                = link_to(p["title"]["rendered"].html_safe, p["slug"])
+      .column-quarter
+        %span.stat-description
+          &nbsp;
+        %ul.how-tos
+          - @howtos.each_with_index do |p, index|
+            - case index
+            - when 5..9
+              %li
+                = link_to(p["title"]["rendered"].html_safe, p["slug"])
+      .column-quarter
+        %span.stat-description
+          &nbsp;
+        %ul.how-tos
+          - @howtos.each_with_index do |p, index|
+            - case index
+            - when 10..14
+              %li
+                = link_to(p["title"]["rendered"].html_safe, p["slug"])
+      .column-quarter
+        %span.stat-description
+          &nbsp;
+        %ul.how-tos
+          - @howtos.each_with_index do |p, index|
+            - case index
+            - when 15..19
+              %li
+                = link_to(p["title"]["rendered"].html_safe, p["slug"])
+    .grid-row
+      .column-full.section-note
+        %p
+          = link_to("See all How to's", "/")
     %hr{:id => 'statistics', :class => 'rule-large'}
 
 
