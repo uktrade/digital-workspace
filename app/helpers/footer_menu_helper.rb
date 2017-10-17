@@ -36,6 +36,6 @@ module FooterMenuHelper
   end
 
   def footer_menu_5_content
-    footer_menu_4.first['acf']['menu']
+    footer_menu_5.first['acf']['menu']
   end
 end
