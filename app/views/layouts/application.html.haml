@@ -72,8 +72,17 @@
       %h2.heading-medium
         Regions
       %hr{:class => 'rule-footer'}
+      %h3.heading-small
+        Uk Regions
         -if !@footer_menu_4_content.nil?
           - @footer_menu_4_content.each do |menu_link|
+            %li
+              = link_to(menu_link['menu_item']['title'], menu_link['menu_item']['url'], target: menu_link['menu_item']['target'])
+
+      %h3.heading-small
+        International Regions
+        -if !@footer_menu_5_content.nil?
+          - @footer_menu_5_content.each do |menu_link|
             %li
               = link_to(menu_link['menu_item']['title'], menu_link['menu_item']['url'], target: menu_link['menu_item']['target'])
   %hr{:class => 'rule-footer'}

@@ -1,6 +1,6 @@
 module FooterMenuHelper
   def footer_menu_1
-    WpApi.get_json_body('menus?slug=footer-menu-1')
+    WpApi.get_json_body('menus?slug=networks')
   end
 
   def footer_menu_1_content
@@ -8,7 +8,7 @@ module FooterMenuHelper
   end
 
   def footer_menu_2
-    WpApi.get_json_body('menus?slug=footer-menu-2')
+    WpApi.get_json_body('menus?slug=teams')
   end
 
   def footer_menu_2_content
@@ -16,7 +16,7 @@ module FooterMenuHelper
   end
 
   def footer_menu_3
-    WpApi.get_json_body('menus?slug=footer-menu-3')
+    WpApi.get_json_body('menus?slug=sectors')
   end
 
   def footer_menu_3_content
@@ -24,10 +24,18 @@ module FooterMenuHelper
   end
 
   def footer_menu_4
-    WpApi.get_json_body('menus?slug=footer-menu-4')
+    WpApi.get_json_body('menus?slug=uk-regions')
   end
 
   def footer_menu_4_content
+    footer_menu_4.first['acf']['menu']
+  end
+
+  def footer_menu_5
+    WpApi.get_json_body('menus?slug=international-regions')
+  end
+
+  def footer_menu_5_content
     footer_menu_4.first['acf']['menu']
   end
 end
