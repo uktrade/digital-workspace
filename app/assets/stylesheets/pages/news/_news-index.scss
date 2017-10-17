@@ -12,6 +12,10 @@
 	margin-bottom: 30px;
 
 	@extend %clearfix;
+
+	.news-item {
+		margin-bottom: 0;
+	}
 }
 
 .hero-news-copy {
@@ -37,12 +41,12 @@
 }
 
 a.cta-read-more {
-	font-size: 16px;
-	font-weight: 600;
+	/*font-size: 16px;*/
+	/*font-weight: 600;*/
 }
 
 a.cta-comments {
-	font-size: 16px;
-	font-weight: 100;
+	/*font-size: 16px;*/
+	/*font-weight: 100;*/
 	color: $brand_chrome_c;
 }

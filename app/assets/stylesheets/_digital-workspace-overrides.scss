@@ -416,20 +416,16 @@
 	}
 	.news-item-meta {
 		color: #6f777b;
-		font-size: 12px;
 		padding-top: 4px;
 		padding-bottom: 1px;
 		margin-top: 0px;
 	}
 	.heading-medium {
-		font-size: 16px;
 		margin: 0;
 		padding-top: 6px;
 		padding-bottom: 4px;
 	}
-	p {
-		font-size: 14px;
-	}
+
 	&:first-child {
 		.heading-medium {
 			margin-top: 0px;
@@ -496,7 +492,7 @@
 			margin-bottom: 20px;
 		}
 		.heading-medium {
-			font-size: 19px;
+			/*font-size: 19px;*/
 			margin: 0;
 			padding-top: 6px;
 			padding-bottom: 4px;
