@@ -69,7 +69,6 @@
 
         %hr{:class => 'rule-small'}
         .pagination
-          %hr{:class => 'rule-small'}
           .prev
             - if @paginator.previous_page_no
               = link_to( "Prev Page", "/news/?page=#{@paginator.previous_page_no}" )
