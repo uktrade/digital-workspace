@@ -40,6 +40,10 @@
 
 - content_for :footer_top do
   - @footer_menu_1_content = footer_menu_1_content
+  - @footer_menu_2_content = footer_menu_2_content
+  - @footer_menu_3_content = footer_menu_3_content
+  - @footer_menu_4_content = footer_menu_4_content
+  - @footer_menu_5_content = footer_menu_5_content
   .grid-row
     .column-quarter
       %h2.heading-medium
@@ -74,6 +78,7 @@
       %hr{:class => 'rule-footer'}
       %h3.heading-small
         Uk Regions
+      %ul
         -if !@footer_menu_4_content.nil?
           - @footer_menu_4_content.each do |menu_link|
             %li
@@ -81,6 +86,7 @@
 
       %h3.heading-small
         International Regions
+      %ul
         -if !@footer_menu_5_content.nil?
           - @footer_menu_5_content.each do |menu_link|
             %li
