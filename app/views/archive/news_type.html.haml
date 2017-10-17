@@ -8,6 +8,8 @@
             = link_to( 'Home', "/" )
           %li
             = link_to( 'News', "/news/" )
+          %li
+            = link_to( @slug, "/news/category/#{@slug}" )
 
       .column-half
         .form-group.select-category
