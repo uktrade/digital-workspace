@@ -8,7 +8,7 @@ module FooterMenuHelper
   end
 
   def footer_menu_1_title
-    return footer_menu_1.first['title']["rendered"]
+    footer_menu_1.first['title']['rendered']
   end
 
   def footer_menu_2
@@ -20,7 +20,7 @@ module FooterMenuHelper
   end
 
   def footer_menu_2_title
-    return footer_menu_2.first['title']["rendered"]
+    footer_menu_2.first['title']['rendered']
   end
 
   def footer_menu_3
@@ -32,7 +32,7 @@ module FooterMenuHelper
   end
 
   def footer_menu_3_title
-    return footer_menu_3.first['title']["rendered"]
+    footer_menu_3.first['title']['rendered']
   end
 
   def footer_menu_4
@@ -44,7 +44,7 @@ module FooterMenuHelper
   end
 
   def footer_menu_4_title
-    return footer_menu_4.first['title']["rendered"]
+    footer_menu_4.first['title']['rendered']
   end
 
   def footer_menu_5
@@ -56,7 +56,6 @@ module FooterMenuHelper
   end
 
   def footer_menu_5_title
-    return footer_menu_5.first['title']["rendered"]
+    footer_menu_5.first['title']['rendered']
   end
-
 end
