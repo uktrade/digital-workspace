@@ -820,7 +820,7 @@ html, body, button, input, main, table, td, th, .heading-xlarge, .heading-large,
 }
 
 #footer {
-	border-top: 16px solid #0c60a3;
+	border-top: 16px solid $brand_color_a;
 }
 
 .footer-wrapper {
@@ -838,10 +838,6 @@ html, body, button, input, main, table, td, th, .heading-xlarge, .heading-large,
 			margin-top: 15px;
 			margin-bottom: 0;
 		}
-	}
-
-	#footer {
-		border-top: 1px solid #a1acb2;
 	}
 
 	.footer-wrapper {
