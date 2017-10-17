@@ -37,7 +37,7 @@
                   = read_more("/news/" + @hero_post["slug"])
                   - if @comments_headers["x-wp-total"].present?
                     - comment_count = Integer(@comments_headers["x-wp-total"])
-                    = comments("/news/" + p["slug"], comment_count)
+                    = comments("/news/" + @hero_post["slug"], comment_count)
               .hero-news-image-container
                 = large_image_tag(@hero_post)
 
@@ -53,7 +53,7 @@
                 = succeed ', ' do
                   = profile.name || "Unknown"
 
-                = succeed ' - ' do
+                = succeed ' GMT, ' do
                   - date = DateTime.parse(p["date"])
                   = date.strftime('%d %B %Y')
                   = date.strftime('@ %I:%M')
