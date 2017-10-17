@@ -7,12 +7,20 @@ module FooterMenuHelper
     footer_menu_1.first['acf']['menu']
   end
 
+  def footer_menu_1_title
+    return footer_menu_1.first['title']["rendered"]
+  end
+
   def footer_menu_2
     WpApi.get_json_body('menus?slug=teams')
   end
 
   def footer_menu_2_content
     footer_menu_2.first['acf']['menu']
+  end
+
+  def footer_menu_2_title
+    return footer_menu_2.first['title']["rendered"]
   end
 
   def footer_menu_3
@@ -23,12 +31,20 @@ module FooterMenuHelper
     footer_menu_3.first['acf']['menu']
   end
 
+  def footer_menu_3_title
+    return footer_menu_3.first['title']["rendered"]
+  end
+
   def footer_menu_4
     WpApi.get_json_body('menus?slug=uk-regions')
   end
 
   def footer_menu_4_content
     footer_menu_4.first['acf']['menu']
+  end
+
+  def footer_menu_4_title
+    return footer_menu_4.first['title']["rendered"]
   end
 
   def footer_menu_5
@@ -38,4 +54,9 @@ module FooterMenuHelper
   def footer_menu_5_content
     footer_menu_5.first['acf']['menu']
   end
+
+  def footer_menu_5_title
+    return footer_menu_5.first['title']["rendered"]
+  end
+
 end
