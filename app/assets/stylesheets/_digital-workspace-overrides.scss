@@ -821,6 +821,10 @@ html, body, button, input, main, table, td, th, .heading-xlarge, .heading-large,
 
 #footer {
 	border-top: 16px solid $brand_color_a;
+
+	.heading-xsmall {
+		font-weight: 700;
+	}
 }
 
 .footer-wrapper {
