@@ -8,7 +8,7 @@
             = link_to( 'Home', "/" )
           %li
             = link_to( 'News', "/news/" )
-          %li
+          %li.case
             = link_to( @slug, "/news/category/#{@slug}" )
 
       .column-half
@@ -23,7 +23,7 @@
     .grid-row
       .column-full
         %hr{:class => 'rule-large rule-top'}
-        %h2.heading-medium
+        %h2.heading-medium.case
           #@slug
     .grid-row
       - if @hero_post
