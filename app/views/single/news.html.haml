@@ -26,7 +26,7 @@
               %hr{:class => 'rule-small'}
               = p["title"]["rendered"]
             .news-item-text
-              .news-item-meta
+              .post-meta
                 - profile = PeopleFinderProfile.from_api(p["author_email"])
                 = succeed ', ' do
                   = profile.name || "Unknown"
@@ -53,14 +53,23 @@
                 - if @comments_headers["x-wp-total"].present?
                   - comment_count = Integer(@comments_headers["x-wp-total"])
                   = comments_heading(comment_count)
+
               - @comments.each do |comment|
+                .post-meta
+                  = succeed ', ' do
+                    %span.comment-name
+                      = comment["author_name"]
+                  %span.comment-date
+                    - date = DateTime.parse(comment["date"])
+                    = date.strftime('%d %B %Y')
+                    = date.strftime('@ %I:%M')
                 = comment["content"]["rendered"].html_safe
                 %a.cta-comment-reply
                   Reply
                 .comment-replies
-                  .comment-meta
-                    %span.reply-name Angela
-                    %span.reply-date
+                  .post-meta
+                    %span.comment-name Angela
+                    %span.post-date
                       = precede ', ' do
                         5 Oct 2017 @ 13:25
 

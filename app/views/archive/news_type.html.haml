@@ -50,7 +50,7 @@
               %hr{:class => 'rule-small'}
               = link_to(p["title"]["rendered"].html_safe, "/news/" + p["slug"])
             .news-item-text
-              .news-item-meta
+              .post-meta
                 - profile = PeopleFinderProfile.from_api(p["author_email"])
                 = succeed ', ' do
                   = profile.name || "Unknown"
