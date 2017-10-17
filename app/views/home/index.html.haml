@@ -114,38 +114,25 @@
         %span.howdoi-description
           This is the most visited 20 &quot;How do I?&quot; content
     .grid-row
-      .column-quarter
+      .column-third
         %ul.how-tos
-          - @howtos.each_with_index do |p, index|
+          - @howdois.each_with_index do |p, index|
             - case index
-            - when 0..4
+            - when 0..7
               %li
                 = link_to(p["title"]["rendered"].html_safe, p["slug"])
-      .column-quarter
-        %span.stat-description
-          &nbsp;
+      .column-third
         %ul.how-tos
-          - @howtos.each_with_index do |p, index|
+          - @howdois.each_with_index do |p, index|
             - case index
-            - when 5..9
+            - when 8..15
               %li
                 = link_to(p["title"]["rendered"].html_safe, p["slug"])
-      .column-quarter
-        %span.stat-description
-          &nbsp;
+      .column-third
         %ul.how-tos
-          - @howtos.each_with_index do |p, index|
+          - @howdois.each_with_index do |p, index|
             - case index
-            - when 10..14
-              %li
-                = link_to(p["title"]["rendered"].html_safe, p["slug"])
-      .column-quarter
-        %span.stat-description
-          &nbsp;
-        %ul.how-tos
-          - @howtos.each_with_index do |p, index|
-            - case index
-            - when 15..19
+            - when 16..23
               %li
                 = link_to(p["title"]["rendered"].html_safe, p["slug"])
     .grid-row
