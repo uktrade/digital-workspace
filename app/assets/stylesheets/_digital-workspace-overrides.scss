@@ -532,6 +532,12 @@
 .graph-summary {
 	color: #ffffff;
 	margin-bottom: 15px;
+
+	&.graph-summary-orange {
+		.stat {
+			background-color: $brand_color_a;
+		}
+	}
 	&.graph-summary-teal {
 		.stat {
 			background-color: #30a197;
@@ -579,19 +585,19 @@
 			background-size: 60%;
 			padding-top: 150px;
 		}
-		&.graph-summary-teal {
+		&.graph-summary-a {
 			.stat {
-				background-image: url(http://dit-prototype.preview3.co.uk/assets/graph-dots.png);
+				background-image: asset-data-url("graph-dots.png");
 			}
 		}
-		&.graph-summary-blue {
+		&.graph-summary-b {
 			.stat {
-				background-image: url(http://dit-prototype.preview3.co.uk/assets/graph-pie.png);
+				background-image: asset-data-url("graph-pie.png");
 			}
 		}
-		&.graph-summary-pink {
+		&.graph-summary-c {
 			.stat {
-				background-image: url(http://dit-prototype.preview3.co.uk/assets/graph-line.png);
+				background-image: asset-data-url("graph-line.png");
 			}
 		}
 	}
