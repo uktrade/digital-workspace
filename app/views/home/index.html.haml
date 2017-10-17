@@ -49,7 +49,8 @@
                     = news_cats( cat["name"], cat["slug"] )
 
               %h3.heading-medium
-                = link_to(p["title"]["rendered"].html_safe, "/news/" + p["slug"])
+                - heading = truncate_home_news_title(p["title"]["rendered"])
+                = link_to(heading, "/news/" + p["slug"])
 
                 .news-item-excerpt
                   %p
