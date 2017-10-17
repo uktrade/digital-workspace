@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def truncate_home_news_title(text)
-    html_text = truncate(text, length: 40, omission: ' &hellip;', escape: false)
+    html_text = truncate(text, length: 65, omission: ' &hellip;', escape: false)
     strip_tags(html_text)
   end
 
