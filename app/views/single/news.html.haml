@@ -60,6 +60,7 @@
                     %span.comment-name
                       = comment["author_name"]
                   %span.comment-date
+                  = succeed ' GMT ' do
                     - date = DateTime.parse(comment["date"])
                     = date.strftime('%d %B %Y')
                     = date.strftime('@ %I:%M')
@@ -70,7 +71,7 @@
                   .post-meta
                     %span.comment-name Angela
                     %span.post-date
-                      = precede ', ' do
+                      = succeed ' GMT ' do
                         5 Oct 2017 @ 13:25
 
                   %p
