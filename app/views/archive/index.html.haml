@@ -82,10 +82,10 @@
         %h3.heading-small
           All categories
 
-          %ul.list.font-small
-            - @categories.each do |c|
-              %li
-                = link_to( c["name"], "/news/category/" + c["slug"])
-                %span.news-category-count.font-xsmall
-                  = "(#{c["count"]})"
+        %ul.list.font-small
+          - @categories.each do |c|
+            %li
+              = link_to( c["name"], "/news/category/" + c["slug"])
+              %span.news-category-count.font-xsmall
+                = "(#{c["count"]})"
 
