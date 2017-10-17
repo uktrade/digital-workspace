@@ -30,10 +30,14 @@ dl {
 // ------------------------------------
 // News pages
 
+.hero-news {
+	.heading-medium: $text_medium;
+}
+
 .news-item-excerpt {
 	p {
 		font-size: $text_xsmall;
-		line-height: 24px;
+		line-height: $text_medium;
 	}
 }
 
