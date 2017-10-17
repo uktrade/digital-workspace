@@ -35,7 +35,9 @@
                   %p
                     = truncate_excerpt(@hero_post["excerpt"]["rendered"])
                   = read_more("/news/" + @hero_post["slug"])
-                  = comments("/news/" + @hero_post["slug"], 0)
+                  - if @comments_headers["x-wp-total"].present?
+                    - comment_count = Integer(@comments_headers["x-wp-total"])
+                    = comments("/news/" + p["slug"], comment_count)
               .hero-news-image-container
                 = large_image_tag(@hero_post)
 
