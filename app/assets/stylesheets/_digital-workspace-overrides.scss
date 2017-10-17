@@ -168,7 +168,7 @@
 
 .homepage-top {
 	background: #454a4c;
-	background-image: asset-url("#{$image_path}find-people-pattern.png");
+	background-image: asset-data-url("find-people-pattern.png");
 	color: #ffffff;
 
 	.homepage-top-inner {
