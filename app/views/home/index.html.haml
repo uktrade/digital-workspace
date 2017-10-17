@@ -39,10 +39,6 @@
 
               .news-item-text
                 .news-item-meta
-                  - profile = PeopleFinderProfile.from_api(p["author_email"])
-                  = succeed ', ' do
-                    = profile.name || "Unknown"
-
                   = succeed ' - ' do
                     - date = DateTime.parse(p["date"])
                     = date.strftime('%d %B %Y')
