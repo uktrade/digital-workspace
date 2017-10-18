@@ -25,7 +25,11 @@
 		max-width: 960px;
 		text-align: left;
 		margin: 0 auto;
-		padding: 0 15px;
+		padding: 0px;
+
+		@media (min-width: $screen_medium) {
+			padding: 0px 15px;
+		}
 	}
 
 	.govuk-search {
