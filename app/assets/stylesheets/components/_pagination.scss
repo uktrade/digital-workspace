@@ -15,7 +15,7 @@
 				position: absolute;
 				top: 0px;
 				left: 0px;
-				background-image: asset-url("#{$image_path}arrow-left.png");
+				background-image: asset-data-url("arrow-left.png");
 				background-repeat: no-repeat;
 				width: 19px;
 				height: 14px;
@@ -33,6 +33,7 @@
 		float: left;
 		text-align: center;
 		width: 40%;
+		min-height: 1px;
 	}
 
 	.page-number {
@@ -43,7 +44,7 @@
 	.next {
 		box-sizing: border-box;
 		position: relative;
-		float: left;
+		float: right;
 		text-align: right;
 		width: 30%;
 		min-height: 1px;
@@ -57,7 +58,7 @@
 				position: absolute;
 				top: 0px;
 				right: 0px;
-				background-image: asset-url("#{$image_path}arrow-right.png");
+				background-image: asset-data-url("arrow-right.png");
 				background-repeat: no-repeat;
 				width: 19px;
 				height: 14px;

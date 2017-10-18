@@ -51,9 +51,12 @@
 @import "digital-workspace-overrides";			   // Additional styles either new or over-riding for the Digital Workspace
 
 // Partials
-@import "header";
-@import "pagination";
+@import "components/header";
+@import "components/breadcrumb";
+@import "components/pagination";
+@import "components/post-meta";
+@import "components/typography";
 
 // News section
-@import "news/news-index";
-@import "news/news-comments";
+@import "pages/news/news-index";
+@import "pages/news/news-comments";

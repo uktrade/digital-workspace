@@ -1,0 +1,56 @@
+/* Typography */
+
+$text_large		: 36px;
+$text_medium	: 24px;
+$text_small		: 19px;
+$text_xsmall	: 16px;
+$text_xxsmall	: 12px;
+
+.heading-large {
+	font-size: $text_large;
+}
+
+.heading-medium {
+	font-size: $text_medium;
+}
+
+.heading-small {
+	font-size: $text_small;
+}
+
+p,
+ul,
+ol,
+dl {
+	li {
+		font-size: $text_small;
+	}
+}
+
+// ------------------------------------
+// News pages
+
+.hero-news {
+	.heading-medium: $text_medium;
+}
+
+.news-item-excerpt {
+	p {
+		font-size: $text_xsmall;
+		line-height: $text_medium;
+	}
+}
+
+.news-item-meta {
+	font-size: $text_xxsmall;
+}
+
+a.cta-read-more {
+	font-size: $text_xsmall;
+	font-weight: 600;
+}
+
+a.cta-comments {
+	font-size: $text_xsmall;
+	font-weight: 100;
+}

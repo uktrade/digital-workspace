@@ -48,11 +48,11 @@
               %hr{:class => 'rule-small'}
               = link_to(p["title"]["rendered"].html_safe, "/news/" + p["slug"])
             .news-item-text
-              .news-item-meta
+              .post-meta
                 - profile = PeopleFinderProfile.from_api(p["author_email"])
                 = succeed ', ' do
                   = profile.name || "Unknown"
-                = succeed ' - ' do
+                = succeed '  GMT, ' do
                   - date = DateTime.parse(p["date"])
                   = date.strftime('%d %B %Y')
                   = date.strftime('@ %I:%M')
@@ -66,11 +66,9 @@
                 - if @comments_headers["x-wp-total"].present?
                   - comment_count = Integer(@comments_headers["x-wp-total"])
                   = comments("/news/" + p["slug"], comment_count)
-            %pre{:style => 'width: 100%; display: block; font-family: Courier New;'}
-              = p
 
+        %hr{:class => 'rule-small'}
         .pagination
-          %hr{:class => 'rule-small'}
           .prev
             - if @paginator.previous_page_no
               = link_to( "Prev Page", "/news/?page=#{@paginator.previous_page_no}" )
@@ -84,10 +82,10 @@
         %h3.heading-small
           All categories
 
-          %ul.list.font-small
-            - @categories.each do |c|
-              %li
-                = link_to( c["name"], "/news/category/" + c["slug"])
-                %span.news-category-count.font-xsmall
-                  = "(#{c["count"]})"
+        %ul.list.font-small
+          - @categories.each do |c|
+            %li
+              = link_to( c["name"], "/news/category/" + c["slug"])
+              %span.news-category-count.font-xsmall
+                = "(#{c["count"]})"
 

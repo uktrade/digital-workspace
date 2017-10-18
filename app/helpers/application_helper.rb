@@ -3,6 +3,21 @@ module ApplicationHelper
     TweetParser.new(tweet).parse.html_safe
   end
 
+  def truncate_home_news_title(text)
+    html_text = truncate(text, length: 65, omission: ' &hellip;', escape: false)
+    strip_tags(html_text)
+  end
+
+  def truncate_excerpt_hero(text)
+    html_text = truncate(text, length: 200, omission: ' ...', escape: false)
+    strip_tags(html_text)
+  end
+
+  def truncate_excerpt_home_news(text)
+    html_text = truncate(text, length: 100, omission: ' ...', escape: false)
+    strip_tags(html_text)
+  end
+
   def truncate_excerpt(text)
     html_text = truncate(text, length: 200, omission: ' ...', escape: false)
     strip_tags(html_text)

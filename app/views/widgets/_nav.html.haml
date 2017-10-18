@@ -2,17 +2,15 @@
   Menu
 %nav{:id => "proposition-menu"}
   %ul{:id => "proposition-links"}
+    -#%li
+    -#  = link_to "People finder", ENV['PEOPLEFINDER_URL']
     %li
-      = link_to "Peoplefinder", ENV['PEOPLEFINDER_URL']
+      = link_to "News and views", "/news/"
     %li
-      = link_to "News", "/news/"
+      = link_to "Working at DIT", "/"
     %li
-      = link_to "How do I", "/"
-    %li
-      = link_to "Guidance", "/"
-    %li
-      = link_to "Policy", "/"
+      = link_to "About DIT", "/"
     %li
       = link_to "Tools", "/"
     %li
-      = link_to "Data hub", "/"
+      = link_to "Data Hub", "/"

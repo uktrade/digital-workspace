@@ -103,6 +103,9 @@
 	#global-header.with-proposition {
 		.header-wrapper {
 			.header-proposition {
+				#proposition-menu  {
+					margin-left: 15px;
+				}
 				#proposition-name {
 					font-size: 18px;
 				}
@@ -167,8 +170,8 @@
 // homepage intro block
 
 .homepage-top {
-	background: #454a4c;
-	background-image: asset-url("#{$image_path}find-people-pattern.png");
+	background: $brand_chrome_d;
+	background-image: asset-data-url("find-people-pattern.png");
 	color: #ffffff;
 
 	.homepage-top-inner {
@@ -411,22 +414,13 @@
 		float: left;
 		width: 66.66667%
 	}
-	.news-item-meta {
-		color: #6f777b;
-		font-size: 12px;
-		padding-top: 4px;
-		padding-bottom: 1px;
-		margin-top: 0px;
-	}
+
 	.heading-medium {
-		font-size: 16px;
 		margin: 0;
 		padding-top: 6px;
 		padding-bottom: 4px;
 	}
-	p {
-		font-size: 14px;
-	}
+
 	&:first-child {
 		.heading-medium {
 			margin-top: 0px;
@@ -485,15 +479,8 @@
 		.news-item-text {
 			width: 100%;
 		}
-		.news-item-meta {
-			font-size: 14px;
-			padding-top: 0px;
-			padding-bottom: 0px;
-			margin-top: 20px;
-			margin-bottom: 20px;
-		}
+
 		.heading-medium {
-			font-size: 19px;
 			margin: 0;
 			padding-top: 6px;
 			padding-bottom: 4px;
@@ -532,6 +519,12 @@
 .graph-summary {
 	color: #ffffff;
 	margin-bottom: 15px;
+
+	&.graph-summary-orange {
+		.stat {
+			background-color: $brand_color_a;
+		}
+	}
 	&.graph-summary-teal {
 		.stat {
 			background-color: #30a197;
@@ -567,25 +560,31 @@
 	}
 }
 
+.howdoi-description {
+	display: block;
+	font-size: 16px;
+	margin-top: 0;
+}
+
 @media (min-width: 641px) {
 	.graph-summary {
 		.stat {
 			background-size: 60%;
 			padding-top: 150px;
 		}
-		&.graph-summary-teal {
+		&.graph-summary-a {
 			.stat {
-				background-image: url(http://dit-prototype.preview3.co.uk/assets/graph-dots.png);
+				background-image: asset-data-url("graph-dots.png");
 			}
 		}
-		&.graph-summary-blue {
+		&.graph-summary-b {
 			.stat {
-				background-image: url(http://dit-prototype.preview3.co.uk/assets/graph-pie.png);
+				background-image: asset-data-url("graph-pie.png");
 			}
 		}
-		&.graph-summary-pink {
+		&.graph-summary-c {
 			.stat {
-				background-image: url(http://dit-prototype.preview3.co.uk/assets/graph-line.png);
+				background-image: asset-data-url("graph-line.png");
 			}
 		}
 	}
@@ -808,7 +807,11 @@ html, body, button, input, main, table, td, th, .heading-xlarge, .heading-large,
 }
 
 #footer {
-	border-top: 16px solid #0c60a3;
+	border-top: 16px solid $brand_color_a;
+
+	.heading-xsmall {
+		font-weight: 700;
+	}
 }
 
 .footer-wrapper {
@@ -826,10 +829,6 @@ html, body, button, input, main, table, td, th, .heading-xlarge, .heading-large,
 			margin-top: 15px;
 			margin-bottom: 0;
 		}
-	}
-
-	#footer {
-		border-top: 1px solid #a1acb2;
 	}
 
 	.footer-wrapper {
@@ -854,4 +853,8 @@ html, body, button, input, main, table, td, th, .heading-xlarge, .heading-large,
 			margin-top: 0px;
 		}
 	}
+}
+
+.case {
+	text-transform: capitalize;
 }
