@@ -468,7 +468,7 @@
 	}
 }
 
-@media(min-width: 641px) {
+@media(min-width: $screen_medium) {
 	.news-item {
 		.image-holder {
 			width: 100%;
