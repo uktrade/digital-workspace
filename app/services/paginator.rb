@@ -7,6 +7,14 @@ class Paginator
     @total_posts = total_posts.to_i
   end
 
+  def current_page_no
+    @current_page
+  end
+
+  def last_page_no
+    @total_pages
+  end
+
   def previous_page_no
     @current_page - 1 if @current_page > 1
   end

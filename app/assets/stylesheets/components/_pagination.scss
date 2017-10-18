@@ -71,6 +71,16 @@
 		}
 	}
 
+	.numbered-paging {
+		float: left;
+		text-align: center;
+		width: 40%;
+		li {
+			display: inline-block;
+			padding: 0 0.2em;
+		}
+	}
+
 .pagination{
 	@extend %clearfix;
 	margin-bottom: 50px;
