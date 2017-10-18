@@ -20,8 +20,11 @@
 
 .hero-news-copy {
 	box-sizing: border-box;
-	float: left;
-	width: 33.3333%;
+
+	@media (min-width: $screen_medium) {
+		float: left;
+		width: 33.3333%;
+	}
 }
 
 .hero-news-excerpt p {
@@ -31,9 +34,14 @@
 
 .hero-news-image-container {
 	box-sizing: border-box;
-	float: left;
-	width: 66.6666%;
-	padding-left: 100px;
+	margin-top: 10px;
+
+	@media (min-width: $screen_medium) {
+		float: left;
+		width: 66.6666%;
+		margin-top: 0px;
+		padding-left: 100px;
+	}
 }
 
 .news-category-count {
