@@ -18,4 +18,8 @@ module ImageHelper
     image_tag post['acf']['image']['sizes']['small'],
               alt: post['title']['rendered']
   end
+
+  def people_finder_image_tag(*opts)
+    image_tag(*opts)
+  end
 end

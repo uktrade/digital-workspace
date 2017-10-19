@@ -53,3 +53,6 @@ Ensure that the environment variables are defined:
 ## Word Press API
 The Word Press API URL should be defined as an environment variable:
 `WP_API_URL`
+
+## Securing S3 assets
+We need to ensure that all assets served by the Workspace from S3 are rendered with a private URL. Be sure to wrap every call to render or link to an asset hosted on S3 with a `secure_asset_url` helper. TBC
