@@ -1,4 +1,4 @@
-%div{:id => 'content', :class => 'page-content'}
+%div{:id => 'generic_content', :class => 'page-content'}
   = render partial: "widgets/people_search_inner_page"
   %main#content.root-index.content-section
     .grid-row
@@ -6,20 +6,17 @@
         %ul.breadcrumb
           %li
             = link_to( 'Home', "/" )
-          %li
-            xxxxx
 
     .grid-row
-      .column-two-thirds
-        - if @posts.present?
-          - @posts.each do |p|
-            .news-item
-              %h2.heading-large
-                %hr{:class => 'rule-small'}
-                = p["title"]["rendered"]
-            = p["content"]["rendered"].html_safe
-
-      .column-third.news-category
-        %hr{class: 'rule-large'}
+      .column-full
+        %hr{:class => 'rule-small'}
+    .grid-row
+      - if @posts.present?
+        - @posts.each do |p|
+          .column-third
+            %h2.heading-medium
+              = link_to(p["title"]["rendered"], p["slug"])
+            %p
+              = truncate_excerpt(p["excerpt"]["rendered"])
 
 
