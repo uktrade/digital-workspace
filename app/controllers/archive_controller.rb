@@ -3,8 +3,6 @@ class ArchiveController < ApplicationController
     @api_call = NewsQueries.new
 
     init_defaults
-
-    @id = params[:id]
   end
 
   def news_type
