@@ -146,8 +146,8 @@
 		width: 31%;
 		float: right;
 		background: $brand_color_c; /* For unsupported browsers */
-				background: rgba($brand_color_c, 0.3); /* IE8 */
-				-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=$brand_color_c, endColorstr=$brand_color_c)"; /* IE8 */
+		background: rgba($brand_color_c, 0.3); /* IE8 */
+		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=$brand_color_c, endColorstr=$brand_color_c)"; /* IE8 */
 		text-align: right;
 
 		a {
