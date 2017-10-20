@@ -1,0 +1,29 @@
+#topics {
+	.heading-large {
+		margin-top: 0px;
+	}
+}
+
+.topic-container {
+	.heading-medium {
+		margin-top: 0px; /* Override */
+	}
+}
+
+.topic {
+	position: relative;
+}
+
+.topic-controls {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	cursor: pointer;
+}
+
+.topic-toggle {
+	display: block;
+	width: 20px;
+	height: 20px;
+	background-color: red;
+}
