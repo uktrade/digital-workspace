@@ -4,6 +4,12 @@ class ContentController < ApplicationController
     init_posts
   end
 
+  def content
+    @slug = params[:path].split('/').last
+    @api_call = ContentSingleQuery.new(@slug)
+    @content = @api_call.type_query
+  end
+
   protected
 
   def init_posts

@@ -6,16 +6,16 @@
         %ul.breadcrumb
           %li
             = link_to( 'Home', "/" )
+          %li
+            =link_to( 'Tools', "/tools/" )
 
     .grid-row
-      .column-full
-        %hr{:class => 'rule-small'}
-    .grid-row
-      - if @posts.present?
-        - @posts.each do |p|
-          .column-third
+      - @content.each do |p|
+        .column-two-thirds
+          %hr{:class => 'rule-small'}
             %h2.heading-medium
-              = link_to(p["title"]["rendered"], p["slug"])
-            = truncate_excerpt(p["excerpt"]["rendered"])
-
+              = p["title"]["rendered"]
+            = p["content"]["rendered"].html_safe
+        .column-third
+          %hr{class: 'rule-large rule-top'}
 
