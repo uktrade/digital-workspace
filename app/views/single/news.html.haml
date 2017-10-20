@@ -21,6 +21,8 @@
     .grid-row
       .column-two-thirds
         - @posts.each do |p|
+          %pre
+            =p
           .news-item
             %h2.heading-large
               %hr{:class => 'rule-small'}
@@ -31,7 +33,7 @@
                 = succeed ', ' do
                   = profile.name || "Unknown"
                 = get_date(p["date"])
-                - p["news_category"].each do |cat|
+                - p["news_categories"].each do |cat|
                   = news_cats( cat["name"], cat["slug"] )
             = large_image_tag(p)
 

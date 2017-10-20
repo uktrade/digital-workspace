@@ -35,7 +35,8 @@
                   = link_to(@hero_post["title"]["rendered"].html_safe, "/news/" + @hero_post["slug"])
                 .hero-news-excerpt
                   %p
-                    = truncate_excerpt(@hero_post["excerpt"]["rendered"])
+                    - if @hero_post["acf"].present?
+                      = truncate_excerpt(@hero_post["acf"]["excerpt"])
                   = read_more("/news/" + @hero_post["slug"])
                   - if @comments_headers["x-wp-total"].present?
                     - comment_count = Integer(@comments_headers["x-wp-total"])
@@ -56,11 +57,12 @@
                   = profile.name || "Unknown"
 
                 = get_date(p["date"])
-                - p["news_category"].each do |cat|
+                - p["news_categories"].each do |cat|
                   = news_cats( cat["name"], cat["slug"] )
             .news-item-excerpt
               %p
-                = truncate_excerpt(p["excerpt"]["rendered"])
+                - if p["acf"].present?
+                  = truncate_excerpt(p["acf"]["excerpt"])
               = read_more("/news/" + p["slug"])
 
               - if @comments_headers["x-wp-total"].present?

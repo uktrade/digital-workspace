@@ -4,7 +4,7 @@ module NewsHelper
   end
 
   def news_cat_for_title
-    WpApi.get_json_body("news_category/?slug=#{@slug}")
+    WpApi.get_json_body("news_categories/?slug=#{@slug}")
   end
 
   def news_cat_title
