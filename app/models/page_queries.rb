@@ -4,7 +4,7 @@ class PageQueries
   end
 
   def main_query
-    WpApi.get_json_body("pages?slug=#{@slug}")
+    WpApi.get_json_body("news?slug=#{@slug}")
   end
 
   def main_comments_query
