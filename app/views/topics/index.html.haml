@@ -1,0 +1,33 @@
+%div{:id => 'topics', :class => 'page-content'}
+  = render partial: "widgets/people_search_inner_page"
+  %main#content.root-index.content-section
+    .grid-row
+      .column-full
+        %ul.breadcrumb
+          %li
+            = link_to( 'Home', "/" )
+
+    .grid-row
+      .column-two-thirds
+        %hr{:class => 'rule-small rule-top'}
+        %h2.heading-large
+          Topic title
+        %p
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, exercitationem placeat at expedita facere labore minus itaque?
+        %hr{:class => 'rule-small'}
+        .topic-container
+          .topic
+            .topic-controls
+              %span{class: 'topic-toggle'}
+            %h2.heading-medium
+              Topic heading
+            - if @posts.present?
+              %ul
+                - @posts.each do |p|
+                  %li
+                    = link_to('Generic post one', '/')
+            %hr{:class => 'rule-small'}
+      .column-third
+        %hr{class: 'rule-large rule-top'}
+        -#%h2.heading-medium
+        -#  Related news
