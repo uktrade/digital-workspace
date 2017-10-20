@@ -12,7 +12,7 @@
     .grid-row
       - @content.each do |p|
         .column-two-thirds
-          %hr{:class => 'rule-small'}
+          %hr{:class => 'rule-small rule-top'}
             %h2.heading-medium
               = p["title"]["rendered"]
             = p["content"]["rendered"].html_safe
