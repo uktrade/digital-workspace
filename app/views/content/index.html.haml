@@ -15,7 +15,7 @@
         - @posts.each do |p|
           .column-third
             %h2.heading-medium
-              = link_to(p["title"]["rendered"], p["slug"])
+              = link_to(p["title"]["rendered"], '/tools/' +  p["slug"])
             = truncate_excerpt(p["excerpt"]["rendered"])
 
 
