@@ -1,15 +1,19 @@
-// On document load
-// document.addEventListener('DOMContentLoaded',function() {
+(function() {
 
 	var toggle_cta = document.getElementsByClassName("topic-toggle");
 	var toggle_length = toggle_cta.length;
 
-	console.log('toggle_length ' + toggle_length);
-
+	function init_topics(){
+		if (typeof(toggle_cta) != 'undefined' && toggle_cta != null) {
+			topics_events();
+		}
+	}
 
 	// Events
-	for (i =0; i < toggle_length; i++) {
-		toggle_cta[i].addEventListener('click', toggle_topics, false);
+	function topics_events(){
+		for (i =0; i < toggle_length; i++) {
+			toggle_cta[i].addEventListener('click', toggle_topics, false);
+		}
 	}
 
 	// Toggle topics
@@ -18,5 +22,6 @@
 		console.log( theClass );
 	};
 
+	init_topics();
 
-// }, false);
+}).call(this);
