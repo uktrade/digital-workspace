@@ -7,6 +7,7 @@ class TopicsController < ApplicationController
   protected
 
   def init_posts
-    @posts = @api_call.main_query
+    @topic_parent = @api_call.topic_parent_query
+    @topic_child = @api_call.topic_child_query
   end
 end
