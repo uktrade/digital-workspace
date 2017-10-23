@@ -21,11 +21,18 @@
               %span{class: 'topic-toggle'}
             %h2.heading-medium
               Topic heading
-            - if @posts.present?
-              %ul
-                - @posts.each do |p|
-                  %li
-                    = link_to('Generic post one', '/')
+            - if @topic_child.present?
+              .topics-primary
+                %ul
+                  - @topic_child[0..4].each_with_index do |t, i|
+                    %li
+                      = link_to(t["title"]["rendered"], t["slug"])
+              .topics-secondary
+                %ul
+                  - @topic_child[5..-1].each_with_index do |t, i|
+                    %li
+                      = link_to(t["title"]["rendered"], t["slug"])
+
             %hr{:class => 'rule-small'}
       .column-third
         %hr{class: 'rule-large rule-top'}
