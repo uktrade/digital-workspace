@@ -4,7 +4,7 @@ class PageQueries
   end
 
   def main_query
-    WpApi.get_json_body("pages?slug=#{@slug}")
+    WpApi.get_json_body("news?slug=#{@slug}")
   end
 
   def main_comments_query
@@ -16,6 +16,6 @@ class PageQueries
   end
 
   def other_categories_query
-    WpApi.get_json_body('news_category')
+    WpApi.get_json_body('news_categories')
   end
 end

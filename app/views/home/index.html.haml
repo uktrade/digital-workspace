@@ -22,7 +22,8 @@
                     = link_to(p["title"]["rendered"].html_safe, "/news/" + p["slug"])
                   .hero-news-excerpt
                     %p
-                      = truncate_excerpt_hero(p["excerpt"]["rendered"])
+                      - if p["acf"].present?
+                        = truncate_excerpt_hero(p["acf"]["excerpt"])
                     = read_more("/news/" + p["slug"])
                     - if @comments_headers["x-wp-total"].present?
                       - comment_count = Integer(@comments_headers["x-wp-total"])
@@ -45,7 +46,7 @@
                     = date.strftime('%d %B %Y')
                     = date.strftime('@ %I:%M')
 
-                  - p["news_category"].each do |cat|
+                  - p["news_categories"].each do |cat|
                     = news_cats( cat["name"], cat["slug"] )
 
               %h3.heading-medium
@@ -54,7 +55,8 @@
 
                 .news-item-excerpt
                   %p
-                    = truncate_excerpt_home_news(p["excerpt"]["rendered"])
+                    - if p["acf"].present?
+                      = truncate_excerpt_home_news(p["acf"]["excerpt"])
 
     .grid-row
       .column-full.section-note

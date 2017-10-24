@@ -7,19 +7,19 @@ class HomePageQueries
 
   def posts_ministers
     WpApi.get_json_body(
-      'pages?type=news&orderby=date&order=desc&per_page=2&filter[news_category]=ministers&_embed'
+      'news?orderby=date&order=desc&per_page=2&filter[news_categories]=ministers&_embed'
     )
   end
 
   def posts_antonia
     WpApi.get_json_body(
-      'pages?type=news&orderby=date&order=desc&per_page=2&filter[news_category]=antonia&_embed'
+      'news?orderby=date&order=desc&per_page=2&filter[news_categories]=antonia&_embed'
     )
   end
 
   def posts_departmental
     WpApi.get_json_body(
-      'pages?type=news&orderby=date&order=desc&per_page=2&filter[news_category]=departmental&_embed'
+      'news?orderby=date&order=desc&per_page=2&filter[news_categories]=departmental&_embed'
     )
   end
 
@@ -28,7 +28,7 @@ class HomePageQueries
   end
 
   def main_query
-    WpApi.get_json_body('pages?type=news')
+    WpApi.get_json_body('news')
   end
 
   def main_comments_headers

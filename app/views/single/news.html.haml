@@ -21,6 +21,8 @@
     .grid-row
       .column-two-thirds
         - @posts.each do |p|
+          %pre
+            =p
           .news-item
             %h2.heading-large
               %hr{:class => 'rule-small'}
@@ -30,11 +32,8 @@
                 - profile = PeopleFinderProfile.from_api(p["author_email"])
                 = succeed ', ' do
                   = profile.name || "Unknown"
-                = succeed '  GMT, ' do
-                  - date = DateTime.parse(p["date"])
-                  = date.strftime('%d %B %Y')
-                  = date.strftime('@ %I:%M')
-                - p["news_category"].each do |cat|
+                = get_date(p["date"])
+                - p["news_categories"].each do |cat|
                   = news_cats( cat["name"], cat["slug"] )
             = large_image_tag(p)
 
@@ -60,10 +59,7 @@
                     %span.comment-name
                       = comment["author_name"]
                   %span.comment-date
-                  = succeed ' GMT ' do
-                    - date = DateTime.parse(comment["date"])
-                    = date.strftime('%d %B %Y')
-                    = date.strftime('@ %I:%M')
+                  = get_date(comment["date"])
                 = comment["content"]["rendered"].html_safe
                 %a.cta-comment-reply
                   Reply
@@ -87,7 +83,7 @@
                   %textarea{class: 'leave-comment-textarea'}
                   %input{type: 'submit', value: 'Submit comment', class: 'button'}
       .column-third.news-category
-        %hr{class: 'rule-large'}
+        %hr{class: 'rule-large rule-top'}
         -#%h2.heading-medium
         -#  Related news
 
