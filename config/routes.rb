@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   get '/news/*path', to: 'single#news'
   get '/working-at-dit', to: 'topics#index'
   get '/topic/*path', to: 'content#content'
+  get '/preview', to: 'preview#index'
   get '*path', to: 'single#index'
 end
