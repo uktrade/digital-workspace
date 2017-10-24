@@ -15,17 +15,33 @@
 }
 
 .topic-controls {
-	/*position: absolute;*/
-	/*top: 0px;*/
-	/*right: 0px;*/
 	cursor: pointer;
 }
 
 .topic-toggle {
-	/*display: block;*/
-	/*width: 20px;*/
-	/*height: 20px;*/
-	/*background-color: red;*/
+	position: relative;
+	display: block;
+
+	&:before {
+		content:'';
+		opacity: 1;
+		position: absolute;
+		bottom: 100%;
+		left: 0px;
+		width: 100%;
+		background: asset-data-url('accordion-readmore-grad.png');
+		background-size: 100% 30px;
+		background-repeat: no-repeat;
+		height: 30px;
+
+		transition: opacity 300ms ease-in-out;
+	}
+
+	.visible & {
+		&:before {
+			opacity: 0;
+		}
+	}
 }
 
 .topics-list {
@@ -33,10 +49,8 @@
 }
 
 .topics-list-extra {
-	/*.visible & {
-	}*/
-
 	height: 0px;
+	padding-top: 5px;
 	overflow: hidden;
-	transition: all 1000ms;
+	transition: height 1000ms ease-in-out;
 }
