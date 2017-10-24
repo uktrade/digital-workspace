@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/news/category/', to: 'archive#index'
   get '/news/category/*path', to: 'archive#news_type'
   get '/news/*path', to: 'single#news'
-  get '/topic/*path', to: 'topics#index'
+  get '/working-at-dit', to: 'topics#index'
+  get '/topic/*path', to: 'content#content'
+  get '/preview', to: 'preview#index'
   get '*path', to: 'single#index'
 end
