@@ -53,3 +53,7 @@ Ensure that the environment variables are defined:
 ## Word Press API
 The Word Press API URL should be defined as an environment variable:
 `WP_API_URL`
+
+## Word Press 'Application Passwords' Plugin
+The Word Press paswword API Authentication Key should be defined as an environment variable:
+`WP_API_KEY`
