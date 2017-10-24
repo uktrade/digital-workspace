@@ -14,12 +14,11 @@ class WpApi
 
     def get_json(path)
       HTTParty.get(
-        "#{URI.join(BASE_URI, path).to_s}",
+        URI.join(BASE_URI, path).to_s,
         headers: {
           'Authorization' => "Basic #{AUTH_TOKEN}"
         }
       )
     end
-
   end
 end
