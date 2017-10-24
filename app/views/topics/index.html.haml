@@ -2,38 +2,51 @@
   = render partial: "widgets/people_search_inner_page"
   %main#content.root-index.content-section
     .grid-row
-      .column-full
+      .column-half
+        %pre
+          = @slug
         %ul.breadcrumb
           %li
             = link_to( 'Home', "/" )
-
+      .column-half
+        .form-group.select-category
+          %label{:class => 'form-label', :for => 'select-topic'} Topics
+          %select{:class => 'form-control', :id => 'select_jump_to', :name => 'select-topic'}
+            %option{:value => ""}
+              \ Select Topic
+            - @topic_theme.each do |c|
+              %option{:value => "/topic/" + c["slug"]}
+                = link_to( c["title"]["rendered"] )
     .grid-row
       .column-two-thirds
         %hr{:class => 'rule-small rule-top'}
-        %h2.heading-large
-          Topic title
-        %p
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, exercitationem placeat at expedita facere labore minus itaque?
-        %hr{:class => 'rule-small'}
+        - if @topic.present?
+          - @topic.each do |t|
+            %h2.heading-large
+              = t["title"]["rendered"]
+            = t["content"]["rendered"].html_safe
         .topic-container
           .topic
-            .topic-controls
-              %span{class: 'topic-toggle'}
-            %h2.heading-medium
-              Topic heading
-            - if @topic_child.present?
-              .topics-primary
-                %ul
-                  - @topic_child[0..4].each_with_index do |t, i|
-                    %li
-                      = link_to(t["title"]["rendered"], t["slug"])
-              .topics-secondary
-                %ul
-                  - @topic_child[5..-1].each_with_index do |t, i|
-                    %li
-                      = link_to(t["title"]["rendered"], t["slug"])
+            - if @topic_theme.present?
+              - @topic_theme.each_with_index do |t, i|
+                / %pre
+                /  = t
+                %h2.heading-medium
+                  = t["title"]["rendered"]
+                - if @topic_child.present?
+                  %ul.topics-list
+                    - @topic_child[0..4].each_with_index do |t, i|
+                      %li
+                        = link_to(t["title"]["rendered"], '/topic/' + t["slug"])
+                    .topics-list-extra
+                      - @topic_child[5..-1].each_with_index do |t, i|
+                        %li
+                          = link_to(t["title"]["rendered"], '/topic/' + t["slug"])
+                    %li.topic-controls
+                      %span{class: 'topic-toggle'}
+                        View more
 
-            %hr{:class => 'rule-small'}
+                %hr{:class => 'rule-small'}
       .column-third
         %hr{class: 'rule-large rule-top'}
         -#%h2.heading-medium
