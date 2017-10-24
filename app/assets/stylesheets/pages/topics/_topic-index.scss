@@ -15,26 +15,28 @@
 }
 
 .topic-controls {
-	position: absolute;
-	top: 0px;
-	right: 0px;
+	/*position: absolute;*/
+	/*top: 0px;*/
+	/*right: 0px;*/
 	cursor: pointer;
 }
 
 .topic-toggle {
-	display: block;
-	width: 20px;
-	height: 20px;
-	background-color: red;
+	/*display: block;*/
+	/*width: 20px;*/
+	/*height: 20px;*/
+	/*background-color: red;*/
 }
 
-.topics-primary {
+.topics-list {
 
 }
 
-.topics-secondary {
-	display: none;
-	&.show {
-		display: block;
-	}
+.topics-list-extra {
+	/*.visible & {
+	}*/
+
+	height: 0px;
+	overflow: hidden;
+	transition: all 1000ms;
 }
