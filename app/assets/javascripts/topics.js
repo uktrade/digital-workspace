@@ -1,9 +1,11 @@
 (function() {
 
+	// Set some variables
 	var toggle_cta = document.getElementsByClassName("topic-toggle");
 	var toggle_length = toggle_cta.length;
 	var flag = null;
 
+	// Initialise
 	function init_topics(){
 		if (typeof(toggle_cta) != 'undefined' && toggle_cta != null) {
 			topics_events();
