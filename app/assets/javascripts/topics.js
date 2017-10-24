@@ -2,7 +2,7 @@
 
 	var toggle_cta = document.getElementsByClassName("topic-toggle");
 	var toggle_length = toggle_cta.length;
-	var flag = true;
+	var flag = null;
 
 	function init_topics(){
 		if (typeof(toggle_cta) != 'undefined' && toggle_cta != null) {
@@ -12,7 +12,6 @@
 
 	// Events
 	function topics_events(){
-
 		for (i =0; i < toggle_length; i++) {
 			toggle_cta[i].addEventListener('click', toggle_topics, false);
 		}
@@ -23,16 +22,16 @@
 		var self = this;
 		var container = self.parentNode.parentNode.querySelector(':scope > .topics-list-extra');
 
-		if (flag === true) {
+		if (self.flag !== true) {	// open
 			self.parentNode.parentNode.classList.add('visible');
 			container.style.height = container.scrollHeight + 'px';
 			self.innerHTML = 'View less';
-			flag = false;
-		} else {
+			self.flag = true;
+		} else {				// close
 			self.parentNode.parentNode.classList.remove('visible');
 			container.style.height = '0px';
 			self.innerHTML = 'View more';
-			flag = true;
+			self.flag = false;
 		}
 	};
 
