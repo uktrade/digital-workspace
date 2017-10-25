@@ -12,6 +12,6 @@ module LinksHelper
   end
 
   def link_news_top
-    return '/news/'
+    return '/news-and-views/'
   end
 end
