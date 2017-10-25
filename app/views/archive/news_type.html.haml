@@ -18,7 +18,7 @@
             %option{:value => ""}
               \ Select Category
             - @categories.each do |c|
-              %option{:value => link_news_top + "/category/" + c["slug"]}
+              %option{:value => link_news_top + "category/" + c["slug"]}
                 = link_to( c["name"] )
     .grid-row
       .column-full
@@ -136,7 +136,7 @@
         %ul.list.font-small
           - @categories.each do |c|
             %li
-              = link_to( c["name"], link_news_top + "/category/" + c["slug"])
+              = link_to( c["name"], link_news_top + "category/" + c["slug"])
               %span.news-category-count.font-xsmall
                 = "(#{c["count"]})"
 

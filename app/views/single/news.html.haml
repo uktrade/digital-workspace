@@ -16,7 +16,7 @@
 						%option{:value => ""}
 							\ Select Category
 						- @categories.each do |c|
-							%option{:value => link_news_top + "/category/" + c["slug"]}
+							%option{:value => link_news_top + "category/" + c["slug"]}
 								= link_to( c["name"] )
 		.grid-row
 			.column-two-thirds

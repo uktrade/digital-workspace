@@ -16,7 +16,7 @@
             %option{:value => ""}
               \ Select Category
             - @categories.each do |c|
-              %option{:value => link_news_top + "/category/" + c["slug"]}
+              %option{:value => link_news_top + "category/" + c["slug"]}
                 = link_to( c["name"] )
     .grid-row
       .column-full
@@ -70,10 +70,10 @@
         .pagination
           .prev
             - if @paginator.previous_page_no
-              = link_to( "Prev Page", "/news/?page=#{@paginator.previous_page_no}" )
+              = link_to( "Prev Page", link_news_top + "?page=#{@paginator.previous_page_no}" )
           .next
             - if @paginator.next_page_no
-              = link_to( "Next Page", "/news/?page=#{@paginator.next_page_no}" )
+              = link_to( "Next Page", link_news_top + "?page=#{@paginator.next_page_no}" )
           .numbered-paging
             %ul
               - if @paginator.current_page_no == 1
@@ -82,7 +82,7 @@
                     1
               - else
                 %li
-                  = link_to( "1", "/news/?page=1")
+                  = link_to( "1", link_news_top + "?page=1")
               - if @paginator.last_page_no >= 2
                 - if @paginator.current_page_no == 2
                   %li
@@ -90,13 +90,13 @@
                       2
                 - else
                   %li
-                    = link_to( "2", "/news/?page=2")
+                    = link_to( "2", link_news_top + "?page=2")
               - if @paginator.current_page_no - 5 >= 1
                 %li
-                  = link_to("…", "/news/?page=#{@paginator.current_page_no - 5}")
+                  = link_to("…", link_news_top + "?page=#{@paginator.current_page_no - 5}")
               - if not [0, 1, 2, @paginator.last_page_no, @paginator.last_page_no - 1].include?(@paginator.current_page_no - 1)
                 %li
-                  = link_to( "#{@paginator.current_page_no - 1}", "/news/?page=#{@paginator.current_page_no - 1}" )
+                  = link_to( "#{@paginator.current_page_no - 1}", link_news_top + "?page=#{@paginator.current_page_no - 1}" )
               - if not [0, 1, 2, @paginator.last_page_no, @paginator.last_page_no - 1].include?(@paginator.current_page_no)
                 %li
                   %span.current
@@ -104,7 +104,7 @@
               - if not [0, 1, 2, @paginator.last_page_no, @paginator.last_page_no - 1].include?(@paginator.current_page_no + 1)
                 - if @paginator.current_page_no < @paginator.last_page_no - 1
                   %li
-                    = link_to( "#{@paginator.current_page_no + 1}", "/news/?page=#{@paginator.current_page_no + 1}" )
+                    = link_to( "#{@paginator.current_page_no + 1}", link_news_top + "?page=#{@paginator.current_page_no + 1}" )
               - if @paginator.current_page_no + 5 <= @paginator.last_page_no
                 %li
                   = link_to("…", "/news/?page=#{@paginator.current_page_no + 5}")
@@ -115,7 +115,7 @@
                       = @paginator.last_page_no - 1
                 - else
                   %li
-                    = link_to( "#{@paginator.last_page_no - 1}", "/news/?page=#{@paginator.last_page_no - 1}")
+                    = link_to( "#{@paginator.last_page_no - 1}", link_news_top + "?page=#{@paginator.last_page_no - 1}")
               - if @paginator.last_page_no > 2
                 - if @paginator.last_page_no == @paginator.current_page_no
                   %li
@@ -123,7 +123,7 @@
                       = @paginator.last_page_no
                 - else
                   %li
-                    = link_to( "#{@paginator.last_page_no}", "/news/?page=#{@paginator.last_page_no}")
+                    = link_to( "#{@paginator.last_page_no}", link_news_top + "?page=#{@paginator.last_page_no}")
 
       .column-third.news-category
         %hr{:class => 'rule-large'}
@@ -133,7 +133,7 @@
         %ul.list.font-small
           - @categories.each do |c|
             %li
-              = link_to( c["name"], "/news/category/" + c["slug"])
+              = link_to( c["name"], link_news_top + "category/" + c["slug"])
               %span.news-category-count.font-xsmall
                 = "(#{c["count"]})"
 
