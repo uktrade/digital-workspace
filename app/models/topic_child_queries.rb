@@ -1,9 +1,14 @@
 class TopicChildQueries
-  def initialize(slug)
-    @slug = slug
+  def topic_howdoi_query
+    WpApi.get_json_body("howdoi?filter[topic_taxonomy]=")
   end
 
-  def topic_child_query
-    WpApi.get_json_body("topics")
+  def topic_policies_query
+    WpApi.get_json_body("pages")
+    # WpApi.get_json_body("policies?filter[topic_taxonomy]=")
+  end
+
+  def topic_forms_query
+    WpApi.get_json_body("pages")
   end
 end

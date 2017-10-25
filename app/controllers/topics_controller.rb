@@ -1,12 +1,4 @@
 class TopicsController < ApplicationController
-  # def index
-  #   @api_call = TopicQueries.new
-  #   init_topics
-  #   init_topic_children
-
-  #   init_themes
-  # end
-
   def index
     @slug = params[:path].split('/').last
     @api_call = TopicThemeQueries.new(@slug)
@@ -25,7 +17,9 @@ class TopicsController < ApplicationController
   end
 
   def init_topic_children
-    @api_call = TopicChildQueries.new(@slug)
-    @topic_child = @api_call.topic_child_query
+    @api_call = TopicChildQueries.new
+    @topic_howdoi = @api_call.topic_howdoi_query
+    @topic_policies = @api_call.topic_policies_query
+    @topic_forms = @api_call.topic_forms_query
   end
 end
