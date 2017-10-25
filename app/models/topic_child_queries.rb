@@ -1,6 +1,6 @@
 class TopicChildQueries
   def topic_howdoi_query
-    WpApi.get_json_body('howdoi')
+    WpApi.get_json_body('howdoi?per_page=100')
   end
 
   def topic_policies_query
