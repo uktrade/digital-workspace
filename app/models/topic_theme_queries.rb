@@ -3,7 +3,7 @@ class TopicThemeQueries
     @slug = slug
   end
 
-  def topic_theme_query(slug)
+  def topic_theme_query
     WpApi.get_json_body("themes?slug=#{@slug}")
   end
 end

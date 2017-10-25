@@ -2,7 +2,7 @@ class TopicsController < ApplicationController
   def index
     @slug = params[:path].split('/').last
     @api_call = TopicThemeQueries.new(@slug)
-    @topic_theme = @api_call.topic_theme_query(@slug)
+    @topic_theme = @api_call.topic_theme_query
 
     init_topics
     init_topic_children
