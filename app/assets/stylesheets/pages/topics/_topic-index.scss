@@ -1,6 +1,8 @@
+/* Topics page */
+
 #topics {
 	.heading-large {
-		margin-top: 0px;
+		margin-top: 0px; /* Override */
 	}
 }
 
@@ -15,12 +17,9 @@
 }
 
 .topic-controls {
-	cursor: pointer;
-}
-
-.topic-toggle {
 	position: relative;
-	display: block;
+	padding-top: 5px;
+	cursor: pointer;
 
 	&:before {
 		content:'';
@@ -44,13 +43,32 @@
 	}
 }
 
+.topic-toggle {
+	position: relative;
+	display: block;
+
+	font-weight: 700;
+	text-decoration: underline;
+
+	&:before {
+		content: '+';
+		display: inline-block;
+		padding-right: 10px;
+	}
+
+	.visible & {
+		&:before {
+			content: '−';
+		}
+	}
+}
+
 .topics-list {
 
 }
 
 .topics-list-extra {
 	height: 0px;
-	padding-top: 5px;
 	overflow: hidden;
 	transition: height 1000ms ease-in-out;
 }
