@@ -9,9 +9,9 @@ describe 'visit the news pages', vcr: true do
     visit '/'
 
     click_on 'View all News'
-    expect(page).to have_current_path('/news/')
+    expect(page).to have_current_path('/news-and-views/')
 
     within('.news-category') { click_on 'General' }
-    expect(page).to have_current_path('/news/category/general')
+    expect(page).to have_current_path('/news-and-views/category/general')
   end
 end
