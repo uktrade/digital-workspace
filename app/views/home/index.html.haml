@@ -124,21 +124,21 @@
             - case index
             - when 0..7
               %li
-                = link_to(p["title"]["rendered"].html_safe, p["slug"])
+                = link_to(p["title"]["rendered"].html_safe, link_top_howdoi + p["slug"])
       .column-third
         %ul.how-tos
           - @howdois.each_with_index do |p, index|
             - case index
             - when 8..15
               %li
-                = link_to(p["title"]["rendered"].html_safe, p["slug"])
+                = link_to(p["title"]["rendered"].html_safe, link_top_howdoi + p["slug"])
       .column-third
         %ul.how-tos
           - @howdois.each_with_index do |p, index|
             - case index
             - when 16..23
               %li
-                = link_to(p["title"]["rendered"].html_safe, p["slug"])
+                = link_to(p["title"]["rendered"].html_safe, link_top_howdoi + p["slug"])
     .grid-row
       .column-full.section-note
         %p

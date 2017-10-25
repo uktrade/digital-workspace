@@ -36,14 +36,14 @@
                   %li
                     / %pre
                     /   = t
-                    = link_to(t["title"]["rendered"], '/howdoi/' + t["slug"])
+                    = link_to(t["title"]["rendered"], link_top_howdoi + t["slug"])
                 .topics-list-extra
                   - if @topic_howdoi[5..-1].present?
                     - @topic_howdoi[5..-1].each_with_index do |t, i|
                       %li
                         / %pre
                         /   = t
-                        = link_to(t["title"]["rendered"], '/howdoi/' + t["slug"])
+                        = link_to(t["title"]["rendered"], link_top_howdoi + t["slug"])
                 - if @topic_howdoi[5..-1].present?
                   %li.topic-controls
                     %span{class: 'topic-toggle'}View more

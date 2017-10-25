@@ -24,7 +24,7 @@ class HomePageQueries
   end
 
   def howdois
-    WpApi.get_json_body('pages?type=howdoi&orderby=date&order=desc&per_page=20')
+    WpApi.get_json_body('howdoi?orderby=date&order=desc&per_page=20')
   end
 
   def main_query
