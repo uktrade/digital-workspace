@@ -19,15 +19,15 @@
               - @posts[0..0].each_with_index do |p, i|
                 .hero-news-copy
                   %h1.heading-medium
-                    = link_to(p["title"]["rendered"].html_safe, "/news/" + p["slug"])
+                    = link_to(p["title"]["rendered"].html_safe, link_news_top + p["slug"])
                   .hero-news-excerpt
                     %p
                       - if p["acf"].present?
                         = truncate_excerpt_hero(p["acf"]["excerpt"])
-                    = read_more("/news/" + p["slug"])
+                    = read_more(link_news_top + p["slug"])
                     - if @comments_headers["x-wp-total"].present?
                       - comment_count = Integer(@comments_headers["x-wp-total"])
-                      = comments("/news/" + p["slug"], comment_count)
+                      = comments(link_news_top + p["slug"], comment_count)
 
                 .hero-news-image-container
                   = large_image_tag(p)
@@ -51,7 +51,7 @@
 
               %h3.heading-medium
                 - heading = truncate_home_news_title(p["title"]["rendered"])
-                = link_to(heading, "/news/" + p["slug"])
+                = link_to(heading, link_news_top + p["slug"])
 
                 .news-item-excerpt
                   %p
@@ -61,7 +61,7 @@
     .grid-row
       .column-full.section-note
         %p
-          = link_to("View all News", "/news/")
+          = link_to("View all News", link_news_top)
     %hr{:id => 'news', :class => 'rule-large'}
     .grid-row
       .column-full
@@ -124,21 +124,21 @@
             - case index
             - when 0..7
               %li
-                = link_to(p["title"]["rendered"].html_safe, p["slug"])
+                = link_to(p["title"]["rendered"].html_safe, link_howdoi_top + p["slug"])
       .column-third
         %ul.how-tos
           - @howdois.each_with_index do |p, index|
             - case index
             - when 8..15
               %li
-                = link_to(p["title"]["rendered"].html_safe, p["slug"])
+                = link_to(p["title"]["rendered"].html_safe, link_howdoi_top + p["slug"])
       .column-third
         %ul.how-tos
           - @howdois.each_with_index do |p, index|
             - case index
             - when 16..23
               %li
-                = link_to(p["title"]["rendered"].html_safe, p["slug"])
+                = link_to(p["title"]["rendered"].html_safe, link_howdoi_top + p["slug"])
     .grid-row
       .column-full.section-note
         %p
