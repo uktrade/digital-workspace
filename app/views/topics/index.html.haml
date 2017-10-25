@@ -28,28 +28,66 @@
         %hr{:class => 'rule-small rule-top'}
         .topic-container
           .topic
-            - if @topic.present?
-              - @topic.each_with_index do |t, i|
-                / %pre
-                /   = t["theme_taxonomy"]
-                /   = t["type"]
-                %h2.heading-medium
-                  = t["title"]["rendered"]
-                - if @topic_child.present?
-                  %ul.topics-list
-                    - @topic_child[0..4].each_with_index do |t, i|
+            %h2
+              How do I?
+            %ul.topics-list
+              - if @topic_howdoi.present?
+                - @topic_howdoi[0..4].each_with_index do |t, i|
+                  %li
+                    / %pre
+                    /   = t
+                    = link_to(t["title"]["rendered"], '/topic/' + t["slug"])
+                .topics-list-extra
+                  - if @topic_howdoi.present?
+                    - @topic_howdoi[5..-1].each_with_index do |t, i|
                       %li
+                        / %pre
+                        /   = t
                         = link_to(t["title"]["rendered"], '/topic/' + t["slug"])
-                    .topics-list-extra
-                    / - if @topic_child.present?
-                    /   - @topic_child[5..-1].each_with_index do |t, i|
-                    /     %li
-                    /       = link_to(t["title"]["rendered"], '/topic/' + t["slug"])
-                    / %li.topic-controls
-                    /   %span{class: 'topic-toggle'}
-                    /     View more
+                %li.topic-controls
+                  %span{class: 'topic-toggle'}View more
+            %hr{:class => 'rule-small'}
+          .topic
+            %h2
+              Policies and Guidance
+            %ul.topics-list
+              - if @topic_policies.present?
+                - @topic_policies[0..4].each_with_index do |t, i|
+                  %li
+                    / %pre
+                    /   = t
+                    = link_to(t["title"]["rendered"], '/topic/' + t["slug"])
+                .topics-list-extra
+                  - if @topic_policies.present?
+                    - @topic_policies[5..-1].each_with_index do |t, i|
+                      %li
+                        / %pre
+                        /   = t
+                        = link_to(t["title"]["rendered"], '/topic/' + t["slug"])
+                %li.topic-controls
+                  %span{class: 'topic-toggle'}View more
+            %hr{:class => 'rule-small'}
+          .topic
+            %h2
+              Forms and Templates
+            %ul.topics-list
+              - if @topic_forms.present?
+                - @topic_forms[0..4].each_with_index do |t, i|
+                  %li
+                    / %pre
+                    /   = t
+                    = link_to(t["title"]["rendered"], '/topic/' + t["slug"])
+                .topics-list-extra
+                  - if @topic_forms.present?
+                    - @topic_forms[5..-1].each_with_index do |t, i|
+                      %li
+                        / %pre
+                        /   = t
+                        = link_to(t["title"]["rendered"], '/topic/' + t["slug"])
+                %li.topic-controls
+                  %span{class: 'topic-toggle'}View more
+            %hr{:class => 'rule-small'}
 
-                %hr{:class => 'rule-small'}
       .column-third
         %hr{class: 'rule-small rule-top'}
         -#%h2.heading-medium
