@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
   get '/news-and-views', to: 'archive#index'
-  get '/news-and-views/category/', to: 'archive#index'
   get '/news-and-views/category/*path', to: 'archive#news_type'
   get '/news-and-views/*path', to: 'single#news'
   get '/working-at-dit', to: 'topics#index'

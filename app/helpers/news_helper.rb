@@ -1,6 +1,6 @@
 module NewsHelper
   def news_cats(name, slug)
-    link_to(name, '/news/category/' + slug)
+    link_to(name, link_news_top + 'category/' + slug)
   end
 
   def news_cat_for_title
