@@ -1,97 +1,102 @@
 %div{:id => 'topics', :class => 'page-content'}
   = render partial: "widgets/people_search_inner_page"
   %main#content.root-index.content-section
-    .grid-row
-      .column-half
-        %ul.breadcrumb
-          %li
-            = link_to( 'Home', "/" )
-      .column-half
-        / .form-group.select-category
-        /   %label{:class => 'form-label', :for => 'select-topic'} Topics
-        /   %select{:class => 'form-control', :id => 'select_jump_to', :name => 'select-topic'}
-        /     %option{:value => ""}
-        /       \ Select Topic
-        /     - if @topic_selector.present?
-        /       - @topic_selector.each do |c|
-        /         %option{:value => "/topic/" + c["slug"]}
-        /           = link_to( c["title"]["rendered"] )
-    .grid-row
-      .column-full
-        - if @topic_theme.present?
-          - @topic_theme.each do |t|
-            %h2.heading-large
-              = t["title"]["rendered"]
-            = t["content"]["rendered"].html_safe
+	.grid-row
+	  .column-half
+		%ul.breadcrumb
+		  %li
+			= link_to( 'Home', "/" )
+	  .column-half
+		/ .form-group.select-category
+		/   %label{:class => 'form-label', :for => 'select-topic'} Topics
+		/   %select{:class => 'form-control', :id => 'select_jump_to', :name => 'select-topic'}
+		/     %option{:value => ""}
+		/       \ Select Topic
+		/     - if @topic_selector.present?
+		/       - @topic_selector.each do |c|
+		/         %option{:value => "/topic/" + c["slug"]}
+		/           = link_to( c["title"]["rendered"] )
+	.grid-row
+	  .column-full
+		- if @topic_theme.present?
+		  - @topic_theme.each do |t|
+			%h2.heading-large
+			  = t["title"]["rendered"]
+			= t["content"]["rendered"].html_safe
 
-      .column-two-thirds
-        %hr{:class => 'rule-small rule-top'}
-        .topic-container
-          .topic
-            %h2
-              How do I?
-            %ul.topics-list
-              - if @topic_howdoi.present?
-                - @topic_howdoi[0..4].each_with_index do |t, i|
-                  %li
-                    / %pre
-                    /   = t
-                    = link_to(t["title"]["rendered"], link_top_howdoi + t["slug"])
-                .topics-list-extra
-                  - if @topic_howdoi[5..-1].present?
-                    - @topic_howdoi[5..-1].each_with_index do |t, i|
-                      %li
-                        / %pre
-                        /   = t
-                        = link_to(t["title"]["rendered"], link_top_howdoi + t["slug"])
-                - if @topic_howdoi[5..-1].present?
-                  %li.topic-controls
-                    %span{class: 'topic-toggle'}View more
-            %hr{:class => 'rule-small'}
-          .topic
-            %h2
-              Policies and Guidance
-            %ul.topics-list
-              - if @topic_policies.present?
-                - @topic_policies[0..4].each_with_index do |t, i|
-                  %li
-                    / %pre
-                    /   = t
-                    = link_to(t["title"]["rendered"], '/topic/' + t["slug"])
-                .topics-list-extra
-                  - if @topic_policies[5..-1].present?
-                    - @topic_policies[5..-1].each_with_index do |t, i|
-                      %li
-                        / %pre
-                        /   = t
-                        = link_to(t["title"]["rendered"], '/topic/' + t["slug"])
-                - if @topic_policies[5..-1].present?
-                  %li.topic-controls
-                    %span{class: 'topic-toggle'}View more
-            %hr{:class => 'rule-small'}
-          .topic
-            %h2
-              Forms and Templates
-            / %ul.topics-list
-            /   - if @topic_forms.present?
-            /     - @topic_forms[0..4].each_with_index do |t, i|
-            /       %li
-            /         / %pre
-            /         /   = t
-            /         = link_to(t["title"]["rendered"], '/topic/' + t["slug"])
-            /     .topics-list-extra
-            /       - if @topic_forms[5..-1].present?
-            /         - @topic_forms[5..-1].each_with_index do |t, i|
-            /           %li
-            /             / %pre
-            /             /   = t
-            /             = link_to(t["title"]["rendered"], '/topic/' + t["slug"])
-            /     - if @topic_forms[5..-1].present?
-            /       %li.topic-controls
-            /         %span{class: 'topic-toggle'}View more
-            %hr{:class => 'rule-small'}
+	  .column-two-thirds
+		%hr{:class => 'rule-small rule-top'}
+		.topic-container
+		  .topic
+			%h2
+			  How do I?
+			- @topic_howdoi.each_with_index do |how, index|
+			  - case index
+			  - when 0..1
+			  %li
+				= link_to(how["title"]["rendered"] + ' TEST', link_howdoi_top + how["slug"])
+			/ %ul.topics-list
+			/   - if @topic_howdoi.present?
+			/     - @topic_howdoi[0..4].each_with_index do |t, i|
+			/       %li
+			/         / %pre
+			/         /   = t
+			/         = link_to(t["title"]["rendered"], link_howdoi_top + t["slug"])
+			/     .topics-list-extra
+			/       - if @topic_howdoi[5..-1].present?
+			/         - @topic_howdoi.each_with_index do |t, i|
+			/           %li
+			/             / %pre
+			/             /   = t
+			/             = link_to(t["title"]["rendered"], link_howdoi_top + t["slug"])
+			/     - if @topic_howdoi[5..-1].present?
+			/       %li.topic-controls
+			/         %span{class: 'topic-toggle'}View more
+			%hr{:class => 'rule-small'}
+		  .topic
+			%h2
+			  Policies and Guidance
+			/ %ul.topics-list
+			/   - if @topic_policies.present?
+			/     - @topic_policies[0..4].each_with_index do |t, i|
+			/       %li
+			/         / %pre
+			/         /   = t
+			/         = link_to(t["title"]["rendered"], link_policies_top + t["slug"])
+			/     .topics-list-extra
+			/       - if @topic_policies[5..-1].present?
+			/         - @topic_policies[5..-1].each_with_index do |t, i|
+			/           %li
+			/             / %pre
+			/             /   = t
+			/             = link_to(t["title"]["rendered"], link_policies_top + t["slug"])
+			/     - if @topic_policies[5..-1].present?
+			/       %li.topic-controls
+			/         %span{class: 'topic-toggle'}View more
+			%hr{:class => 'rule-small'}
+		  .topic
+			%h2
+			  Forms and Templates
+			/ %ul.topics-list
+			/   - if @topic_forms.present?
+			/     - @topic_forms[0..4].each_with_index do |t, i|
+			/       %li
+			/         / %pre
+			/         /   = t
+			/         = link_to(t["title"]["rendered"], link_forms_docs_top + t["slug"])
+			/     .topics-list-extra
+			/       - if @topic_forms[5..-1].present?
+			/         - @topic_forms[5..-1].each_with_index do |t, i|
+			/           %li
+			/             / %pre
+			/             /   = t
+			/             = link_to(t["title"]["rendered"], link_forms_docs_top + t["slug"])
+			/     - if @topic_forms[5..-1].present?
+			/       %li.topic-controls
+			/         %span{class: 'topic-toggle'}View more
+			%hr{:class => 'rule-small'}
 
-      .column-third
-        %hr{class: 'rule-small rule-top'}
-        -#%h2.heading-medium
-        -#  Related news
+	  .column-third
+		%hr{class: 'rule-small rule-top'}
+		-#%h2.heading-medium
+		-#  Related news

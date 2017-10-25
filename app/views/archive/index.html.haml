@@ -7,7 +7,7 @@
           %li
             = link_to( 'Home', "/" )
           %li
-            = link_to( 'News', "/news/" )
+            = link_to( 'News', link_news_top )
 
       .column-half
         .form-group.select-category
@@ -16,7 +16,7 @@
             %option{:value => ""}
               \ Select Category
             - @categories.each do |c|
-              %option{:value => "/news/category/" + c["slug"]}
+              %option{:value => link_news_top + "/category/" + c["slug"]}
                 = link_to( c["name"] )
     .grid-row
       .column-full
@@ -30,15 +30,15 @@
             .news-item
               .hero-news-copy
                 %h1.heading-small
-                  = link_to(@hero_post["title"]["rendered"].html_safe, "/news/" + @hero_post["slug"])
+                  = link_to(@hero_post["title"]["rendered"].html_safe, link_news_top + @hero_post["slug"])
                 .hero-news-excerpt
                   %p
                     - if @hero_post["acf"].present?
                       = truncate_excerpt(@hero_post["acf"]["excerpt"])
-                  = read_more("/news/" + @hero_post["slug"])
+                  = read_more(link_news_top + @hero_post["slug"])
                   - if @comments_headers["x-wp-total"].present?
                     - comment_count = Integer(@comments_headers["x-wp-total"])
-                    = comments("/news/" + @hero_post["slug"], comment_count)
+                    = comments(link_news_top + @hero_post["slug"], comment_count)
               .hero-news-image-container
                 = large_image_tag(@hero_post)
 
@@ -47,7 +47,7 @@
           .news-item
             %h3.heading-medium
               %hr{:class => 'rule-small'}
-              = link_to(p["title"]["rendered"].html_safe, "/news/" + p["slug"])
+              = link_to(p["title"]["rendered"].html_safe, link_news_top + p["slug"])
             .news-item-text
               .post-meta
                 - profile = PeopleFinderProfile.from_api(p["author_email"])
@@ -61,10 +61,10 @@
                 %p
                 - if p["acf"].present?
                   = truncate_excerpt(p["acf"]["excerpt"])
-                = read_more("/news/" + p["slug"])
+                = read_more(link_news_top + p["slug"])
                 - if @comments_headers["x-wp-total"].present?
                   - comment_count = Integer(@comments_headers["x-wp-total"])
-                  = comments("/news/" + p["slug"], comment_count)
+                  = comments(link_news_top + p["slug"], comment_count)
 
         %hr{:class => 'rule-small'}
         .pagination
