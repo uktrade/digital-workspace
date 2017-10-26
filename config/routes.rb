@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   get '/form-templates/*path', to: 'single#index'
   get '/preview', to: 'preview#index'
   get '/accordion', to: 'accordion#index'
+  get '/content/*path', to: 'content#content'
   get '*path', to: 'single#index'
 end
