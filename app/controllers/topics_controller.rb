@@ -17,7 +17,8 @@ class TopicsController < ApplicationController
   end
 
   def init_topic_children
-    @api_call = TopicChildQueries.new
+    @slug = params[:path].split('/').last
+    @api_call = TopicChildQueries.new(@slug)
     @topic_howdoi = @api_call.topic_howdoi_query
     @topic_policies = @api_call.topic_policies_query
     @topic_forms = @api_call.topic_forms_query
