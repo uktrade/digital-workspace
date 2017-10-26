@@ -16,6 +16,7 @@
 		position: relative;
 		margin-top: 0;
 		cursor: pointer;
+		color: $brand_color_a;
 
 		&:after {
 			content: '+';
@@ -23,6 +24,7 @@
 			position: absolute;
 			top: 10px;
 			right: 20px;
+			color: #000000;
 		}
 
 		.visible & {
@@ -54,4 +56,5 @@
 }
 
 .accordion-open-all {
+		color: $brand_color_a;
 }
