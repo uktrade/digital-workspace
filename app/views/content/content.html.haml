@@ -6,8 +6,6 @@
         %ul.breadcrumb
           %li
             = link_to( 'Home', "/" )
-          %li
-            =link_to( 'Tools', "/tools/" )
 
     .grid-row
       - @content.each do |p|
@@ -16,6 +14,13 @@
             %h2.heading-medium
               = p["title"]["rendered"]
             = p["content"]["rendered"].html_safe
+          - if p["acf"].present? && p["acf"]["documents"].present?
+            %h2.heading-medium
+              Documents
+            - p["acf"]["documents"].each do |d|
+              %ul
+                %li
+                  = link_to( d["title"], d["file"]["url"])
         .column-third
           %hr{class: 'rule-large rule-top'}
 
