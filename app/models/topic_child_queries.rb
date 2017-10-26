@@ -8,7 +8,7 @@ class TopicChildQueries
   end
 
   def topic_policies_query
-    WpApi.get_json_body('policies?per_page=100')
+    WpApi.get_json_body("policies?per_page=100&filter[topic_taxonomy]=#{@slug}")
   end
 
   def topic_forms_query
