@@ -91,7 +91,12 @@
             /         %span{class: 'topic-toggle'}View more
             %hr{:class => 'rule-small'}
 
-      .column-third
-        %hr{class: 'rule-small rule-top'}
-        -#%h2.heading-medium
-        -#  Related news
+      .column-third.related-content
+        %hr{:class => 'rule-large rule-top'}
+        %h2.heading-medium
+          Tools
+        %ul
+          %li
+            = link_to('Cirrus Office 365', '/')
+          %li
+            = link_to('Oracle', '/')
