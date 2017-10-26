@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/news-and-views/*path', to: 'single#news'
   get '/working-at-dit', to: 'topics#index'
   get '/topic/*path', to: 'topics#index'
-  get '/howdoi/*path', to: 'single#index'
+  get '/howdoi/*path', to: 'accordion#index'
   get '/policies-procedures/*path', to: 'single#index'
   get '/form-templates/*path', to: 'single#index'
   get '/preview', to: 'preview#index'
