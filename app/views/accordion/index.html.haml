@@ -6,14 +6,14 @@
         %ul.breadcrumb
           %li
             = link_to( 'Home', "/" )
+
     .grid-row
-      .column-full
+      .column-two-thirds
+        %hr{:class => 'rule-small rule-top'}
         %h2.heading-large
           Page heading
         %p
           Lorem ipsum dolor sit amet
-    .grid-row
-      .column-two-thirds
         .accordion-controls
           %span.accordion-open-all
             Open all
@@ -255,3 +255,12 @@
                     = link_to('Lorem ipsum dolor sit amet ', '/')
 
           %hr{:class => 'rule-small rule-top'}
+      .column-third.related-content
+        %hr{:class => 'rule-large rule-top'}
+        %h2.heading-medium
+          Tools
+        %ul
+          %li
+            = link_to('Cirrus Office 365', '/')
+          %li
+            = link_to('Oracle', '/')
