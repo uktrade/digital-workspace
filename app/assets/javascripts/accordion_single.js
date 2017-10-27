@@ -24,15 +24,21 @@
 	function toggle_accordion(){
 		var self = this;
 		var container = self.parentNode.querySelector(':scope > .accordion-inner');
+		// self.acc_single_flag = null;
 
-		if (self.acc_single_flag !== true) {	// open
+		// Set flags
+		if (self.acc_single_flag !== true) {
+			self.acc_single_flag = true;
+		} else {
+			self.acc_single_flag = false;
+		}
+
+		if (self.acc_single_flag === true) {	// open
 			self.parentNode.classList.add('visible');
 			container.style.height = container.scrollHeight + 'px';
-			self.acc_single_flag = true;
 		} else {															// close
 			self.parentNode.classList.remove('visible');
 			container.style.height = '0px';
-			self.acc_single_flag = false;
 		}
 	};
 
