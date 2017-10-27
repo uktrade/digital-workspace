@@ -132,7 +132,7 @@
         %h3.heading-small
           All categories
 
-        %ul.list.font-small
+        %ul.list-style-a
           - @categories.each do |c|
             %li
               = link_to( c["name"], link_news_top + "category/" + c["slug"])

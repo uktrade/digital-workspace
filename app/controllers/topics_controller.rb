@@ -11,7 +11,8 @@ class TopicsController < ApplicationController
   protected
 
   def init_topics
-    @api_call = TopicQueries.new
+    @slug = params[:path].split('/').last
+    @api_call = TopicQueries.new(@slug)
     @topic = @api_call.topic_query
     @topic_selector = @api_call.topic_selector
   end

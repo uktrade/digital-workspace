@@ -115,25 +115,25 @@
       .column-full
         %h2.heading-medium
           How do I?
-        %span.howdoi-description
+        %p.howdoi-description
           This is the most visited 20 &quot;How do I?&quot; content
     .grid-row
       .column-third
-        %ul.how-tos
+        %ul.list-style-a.how-tos
           - @howdois.each_with_index do |p, index|
             - case index
             - when 0..7
               %li
                 = link_to(p["title"]["rendered"].html_safe, link_howdoi_top + p["slug"])
       .column-third
-        %ul.how-tos
+        %ul.list-style-a.how-tos
           - @howdois.each_with_index do |p, index|
             - case index
             - when 8..15
               %li
                 = link_to(p["title"]["rendered"].html_safe, link_howdoi_top + p["slug"])
       .column-third
-        %ul.how-tos
+        %ul.list-style-a.how-tos
           - @howdois.each_with_index do |p, index|
             - case index
             - when 16..23
