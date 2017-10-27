@@ -8,7 +8,6 @@
     // = response
     /= response.parsed_response['code']
     //on return remember to check against code = comment_duplicate
-
   %main#content.root-index.news-section
     .grid-row
       .column-half
@@ -50,8 +49,7 @@
                 - else
                   = news_cats( cat["name"], cat["slug"] ) + ', '
 
-            - if image_exists?(p)
-              = large_image_tag(p)
+            = large_image_tag(p)
 
             = p["content"]["rendered"].html_safe
 
