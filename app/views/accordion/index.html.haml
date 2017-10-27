@@ -8,251 +8,83 @@
             = link_to( 'Home', "/" )
 
     .grid-row
+      - @howdois.each do |h|
+        / = h
       .column-two-thirds
         %hr{:class => 'rule-small rule-top'}
-        %h2.heading-large
-          Page heading
-        %p
-          Lorem ipsum dolor sit amet
+        - if @howdois.present?
+          - @howdois.each do |h|
+            %h2.heading-large
+              = h["title"]["rendered"]
+            %p
+              = h["acf"]["excerpt"].html_safe
         .accordion-controls
           %span.accordion-open-all
             Open all
         .accordion-container
-          .accordion
-            %hr{:class => 'rule-small'}
-            .accordion-header
-              %h2.heading-medium
-                Item one
-              %p
-                Lorem ipsum dolor sit amet.
-            .accordion-inner
-              .column-third
-                %ul.list-style-a
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
 
-              .column-third
-                %ul.list-style-a
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
+        - if @howdois_topic.present?
+          - @howdois_topic.each do |t|
+            .accordion
+              %hr{:class => 'rule-small'}
+              .accordion-header
+                %h2.heading-medium
+                  =t["title"]["rendered"]
+                %div
+                  =t["content"]["rendered"].html_safe
+              .accordion-inner
+                .column-third
+                  %ul.list-style-a
+                    %li
+                      = link_to('Lorem ipsum dolor sit amet ', '/')
+                    %li
+                      = link_to('Lorem ipsum dolor sit amet ', '/')
+                    %li
+                      = link_to('Lorem ipsum dolor sit amet ', '/')
+                    %li
+                      = link_to('Lorem ipsum dolor sit amet ', '/')
+                    %li
+                      = link_to('Lorem ipsum dolor sit amet ', '/')
+                    %li
+                      = link_to('Lorem ipsum dolor sit amet ', '/')
+                    %li
+                      = link_to('Lorem ipsum dolor sit amet ', '/')
 
-              .column-third
-                %ul.list-style-a
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
+                .column-third
+                  %ul.list-style-a
+                    %li
+                      = link_to('Lorem ipsum dolor sit amet ', '/')
+                    %li
+                      = link_to('Lorem ipsum dolor sit amet ', '/')
+                    %li
+                      = link_to('Lorem ipsum dolor sit amet ', '/')
+                    %li
+                      = link_to('Lorem ipsum dolor sit amet ', '/')
+                    %li
+                      = link_to('Lorem ipsum dolor sit amet ', '/')
+                    %li
+                      = link_to('Lorem ipsum dolor sit amet ', '/')
+                    %li
+                      = link_to('Lorem ipsum dolor sit amet ', '/')
 
-          .accordion
-            %hr{:class => 'rule-small'}
-            .accordion-header
-              %h2.heading-medium
-                Item two
-              %p
-                Lorem ipsum dolor sit amet.
-            .accordion-inner
-              .column-third
-                %ul.list-style-a
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
+                .column-third
+                  %ul.list-style-a
+                    %li
+                      = link_to('Lorem ipsum dolor sit amet ', '/')
+                    %li
+                      = link_to('Lorem ipsum dolor sit amet ', '/')
+                    %li
+                      = link_to('Lorem ipsum dolor sit amet ', '/')
+                    %li
+                      = link_to('Lorem ipsum dolor sit amet ', '/')
+                    %li
+                      = link_to('Lorem ipsum dolor sit amet ', '/')
+                    %li
+                      = link_to('Lorem ipsum dolor sit amet ', '/')
+                    %li
+                      = link_to('Lorem ipsum dolor sit amet ', '/')
 
-              .column-third
-                %ul.list-style-a
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
 
-              .column-third
-                %ul.list-style-a
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-
-          .accordion
-            %hr{:class => 'rule-small'}
-            .accordion-header
-              %h2.heading-medium
-                Item three
-              %p
-                Lorem ipsum dolor sit amet.
-            .accordion-inner
-              .column-third
-                %ul.list-style-a
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-
-              .column-third
-                %ul.list-style-a
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-
-              .column-third
-                %ul.list-style-a
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-
-          .accordion
-            %hr{:class => 'rule-small'}
-            .accordion-header
-              %h2.heading-medium
-                Item three
-              %p
-                Lorem ipsum dolor sit amet.
-            .accordion-inner
-              .column-third
-                %ul.list-style-a
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-
-              .column-third
-                %ul.list-style-a
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-
-              .column-third
-                %ul.list-style-a
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
-                  %li
-                    = link_to('Lorem ipsum dolor sit amet ', '/')
 
           %hr{:class => 'rule-small rule-top'}
       .column-third.related-content
