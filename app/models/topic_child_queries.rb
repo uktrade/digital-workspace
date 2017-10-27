@@ -12,6 +12,6 @@ class TopicChildQueries
   end
 
   def topic_forms_query
-    WpApi.get_json_body('pages')
+    WpApi.get_json_body("topics?slug=#{@slug}")
   end
 end
