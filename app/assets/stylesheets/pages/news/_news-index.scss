@@ -28,7 +28,7 @@
 }
 
 .hero-news-excerpt p {
-	font-size: 19px;
+	font-size: $text_small;
 	line-height: 32px;
 }
 
@@ -44,12 +44,15 @@
 	}
 }
 
-.news-item {
-	margin-bottom: 0px;
-}
-
 .news-category-count {
 	color: $brand_chrome_b;
+}
+
+.news-item {
+	p {
+		font-size: $text_small;
+		line-height: $text_medium;
+	}
 }
 
 .news-item-excerpt {
