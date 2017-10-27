@@ -3,7 +3,7 @@ class AccordionQueries
     @slug = slug
   end
 
-  def main_query(slug)
+  def main_query
     WpApi.get_json_body("howdoi?slug=#{@slug}")
   end
 
