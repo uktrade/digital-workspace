@@ -24,20 +24,21 @@
 
           - if @howdois_theme.present?
             - @howdois_theme.each do |t|
-              /= t
+              / = t
               .accordion
                 %hr{:class => 'rule-small'}
                 .accordion-header
                   %h2.heading-medium
-                    =t["title"]["rendered"]
+                    =t["name"]
                   %div
-                    =t["content"]["rendered"].html_safe
+                    /=t["content"]["rendered"].html_safe
                 .accordion-inner
                   - if @howdois_topics.present?
                     - @howdois_topics.each do |t|
                       %ul.list-style-a
                         %li
-                          = link_to( t["title"]["rendered"], '/')
+                          / = t
+                          = link_to( t["title"]["rendered"], '/topic/' + t["slug"])
 
                   / .column-third
                   /   %ul.list-style-a
