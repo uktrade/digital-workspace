@@ -17,15 +17,15 @@
         /         %option{:value => "/topic/" + c["slug"]}
         /           = link_to( c["title"]["rendered"] )
     .grid-row
-      .column-full
-        - if @topic_theme.present?
-          - @topic_theme.each do |t|
+      .column-two-thirds
+        %hr{:class => 'rule-small rule-top'}
+        - if @topic.present?
+          - @topic.each do |t|
             %h2.heading-large
               = t["title"]["rendered"]
             = t["content"]["rendered"].html_safe
 
-      .column-two-thirds
-        %hr{:class => 'rule-small rule-top'}
+        %hr{:class => 'rule-small'}
         .topic-container
           .topic
             %h2
@@ -65,27 +65,17 @@
                   %li.topic-controls
                     %span{class: 'topic-toggle'}View more
             %hr{:class => 'rule-small'}
-          .topic
-            %h2
-              Forms and Templates
-            / %ul.list-style-a.topics-list
-            /   - if @topic_forms.present?
-            /     - @topic_forms[0..4].each_with_index do |t, i|
-            /       %li
-            /         / %pre
-            /         /   = t
-            /         = link_to(t["title"]["rendered"], '/topic/' + t["slug"])
-            /     .topics-list-extra
-            /       - if @topic_forms[5..-1].present?
-            /         - @topic_forms[5..-1].each_with_index do |t, i|
-            /           %li
-            /             / %pre
-            /             /   = t
-            /             = link_to(t["title"]["rendered"], '/topic/' + t["slug"])
-            /     - if @topic_forms[5..-1].present?
-            /       %li.topic-controls
-            /         %span{class: 'topic-toggle'}View more
-            %hr{:class => 'rule-small'}
+
+          - @topic_forms.each do |p|
+            - if p["acf"].present? && p["acf"]["documents"].present?
+              .topic
+                %h2.heading-medium
+                  Forms and Templates
+                - p["acf"]["documents"].each do |d|
+                  %ul.list-style-a
+                    %li
+                      = link_to( d["title"], d["file"]["url"])
+                %hr{:class => 'rule-small'}
 
       .column-third.related-content
         %hr{:class => 'rule-large rule-top'}
