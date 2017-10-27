@@ -1,0 +1,2 @@
+class AccordionController < ApplicationController
+end

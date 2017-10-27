@@ -60,6 +60,7 @@
 // Utilites
 @import "util/utilities";
 @import "util/links";
+@import "util/lists";
 @import "util/horizontal-rules";
 
 // ---------------------------------------
@@ -71,6 +72,7 @@
 @import "components/pagination";
 @import "components/post-meta";
 @import "components/typography";
+@import "components/related";
 @import "components/footer";
 
 // ---------------------------------------
@@ -85,6 +87,9 @@
 
 // Topics section
 @import "pages/topics/topic-index";
+
+// Accordion templates
+@import "pages/accordion/accordion.scss";
 
 // Overrides
 /*@import "digital-workspace-overrides";			   // Additional styles either new or over-riding for the Digital Workspace*/

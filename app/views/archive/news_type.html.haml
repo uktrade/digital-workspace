@@ -9,7 +9,7 @@
           %li
             = link_to( 'News', link_news_top )
           %li.case
-            = link_to( news_cat_title, link_news_top + "/category/#{@slug}" )
+            = news_cat_title
 
       .column-half
         .form-group.select-category
@@ -31,7 +31,7 @@
           .hero-news
             .news-item
               .hero-news-copy
-                %h1.heading-small
+                %h1.heading-medium
                   = link_to(@hero_post["title"]["rendered"].html_safe, link_news_top + @hero_post["slug"])
                 .hero-news-excerpt
                   %p
@@ -39,8 +39,9 @@
                       = truncate_excerpt(@hero_post["acf"]["excerpt"])
                   = read_more(link_news_top + @hero_post["slug"])
                   - if @comments_headers["x-wp-total"].present?
-                    - comment_count = Integer(@comments_headers["x-wp-total"])
-                    = comments(link_news_top + @hero_post["slug"], comment_count)
+                    = precede ' - ' do
+                      - comment_count = Integer(@comments_headers["x-wp-total"])
+                      = comments(link_news_top + @hero_post["slug"], comment_count)
               .hero-news-image-container
                 = large_image_tag(@hero_post)
 
@@ -66,8 +67,9 @@
               = read_more(link_news_top + p["slug"])
 
               - if @comments_headers["x-wp-total"].present?
-                - comment_count = Integer(@comments_headers["x-wp-total"])
-                = comments(link_news_top + p["slug"], comment_count)
+                = precede ' - ' do
+                  - comment_count = Integer(@comments_headers["x-wp-total"])
+                  = comments(link_news_top + p["slug"], comment_count)
 
         %hr{:class => 'rule-small'}
         .pagination
