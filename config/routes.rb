@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   get '/accordion', to: 'accordion#index'
   get '/content/*path', to: 'content#content'
   get '*path', to: 'single#index'
+
+  post '/news-and-views/*path', to: 'single#news'
 end
