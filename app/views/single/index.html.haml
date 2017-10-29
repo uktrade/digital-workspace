@@ -1,3 +1,4 @@
+= render partial: "widgets/zendesk_header"
 %div{:id => 'page', :class => 'page-content'}
   %main#content.root-index
     .grid-row
@@ -8,3 +9,5 @@
       .column-full
         - @posts.each do |p|
           = p
+
+= render partial: "widgets/zendesk_footer"

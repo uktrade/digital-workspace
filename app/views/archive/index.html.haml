@@ -1,5 +1,6 @@
 %div{:id => 'category', :class => 'page-content'}
   = render partial: "widgets/people_search_inner_page"
+  = render partial: "widgets/zendesk_header"
   %main#content.root-index.news-section
     .grid-row
       .column-half
@@ -139,3 +140,4 @@
               %span.news-category-count.font-xsmall
                 = "(#{c["count"]})"
 
+= render partial: "widgets/zendesk_footer"

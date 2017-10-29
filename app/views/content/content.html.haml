@@ -1,5 +1,6 @@
 %div{:id => 'generic_content', :class => 'page-content'}
   = render partial: "widgets/people_search_inner_page"
+  = render partial: "widgets/zendesk_header"
   %main#content.root-index.content-section
     .grid-row
       .column-full
@@ -24,3 +25,4 @@
         .column-third
           %hr{class: 'rule-large rule-top'}
 
+= render partial: "widgets/zendesk_footer"

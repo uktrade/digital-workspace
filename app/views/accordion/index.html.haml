@@ -1,8 +1,11 @@
 %div{:id => 'topics', :class => 'page-content'}
   = render partial: "widgets/people_search_inner_page"
+  = render partial: "widgets/zendesk_header"
   %main#content.root-index.content-section
     .grid-row
       .column-full
+        = @parent_topics_slug
+        = @parent_slug
         %ul.breadcrumb
           %li
             = link_to( 'Home', "/" )
@@ -37,61 +40,9 @@
                     - @howdois_topics.each do |t|
                       %ul.list-style-a
                         %li
-                          / = t
-                          = link_to( t["title"]["rendered"], '/topic/' + t["slug"])
-
-                  / .column-third
-                  /   %ul.list-style-a
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-
-                  / .column-third
-                  /   %ul.list-style-a
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-
-                  / .column-third
-                  /   %ul.list-style-a
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-
-
+                          %pre
+                            = t
+                          / = link_to( t["title"]["rendered"], '/topic/' + t["slug"])
 
           %hr{:class => 'rule-small rule-top'}
       .column-third.related-content
@@ -103,3 +54,5 @@
             = link_to('Cirrus Office 365', '/')
           %li
             = link_to('Oracle', '/')
+
+= render partial: "widgets/zendesk_footer"
