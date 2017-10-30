@@ -1,20 +1,13 @@
 %div{:id => 'page', :class => 'page-content'}
   = render partial: "widgets/people_search_inner_page"
-  /= render partial: "widgets/zendesk_header"
 
-  - if params[:commit] == "Submit comment"
-    - if @response.parsed_response['status'] == 'approved'
-      .comment-notification.thanks
-        %span
-          Thanks for your comment!
-    - elsif @response.parsed_response['code'] == 'comment_duplicate'
-      .comment-notification.error
-        %span
-          Sorry, duplicate comment detected - it looks like that's already been posted.
-    - else
-      .comment-notification.error
-        %span
-          There was an error submitting your comment, please try again.
+  - if params[:commit] == 'Submit comment'
+    - post_body = { "post" => params[:post], "author_email" => @people_finder_profile.email, "author_name" => @people_finder_profile.name, "content" => params[:comment_content], "parent" => params[:comment_parent] }
+    - response = WpApi.post_comment_json(post_body)
+    // = response
+    /= response.parsed_response['code']
+
+    //on return remember to check against code = comment_duplicate
   %main#content.root-index.news-section
     .grid-row
       .column-half
@@ -22,7 +15,7 @@
           %li
             = link_to( 'Home', "/" )
           %li
-            = link_to( 'News and views', link_news_top )
+            = link_to( 'News', link_news_top )
 
       .column-half
         .form-group.select-category
@@ -31,11 +24,13 @@
             %option{:value => ""}
               \ Select Category
             - @categories.each do |c|
-              %option{:value => link_news_top + link_news_category + c["slug"]}
+              %option{:value => link_news_top + "category/" + c["slug"]}
                 = link_to( c["name"] )
     .grid-row
       .column-two-thirds
         - @posts.each do |p|
+          / %pre
+          /   =p
           .news-item
             %h2.heading-large
               %hr{:class => 'rule-small'}
@@ -45,20 +40,74 @@
               = succeed ', ' do
                 = profile.name || "Unknown"
               = get_date(p["date"])
-              - cat_length = p["news_categories"].length - 1
-              - p["news_categories"].each_with_index do |cat, i|
-                - if cat_length == 0
-                  = news_cats( cat["name"], cat["slug"] )
-                - elsif i == cat_length
-                  = news_cats( cat["name"], cat["slug"] )
-                - else
-                  = news_cats( cat["name"], cat["slug"] ) + ', '
-
-            - if image_exists?(p)
-              = large_image_tag(p)
+              - p["news_categories"].each do |cat|
+                = news_cats( cat["name"], cat["slug"] )
+            = large_image_tag(p)
 
             = p["content"]["rendered"].html_safe
 
-          = render partial: 'widgets/comments'
+          #comments.comments-area
+            .posted-comments
+              -#%pre
+              -#  headers: #{@comments_headers}
+              -#%pre
+              -#  x-wp-totalpages: #{@comments_headers["x-wp-totalpages"]}
+              -#%pre
+              -#  x-wp-total: #{@comments_headers["x-wp-total"]}
 
-= render partial: "widgets/zendesk_footer"
+              %h2.heading-medium
+                - if @comments_headers["x-wp-total"].present?
+                  - comment_count = Integer(@comments_headers["x-wp-total"])
+                  = comments_heading(comment_count)
+
+              - @comments_filtered = @comments.sort_by { |k| k["id"] }
+              - @comments_filtered = @comments_filtered.reverse
+
+              - @comments_filtered.each do |comment|
+                /= comment.class
+                - if comment["parent"] != 0
+                  - @parent = @comments_filtered.select{|key, hash| key["id"] == comment["parent"]}
+                  - if !@parent[0]["child_comments"]
+                    - @child_comments = [comment]
+                    - @parent.push('child_comments' => @child_comments)
+                  - else
+                    - @parent = @parent["child_comments"].push(comment)
+
+              - @comments_filtered.each do |comment|
+                .test
+                  = comment
+                .post-meta
+                  = succeed ', ' do
+                    %span.comment-name
+                      = comment["author_name"]
+                  %span.comment-date
+                  = get_date(comment["date"])
+                = comment["content"]["rendered"].html_safe
+                %a{:class => 'cta-comment-reply', :id => "reply-to-#{comment['id']}", :"data-reply-to" => comment['id']}
+                  Reply
+                .comment-replies
+                  .post-meta
+                    %span.comment-name Angela
+                    %span.post-date
+                      = precede ', ' do
+                        5 Oct 2017 @ 13:25 GMT
+
+                  %p
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui accusamus deserunt, nam, tenetur, accusantium numquam molestias mollitia totam voluptas quasi beatae! Recusandae quae, officiis amet delectus iste pariatur dolor rem.
+
+                  %a.cta-comment-reply
+                    Reply
+                -#= comment
+              .leave-comment
+                %h2.heading-medium
+                  Leave a comment
+                = form_tag(request.url , method: :post, class: 'comment_post', id: 'comment-post')
+                = hidden_field_tag("post", @posts.first["id"])
+                = hidden_field_tag("comment_parent", 0)
+                = text_area_tag('comment_content', nil, class: 'leave-comment-textarea')
+                = submit_tag('Submit comment', class: 'button')
+      .column-third.news-category
+        %hr{class: 'rule-large rule-top'}
+        -#%h2.heading-medium
+        -#  Related news
+
