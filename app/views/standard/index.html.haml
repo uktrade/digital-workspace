@@ -24,24 +24,14 @@
       .column-full
         %hr{:class => 'rule-small'}
     .grid-row
-      - if @topics.present?
-        - @topics.each do |p|
+      - if @themes.present?
+        - @themes.each do |p|
           / = p
 
-      .column-third
-        %h3
-          = link_to('Linked content', '/working-at-dit/ways-of-working-with-ministers-and-spads/')
-        Lorem ipsum dolor sit amet.
-
-      .column-third
-        %h3
-          = link_to('Linked content', '/working-at-dit/ways-of-working-with-ministers-and-spads/')
-        Lorem ipsum dolor sit amet.
-
-      .column-third
-        %h3
-          = link_to('Linked content', '/working-at-dit/ways-of-working-with-ministers-and-spads/')
-        Lorem ipsum dolor sit amet.
+          .column-third
+            %h3
+              = link_to(p["title"]["rendered"], link_topics_top + p["slug"])
+            = p["content"]["rendered"].html_safe
 
 
 = render partial: "widgets/zendesk_footer"

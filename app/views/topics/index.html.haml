@@ -19,7 +19,7 @@
         /       \ Select Topic
         /     - if @topic_selector.present?
         /       - @topic_selector.each do |c|
-        /         %option{:value => "/topic/" + c["slug"]}
+        /         %option{:value => link_topics_top + c["slug"]}
         /           = link_to( c["title"]["rendered"] )
     .grid-row
       .column-two-thirds

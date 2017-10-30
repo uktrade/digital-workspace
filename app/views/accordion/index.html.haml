@@ -4,8 +4,8 @@
   %main#content.root-index.content-section
     .grid-row
       .column-full
-        / = @parent_topics_slug
-        / = @parent_slug
+        = @parent_slug
+        = @parent_topics_slug
         %ul.breadcrumb
           %li
             = link_to( 'Home', "/" )
@@ -20,6 +20,7 @@
               = h["title"]["rendered"]
             %div
               = h["acf"]["excerpt"].html_safe
+
         .accordion-controls
           %span.accordion-open-all
             Open all
@@ -32,17 +33,16 @@
                 %hr{:class => 'rule-small'}
                 .accordion-header
                   %h2.heading-medium
-                    =t["name"]
+                    = t["name"]
                   %div
-                    /=t["content"]["rendered"].html_safe
+                    /= t["content"]["rendered"].html_safe
                 .accordion-inner
                   - if @howdois_topics.present?
                     - @howdois_topics.each do |t|
                       %ul.list-style-a
                         %li
                           %pre
-                            / = t
-                          = link_to( t["title"]["rendered"], '/topic/' + t["slug"])
+                            = link_to( t["title"]["rendered"], link_topics_top + t["slug"])
 
           %hr{:class => 'rule-small rule-top'}
       .column-third.related-content
