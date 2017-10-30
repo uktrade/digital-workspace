@@ -22,6 +22,7 @@
         %hr{:class => 'rule-small rule-top'}
         - if @topic.present?
           - @topic.each do |t|
+            / = t
             %h2.heading-large
               = t["title"]["rendered"]
             = t["content"]["rendered"].html_safe
@@ -54,14 +55,14 @@
                   %li
                     / %pre
                     /   = t
-                    = link_to(t["title"]["rendered"], '/topic/' + t["slug"])
+                    = link_to(t["title"]["rendered"], link_policies_top + t["slug"])
                 .topics-list-extra
                   - if @topic_policies[5..-1].present?
                     - @topic_policies[5..-1].each_with_index do |t, i|
                       %li
                         / %pre
                         /   = t
-                        = link_to(t["title"]["rendered"], '/topic/' + t["slug"])
+                        = link_to(t["title"]["rendered"], link_policies_top + t["slug"])
                 - if @topic_policies[5..-1].present?
                   %li.topic-controls
                     %span{class: 'topic-toggle'}View more
