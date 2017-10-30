@@ -75,14 +75,15 @@
                 /= comment.class
                 - if comment["parent"] != 0
                   - @parent = @comments_filtered.select{|key, hash| key["id"] == comment["parent"]}
-                  = @parent[0].class
-                  / - if !@parent["child_comments"]
-                  /   - @child_comments = []
-                  /   - @parent.push('child_comments' => @child_comments)
-                  / - else
-                  /   = 'do dis'
+                  - if !@parent[0]["child_comments"]
+                    - @child_comments = [comment]
+                    - @parent.push('child_comments' => @child_comments)
+                  - else
+                    - @parent = @parent["child_comments"].push(comment)
 
-              - @comments.each do |comment|
+              - @comments_filtered.each do |comment|
+                .test
+                  = comment
                 .post-meta
                   = succeed ', ' do
                     %span.comment-name
