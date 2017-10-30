@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :load_people_finder_profile
 
   def current_user
-    User.new(session[:auth_user])
+    session[:auth_user]
   end
 
   private

@@ -22,6 +22,7 @@ gem 'httparty'
 gem 'omniauth-oauth2'
 
 gem 'rails_12factor'
+gem 'redis-rails'
 
 group :development, :test do
   gem 'bundler-audit'
