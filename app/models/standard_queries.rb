@@ -3,11 +3,11 @@ class StandardQueries
     @slug = slug
   end
 
-  def main_query(slug)
+  def main_query(_slug)
     WpApi.get_json_body("pages?type=standard_index&slug=#{@slug}")
   end
 
   def themes_query
-  	WpApi.get_json_body("themes?")
+    WpApi.get_json_body('themes?')
   end
 end
