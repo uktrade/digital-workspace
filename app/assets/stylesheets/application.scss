@@ -80,18 +80,12 @@
 // ---------------------------------------
 // Pages
 
-// Homepage
 @import "pages/home/homepage";
-
-// News section
 @import "pages/news/news-index";
 @import "pages/news/news-comments";
-
-// Topics section
 @import "pages/topics/topic-index";
-
-// Accordion templates
 @import "pages/accordion/accordion.scss";
+@import "pages/standard/standard-index.scss";
 
 // Overrides
 /*@import "digital-workspace-overrides";			   // Additional styles either new or over-riding for the Digital Workspace*/
