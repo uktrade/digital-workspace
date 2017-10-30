@@ -5,6 +5,7 @@
         = render partial: "widgets/people_search"
         = render partial: "widgets/profile_overview"
 %div{:id => 'homepage', :class => 'homepage-content'}
+  = render partial: "widgets/zendesk_header"
   %main#content.root-index
     .grid-row
       .column-full
@@ -167,3 +168,4 @@
                     = tweet.created_at.strftime('%b %d')
                 %p.tweet-content
                   = parsed_tweet tweet
+= render partial: "widgets/zendesk_footer"

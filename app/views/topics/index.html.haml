@@ -1,11 +1,16 @@
 %div{:id => 'topics', :class => 'page-content'}
   = render partial: "widgets/people_search_inner_page"
+  = render partial: "widgets/zendesk_header"
   %main#content.root-index.content-section
     .grid-row
       .column-half
         %ul.breadcrumb
           %li
             = link_to( 'Home', "/" )
+          / - if @topic.present?
+          /   %li
+          /     - @topic.each do |t|
+          /       = t["breadcrumb"]
       .column-half
         / .form-group.select-category
         /   %label{:class => 'form-label', :for => 'select-topic'} Topics
@@ -14,13 +19,14 @@
         /       \ Select Topic
         /     - if @topic_selector.present?
         /       - @topic_selector.each do |c|
-        /         %option{:value => "/topic/" + c["slug"]}
+        /         %option{:value => link_topics_top + c["slug"]}
         /           = link_to( c["title"]["rendered"] )
     .grid-row
       .column-two-thirds
         %hr{:class => 'rule-small rule-top'}
         - if @topic.present?
           - @topic.each do |t|
+            / = t
             %h2.heading-large
               = t["title"]["rendered"]
             = t["content"]["rendered"].html_safe
@@ -53,14 +59,14 @@
                   %li
                     / %pre
                     /   = t
-                    = link_to(t["title"]["rendered"], '/topic/' + t["slug"])
+                    = link_to(t["title"]["rendered"], link_policies_top + t["slug"])
                 .topics-list-extra
                   - if @topic_policies[5..-1].present?
                     - @topic_policies[5..-1].each_with_index do |t, i|
                       %li
                         / %pre
                         /   = t
-                        = link_to(t["title"]["rendered"], '/topic/' + t["slug"])
+                        = link_to(t["title"]["rendered"], link_policies_top + t["slug"])
                 - if @topic_policies[5..-1].present?
                   %li.topic-controls
                     %span{class: 'topic-toggle'}View more
@@ -86,3 +92,20 @@
             = link_to('Cirrus Office 365', '/')
           %li
             = link_to('Oracle', '/')
+        %hr{:class => 'rule-large'}
+        - if @related_news.present?
+          .related-content
+            %h2.heading-medium
+              Related news
+            - @related_news.each do |p|
+              %ul.list-style-a
+                %li
+                  = link_to(p["title"]["rendered"], link_news_top + p["slug"])
+                  .post-meta
+                    = succeed ', ' do
+                      = get_date(p["date"])
+                      - if p["news_categories"].present?
+                        - p["news_categories"].each do |cat|
+                          = news_cats( cat["name"], cat["slug"] )
+
+= render partial: "widgets/zendesk_footer"

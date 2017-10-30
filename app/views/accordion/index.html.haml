@@ -1,5 +1,6 @@
 %div{:id => 'topics', :class => 'page-content'}
   = render partial: "widgets/people_search_inner_page"
+  = render partial: "widgets/zendesk_header"
   %main#content.root-index.content-section
     .grid-row
       .column-full
@@ -11,87 +12,33 @@
       .column-two-thirds
         %hr{:class => 'rule-small rule-top'}
         - if @howdois.present?
-          - @howdois.each do |h|
+          - @howdois.each do |howdoi|
             / =h
             %h2.heading-large
-              = h["title"]["rendered"]
+              = howdoi["title"]["rendered"]
             %div
-              = h["acf"]["excerpt"].html_safe
+              = howdoi["acf"]["excerpt"].html_safe
+
         .accordion-controls
           %span.accordion-open-all
             Open all
         .accordion-container
 
           - if @howdois_theme.present?
-            - @howdois_theme.each do |t|
-              / = t
+            - @howdois_theme.each do |theme|
               .accordion
                 %hr{:class => 'rule-small'}
                 .accordion-header
                   %h2.heading-medium
-                    =t["name"]
-                  %div
-                    /=t["content"]["rendered"].html_safe
+                    = theme["name"]
                 .accordion-inner
-                  - if @howdois_topics.present?
-                    - @howdois_topics.each do |t|
+                  - theme_slug = theme['slug']
+                  - howdois_topics = AccordionQueries.howdois_topic_query(theme_slug)
+                  - if howdois_topics.present?
+                    - howdois_topics.each do |topic|
                       %ul.list-style-a
                         %li
-                          / = t
-                          = link_to( t["title"]["rendered"], '/topic/' + t["slug"])
-
-                  / .column-third
-                  /   %ul.list-style-a
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-
-                  / .column-third
-                  /   %ul.list-style-a
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-
-                  / .column-third
-                  /   %ul.list-style-a
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-                  /     %li
-                  /       = link_to('Lorem ipsum dolor sit amet ', '/')
-
-
+                          = link_to( topic["title"]["rendered"], link_topics_top + topic["slug"])
 
           %hr{:class => 'rule-small rule-top'}
       .column-third.related-content
@@ -103,3 +50,5 @@
             = link_to('Cirrus Office 365', '/')
           %li
             = link_to('Oracle', '/')
+
+= render partial: "widgets/zendesk_footer"

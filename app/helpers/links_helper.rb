@@ -3,6 +3,10 @@ module LinksHelper
     '/howdoi/'
   end
 
+  def link_topics_top
+    '/topic/'
+  end
+
   def link_policies_top
     '/policies-guidance/'
   end
