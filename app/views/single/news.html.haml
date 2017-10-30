@@ -2,9 +2,9 @@
   = render partial: "widgets/people_search_inner_page"
 
   - if params[:commit] == 'Submit comment'
-    - post_body = { "post" => params[:post], "author_email" => @people_finder_profile.email, "author_name" => @people_finder_profile.name, "content" => params[:comment_content] }
+    - post_body = { "post" => params[:post], "author_email" => @people_finder_profile.email, "author_name" => @people_finder_profile.name, "content" => params[:comment_content], "parent" => params[:comment_parent] }
     - response = WpApi.post_comment_json(post_body)
-    = response
+    // = response
     /= response.parsed_response['code']
 
     //on return remember to check against code = comment_duplicate
@@ -60,6 +60,20 @@
                   - comment_count = Integer(@comments_headers["x-wp-total"])
                   = comments_heading(comment_count)
 
+              - @comments_filtered = @comments.sort_by { |k| k["id"] }
+              - @comments_filtered = @comments_filtered.reverse
+
+              - @comments_filtered.each do |comment|
+                /= comment.class
+                - if comment["parent"] != 0
+                  - @parent = @comments_filtered.select{|key, hash| key["id"] == comment["parent"]}
+                  = @parent[0].class
+                  / - if !@parent["child_comments"]
+                  /   - @child_comments = []
+                  /   - @parent.push('child_comments' => @child_comments)
+                  / - else
+                  /   = 'do dis'
+
               - @comments.each do |comment|
                 .post-meta
                   = succeed ', ' do
@@ -68,7 +82,7 @@
                   %span.comment-date
                   = get_date(comment["date"])
                 = comment["content"]["rendered"].html_safe
-                %a.cta-comment-reply
+                %a{:class => 'cta-comment-reply', :id => "reply-to-#{comment['id']}", :"data-reply-to" => comment['id']}
                   Reply
                 .comment-replies
                   .post-meta
@@ -88,6 +102,7 @@
                   Leave a comment
                 = form_tag(request.url , method: :post, class: 'comment_post', id: 'comment-post')
                 = hidden_field_tag("post", @posts.first["id"])
+                = hidden_field_tag("comment_parent", 0)
                 = text_area_tag('comment_content', nil, class: 'leave-comment-textarea')
                 = submit_tag('Submit comment', class: 'button')
       .column-third.news-category
