@@ -6,6 +6,7 @@ class TopicsController < ApplicationController
 
     init_topics
     init_topic_children
+    init_related_news
   end
 
   protected
@@ -15,6 +16,12 @@ class TopicsController < ApplicationController
     @api_call = TopicQueries.new(@slug)
     @topic = @api_call.topic_query
     @topic_selector = @api_call.topic_selector
+  end
+
+  def init_related_news
+    @slug = params[:path].split('/').last
+    @api_call = TopicQueries.new(@slug)
+    @related_news = @api_call.topics_related_news
   end
 
   def init_topic_children

@@ -10,4 +10,9 @@ class TopicQueries
   def topic_selector
     WpApi.get_json_body('themes')
   end
+
+  def topics_related_news
+    WpApi.get_json_body("news?per_page=5")
+    # WpApi.get_json_body("news?filter[topic_taxonomy]=#{@slug}?per_page=5")
+  end
 end
