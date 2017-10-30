@@ -23,35 +23,38 @@
           %select{:class => 'form-control', :id => 'select_jump_to', :name => 'select-category'}
             %option{:value => ""}
               \ Select Category
-            - @categories.each do |c|
-              %option{:value => link_news_top + link_news_category + c["slug"]}
-                = link_to( c["name"] )
+            - if @categories.present?
+              - @categories.each do |c|
+                %option{:value => link_news_top + link_news_category + c["slug"]}
+                  = link_to( c["name"] )
     .grid-row
       .column-two-thirds
-        - @posts.each do |p|
-          / %pre
-          /   =p
-          .news-item
-            %h2.heading-large
-              %hr{:class => 'rule-small'}
-              = p["title"]["rendered"]
-            .post-meta
-              - profile = PeopleFinderProfile.from_api(p["author_email"])
-              = succeed ', ' do
-                = profile.name || "Unknown"
-              = get_date(p["date"])
-              - cat_length = p["news_categories"].length - 1
-              - p["news_categories"].each_with_index do |cat, i|
-                - if cat_length == 0
-                  = news_cats( cat["name"], cat["slug"] )
-                - elsif i == cat_length
-                  = news_cats( cat["name"], cat["slug"] )
-                - else
-                  = news_cats( cat["name"], cat["slug"] ) + ', '
+        - if @posts.present?
+          - @posts.each do |p|
+            / %pre
+            /   =p
+            .news-item
+              %h2.heading-large
+                %hr{:class => 'rule-small'}
+                = p["title"]["rendered"]
+              .post-meta
+                - profile = PeopleFinderProfile.from_api(p["author_email"])
+                = succeed ', ' do
+                  = profile.name || "Unknown"
+                = get_date(p["date"])
+                - cat_length = p["news_categories"].length - 1
+                - p["news_categories"].each_with_index do |cat, i|
+                  - if cat_length == 0
+                    = news_cats( cat["name"], cat["slug"] )
+                  - elsif i == cat_length
+                    = news_cats( cat["name"], cat["slug"] )
+                  - else
+                    = news_cats( cat["name"], cat["slug"] ) + ', '
 
-            = large_image_tag(p)
+              - if image_exists?(p)
+                = large_image_tag(p)
 
-            = p["content"]["rendered"].html_safe
+              = p["content"]["rendered"].html_safe
 
           = render partial: 'widgets/comments'
 
