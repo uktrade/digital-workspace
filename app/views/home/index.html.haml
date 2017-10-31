@@ -25,10 +25,12 @@
                     %p
                       - if p["acf"].present?
                         = truncate_excerpt_hero(p["acf"]["excerpt"])
+
                     = read_more(link_news_top + p["slug"])
                     - if @comments_headers["x-wp-total"].present?
-                      - comment_count = Integer(@comments_headers["x-wp-total"])
-                      = comments(link_news_top + p["slug"], comment_count)
+                      = precede ' - ' do
+                        - comment_count = Integer(@comments_headers["x-wp-total"])
+                        = comments(link_news_top + p["slug"], comment_count)
 
                 .hero-news-image-container
                   = large_image_tag(p)
