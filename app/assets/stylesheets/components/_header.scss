@@ -22,10 +22,11 @@
 				position: absolute;
 				right: 15px;
 				top: 0px;
+				width: 38%;
 			}
 			#proposition-name {
 				font-size: 24px;
-				padding-left: 8px;
+				padding-left: 7px;
 			}
 			#proposition-links {
 				padding-top: 10px;
@@ -73,6 +74,7 @@
 					}
 					.search-label {
 						display: none;
+						z-index: 1;
 					}
 					.search-wrapper {
 						background: transparent;
@@ -83,7 +85,12 @@
 						display: inline-block;
 					}
 					.search-input {
+						background-color: transparent;
 						display: none;
+						z-index: 2;
+						&:focus {
+							background-color: #fff;
+						}
 					}
 					.search-submit {
 						border-radius: 0px;
@@ -196,7 +203,7 @@
 					float: none;
 					.govuk-search {
 						&.proposition-search {
-							width: 41.187%;
+							width: 100%;
 						}
 						.search-label {
 							display: block;
@@ -325,68 +332,6 @@
 
 #global-header-bar {
 	background-color: $brand_color_c;
-}
-
-.beta-bar {
-	font-size: 14px;
-	margin: 0 15px;
-	padding: 5px 0;
-	position: relative;
-	overflow: hidden;
-	max-width: 960px;
-	text-align: left;
-	border-bottom: 1px solid #bfc1c3;
-
-	.beta-label {
-		display: -moz-inline-stack;
-		display: inline-block;
-		float: left;
-		margin: 4px 12px 2px 0;
-		padding: 2px 5px 0;
-		font-weight: 700;
-		text-transform: none;
-		font-size: 16px;
-		line-height: 1.14286;
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		text-decoration: none;
-		color: #fff;
-		background-color: #005ea5;
-		padding-top: 1px;
-	}
-	a:link {
-		color: #000;
-	}
-	span {
-		display: inline;
-		margin-left: 4px;
-	}
-}
-
-@media (min-width: $screen_small) {
-	.beta-bar {
-		margin: 0 30px;
-		span {
-			display: inline-block;
-		}
-	}
-}
-
-@media (min-width: $screen_medium) {
-	.beta-bar {
-		font-size: 16px;
-		.beta-label {
-			float: none;
-			margin-bottom: 0;
-			margin-right: 0;
-		}
-	}
-}
-
-@media (min-width: $screen_large) {
-	.beta-bar {
-		margin: 0 auto;
-	}
 }
 
 // ------------------------------------
