@@ -12,9 +12,15 @@
   = "with-proposition"
 
 - content_for :proposition_header do
+  %ul.mobile-header
+    %li
+      = link_to "Account", @people_finder_profile.profile_url, class: "mobile-account-button"
+    %li
+      = link_to "Search", '/search', class: "mobile-search-button"
   .header-proposition
     .content
       = link_to "Digital Workspace", root_path, id: "proposition-name"
+
     - if current_page?(root_path)
       = render partial: "widgets/nav_homepage"
     - else
@@ -30,7 +36,6 @@
             .search-element.search-submit-wrapper
               %button{:type => 'submit', :class => 'search-submit'}
                 Search
-
 
 - content_for :body_end do
   = javascript_include_tag 'application'
@@ -53,10 +58,8 @@
       / - @footer_menu_content.each do |menu_link|
       /   %li
       /     = link_to(menu_link['menu_item']['title'], menu_link['menu_item']['url'], target: menu_link['menu_item']['target'])
-  .footer-credits
+  .acknowledgements
     %p
-      Built by the
-      = link_to('DIT Digital', '#')
-      team
+      = "Built by the #{link_to('DIT Digital', '#')} team".html_safe
 
 = render file: 'layouts/govuk_template'
