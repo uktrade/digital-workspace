@@ -1,0 +1,16 @@
+.column-third
+  - if @related_news.present?
+    .related-content
+      %hr{:class => 'rule-large'}
+      %h2.heading-medium
+        Related news
+      - @related_news.each do |p|
+        %ul.list-style-a
+          %li
+            = link_to(p["title"]["rendered"], link_news_top + p["slug"])
+            .post-meta
+              = succeed ', ' do
+                = get_date(p["date"])
+                - if p["news_categories"].present?
+                  - p["news_categories"].each do |cat|
+                    = news_cats( cat["name"], cat["slug"] )

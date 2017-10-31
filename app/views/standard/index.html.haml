@@ -1,0 +1,36 @@
+%div{:id => 'standard', :class => 'page-content'}
+  = render partial: "widgets/people_search_inner_page"
+  = render partial: "widgets/zendesk_header"
+  %main#content.root-index.standard-section
+    .grid-row
+      .column-full
+        %ul.breadcrumb
+          %li
+            = link_to( 'Home', "/" )
+
+    .grid-row
+      .column-full
+        %hr{:class => 'rule-small rule-top'}
+    .grid-row
+      .column-two-thirds
+        = @test
+        - if @content.present?
+          - @content.each do |p|
+            / = p
+            %h2.heading-large
+              = p["title"]["rendered"]
+            = p["acf"]["excerpt"]
+    .grid-row
+      .column-full
+        %hr{:class => 'rule-small'}
+    .grid-row
+      - if @content_children.present?
+        - @content_children.each do |content|
+          .column-third.card
+            %h3
+              = link_to( content["title"]["rendered"], content["slug"])
+            %p
+              = content["acf"]["excerpt"]
+
+
+= render partial: "widgets/zendesk_footer"

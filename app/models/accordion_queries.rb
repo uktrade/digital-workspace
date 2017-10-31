@@ -3,15 +3,15 @@ class AccordionQueries
     @slug = slug
   end
 
-  def main_query
-    WpApi.get_json_body("howdoi?slug=#{@slug}")
+  def main_query(_slug)
+    WpApi.get_json_body("pages/?type=standard_index&slug=#{@slug}")
   end
 
-  def howdois_theme_query
-    WpApi.get_json_body('theme_taxonomy?filter[theme_taxonomy]=working-in-government')
+  def accordion_theme_query(parent_slug)
+    WpApi.get_json_body("theme_taxonomy/?filter[theme_taxonomy]=#{parent_slug}")
   end
 
-  def howdois_topic_query
-    WpApi.get_json_body('topics?theme_taxonomy=17')
+  def self.accordion_topic_query(theme_slug)
+    WpApi.get_json_body("topics/?filter[theme_taxonomy]=#{theme_slug}")
   end
 end

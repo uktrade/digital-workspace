@@ -1,5 +1,6 @@
 %div{:id => 'page', :class => 'page-content'}
   = render partial: "widgets/people_search_inner_page"
+  = render partial: "widgets/zendesk_header"
   %main#content.root-index.news-section
     .grid-row
       .column-half
@@ -7,7 +8,7 @@
           %li
             = link_to( 'Home', "/" )
           %li
-            = link_to( 'News', link_news_top )
+            = link_to( 'News and views', link_news_top )
 
       .column-half
         .form-group.select-category
@@ -86,3 +87,4 @@
         -#%h2.heading-medium
         -#  Related news
 
+= render partial: "widgets/zendesk_footer"

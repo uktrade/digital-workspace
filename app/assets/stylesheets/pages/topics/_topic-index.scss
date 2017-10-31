@@ -36,6 +36,12 @@
 		transition: opacity 300ms ease-in-out;
 	}
 
+	.in & {
+		&:before {
+			z-index: -1;
+		}
+	}
+
 	.visible & {
 		&:before {
 			opacity: 0;
@@ -64,7 +70,11 @@
 }
 
 .topics-list {
-
+	position: relative;
+	a {
+		position: relative;
+		/*z-index: 9999;*/
+	}
 }
 
 .topics-list-extra {

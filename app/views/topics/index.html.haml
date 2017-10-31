@@ -1,11 +1,18 @@
 %div{:id => 'topics', :class => 'page-content'}
   = render partial: "widgets/people_search_inner_page"
+  = render partial: "widgets/zendesk_header"
   %main#content.root-index.content-section
     .grid-row
       .column-half
         %ul.breadcrumb
           %li
             = link_to( 'Home', "/" )
+          - if @topic.present?
+            - @topic.each do |bcs|
+              - if bcs["breadcrumb"].present?
+                - bcs["breadcrumb"].each do |bc|
+                  %li
+                    = link_to( bc["title"], link_topics_top + bc["slug"] )
       .column-half
         / .form-group.select-category
         /   %label{:class => 'form-label', :for => 'select-topic'} Topics
@@ -14,53 +21,50 @@
         /       \ Select Topic
         /     - if @topic_selector.present?
         /       - @topic_selector.each do |c|
-        /         %option{:value => "/topic/" + c["slug"]}
+        /         %option{:value => link_topics_top + c["slug"]}
         /           = link_to( c["title"]["rendered"] )
     .grid-row
       .column-two-thirds
         %hr{:class => 'rule-small rule-top'}
         - if @topic.present?
-          - @topic.each do |t|
+          - @topic.each do |topic|
             %h2.heading-large
-              = t["title"]["rendered"]
-            = t["content"]["rendered"].html_safe
+              = topic["title"]["rendered"]
+            = topic["content"]["rendered"].html_safe
 
         %hr{:class => 'rule-small'}
         .topic-container
-          .topic
-            %h2
-              How do I?
-            %ul.list-style-a.topics-list
-              - if @topic_howdoi.present?
-                - @topic_howdoi[0..4].each_with_index do |t, i|
+          - if @topic_howdoi.present?
+            %title= yield(:parent_slug)
+            .topic
+              %h2
+                How do I?
+              %ul.list-style-a.topics-list
+                - @topic_howdoi[0..4].each_with_index do |how, i|
                   %li
-                    = link_to(t["title"]["rendered"], link_howdoi_top + t["slug"])
+                    = link_to(how["title"]["rendered"], + link_howdoi_top + how["slug"])
                 .topics-list-extra
                   - if @topic_howdoi[5..-1].present?
-                    - @topic_howdoi[5..-1].each_with_index do |t, i|
+                    - @topic_howdoi[5..-1].each_with_index do |how_extra, i|
                       %li
-                        = link_to(t["title"]["rendered"], link_howdoi_top + t["slug"])
+                        = link_to(how_extra["title"]["rendered"], '/' + link_howdoi_top + how_extra["slug"])
                 - if @topic_howdoi[5..-1].present?
                   %li.topic-controls
                     %span{class: 'topic-toggle'}View more
             %hr{:class => 'rule-small'}
-          .topic
-            %h2
-              Policies and Guidance
-            %ul.list-style-a.topics-list
-              - if @topic_policies.present?
-                - @topic_policies[0..4].each_with_index do |t, i|
+          - if @topic_policies.present?
+            .topic
+              %h2
+                Policies and Guidance
+              %ul.list-style-a.topics-list
+                - @topic_policies[0..4].each_with_index do |pol, i|
                   %li
-                    / %pre
-                    /   = t
-                    = link_to(t["title"]["rendered"], '/topic/' + t["slug"])
+                    = link_to(pol["title"]["rendered"], link_policies_top + pol["slug"])
                 .topics-list-extra
                   - if @topic_policies[5..-1].present?
-                    - @topic_policies[5..-1].each_with_index do |t, i|
+                    - @topic_policies[5..-1].each_with_index do |pol_extra, i|
                       %li
-                        / %pre
-                        /   = t
-                        = link_to(t["title"]["rendered"], '/topic/' + t["slug"])
+                        = link_to(pol_extra["title"]["rendered"], link_policies_top + pol_extra["slug"])
                 - if @topic_policies[5..-1].present?
                   %li.topic-controls
                     %span{class: 'topic-toggle'}View more
@@ -86,3 +90,5 @@
             = link_to('Cirrus Office 365', '/')
           %li
             = link_to('Oracle', '/')
+      = render partial: "widgets/related_news_partial"
+= render partial: "widgets/zendesk_footer"

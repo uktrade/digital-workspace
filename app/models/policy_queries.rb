@@ -1,14 +1,10 @@
-class TopicQueries
+class PolicyQueries
   def initialize(slug)
     @slug = slug
   end
 
-  def topic_query
-    WpApi.get_json_body("topics?slug=#{@slug}")
-  end
-
-  def topic_selector
-    WpApi.get_json_body('themes')
+  def policy_query
+    WpApi.get_json_body("policies?slug=#{@slug}")
   end
 
   def topics_related_news
