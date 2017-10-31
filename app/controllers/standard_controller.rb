@@ -7,6 +7,6 @@ class StandardController < ApplicationController
     @slug = current_url_without_parameters.split('/').last
     @api_call = StandardQueries.new(@slug)
     @content = @api_call.main_query(@slug)
-    @themes = @api_call.themes_query
+    @content_theme = @api_call.standard_theme_query(@parent_slug)
   end
 end
