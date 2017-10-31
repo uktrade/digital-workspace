@@ -7,10 +7,12 @@
         %ul.breadcrumb
           %li
             = link_to( 'Home', "/" )
-          / - if @topic.present?
-          /   %li
-          /     - @topic.each do |t|
-          /       = t["breadcrumb"]
+          - if @topic.present?
+            - @topic.each do |bcs|
+              - if bcs["breadcrumb"].present?
+                - bcs["breadcrumb"].each do |bc|
+                  %li
+                    = link_to( bc["title"], link_topics_top + bc["slug"] )
       .column-half
         / .form-group.select-category
         /   %label{:class => 'form-label', :for => 'select-topic'} Topics
@@ -33,11 +35,11 @@
 
         %hr{:class => 'rule-small'}
         .topic-container
-          .topic
-            %h2
-              How do I?
-            %ul.list-style-a.topics-list
-              - if @topic_howdoi.present?
+          - if @topic_howdoi.present?
+            .topic
+              %h2
+                How do I?
+              %ul.list-style-a.topics-list
                 - @topic_howdoi[0..4].each_with_index do |t, i|
                   %li
                     = link_to(t["title"]["rendered"], link_howdoi_top + t["slug"])
@@ -50,11 +52,11 @@
                   %li.topic-controls
                     %span{class: 'topic-toggle'}View more
             %hr{:class => 'rule-small'}
-          .topic
-            %h2
-              Policies and Guidance
-            %ul.list-style-a.topics-list
-              - if @topic_policies.present?
+          - if @topic_policies.present?
+            .topic
+              %h2
+                Policies and Guidance
+              %ul.list-style-a.topics-list
                 - @topic_policies[0..4].each_with_index do |t, i|
                   %li
                     / %pre
@@ -92,20 +94,5 @@
             = link_to('Cirrus Office 365', '/')
           %li
             = link_to('Oracle', '/')
-        %hr{:class => 'rule-large'}
-        - if @related_news.present?
-          .related-content
-            %h2.heading-medium
-              Related news
-            - @related_news.each do |p|
-              %ul.list-style-a
-                %li
-                  = link_to(p["title"]["rendered"], link_news_top + p["slug"])
-                  .post-meta
-                    = succeed ', ' do
-                      = get_date(p["date"])
-                      - if p["news_categories"].present?
-                        - p["news_categories"].each do |cat|
-                          = news_cats( cat["name"], cat["slug"] )
-
+      = render partial: "widgets/related_news_partial"
 = render partial: "widgets/zendesk_footer"

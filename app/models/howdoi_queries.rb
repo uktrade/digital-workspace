@@ -1,10 +1,10 @@
-class PolicyQueries
+class HowdoiQueries
   def initialize(slug)
     @slug = slug
   end
 
-  def policy_query
-    WpApi.get_json_body("policies?slug=#{@slug}")
+  def howdoi_query
+    WpApi.get_json_body("howdoi?slug=#{@slug}")
   end
 
   def topics_related_news
