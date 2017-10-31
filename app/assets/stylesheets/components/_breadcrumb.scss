@@ -3,11 +3,11 @@
 ul.breadcrumb {
 	padding: 19px 0px;
 	margin: 0;
-
+	/*padding: 0.5em 0px;*/
 	li {
 		position: relative;
 		display: inline-block;
-		padding: 0px 20px;
+		padding: 0px 14px;
 		font-size: 16px;
 
 		a {
@@ -26,7 +26,7 @@ ul.breadcrumb {
 		}
 
 		&:first-of-type {
-			padding: 0px 20px 0px 0px;
+			padding: 0px 14px 0px 0px;
 			&:before {
 				background-image: none;
 			}
