@@ -11,21 +11,20 @@
     .grid-row
       .column-two-thirds
         %hr{:class => 'rule-small rule-top'}
-        - if @howdois.present?
-          - @howdois.each do |howdoi|
-            / =h
+        - if @accordion.present?
+          - @accordion.each do |page|
             %h2.heading-large
-              = howdoi["title"]["rendered"]
+              = page["title"]["rendered"]
             %div
-              = howdoi["acf"]["excerpt"].html_safe
+              = page["acf"]["excerpt"].html_safe
 
         .accordion-controls
           %span.accordion-open-all
             Open all
         .accordion-container
 
-          - if @howdois_theme.present?
-            - @howdois_theme.each do |theme|
+          - if @accordion_theme.present?
+            - @accordion_theme.each do |theme|
               .accordion
                 %hr{:class => 'rule-small'}
                 .accordion-header
@@ -33,9 +32,9 @@
                     = theme["name"]
                 .accordion-inner
                   - theme_slug = theme['slug']
-                  - howdois_topics = AccordionQueries.howdois_topic_query(theme_slug)
-                  - if howdois_topics.present?
-                    - howdois_topics.each do |topic|
+                  - accordion_topics = AccordionQueries.accordion_topic_query(theme_slug)
+                  - if accordion_topics.present?
+                    - accordion_topics.each do |topic|
                       %ul.list-style-a
                         %li
                           = link_to( topic["title"]["rendered"], link_topics_top + topic["slug"])
