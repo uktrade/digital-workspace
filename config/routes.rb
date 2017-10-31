@@ -7,12 +7,11 @@ Rails.application.routes.draw do
   get '/news-and-views/*path', to: 'single#news'
 
   get '/working-at-dit', to: 'accordion#index'
-  get '/working-at-dit/*path', to: 'content#content'
-  get '/working-at-dit/topic/*path', to: 'topics#index'
+  get '/working-at-dit/*path', to: 'topics#index'
+  # get '/working-at-dit/*path/*path', to: 'topics#index'
 
   get '/about-dit', to: 'standard#index'
   get '/about-dit/*path', to: 'content#content'
-  get '/about-dit/topic/*path', to: 'topics#index'
 
   get '/tools', to: 'standard#index'
   get '/tools/*path', to: 'content#content'
@@ -20,19 +19,15 @@ Rails.application.routes.draw do
 
   get '/teams', to: 'standard#index'
   get '/teams/*path', to: 'content#content'
-  get '/teams/topic/*path', to: 'topics#index'
 
   get '/networks', to: 'standard#index'
   get '/networks/*path', to: 'content#content'
-  get '/networks/topic/*path', to: 'topics#index'
 
   get '/sectors', to: 'standard#index'
   get '/sectors/*path', to: 'content#content'
-  get '/sectors/topic/*path', to: 'topics#index'
 
   get '/regions', to: 'standard#index'
   get '/regions/*path', to: 'content#content'
-  get '/regions/topic/*path', to: 'topics#index'
 
   get '/howdoi/*path', to: 'howdoi#content'
   get '/policies-guidance/*path', to: 'policy#content'

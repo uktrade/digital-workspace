@@ -37,7 +37,7 @@
                     - accordion_topics.each do |topic|
                       %ul.list-style-a
                         %li
-                          = link_to( topic["title"]["rendered"], link_topics_top + topic["slug"])
+                          = link_to( topic["title"]["rendered"], topic["slug"])
 
           %hr{:class => 'rule-small rule-top'}
       .column-third.related-content

@@ -26,7 +26,6 @@
     .grid-row
       - if @content_children.present?
         - @content_children.each do |content|
-          / = content
           .column-third.card
             %h3
               = link_to( content["title"]["rendered"], content["slug"])
