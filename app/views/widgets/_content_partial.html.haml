@@ -4,18 +4,18 @@
       %ul.breadcrumb
         %li
           = link_to( 'Home', "/" )
-        - if @content.present?
-          - @content.each do |bcs|
-            - if bcs["breadcrumb"].present?
-              - bcs["breadcrumb"].each do |bc|
-                %li
-                  = link_to( bc["title"], link_topics_top + bc["slug"] )
+        / - if @content.present?
+        /   - @content.each do |bcs|
+        /     - if bcs["breadcrumb"].present?
+        /       - bcs["breadcrumb"].each do |bc|
+        /         %li
+        /           = link_to( bc["title"], link_topics_top + bc["slug"] )
 
   .grid-row
     - @content.each do |content|
       .column-two-thirds
         %hr{:class => 'rule-small rule-top'}
-          %h2.heading-large
+          %h2.heading-large.heading-top
             = content["title"]["rendered"]
           = content["content"]["rendered"].html_safe
         - if content["acf"].present? && content["acf"]["documents"].present?

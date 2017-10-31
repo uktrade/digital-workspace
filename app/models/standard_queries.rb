@@ -7,7 +7,7 @@ class StandardQueries
     WpApi.get_json_body("pages?type=standard_index&slug=#{@slug}")
   end
 
-  def themes_query
-    WpApi.get_json_body('themes?')
+  def standard_child_query(_slug)
+    WpApi.get_json_body('pages?type=content')
   end
 end
