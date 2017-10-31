@@ -24,16 +24,14 @@
       .column-full
         %hr{:class => 'rule-small'}
     .grid-row
-      - if @content_theme.present?
-        - @content_theme.each do |theme|
-          - theme_slug = theme['slug']
-          - standard_topics = StandardQueries.standard_topic_query(theme_slug)
-          - if standard_topics.present?
-            - standard_topics.each do |topic|
-              .column-third.card
-                %h3
-                  = link_to( topic["title"]["rendered"], link_topics_top + topic["slug"])
-                = topic["content"]["rendered"].html_safe
+      - if @content_children.present?
+        - @content_children.each do |content|
+          / = content
+          .column-third.card
+            %h3
+              = link_to( content["title"]["rendered"], content["slug"])
+            %p
+              = content["acf"]["excerpt"]
 
 
 = render partial: "widgets/zendesk_footer"
