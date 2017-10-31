@@ -57,3 +57,8 @@ The Word Press API URL should be defined as an environment variable:
 ## Word Press 'Application Passwords' Plugin
 The Word Press paswword API Authentication Key should be defined as an environment variable:
 `WP_API_KEY`
+
+## Redis
+Currently the app expects the following environment variables:
+`REDIS_CACHE_URL`
+`REDIS_SESSION_URL`
