@@ -29,11 +29,21 @@
 			container.style.height = container.scrollHeight + 'px';
 			self.innerHTML = 'View less';
 			self.flag = true;
+
+			self.wait = setTimeout( function (){
+				self.parentNode.parentNode.classList.add('in');
+				clearTimeout(self.wait);
+			}, 100);
 		} else {				// close
 			self.parentNode.parentNode.classList.remove('visible');
 			container.style.height = '0px';
 			self.innerHTML = 'View more';
 			self.flag = false;
+
+			self.wait = setTimeout( function (){
+				self.parentNode.parentNode.classList.remove('in');
+				clearTimeout(self.wait);
+			}, 100);
 		}
 	};
 
