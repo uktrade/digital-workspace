@@ -1,28 +1,5 @@
 %div{:id => 'generic_content', :class => 'page-content'}
   = render partial: "widgets/people_search_inner_page"
   = render partial: "widgets/zendesk_header"
-  %main#content.root-index.content-section
-    .grid-row
-      .column-full
-        %ul.breadcrumb
-          %li
-            = link_to( 'Home', "/" )
-
-    .grid-row
-      - @content.each do |p|
-        .column-two-thirds
-          %hr{:class => 'rule-small rule-top'}
-            %h2.heading-medium
-              = p["title"]["rendered"]
-            = p["content"]["rendered"].html_safe
-          - if p["acf"].present? && p["acf"]["documents"].present?
-            %h2.heading-medium
-              Documents
-            - p["acf"]["documents"].each do |d|
-              %ul.list-style-a
-                %li
-                  = link_to( d["title"], d["file"]["url"])
-        .column-third
-          %hr{class: 'rule-large rule-top'}
-
+  = render partial: "widgets/content_partial"
 = render partial: "widgets/zendesk_footer"
