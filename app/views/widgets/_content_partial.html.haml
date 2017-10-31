@@ -15,7 +15,7 @@
     - @content.each do |content|
       .column-two-thirds
         %hr{:class => 'rule-small rule-top'}
-          %h2.heading-large
+          %h2.heading-large.heading-top
             = content["title"]["rendered"]
           = content["content"]["rendered"].html_safe
         - if content["acf"].present? && content["acf"]["documents"].present?
