@@ -22,7 +22,7 @@
 				filter: alpha(opacity=30); /* IE8 */
 				zoom: 1; /* IE8 */
 				display: block;
-				height: 70px;
+				height: 10px;
 				position: absolute;
 				right: 0;
 				text-align: right;
@@ -32,7 +32,7 @@
 
 			.profile-content {
 				background: $brand_color_c;
-				margin: 67px 0;
+				margin: 10px 0;
 				padding: 20px 20px 20px;
 				@extend %clearfix;
 			}
@@ -71,7 +71,7 @@
 			}
 			.profile-update {
 				font-size: 14px;
-				padding-left: 90px;
+				float: right;
 			}
 
 			img {
@@ -107,6 +107,21 @@
 					h3, span {
 						padding-left: 15px;
 					}
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: $screen_medium) {
+	.homepage-top {
+		.profile-overview {
+			.profile-overview-inner {
+				.profile-flair {
+					height: 70px;
+				}
+				.profile-content {
+					margin: 50px 0;
 				}
 			}
 		}

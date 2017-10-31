@@ -247,6 +247,9 @@
 			font-size: 16px;
 			margin-left: 20px;
 			padding-top: 4px;
+			a {
+				word-break: break-all;
+			}
 		}
 		a, date, span {
 			display: inline-block;

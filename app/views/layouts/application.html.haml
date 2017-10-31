@@ -12,11 +12,14 @@
   = "with-proposition"
 
 - content_for :proposition_header do
+  %ul.mobile-header
+    %li
+      = link_to "Account", @people_finder_profile.profile_url, class: "mobile-account-button"
+    %li
+      = link_to "Search", '/search', class: "mobile-search-button"
   .header-proposition
     .content
       = link_to "Digital Workspace", root_path, id: "proposition-name"
-      %strong.beta-label
-        BETA
 
     - if current_page?(root_path)
       = render partial: "widgets/nav_homepage"
@@ -34,88 +37,18 @@
               %button{:type => 'submit', :class => 'search-submit'}
                 Search
 
-
 - content_for :body_end do
   = javascript_include_tag 'application'
 
 - content_for :footer_top do
-
-  - @footer_menu_content = footer_menu_content
-
-  - @footer_menu_title = footer_menu_title
-
-  .grid-row
-    .column-full
-      %h2.heading-medium
-        - if !@footer_menu_title.nil?
-          = @footer_menu_title
-      %hr{:class => 'rule-footer'}
-      %ul.list-style-a
-        -if !@footer_menu_content.nil?
-          - @footer_menu_content.each do |menu_link|
-            %li
-              = link_to(menu_link['menu_item']['title'], menu_link['menu_item']['url'], target: menu_link['menu_item']['target'])
-  %hr{:class => 'rule-footer'}
-
-  / .grid-row
-  /   .column-quarter
-  /     %h2.heading-medium
-  /       - if !@footer_menu_1_title.nil?
-  /         = @footer_menu_1_title
-  /     %hr{:class => 'rule-footer'}
-  /     %ul.list-style-a
-  /       -if !@footer_menu_1_content.nil?
-  /         - @footer_menu_1_content.each do |menu_link|
-  /           %li
-  /             = link_to(menu_link['menu_item']['title'], menu_link['menu_item']['url'], target: menu_link['menu_item']['target'])
-  /   .column-quarter
-  /     %h2.heading-medium
-  /       - if !@footer_menu_2_title.nil?
-  /         = @footer_menu_2_title
-  /     %hr{:class => 'rule-footer'}
-  /     %ul.list-style-a
-  /       -if !@footer_menu_2_content.nil?
-  /         - @footer_menu_2_content.each do |menu_link|
-  /           %li
-  /             = link_to(menu_link['menu_item']['title'], menu_link['menu_item']['url'], target: menu_link['menu_item']['target'])
-  /   .column-quarter
-  /     %h2.heading-medium
-  /       - if !@footer_menu_3_title.nil?
-  /         = @footer_menu_3_title
-  /     %hr{:class => 'rule-footer'}
-  /     %ul.list-style-a
-  /       -if !@footer_menu_3_content.nil?
-  /         - @footer_menu_3_content.each do |menu_link|
-  /           %li
-  /             = link_to(menu_link['menu_item']['title'], menu_link['menu_item']['url'], target: menu_link['menu_item']['target'])
-  /   .column-quarter
-  /     %h2.heading-medium
-  /       Regions
-  /     %hr{:class => 'rule-footer'}
-  /     %h3.heading-xsmall
-  /       - if !@footer_menu_4_title.nil?
-  /         = @footer_menu_4_title
-  /     %ul.list-style-a
-  /       -if !@footer_menu_4_content.nil?
-  /         - @footer_menu_4_content.each do |menu_link|
-  /           %li
-  /             = link_to(menu_link['menu_item']['title'], menu_link['menu_item']['url'], target: menu_link['menu_item']['target'])
-
-  /     %h3.heading-xsmall
-  /       - if !@footer_menu_5_title.nil?
-  /         = @footer_menu_5_title
-  /     %ul.list-style-a
-  /       -if !@footer_menu_5_content.nil?
-  /         - @footer_menu_5_content.each do |menu_link|
-  /           %li
-  /             = link_to(menu_link['menu_item']['title'], menu_link['menu_item']['url'], target: menu_link['menu_item']['target'])
-  / %hr{:class => 'rule-footer'}
+  
 
 - content_for :footer_support_links do
-  %ul.list-style-a
-    %li
-      = link_to("Help", "")
-    %li
-      = link_to("Contact", "")
+  - @footer_menu_content = footer_menu_content
+    %ul.list-style-a
+      - if !@footer_menu_content.nil?
+        - @footer_menu_content.each do |menu_link|
+          %li
+            = link_to(menu_link['menu_item']['title'], menu_link['menu_item']['url'], target: menu_link['menu_item']['target'])
 
 = render file: 'layouts/govuk_template'
