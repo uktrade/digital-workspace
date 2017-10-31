@@ -142,7 +142,9 @@
 		text-align: left;
 		margin: 0 auto;
 		padding: 0px;
-
+		.search-people-form {
+			width: 100%;
+		}
 		@media (min-width: $screen_medium) {
 			padding: 0px 15px;
 		}
@@ -155,9 +157,13 @@
 	.search-people-form {
 		width: 50%;
 		float: left;
+		.search-wrapper {
+			width: 97.5%;
+		}
 	}
 
 	.user-account {
+		display: none;
 		width: 31%;
 		float: right;
 		background: $brand_color_c; /* For unsupported browsers */
@@ -174,16 +180,16 @@
 			color: #FFFFFF;
 
 			&:before {
-				content: '';
-				display: block;
-				position: absolute;
-				top: 18px;
-				left: -30px;
-				background-image: asset-data-url("icon-user.png");
-				background-repeat: no-repeat;
+				// content: '';
+				// display: block;
+				// position: absolute;
+				// top: 18px;
+				// left: -30px;
+				// background-image: asset-data-url("icon-user.png");
+				// background-repeat: no-repeat;
 
-				width: 16px;
-				height: 20px;
+				// width: 16px;
+				// height: 20px;
 			}
 		}
 	}
@@ -192,5 +198,21 @@
 		width: 60px;
 		max-height: 100%;
 		float: right;
+	}
+}
+
+@media(min-width: $screen_medium) {
+	.people-search-inner-page {
+		.homepage-top-inner {
+			.search-people-form {
+				width: 50%;
+				.search-wrapper {
+					width: 85%;
+				}
+			}
+		}
+		.user-account {
+			display: block;
+		}
 	}
 }

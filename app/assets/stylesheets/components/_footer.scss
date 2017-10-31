@@ -9,6 +9,27 @@
 	.heading-xsmall {
 		font-weight: 700;
 	}
+
+	.footer-meta-inner {
+		li {
+			font-size: 16px;
+		}
+	}
+
+	.acknowledgements {
+		p {
+			font-size: 16px;
+		}
+	}
+
+	.open-government-licence {
+		display: none;
+		visibility: hidden;
+		.logo {
+			visibility: hidden;
+			display: none;
+		}
+	}
 }
 
 .footer-wrapper {
