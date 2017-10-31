@@ -4,12 +4,12 @@
       %ul.breadcrumb
         %li
           = link_to( 'Home', "/" )
-        - if @content.present?
-          - @content.each do |bcs|
-            - if bcs["breadcrumb"].present?
-              - bcs["breadcrumb"].each do |bc|
-                %li
-                  = link_to( bc["title"], link_topics_top + bc["slug"] )
+        / - if @content.present?
+        /   - @content.each do |bcs|
+        /     - if bcs["breadcrumb"].present?
+        /       - bcs["breadcrumb"].each do |bc|
+        /         %li
+        /           = link_to( bc["title"], link_topics_top + bc["slug"] )
 
   .grid-row
     - @content.each do |content|
