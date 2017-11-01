@@ -17,7 +17,7 @@
             %option{:value => ""}
               \ Select Category
             - @categories.each do |c|
-              %option{:value => link_news_top + "category/" + c["slug"]}
+              %option{:value => link_news_top + link_news_category + c["slug"]}
                 = link_to( c["name"] )
     .grid-row
       .column-full
@@ -47,7 +47,7 @@
       .column-two-thirds
         - @posts.each do |p|
           .news-item
-            %h3.heading-small
+            %h3.heading-medium
               %hr{:class => 'rule-small'}
               = link_to(p["title"]["rendered"].html_safe, link_news_top + p["slug"])
             .news-item-text
@@ -57,8 +57,15 @@
                   = profile.name || "Unknown"
 
                 = get_date(p["date"])
-                - p["news_categories"].each do |cat|
-                  = news_cats( cat["name"], cat["slug"] )
+                - cat_length = p["news_categories"].length - 1
+                - p["news_categories"].each_with_index do |cat, i|
+                  - if cat_length == 0
+                    = news_cats( cat["name"], cat["slug"] )
+                  - elsif i == cat_length
+                    = news_cats( cat["name"], cat["slug"] )
+                  - else
+                    = news_cats( cat["name"], cat["slug"] ) + ', '
+
             .news-item-excerpt
               %p
                 - if p["acf"].present?
@@ -74,10 +81,10 @@
         .pagination
           .prev
             - if @paginator.previous_page_no
-              = link_to( "Prev Page", link_news_top + "/category/#{@slug}?page=#{@paginator.previous_page_no}" )
+              = link_to( "Prev Page", link_news_top + link_news_category + "#{@slug}?page=#{@paginator.previous_page_no}" )
           .next
             - if @paginator.next_page_no
-              = link_to( "Next Page", link_news_top + "/category/#{@slug}?page=#{@paginator.next_page_no}" )
+              = link_to( "Next Page", link_news_top + link_news_category + "#{@slug}?page=#{@paginator.next_page_no}" )
           .numbered-paging
             %ul
               - if @paginator.current_page_no == 1
@@ -86,7 +93,7 @@
                     1
               - else
                 %li
-                  = link_to( "1", link_news_top + "/category/#{@slug}?page=1")
+                  = link_to( "1", link_news_top + link_news_category + "#{@slug}?page=1")
               - if @paginator.last_page_no >= 2
                 - if @paginator.current_page_no == 2
                   %li
@@ -94,13 +101,13 @@
                       2
                 - else
                   %li
-                    = link_to( "2", link_news_top + "/category/#{@slug}?page=2")
+                    = link_to( "2", link_news_top + link_news_category + "#{@slug}?page=2")
               - if @paginator.current_page_no - 5 >= 1
                 %li
-                  = link_to("…", link_news_top + "/category/#{@slug}?page=#{@paginator.current_page_no - 5}")
+                  = link_to("…", link_news_top + link_news_category + "#{@slug}?page=#{@paginator.current_page_no - 5}")
               - if not [0, 1, 2, @paginator.last_page_no, @paginator.last_page_no - 1].include?(@paginator.current_page_no - 1)
                 %li
-                  = link_to( "#{@paginator.current_page_no - 1}", link_news_top + "/category/#{@slug}?page=#{@paginator.current_page_no - 1}" )
+                  = link_to( "#{@paginator.current_page_no - 1}", link_news_top + link_news_category + "#{@slug}?page=#{@paginator.current_page_no - 1}" )
               - if not [0, 1, 2, @paginator.last_page_no, @paginator.last_page_no - 1].include?(@paginator.current_page_no)
                 %li
                   %span.current
@@ -108,10 +115,10 @@
               - if not [0, 1, 2, @paginator.last_page_no, @paginator.last_page_no - 1].include?(@paginator.current_page_no + 1)
                 - if @paginator.current_page_no < @paginator.last_page_no - 1
                   %li
-                    = link_to( "#{@paginator.current_page_no + 1}", link_news_top + "/category/#{@slug}?page=#{@paginator.current_page_no + 1}" )
+                    = link_to( "#{@paginator.current_page_no + 1}", link_news_top + link_news_category + "#{@slug}?page=#{@paginator.current_page_no + 1}" )
               - if @paginator.current_page_no + 5 <= @paginator.last_page_no
                 %li
-                  = link_to("…", link_news_top + "/category/#{@slug}?page=#{@paginator.current_page_no + 5}")
+                  = link_to("…", link_news_top + link_news_category + "#{@slug}?page=#{@paginator.current_page_no + 5}")
               - if @paginator.last_page_no - 1 > 2
                 - if @paginator.last_page_no - 1 == @paginator.current_page_no
                   %li
@@ -119,7 +126,7 @@
                       = @paginator.last_page_no - 1
                 - else
                   %li
-                    = link_to( "#{@paginator.last_page_no - 1}", link_news_top + "/category/#{@slug}?page=#{@paginator.last_page_no - 1}")
+                    = link_to( "#{@paginator.last_page_no - 1}", link_news_top + link_news_category + "#{@slug}?page=#{@paginator.last_page_no - 1}")
               - if @paginator.last_page_no > 2
                 - if @paginator.last_page_no == @paginator.current_page_no
                   %li
@@ -127,7 +134,7 @@
                       = @paginator.last_page_no
                 - else
                   %li
-                    = link_to( "#{@paginator.last_page_no}", link_news_top + "/category/#{@slug}?page=#{@paginator.last_page_no}")
+                    = link_to( "#{@paginator.last_page_no}", link_news_top + link_news_category + "#{@slug}?page=#{@paginator.last_page_no}")
 
       .column-third.news-category
         %hr{:class => 'rule-large'}
@@ -137,7 +144,7 @@
         %ul.list-style-a
           - @categories.each do |c|
             %li
-              = link_to( c["name"], link_news_top + "category/" + c["slug"])
+              = link_to( c["name"], link_news_top + link_news_category + c["slug"])
               %span.news-category-count.font-xsmall
                 = "(#{c["count"]})"
 

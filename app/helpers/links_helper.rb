@@ -18,4 +18,8 @@ module LinksHelper
   def link_news_top
     '/news-and-views/'
   end
+
+  def link_news_category
+    'category/'
+  end
 end
