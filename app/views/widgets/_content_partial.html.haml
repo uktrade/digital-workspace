@@ -17,6 +17,15 @@
         %hr{:class => 'rule-small rule-top'}
           %h2.heading-large.heading-top
             = content["title"]["rendered"]
+          %div.dates-published-updated
+            %ul.list-style-a
+              %li
+                Published:
+                = get_date( content["date"] )
+              %li
+                Last updated:
+                = get_date( content["date"] )
+
           = content["content"]["rendered"].html_safe
         - if content["acf"].present? && content["acf"]["documents"].present?
           %h2.heading-medium
