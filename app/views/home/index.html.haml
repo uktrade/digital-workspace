@@ -45,13 +45,16 @@
 
               .news-item-text
                 .post-meta
-                  = succeed ' GMT, ' do
-                    - date = DateTime.parse(p["date"])
-                    = date.strftime('%d %B %Y')
-                    = date.strftime('@ %I:%M')
+                  = get_date(p["date"])
 
-                  - p["news_categories"].each do |cat|
-                    = news_cats( cat["name"], cat["slug"] )
+                  - cat_length = p["news_categories"].length - 1
+                  - p["news_categories"].each_with_index do |cat, i|
+                    - if cat_length == 0
+                      = news_cats( cat["name"], cat["slug"] )
+                    - elsif i == cat_length
+                      = news_cats( cat["name"], cat["slug"] )
+                    - else
+                      = news_cats( cat["name"], cat["slug"] ) + ', '
 
               %h3.heading-medium
                 - heading = truncate_home_news_title(p["title"]["rendered"])
