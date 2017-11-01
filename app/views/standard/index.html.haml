@@ -16,7 +16,6 @@
         = @test
         - if @content.present?
           - @content.each do |p|
-            / = p
             %h2.heading-large
               = p["title"]["rendered"]
             = p["acf"]["excerpt"]
@@ -31,6 +30,5 @@
               = link_to( content["title"]["rendered"], content["slug"])
             %p
               = content["acf"]["excerpt"]
-
 
 = render partial: "widgets/zendesk_footer"

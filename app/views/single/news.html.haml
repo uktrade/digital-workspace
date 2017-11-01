@@ -17,7 +17,7 @@
             %option{:value => ""}
               \ Select Category
             - @categories.each do |c|
-              %option{:value => link_news_top + "category/" + c["slug"]}
+              %option{:value => link_news_top + link_news_category + c["slug"]}
                 = link_to( c["name"] )
     .grid-row
       .column-two-thirds
@@ -33,8 +33,15 @@
               = succeed ', ' do
                 = profile.name || "Unknown"
               = get_date(p["date"])
-              - p["news_categories"].each do |cat|
-                = news_cats( cat["name"], cat["slug"] )
+              - cat_length = p["news_categories"].length - 1
+              - p["news_categories"].each_with_index do |cat, i|
+                - if cat_length == 0
+                  = news_cats( cat["name"], cat["slug"] )
+                - elsif i == cat_length
+                  = news_cats( cat["name"], cat["slug"] )
+                - else
+                  = news_cats( cat["name"], cat["slug"] ) + ', '
+
             = large_image_tag(p)
 
             = p["content"]["rendered"].html_safe

@@ -57,8 +57,16 @@
                   = profile.name || "Unknown"
                 = get_date(p["date"])
 
-                - p["news_categories"].each do |cat|
-                  = news_cats( cat["name"], cat["slug"] )
+                - cat_length = p["news_categories"].length - 1
+                - p["news_categories"].each_with_index do |cat, i|
+                  - if cat_length == 0
+                    = news_cats( cat["name"], cat["slug"] )
+                  - elsif i == cat_length
+                    = news_cats( cat["name"], cat["slug"] )
+                  - else
+                    = news_cats( cat["name"], cat["slug"] ) + ', '
+
+
               .news-item-excerpt
                 %p
                   - if p["acf"].present?

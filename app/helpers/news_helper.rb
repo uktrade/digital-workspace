@@ -1,6 +1,6 @@
 module NewsHelper
   def news_cats(name, slug)
-    link_to(name, link_news_top + 'category/' + slug) + ','.html_safe
+    link_to(name, link_news_top + link_news_category + slug)
   end
 
   def news_cat_for_title
@@ -13,6 +13,6 @@ module NewsHelper
 
   def get_date(date)
     date = DateTime.parse(date)
-    date.strftime('%d %B %Y') + date.strftime(' @ %I:%M GMT')
+    date.strftime('%d %B %Y') + date.strftime(' @ %I:%M GMT.')
   end
 end
