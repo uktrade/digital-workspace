@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe PeopleFinderProfile do
   describe '#from_api' do
-    let(:user) { User.new(email: 'alice@example.com') }
+    let(:user) { AuthUser.new(email: 'alice@example.com') }
 
     before do
       response = double(:response, body: people_finder_hash)
