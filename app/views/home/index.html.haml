@@ -6,6 +6,7 @@
         = render partial: "widgets/profile_overview"
 = render partial: "widgets/beta_bar"
 %div{:id => 'homepage', :class => 'homepage-content'}
+  /= render partial: "widgets/zendesk_header"
   %main#content.root-index
     .grid-row
       .column-full
@@ -44,16 +45,13 @@
 
               .news-item-text
                 .post-meta
-                  = get_date(p["date"])
+                  = succeed ' GMT, ' do
+                    - date = DateTime.parse(p["date"])
+                    = date.strftime('%d %B %Y')
+                    = date.strftime('@ %I:%M')
 
-                  - cat_length = p["news_categories"].length - 1
-                  - p["news_categories"].each_with_index do |cat, i|
-                    - if cat_length == 0
-                      = news_cats( cat["name"], cat["slug"] )
-                    - elsif i == cat_length
-                      = news_cats( cat["name"], cat["slug"] )
-                    - else
-                      = news_cats( cat["name"], cat["slug"] ) + ', '
+                  - p["news_categories"].each do |cat|
+                    = news_cats( cat["name"], cat["slug"] )
 
               %h3.heading-medium
                 - heading = truncate_home_news_title(p["title"]["rendered"])
@@ -122,7 +120,7 @@
         %h2.heading-medium
           How do I?
         %p.howdoi-description
-          This is the most visited 10 &quot;How do I?&quot; content
+          This is the most visited 20 &quot;How do I?&quot; content
     .grid-row
       .column-third
         %ul.list-style-a.how-tos
