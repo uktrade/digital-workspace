@@ -62,3 +62,6 @@ The Word Press paswword API Authentication Key should be defined as an environme
 Currently the app expects the following environment variables:
 `REDIS_CACHE_URL` (defines the Redis cache store)
 `REDIS_SESSION_URL` (if set, defines Redis as the session store)
+
+To enable the redis cache in development:
+`rake dev:cache`
