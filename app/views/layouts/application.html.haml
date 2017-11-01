@@ -42,9 +42,17 @@
 - content_for :footer_support_links do
   %ul.list-style-a
     -if !@footer_menu_content.nil?
-      - @footer_menu_content.each do |menu_link|
-        %li
-          = link_to(menu_link['menu_item']['title'], menu_link['menu_item']['url'], target: menu_link['menu_item']['target'])
+      %li
+        = link_to('Teams', '/teams/')
+      %li
+        = link_to('Networks', '/networks/')
+      %li
+        = link_to('Regions', '/regions/')
+      %li
+        = link_to('Sectors', '/sectors/')
+      / - @footer_menu_content.each do |menu_link|
+      /   %li
+      /     = link_to(menu_link['menu_item']['title'], menu_link['menu_item']['url'], target: menu_link['menu_item']['target'])
   .footer-credits
     %p
       Built by the
