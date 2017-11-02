@@ -1,28 +1,27 @@
 .accordion {
-
-	.rule-small {
-		margin: 10px 0px;
-	}
+	border-bottom: 1px solid $brand_chrome_d;
 
 	&:first-of-type {
-		.rule-small {
-			margin-top: 0px;
-		}
+		border-top: 1px solid $brand_chrome_d;
 	}
 }
 
 .accordion-header {
+	margin: 20px 0px;
+
 	.heading-medium {
 		position: relative;
-		margin-top: 0;
+		margin-top: 0px;
+		margin-bottom: 5px;
 		cursor: pointer;
 		color: $brand_color_a;
+		padding-right: 30px;
 
 		&:after {
 			content: '+';
 			display: inline-block;
 			position: absolute;
-			top: 10px;
+			top: 0px;
 			right: 20px;
 			color: #000000;
 		}
@@ -33,13 +32,20 @@
 			}
 		}
 	}
+
+	p {
+		margin-top: 0px;
+	}
 }
 
 .accordion-inner {
 	@extend %clearfix;
 
 	.visible & {
-		margin: 10px 0;
+
+		ul {
+			padding-bottom: 40px;
+		}
 	}
 
 	.js-enabled & {
