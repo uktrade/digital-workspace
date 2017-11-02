@@ -11,6 +11,10 @@ class AccordionQueries
     WpApi.get_json_body("theme_taxonomy/?filter[theme_taxonomy]=#{parent_slug}")
   end
 
+  def self.accordion_theme_title_query(theme_slug)
+    WpApi.get_json_body("themes?slug=#{theme_slug}")
+  end
+
   def self.accordion_topic_query(theme_slug)
     WpApi.get_json_body("topics/?filter[theme_taxonomy]=#{theme_slug}")
   end

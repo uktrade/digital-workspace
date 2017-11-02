@@ -11,7 +11,8 @@
 
 	.heading-medium {
 		position: relative;
-		margin-top: 0;
+		margin-top: 0px;
+		margin-bottom: 5px;
 		cursor: pointer;
 		color: $brand_color_a;
 		padding-right: 30px;
@@ -30,6 +31,10 @@
 				content: '−';
 			}
 		}
+	}
+
+	p {
+		margin-top: 0px;
 	}
 }
 
