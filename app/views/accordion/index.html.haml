@@ -1,6 +1,5 @@
 %div{:id => 'topics', :class => 'page-content'}
   = render partial: "widgets/people_search_inner_page"
-  /= render partial: "widgets/zendesk_header"
   %main#content.root-index.content-section
     .grid-row
       .column-full
@@ -27,10 +26,15 @@
             - @accordion_theme.each do |theme|
               .accordion
                 .accordion-header
+                  - theme_slug = theme['slug']
                   %h2.heading-medium
                     = theme["name"]
+                  %p
+                    - theme_title = AccordionQueries.accordion_theme_title_query(theme_slug)
+                    - if theme_title.present?
+                      - theme_title.each do |title|
+                        = title["acf"]["excerpt"].html_safe
                 .accordion-inner
-                  - theme_slug = theme['slug']
                   - accordion_topics = AccordionQueries.accordion_topic_query(theme_slug)
                   - if accordion_topics.present?
                     %ul.list-style-a
