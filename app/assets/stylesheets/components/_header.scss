@@ -83,14 +83,15 @@
 					.search-element {
 						display: inline-block;
 					}
-					.search-input {
+/*					.search-input {
 						background-color: transparent;
 						display: none;
-						z-index: 2;
+
 						&:focus {
+							z-index: 2;
 							background-color: #fff;
 						}
-					}
+					}*/
 					.search-submit {
 						border-radius: 0px;
 						-moz-border-radius: 0px;
