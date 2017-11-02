@@ -43,7 +43,11 @@ class PeopleFinderProfile
       @profile.team = @attributes['team']
       @profile.completion_score = @attributes['completion-score'] || 0
       @profile.profile_image_url = @links['profile-image-url']
-      @profile.profile_url = @links['profile'] || PeopleFinderProfile::BASE_URL
+      @profile.profile_url = people_finder_my_profile_url
+    end
+
+    def people_finder_my_profile_url
+      URI.join(PeopleFinderProfile::BASE_URL, 'my/profile').to_s
     end
   end
 end
