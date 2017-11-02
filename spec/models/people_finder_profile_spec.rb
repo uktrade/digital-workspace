@@ -34,7 +34,8 @@ describe PeopleFinderProfile do
       end
 
       it 'assigns the profile_url' do
-        expect(subject.profile_url).to eq('alice-profile-url')
+        expect(subject.profile_url)
+          .to eq("#{ENV['PEOPLEFINDER_URL']}/my/profile")
       end
 
       context 'when the parameter is an email address' do
@@ -66,7 +67,8 @@ describe PeopleFinderProfile do
       end
 
       it 'assigns the profile_url to the peoplefinder URL' do
-        expect(subject.profile_url).to eq(ENV['PEOPLEFINDER_URL'])
+        expect(subject.profile_url)
+          .to eq("#{ENV['PEOPLEFINDER_URL']}/my/profile")
       end
     end
   end
