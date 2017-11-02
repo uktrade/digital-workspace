@@ -41,9 +41,12 @@
 		border-radius: 0;
 		-webkit-appearance: none;
 		-moz-appearance: none;
+		z-index: 2;
+		background-color: transparent;
+
 		&:focus,
 		&.focus {
-			z-index: 2;
+			background-color: #FFFFFF;
 		}
 	}
 	.search-submit-wrapper {
