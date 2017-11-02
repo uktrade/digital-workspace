@@ -1,6 +1,14 @@
 %div{:id => 'page', :class => 'page-content'}
   = render partial: "widgets/people_search_inner_page"
   /= render partial: "widgets/zendesk_header"
+
+  - if params[:commit] == 'Submit comment'
+    - post_body = { "post" => params[:post], "author_email" => @people_finder_profile.email, "author_name" => @people_finder_profile.name, "content" => params[:comment_content], "parent" => params[:comment_parent] }
+    - response = WpApi.post_comment_json(post_body)
+    // = response
+    /= response.parsed_response['code']
+    //on return remember to check against code = comment_duplicate
+
   %main#content.root-index.news-section
     .grid-row
       .column-half
@@ -16,86 +24,36 @@
           %select{:class => 'form-control', :id => 'select_jump_to', :name => 'select-category'}
             %option{:value => ""}
               \ Select Category
-            - if @categories.present?
-              - @categories.each do |c|
-                %option{:value => link_news_top + link_news_category + c["slug"]}
-                  = link_to( c["name"] )
+            - @categories.each do |c|
+              %option{:value => link_news_top + link_news_category + c["slug"]}
+                = link_to( c["name"] )
     .grid-row
       .column-two-thirds
-        - if @posts.present?
-          - @posts.each do |p|
-            / %pre
-            /   =p
-            .news-item
-              %h2.heading-large
-                %hr{:class => 'rule-small'}
-                = p["title"]["rendered"]
-              .post-meta
-                - profile = PeopleFinderProfile.from_api(p["author_email"])
-                = succeed ', ' do
-                  = profile.name || "Unknown"
-                = get_date(p["date"])
-                - cat_length = p["news_categories"].length - 1
-                - p["news_categories"].each_with_index do |cat, i|
-                  - if cat_length == 0
-                    = news_cats( cat["name"], cat["slug"] )
-                  - elsif i == cat_length
-                    = news_cats( cat["name"], cat["slug"] )
-                  - else
-                    = news_cats( cat["name"], cat["slug"] ) + ', '
+        - @posts.each do |p|
+          / %pre
+          /   =p
+          .news-item
+            %h2.heading-large
+              %hr{:class => 'rule-small'}
+              = p["title"]["rendered"]
+            .post-meta
+              - profile = PeopleFinderProfile.from_api(p["author_email"])
+              = succeed ', ' do
+                = profile.name || "Unknown"
+              = get_date(p["date"])
+              - cat_length = p["news_categories"].length - 1
+              - p["news_categories"].each_with_index do |cat, i|
+                - if cat_length == 0
+                  = news_cats( cat["name"], cat["slug"] )
+                - elsif i == cat_length
+                  = news_cats( cat["name"], cat["slug"] )
+                - else
+                  = news_cats( cat["name"], cat["slug"] ) + ', '
 
-              - if ( image_exists?(p) == true )
-                = large_image_tag(p)
+            = large_image_tag(p)
 
-              = p["content"]["rendered"].html_safe
+            = p["content"]["rendered"].html_safe
 
-          #comments.comments-area
-            .posted-comments
-              -#%pre
-              -#  headers: #{@comments_headers}
-              -#%pre
-              -#  x-wp-totalpages: #{@comments_headers["x-wp-totalpages"]}
-              -#%pre
-              -#  x-wp-total: #{@comments_headers["x-wp-total"]}
-
-              %h2.heading-medium
-                - if @comments_headers["x-wp-total"].present?
-                  - comment_count = Integer(@comments_headers["x-wp-total"])
-                  = comments_heading(comment_count)
-
-              - if @comments.present?
-                - @comments.each do |comment|
-                  .post-meta
-                    = succeed ', ' do
-                      %span.comment-name
-                        = comment["author_name"]
-                    %span.comment-date
-                    = get_date(comment["date"])
-                  = comment["content"]["rendered"].html_safe
-                  %a.cta-comment-reply
-                    Reply
-                  .comment-replies
-                    .post-meta
-                      %span.comment-name Angela
-                      %span.post-date
-                        = precede ', ' do
-                          5 Oct 2017 @ 13:25 GMT
-
-                    %p
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui accusamus deserunt, nam, tenetur, accusantium numquam molestias mollitia totam voluptas quasi beatae! Recusandae quae, officiis amet delectus iste pariatur dolor rem.
-
-                    %a.cta-comment-reply
-                      Reply
-                  -#= comment
-                .leave-comment
-                  %h2.heading-medium
-                    Leave a comment
-                  %form{class: 'comment-post', id: 'comment_post'}
-                    %textarea{class: 'leave-comment-textarea'}
-                    %input{type: 'submit', value: 'Submit comment', class: 'button'}
-      .column-third.news-category
-        %hr{class: 'rule-large rule-top'}
-        -#%h2.heading-medium
-        -#  Related news
+          = render partial: 'widgets/comments'
 
 = render partial: "widgets/zendesk_footer"
