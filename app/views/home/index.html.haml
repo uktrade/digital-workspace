@@ -77,14 +77,15 @@
         %h2.heading-medium
           What's popular?
     .grid-row
-      - @popular_posts.each do |p|
-        .column-third.popular-page-summary
-          %span{:class => "image-holder"}
-            %a{:title => p["title"]["rendered"], :class => "img", :href => p["slug"]}
-              %img{:src => p['acf']['image']['sizes']['medium'], :alt => p["title"]["rendered"]}
-          .popular-page-text
-            %h3.heading-medium
-              = link_to(p["title"]["rendered"].html_safe, p["slug"])
+      - if @popular_posts.present?
+        - @popular_posts.each do |p|
+          .column-third.popular-page-summary
+            %span{:class => "image-holder"}
+              %a{:title => p["title"]["rendered"], :class => "img", :href => p["slug"]}
+                %img{:src => p['acf']['image']['sizes']['medium'], :alt => p["title"]["rendered"]}
+            .popular-page-text
+              %h3.heading-medium
+                = link_to(p["title"]["rendered"].html_safe, p["slug"])
     %hr{:id => 'popular', :class => 'rule-large'}
 
     .grid-row

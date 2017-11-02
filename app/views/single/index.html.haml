@@ -7,7 +7,8 @@
           = @slug
     .grid-row
       .column-full
-        - @posts.each do |p|
-          = p
+        - if @posts.present?
+          - @posts.each do |p|
+            = p
 
 = render partial: "widgets/zendesk_footer"
