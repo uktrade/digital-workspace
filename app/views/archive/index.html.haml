@@ -16,9 +16,10 @@
           %select{:class => 'form-control', :id => 'select_jump_to', :name => 'select-category'}
             %option{:value => ""}
               \ Select Category
-            - @categories.each do |c|
-              %option{:value => link_news_top + "category/" + c["slug"]}
-                = link_to( c["name"] )
+            - if @categories.present?
+              - @categories.each do |c|
+                %option{:value => link_news_top + link_news_category + c["slug"]}
+                  = link_to( c["name"] )
     .grid-row
       .column-full
         %hr{:class => 'rule-large rule-top'}
@@ -143,10 +144,11 @@
           All categories
 
         %ul.list-style-a
-          - @categories.each do |c|
-            %li
-              = link_to( c["name"], link_news_top + "category/" + c["slug"])
-              %span.news-category-count.font-xsmall
-                = "(#{c["count"]})"
+          - if @categories.present?
+            - @categories.each do |c|
+              %li
+                = link_to( c["name"], link_news_top + link_news_category + c["slug"])
+                %span.news-category-count.font-xsmall
+                  = "(#{c["count"]})"
 
 = render partial: "widgets/zendesk_footer"
