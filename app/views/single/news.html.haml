@@ -1,6 +1,14 @@
 %div{:id => 'page', :class => 'page-content'}
   = render partial: "widgets/people_search_inner_page"
   /= render partial: "widgets/zendesk_header"
+
+  - if params[:commit] == 'Submit comment'
+    - post_body = { "post" => params[:post], "author_email" => @people_finder_profile.email, "author_name" => @people_finder_profile.name, "content" => params[:comment_content] }
+    - response = WpApi.post_comment_json(post_body)
+    = response
+    /= response.parsed_response['code']
+    //on return remember to check against code = comment_duplicate
+
   %main#content.root-index.news-section
     .grid-row
       .column-half
@@ -86,9 +94,10 @@
               .leave-comment
                 %h2.heading-medium
                   Leave a comment
-                %form{class: 'comment-post', id: 'comment_post'}
-                  %textarea{class: 'leave-comment-textarea'}
-                  %input{type: 'submit', value: 'Submit comment', class: 'button'}
+                = form_tag(request.url , method: :post, class: 'comment_post', id: 'comment-post')
+                = hidden_field_tag("post", @posts.first["id"])
+                = text_area_tag('comment_content', nil, class: 'leave-comment-textarea')
+                = submit_tag('Submit comment', class: 'button')
       .column-third.news-category
         %hr{class: 'rule-large rule-top'}
         -#%h2.heading-medium
