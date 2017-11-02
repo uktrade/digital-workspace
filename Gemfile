@@ -22,7 +22,7 @@ gem 'httparty'
 gem 'omniauth-oauth2'
 
 gem 'rails_12factor'
-gem 'redis-rails'
+gem 'redis-session-store'
 
 group :development, :test do
   gem 'bundler-audit'
