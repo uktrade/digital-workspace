@@ -20,5 +20,13 @@ class WpApi
         }
       )
     end
+
+    def post_comment_json(json)
+      HTTParty.post(
+        URI.join(BASE_URI, 'comments').to_s,
+        body: json,
+        headers: { 'Authorization' => "Basic #{AUTH_TOKEN}" }
+      )
+    end
   end
 end
