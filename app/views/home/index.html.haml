@@ -34,7 +34,7 @@
                         = comments(link_news_top + p["slug"], comment_count)
 
                 .hero-news-image-container
-                  - if ( image_exists?(p) == true )
+                  - if image_exists?(p)
                     = large_image_tag(p)
 
     .grid-row.eh-container
@@ -42,7 +42,7 @@
         - @posts[1..6].each_with_index do |p, i|
           .column-third.eh-target
             .news-item
-              - if ( image_exists?(p) == true )
+              - if image_exists?(p)
                 = large_image_tag(p)
 
               .news-item-text

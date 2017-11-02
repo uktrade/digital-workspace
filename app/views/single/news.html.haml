@@ -50,7 +50,8 @@
                 - else
                   = news_cats( cat["name"], cat["slug"] ) + ', '
 
-            = large_image_tag(p)
+            - if image_exists?(p)
+              = large_image_tag(p)
 
             = p["content"]["rendered"].html_safe
 

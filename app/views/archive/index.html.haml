@@ -43,7 +43,7 @@
                       - comment_count = Integer(@comments_headers["x-wp-total"])
                       = comments(link_news_top + @hero_post["slug"], comment_count)
               .hero-news-image-container
-                - if ( image_exists?(@hero_post) == true )
+                - if image_exists?(@hero_post)
                   = large_image_tag(@hero_post)
 
       .column-two-thirds
