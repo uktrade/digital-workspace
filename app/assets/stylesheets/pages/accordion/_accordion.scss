@@ -37,7 +37,10 @@
 	@extend %clearfix;
 
 	.visible & {
-		margin: 10px 0;
+
+		ul {
+			padding-bottom: 40px;
+		}
 	}
 
 	.js-enabled & {
