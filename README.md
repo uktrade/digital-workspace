@@ -53,9 +53,7 @@ Ensure that the environment variables are defined:
 ## Word Press API
 The Word Press API URL should be defined as an environment variable:
 `WP_API_URL`
-
-## Word Press 'Application Passwords' Plugin
-The Word Press paswword API Authentication Key should be defined as an environment variable:
+As should the API Authentication Key:
 `WP_API_KEY`
 
 ## Redis
@@ -63,5 +61,10 @@ Currently the app expects the following environment variables:
 `REDIS_CACHE_URL` (defines the Redis cache store)
 `REDIS_SESSION_URL` (if set, defines Redis as the session store)
 
-To enable the redis cache in development:
+## Caching
+The strategy is to cache API calls for 1 minute. Currently this is done against the Word Press API:
+See `Rails.cache.fetch` in `wp_api.rb`.
+
+To enable the redis cache in development and test:
 `rake dev:cache`
+NOTE: if the cache is enabled this might affect test behaviour!
