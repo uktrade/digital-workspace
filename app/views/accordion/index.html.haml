@@ -33,7 +33,7 @@
                     - theme_title = AccordionQueries.accordion_theme_title_query(theme_slug)
                     - if theme_title.present?
                       - theme_title.each do |title|
-                        = title["acf"]["excerpt"].html_safe
+                        = title["acf"]["excerpt"]
                 .accordion-inner
                   - accordion_topics = AccordionQueries.accordion_topic_query(theme_slug)
                   - if accordion_topics.present?
