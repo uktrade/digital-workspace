@@ -8,6 +8,6 @@ class StandardQueries
   end
 
   def standard_child_query(parent_id)
-    WpApi.get_json_body("pages?type=content&parent=#{parent_id}")
+    WpApi.get_json_body("pages?type=content&orderby=title&order=asc&per_page=100&parent=#{parent_id}")
   end
 end
