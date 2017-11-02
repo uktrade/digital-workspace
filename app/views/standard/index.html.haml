@@ -24,11 +24,31 @@
         %hr{:class => 'rule-small'}
     .grid-row
       - if @content_children.present?
-        - @content_children.each do |content|
-          .column-third.card
-            %h3
-              = link_to( content["title"]["rendered"], content["slug"])
-            %p
-              = content["acf"]["excerpt"]
+        - @content_children.each_with_index do |content, index|
+          - case index
+          - when 0..10
+            .column-third.card
+              %h3
+                = link_to( content["title"]["rendered"], content["slug"])
+              %p
+                = content["acf"]["excerpt"]
+
+        - @content_children.each_with_index do |content, index|
+          - case index
+          - when 11..20
+            .column-third.card
+              %h3
+                = link_to( content["title"]["rendered"], content["slug"])
+              %p
+                = content["acf"]["excerpt"]
+
+        - @content_children.each_with_index do |content, index|
+          - case index
+          - when 21..30
+            .column-third.card
+              %h3
+                = link_to( content["title"]["rendered"], content["slug"])
+              %p
+                = content["acf"]["excerpt"]
 
 = render partial: "widgets/zendesk_footer"
