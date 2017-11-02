@@ -47,37 +47,38 @@
                   = large_image_tag(@hero_post)
 
       .column-two-thirds
-        - @posts.each do |p|
-          .news-item
-            %h3.heading-medium
-              %hr{:class => 'rule-small'}
-              = link_to(p["title"]["rendered"].html_safe, link_news_top + p["slug"])
-            .news-item-text
-              .post-meta
-                - profile = PeopleFinderProfile.from_api(p["author_email"])
-                = succeed ', ' do
-                  = profile.name || "Unknown"
-                = get_date(p["date"])
+        - if @posts.present?
+          - @posts.each do |p|
+            .news-item
+              %h3.heading-medium
+                %hr{:class => 'rule-small'}
+                = link_to(p["title"]["rendered"].html_safe, link_news_top + p["slug"])
+              .news-item-text
+                .post-meta
+                  - profile = PeopleFinderProfile.from_api(p["author_email"])
+                  = succeed ', ' do
+                    = profile.name || "Unknown"
+                  = get_date(p["date"])
 
-                - cat_length = p["news_categories"].length - 1
-                - p["news_categories"].each_with_index do |cat, i|
-                  - if cat_length == 0
-                    = news_cats( cat["name"], cat["slug"] )
-                  - elsif i == cat_length
-                    = news_cats( cat["name"], cat["slug"] )
-                  - else
-                    = news_cats( cat["name"], cat["slug"] ) + ', '
+                  - cat_length = p["news_categories"].length - 1
+                  - p["news_categories"].each_with_index do |cat, i|
+                    - if cat_length == 0
+                      = news_cats( cat["name"], cat["slug"] )
+                    - elsif i == cat_length
+                      = news_cats( cat["name"], cat["slug"] )
+                    - else
+                      = news_cats( cat["name"], cat["slug"] ) + ', '
 
 
-              .news-item-excerpt
-                %p
-                  - if p["acf"].present?
-                    = truncate_excerpt(p["acf"]["excerpt"])
-                = read_more(link_news_top + p["slug"])
-                - if @comments_headers["x-wp-total"].present?
-                  = precede ' - ' do
-                    - comment_count = Integer(@comments_headers["x-wp-total"])
-                    = comments(link_news_top + p["slug"], comment_count)
+                .news-item-excerpt
+                  %p
+                    - if p["acf"].present?
+                      = truncate_excerpt(p["acf"]["excerpt"])
+                  = read_more(link_news_top + p["slug"])
+                  - if @comments_headers["x-wp-total"].present?
+                    = precede ' - ' do
+                      - comment_count = Integer(@comments_headers["x-wp-total"])
+                      = comments(link_news_top + p["slug"], comment_count)
 
         %hr{:class => 'rule-small'}
         .pagination
