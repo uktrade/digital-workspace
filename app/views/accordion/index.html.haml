@@ -1,16 +1,15 @@
 %div{:id => 'topics', :class => 'page-content'}
   = render partial: "widgets/people_search_inner_page"
-  /= render partial: "widgets/zendesk_header"
   %main#content.root-index.content-section
     .grid-row
       .column-full
         %ul.breadcrumb
           %li
             = link_to( 'Home', "/" )
+        %hr{:class => 'rule-small rule-top'}
 
     .grid-row
       .column-two-thirds
-        %hr{:class => 'rule-small rule-top'}
         - if @accordion.present?
           - @accordion.each do |page|
             %h2.heading-large
@@ -26,28 +25,21 @@
           - if @accordion_theme.present?
             - @accordion_theme.each do |theme|
               .accordion
-                %hr{:class => 'rule-small'}
                 .accordion-header
+                  - theme_slug = theme['slug']
                   %h2.heading-medium
                     = theme["name"]
+                  %p
+                    - theme_title = AccordionQueries.accordion_theme_title_query(theme_slug)
+                    - if theme_title.present?
+                      - theme_title.each do |title|
+                        = title["acf"]["excerpt"]
                 .accordion-inner
-                  - theme_slug = theme['slug']
                   - accordion_topics = AccordionQueries.accordion_topic_query(theme_slug)
                   - if accordion_topics.present?
-                    - accordion_topics.each do |topic|
-                      %ul.list-style-a
+                    %ul.list-style-a
+                      - accordion_topics.each do |topic|
                         %li
                           = link_to( topic["title"]["rendered"], topic["slug"])
-
-          %hr{:class => 'rule-small rule-top'}
-      .column-third.related-content
-        %hr{:class => 'rule-large rule-top'}
-        %h2.heading-medium
-          Tools
-        %ul.list-style-a
-          %li
-            = link_to('Cirrus Office 365', '/')
-          %li
-            = link_to('Oracle', '/')
 
 = render partial: "widgets/zendesk_footer"

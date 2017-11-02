@@ -8,5 +8,6 @@ class AccordionController < ApplicationController
     @api_call = AccordionQueries.new(@slug)
     @accordion = @api_call.main_query(@slug)
     @accordion_theme = @api_call.accordion_theme_query(@parent_slug)
+    # @accordion_theme_title = @api_call.accordion_theme_title_query(@parent_slug)
   end
 end
