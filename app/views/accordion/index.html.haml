@@ -26,7 +26,6 @@
           - if @accordion_theme.present?
             - @accordion_theme.each do |theme|
               .accordion
-                %hr{:class => 'rule-small'}
                 .accordion-header
                   %h2.heading-medium
                     = theme["name"]
@@ -38,7 +37,5 @@
                       %ul.list-style-a
                         %li
                           = link_to( topic["title"]["rendered"], topic["slug"])
-
-          %hr{:class => 'rule-small rule-top'}
 
 = render partial: "widgets/zendesk_footer"
