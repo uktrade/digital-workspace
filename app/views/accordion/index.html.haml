@@ -33,8 +33,8 @@
                   - theme_slug = theme['slug']
                   - accordion_topics = AccordionQueries.accordion_topic_query(theme_slug)
                   - if accordion_topics.present?
-                    - accordion_topics.each do |topic|
-                      %ul.list-style-a
+                    %ul.list-style-a
+                      - accordion_topics.each do |topic|
                         %li
                           = link_to( topic["title"]["rendered"], topic["slug"])
 
