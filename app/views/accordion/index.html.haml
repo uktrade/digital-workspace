@@ -7,10 +7,10 @@
         %ul.breadcrumb
           %li
             = link_to( 'Home', "/" )
+        %hr{:class => 'rule-small rule-top'}
 
     .grid-row
       .column-two-thirds
-        %hr{:class => 'rule-small rule-top'}
         - if @accordion.present?
           - @accordion.each do |page|
             %h2.heading-large
@@ -40,14 +40,5 @@
                           = link_to( topic["title"]["rendered"], topic["slug"])
 
           %hr{:class => 'rule-small rule-top'}
-      .column-third.related-content
-        %hr{:class => 'rule-large rule-top'}
-        %h2.heading-medium
-          Tools
-        %ul.list-style-a
-          %li
-            = link_to('Cirrus Office 365', '/')
-          %li
-            = link_to('Oracle', '/')
 
 = render partial: "widgets/zendesk_footer"
