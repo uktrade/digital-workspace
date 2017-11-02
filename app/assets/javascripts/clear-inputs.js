@@ -1,23 +1,36 @@
 (function() {
 
-	var $site_search_el = document.getElementById('site-search-input'),
-	    $people_search_el = document.getElementById('people-search-input'),
-	    $events = [
-	    	'click',
-	    	'focus',
-	    	'blur'
-	    ];
+	var search_element_el = document.getElementsByClassName('search-element');
 
-	for(i = 0; i < $events.length; i++) {
-		$site_search_el.addEventListener($events[i], function(){
-			$value = $site_search_el.value;
-			if($value !== '')
-				$site_search_el.setAttribute('class', $site_search_el.getAttribute('class') + ' focus');
+	if (!search_element_el.length) {
+		return;
+	}
+
+	for(i = 0; i < search_element_el.length; i++) {
+		search_element_el[i].addEventListener('click', function(){
+			var self = this;
+			var input_value = self.value
+			self.classList.add('focus');
 		});
-		$people_search_el.addEventListener($events[i], function(){
-			$value = $people_search_el.value;
-			if($value !== '')
-				$people_search_el.setAttribute('class', $people_search_el.getAttribute('class') + ' focus');
+
+		search_element_el[i].addEventListener('focus', function(){
+			var self = this;
+			var input_value = self.value
+
+			self.classList.add('focus');
+		});
+
+		search_element_el[i].addEventListener('blur', function(){
+			var self = this;
+			var input_value = self.value
+
+			if (input_value !== '') {
+				console.log('blur add class');
+				self.classList.add('focus');
+			} else {
+				console.log('blur remove class');
+				self.classList.remove('focus');
+			}
 		});
 	}
 
