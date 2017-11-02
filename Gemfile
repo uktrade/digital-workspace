@@ -23,6 +23,7 @@ gem 'omniauth-oauth2'
 
 gem 'rails_12factor'
 gem 'redis-session-store'
+gem 'readthis'
 
 group :development, :test do
   gem 'bundler-audit'
