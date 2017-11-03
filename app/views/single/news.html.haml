@@ -1,23 +1,20 @@
 %div{:id => 'page', :class => 'page-content'}
   = render partial: "widgets/people_search_inner_page"
   /= render partial: "widgets/zendesk_header"
-  .comment-notification.error
-    %span
-      Sorry, duplicate comment detected - it looks like that's already been posted.
 
   - if params[:commit] == "Submit comment"
     - if @response.parsed_response['status'] == 'approved'
       .comment-notification.thanks
         %span
           Thanks for your comment!
-      - if @response.parsed_response['code'] == 'comment_duplicate'
-        .comment-notification.error
-          %span
-            Sorry, duplicate comment detected - it looks like that's already been posted.
-      - else
-        .comment-notification.error
-          %span
-            There was an error submitting your comment, please try again.
+    - elsif @response.parsed_response['code'] == 'comment_duplicate'
+      .comment-notification.error
+        %span
+          Sorry, duplicate comment detected - it looks like that's already been posted.
+    - else
+      .comment-notification.error
+        %span
+          There was an error submitting your comment, please try again.
   %main#content.root-index.news-section
     .grid-row
       .column-half
@@ -39,8 +36,6 @@
     .grid-row
       .column-two-thirds
         - @posts.each do |p|
-          / %pre
-          /   =p
           .news-item
             %h2.heading-large
               %hr{:class => 'rule-small'}
