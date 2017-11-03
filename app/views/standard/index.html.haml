@@ -22,43 +22,30 @@
     .grid-row
       .column-full
         %hr{:class => 'rule-small'}
-      = child_count = @content_children.count
     .grid-row
-      / create a var with value of multiple of 3 from child_count here
+      - if @content_children.present?
 
-      - @content_children.each do |content|
-        .column-third.card
-          %h3
-            = link_to( content["title"]["rendered"], content["slug"])
-          %p
-            = content["acf"]["excerpt"]
+        - child_count = @content_children.count
+        - multiple_of = (child_count / 3)
 
-      / - if @content_children_content.present?
-      /   - @content_children_content.each_with_index do |content, index|
-      /     - case index
-      /     - when 0..10
-      /       .column-third.card
-      /         %h3
-      /           = link_to( content["title"]["rendered"], content["slug"])
-      /         %p
-      /           = content["acf"]["excerpt"]
+      - @content_children.each_with_index do |content, index|
+        - from = index
+        - to = from + multiple_of
 
-      /   - @content_children_content.each_with_index do |content, index|
-      /     - case index
-      /     - when 11..20
-      /       .column-third.card
-      /         %h3
-      /           = link_to( content["title"]["rendered"], content["slug"])
-      /         %p
-      /           = content["acf"]["excerpt"]
+        - if (index % 3 === 0)
 
-      /   - @content_children_content.each_with_index do |content, index|
-      /     - case index
-      /     - when 21..30
-      /       .column-third.card
-      /         %h3
-      /           = link_to( content["title"]["rendered"], content["slug"])
-      /         %p
-      /           = content["acf"]["excerpt"]
+          - case index
+          - when from..to
+
+          .column-third.card
+            %h3.heading-small
+              / = "Index: #{index}; ".html_safe
+              / = "From: #{from}; ".html_safe
+              / = "To: #{to}".html_safe
+            - @content_children[from..to].each_with_index do |content_m, index_m|
+              %h3
+                = link_to( content_m["title"]["rendered"], content_m["slug"])
+              %p
+                = content_m["acf"]["excerpt"]
 
 = render partial: "widgets/zendesk_footer"
