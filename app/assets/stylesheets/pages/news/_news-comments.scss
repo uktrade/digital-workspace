@@ -32,3 +32,39 @@
 	min-height: 100px;
 	font-size: 16px;
 }
+
+.comment-notification {
+    color: $white;
+    font-size: 14px;
+    margin: 0 15px;
+    max-width: 960px;
+    span {
+    	display: inline-block;
+    	font-weight: bold;
+    	padding: 6px 8px;
+    }
+    &.thanks {
+    	background-color: #00823b;
+    }
+    &.error {
+    	background-color: $brand_color_c;
+    }
+}
+
+@media (min-width: $screen_small) {
+	.comment-notification {
+		margin: 0 30px;
+	}
+}
+
+@media (min-width: $screen_medium) {
+	.comment-notification {
+		font-size: 16px;
+	}
+}
+
+@media (min-width: $screen_large) {
+	.comment-notification {
+		margin: 0 auto;
+	}
+}
