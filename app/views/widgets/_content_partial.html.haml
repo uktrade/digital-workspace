@@ -12,26 +12,27 @@
         /           = link_to( bc["title"], link_topics_top + bc["slug"] )
 
   .grid-row
-    - @content.each do |content|
-      .column-two-thirds
-        %hr{:class => 'rule-small rule-top'}
-          %h2.heading-large.heading-top
-            = content["title"]["rendered"]
-          %div.dates-published-updated
-            %ul.list-style-a
-              %li
-                Published:
-                = get_date( content["date"] )
-              %li
-                Last updated:
-                = get_date( content["date"] )
+    - if @content.present?
+      - @content.each do |content|
+        .column-two-thirds
+          %hr{:class => 'rule-small rule-top'}
+            %h2.heading-large.heading-top
+              = content["title"]["rendered"]
+            %div.dates-published-updated
+              %ul.list-style-a
+                %li
+                  Published:
+                  = get_date( content["date"] )
+                %li
+                  Last updated:
+                  = get_date( content["date"] )
 
-          = content["content"]["rendered"].html_safe
-        - if content["acf"].present? && content["acf"]["documents"].present?
-          %h2.heading-medium
-            Documents
-          - content["acf"]["documents"].each do |docs|
-            %ul.list-style-a
-              %li
-                = link_to( docs["title"], docs["file"]["url"])
+            = content["content"]["rendered"].html_safe
+          - if content["acf"].present? && content["acf"]["documents"].present?
+            %h2.heading-medium
+              Documents
+            - content["acf"]["documents"].each do |docs|
+              %ul.list-style-a
+                %li
+                  = link_to( docs["title"], docs["file"]["url"])
 = render partial: "widgets/related_news_partial"

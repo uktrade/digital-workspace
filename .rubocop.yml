@@ -12,3 +12,5 @@ Documentation:
   Enabled: false
 BlockLength:
   Enabled: false
+Style/GuardClause:
+  Enabled: false
