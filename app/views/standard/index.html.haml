@@ -28,24 +28,26 @@
         - child_count = @content_children.count
         - multiple_of = (child_count / 3)
 
-      - @content_children.each_with_index do |content, index|
-        - from = index
-        - to = from + multiple_of
+        - @content_children.each_with_index do |content, index|
+          - from = index
+          - to = from + multiple_of
 
-        - if (index % 3 === 0)
+          - if (index % 3 === 0)
 
-          - case index
-          - when from..to
+            - case index
+            - when from..to
 
-          .column-third.card
-            %h3.heading-small
-              / = "Index: #{index}; ".html_safe
-              / = "From: #{from}; ".html_safe
-              / = "To: #{to}".html_safe
-            - @content_children[from..to].each_with_index do |content_m, index_m|
-              %h3
-                = link_to( content_m["title"]["rendered"], content_m["slug"])
-              %p
-                = content_m["acf"]["excerpt"]
+            .column-third.card
+              %h3.heading-small
+              - @content_children[from..to].each_with_index do |content_m, index_m|
+                %h3
+                  - template = content_m["type"]
+                  - if (template == 'content')
+                    - template_slug = link_template_content
+                  - elsif (template == 'standard_index')
+                    - template_slug = link_template_standard_index
+                  = link_to( content_m["title"]["rendered"], template_slug + content_m["slug"])
+                %p
+                  = content["acf"]["excerpt"]
 
 = render partial: "widgets/zendesk_footer"

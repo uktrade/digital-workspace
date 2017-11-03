@@ -16,6 +16,7 @@ class StandardQueries
   end
 
   def content_children(arr_a, arr_b)
-    arr_a + arr_b
+    array = arr_a + arr_b
+    array.sort_by { |hash| hash['title'].to_s }
   end
 end
