@@ -1,13 +1,23 @@
 %div{:id => 'page', :class => 'page-content'}
   = render partial: "widgets/people_search_inner_page"
   /= render partial: "widgets/zendesk_header"
+  .comment-notification.error
+    %span
+      Sorry, duplicate comment detected - it looks like that's already been posted.
 
-  - if params[:commit] == 'Submit comment'
-    - post_body = { "post" => params[:post], "author_email" => @people_finder_profile.email, "author_name" => @people_finder_profile.name, "content" => params[:comment_content], "parent" => params[:comment_parent] }
-    - response = WpApi.post_comment_json(post_body)
-    // = response
-    /= response.parsed_response['code']
-    //on return remember to check against code = comment_duplicate
+  - if params[:commit] == "Submit comment"
+    - if @response.parsed_response['status'] == 'approved'
+      .comment-notification.thanks
+        %span
+          Thanks for your comment!
+      - if @response.parsed_response['code'] == 'comment_duplicate'
+        .comment-notification.error
+          %span
+            Sorry, duplicate comment detected - it looks like that's already been posted.
+      - else
+        .comment-notification.error
+          %span
+            There was an error submitting your comment, please try again.
   %main#content.root-index.news-section
     .grid-row
       .column-half
