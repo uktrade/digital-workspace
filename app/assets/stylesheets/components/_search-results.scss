@@ -34,78 +34,88 @@
 	}
 }
 
-.checkbox-filter {
-	.head {
-		padding: 5px;
-		position: relative;
-		.controls {
-			display: none;
+.filter-form {
+	.checkbox-filter {
+		.head {
+			padding: 5px;
+			position: relative;
+			.controls {
+				display: none;
+			}
+		}
+		.checkbox-container {
+			position: relative;
+			padding: 5px;
+			background-color: #fff;
+			height: 300px;
+			overflow-y: scroll;
+			overflow-x: hidden;
+			ul {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			li {
+				input {
+					width: 12px;
+					border: none;
+					margin: 3px 10px 0 0;
+					vertical-align: top;
+					position: absolute;
+				}
+				label {
+					display: -moz-inline-stack;
+					display: inline-block;
+					font-size: 16px;
+					margin-left: 20px;
+				}
+			}
 		}
 	}
-	.checkbox-container {
-		position: relative;
-		padding: 5px;
-		background-color: #fff;
-		height: 300px;
-		overflow-y: scroll;
-		overflow-x: hidden;
-		ul {
-			margin: 0;
-			padding: 0;
-			list-style: none;
-		}
-		li {
-			input {
-				width: 12px;
-				border: none;
-				margin: 3px 10px 0 0;
-				vertical-align: top;
-				position: absolute;
-			}
-			label {
-				display: -moz-inline-stack;
-				display: inline-block;
-				font-size: 16px;
-				margin-left: 20px;
-			}
-		}
+	.submit {
+		margin-bottom: 12px;
 	}
 }
 
 .js-enabled {
-	.checkbox-filter {
-		.head {
-			cursor: pointer;
-			.controls {
-				position: absolute;
-				right: 5px;
-				top: 5px;
-				display: inline;
-				.clear-selected {
-					display: -moz-inline-stack;
-					display: inline-block;
-					margin-right: 5px;
-					&.js-hidden {
-						left: -9999em;
-						position: relative;
-						height: 0px;
-						overflow: hidden;
+	.filter-form {
+		.checkbox-filter {
+			.head {
+				cursor: pointer;
+				.controls {
+					position: absolute;
+					right: 5px;
+					top: 5px;
+					display: inline;
+					.clear-selected {
+						display: -moz-inline-stack;
+						display: inline-block;
+						margin-right: 5px;
+						&.js-hidden {
+							left: -9999em;
+							position: relative;
+							height: 0px;
+							overflow: hidden;
+						}
 					}
 				}
 			}
-		}
-		.toggle {
-			background: url(https://assets.publishing.service.gov.uk/frontend/toggle-sprite-0c055f9b806a9a2af3eeca6bfaaebc6dc74daacf0d806d7161338f4bb3ac0ec7.png) no-repeat;
-			height: 10px;
-			width: 12px;
-			background-position: -12px 0;
-			display: -moz-inline-stack;
-			display: inline-block;
-		}
-		&.closed {
 			.toggle {
-				background-position: 0 0;
+				background: url(https://assets.publishing.service.gov.uk/frontend/toggle-sprite-0c055f9b806a9a2af3eeca6bfaaebc6dc74daacf0d806d7161338f4bb3ac0ec7.png) no-repeat;
+				height: 10px;
+				width: 12px;
+				background-position: -12px 0;
+				display: -moz-inline-stack;
+				display: inline-block;
 			}
+			&.closed {
+				.toggle {
+					background-position: 0 0;
+				}
+			}
+		}
+		.submit {
+			display: none;
 		}
 	}
 }
