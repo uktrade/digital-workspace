@@ -1,13 +1,20 @@
 %div{:id => 'page', :class => 'page-content'}
   = render partial: "widgets/people_search_inner_page"
+  /= render partial: "widgets/zendesk_header"
 
-  - if params[:commit] == 'Submit comment'
-    - post_body = { "post" => params[:post], "author_email" => @people_finder_profile.email, "author_name" => @people_finder_profile.name, "content" => params[:comment_content], "parent" => params[:comment_parent] }
-    - response = WpApi.post_comment_json(post_body)
-    // = response
-    /= response.parsed_response['code']
-
-    //on return remember to check against code = comment_duplicate
+  - if params[:commit] == "Submit comment"
+    - if @response.parsed_response['status'] == 'approved'
+      .comment-notification.thanks
+        %span
+          Thanks for your comment!
+    - elsif @response.parsed_response['code'] == 'comment_duplicate'
+      .comment-notification.error
+        %span
+          Sorry, duplicate comment detected - it looks like that's already been posted.
+    - else
+      .comment-notification.error
+        %span
+          There was an error submitting your comment, please try again.
   %main#content.root-index.news-section
     .grid-row
       .column-half
@@ -15,7 +22,7 @@
           %li
             = link_to( 'Home', "/" )
           %li
-            = link_to( 'News', link_news_top )
+            = link_to( 'News and views', link_news_top )
 
       .column-half
         .form-group.select-category
@@ -24,13 +31,11 @@
             %option{:value => ""}
               \ Select Category
             - @categories.each do |c|
-              %option{:value => link_news_top + "category/" + c["slug"]}
+              %option{:value => link_news_top + link_news_category + c["slug"]}
                 = link_to( c["name"] )
     .grid-row
       .column-two-thirds
         - @posts.each do |p|
-          / %pre
-          /   =p
           .news-item
             %h2.heading-large
               %hr{:class => 'rule-small'}
@@ -40,11 +45,20 @@
               = succeed ', ' do
                 = profile.name || "Unknown"
               = get_date(p["date"])
-              - p["news_categories"].each do |cat|
-                = news_cats( cat["name"], cat["slug"] )
-            = large_image_tag(p)
+              - cat_length = p["news_categories"].length - 1
+              - p["news_categories"].each_with_index do |cat, i|
+                - if cat_length == 0
+                  = news_cats( cat["name"], cat["slug"] )
+                - elsif i == cat_length
+                  = news_cats( cat["name"], cat["slug"] )
+                - else
+                  = news_cats( cat["name"], cat["slug"] ) + ', '
+
+            - if image_exists?(p)
+              = large_image_tag(p)
 
             = p["content"]["rendered"].html_safe
 
           = render partial: 'widgets/comments'
 
+= render partial: "widgets/zendesk_footer"

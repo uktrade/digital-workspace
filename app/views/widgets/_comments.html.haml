@@ -10,7 +10,6 @@
       - if @comments_headers["x-wp-total"].present?
         - comment_count = Integer(@comments_headers["x-wp-total"])
         = comments_heading(comment_count)
-<<<<<<< HEAD
     - if @comments.class == Array && @comments.count > 0
 
       - @comments.each do |comment|
@@ -49,44 +48,6 @@
                 %a{:href => '#comment-reply', :class => 'cta-comment-reply', :id => "threaded-reply-to-#{@top_level_comment}"  }
                   Reply
 
-=======
-
-    - @comments.each do |comment|
-      - if comment['parent'] == 0
-        - @top_level_comment = comment['id']
-        .post-meta
-          - if !comment['author_name'].nil?
-            %span.comment-name
-              = "#{comment['author_name']}"
-          - if !comment['date'].nil?
-            %span.comment-date
-              = precede ', ' do
-                = get_date(comment["date"])
-        - if !comment['content'].nil? && !comment['content']['rendered'].nil?
-          = comment["content"]["rendered"].html_safe
-        - if !comment['id'].nil?  
-          %a{:href => '#comment-reply', :class => 'cta-comment-reply', :id => "reply-to-#{comment['id']}", :"data-reply-to" => comment['id']  }
-            Reply
-        - @children = @comments.select{|key, hash| key['parent'] == comment['id']}
-        - if @children.class == Array && @children.count > 0
-          .replies
-            .comment-replies
-              - @children.each do |child_comment|
-                .comment{:id => "comment-reply-#{comment['id']}"}
-                  .post-meta
-                    - if !child_comment['author_name'].nil?
-                      %span.comment-name
-                        = child_comment['author_name']
-                    - if !child_comment['date'].nil?
-                      %span.comment-date
-                        = precede ', ' do
-                          = get_date(child_comment["date"])
-                  - if !child_comment['content'].nil? && !child_comment['content']['rendered'].nil?
-                    %p
-                      = child_comment['content']['rendered'].html_safe
-              %a{:href => '#comment-reply', :class => 'cta-comment-reply', :id => "reply-to-#{@top_level_comment}", :"data-reply-to" =>   @top_level_comment  }
-                Reply
->>>>>>> widgetised comment display and got single-layer threading working when displaying
     .leave-comment
       %h2.heading-medium{:id => 'comment-reply'}
         Leave a comment
