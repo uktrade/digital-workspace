@@ -1,0 +1,34 @@
+.filter-form
+  .inner-block
+    .filter.checkbox-filter.js-openable-filter
+      .head
+        %span.legend
+          News and Views
+        .controls
+          %a.clear-selected.js-hidden
+            Remove filters
+          .toggle
+      .checkbox-container{:id => "types-filter"}
+        %ul
+          %li
+            %input{:type => "checkbox", :name => "filter_types[]", :value => "forms-and-templates", :id => "forms-and-templates"}
+            %label{:for => "forms-and-templates"}
+              Forms and Templates
+          %li
+            %input{:type => "checkbox", :name => "filter_types[]", :value => "guidance", :id => "guidance"}
+            %label{:for => "guidance"}
+              Guidance
+          %li
+            %input{:type => "checkbox", :name => "filter_types[]", :value => "how-do-i", :id => "how-do-i"}
+            %label{:for => "how-do-i"}
+              How Do I?
+          %li
+            %input{:type => "checkbox", :name => "filter_types[]", :value => "news-and-views", :id => "news-and-views"}
+            %label{:for => "news-and-views"}
+              News and Views
+          %li
+            %input{:type => "checkbox", :name => "filter_types[]", :value => "policies", :id => "policies"}
+            %label{:for => "policies"}
+              Policies
+    .submit.js-live-search-fallback
+      %input{:type => "submit", :class => "button", :value => "Submit filters"}
