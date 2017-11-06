@@ -57,9 +57,9 @@ As should the API Authentication Key:
 `WP_API_KEY`
 
 ## Redis
-Currently the app expects the following environment variables:
-`REDIS_CACHE_URL` (defines the Redis cache store)
-`REDIS_SESSION_URL` (if set, defines Redis as the session store)
+Currently the app expects (in production):
+`REDIS_URL` (defines the Redis cache store)
+Note that this must be SSL/TLS and defined as: `rediss://...`.
 
 ## Caching
 The strategy is to cache API calls for 1 minute. Currently this is done against the Word Press API:
