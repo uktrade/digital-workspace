@@ -16,9 +16,10 @@
           %select{:class => 'form-control', :id => 'select_jump_to', :name => 'select-category'}
             %option{:value => ""}
               \ Select Category
-            - @categories.each do |c|
-              %option{:value => link_news_top + link_news_category + c["slug"]}
-                = link_to( c["name"] )
+            - if @categories.present?
+              - @categories.each do |c|
+                %option{:value => link_news_top + link_news_category + c["slug"]}
+                  = link_to( c["name"] )
     .grid-row
       .column-full
         %hr{:class => 'rule-large rule-top'}
@@ -42,7 +43,8 @@
                       - comment_count = Integer(@comments_headers["x-wp-total"])
                       = comments(link_news_top + @hero_post["slug"], comment_count)
               .hero-news-image-container
-                = large_image_tag(@hero_post)
+                - if image_exists?(@hero_post)
+                  = large_image_tag(@hero_post)
 
       .column-two-thirds
         - @posts.each do |p|
@@ -142,11 +144,12 @@
           All categories
 
         %ul.list-style-a
-          - @categories.each do |c|
-            %li
-              = link_to( c["name"], link_news_top + link_news_category + c["slug"])
-              %span.news-category-count.font-xsmall
-                = "(#{c["count"]})"
+          - if @categories.present?
+            - @categories.each do |c|
+              %li
+                = link_to( c["name"], link_news_top + link_news_category + c["slug"])
+                %span.news-category-count.font-xsmall
+                  = "(#{c["count"]})"
 
     %hr{:id => 'popular', :class => 'rule-large'}
 

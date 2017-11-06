@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe User do
+describe AuthUser do
   describe '#from_omniauth_hash' do
     subject { described_class.from_omniauth_hash(omniauth_hash) }
 
