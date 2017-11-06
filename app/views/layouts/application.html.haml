@@ -47,19 +47,10 @@
 - content_for :footer_support_links do
   - @footer_menu_content = footer_menu_content
     %ul.list-style-a
-      %li
-        = link_to('Teams', '/teams/')
-      %li
-        = link_to('Networks', '/networks/')
-      %li
-        = link_to('Regions', '/regions/')
-      %li
-        = link_to('Sectors', '/sectors/')
-
-      / - if !@footer_menu_content.nil?
-      /   - @footer_menu_content.each do |menu_link|
-      /     %li
-      /       = link_to(menu_link['menu_item']['title'], menu_link['menu_item']['url'], target: menu_link['menu_item']['target'])
+      - if !@footer_menu_content.nil?
+        - @footer_menu_content.each do |menu_link|
+          %li
+            = link_to(menu_link['menu_item']['title'], menu_link['menu_item']['url'], target: menu_link['menu_item']['target'])
     .acknowledgements
       %p
         = "Built by the #{link_to('DIT Digital', '#')} team".html_safe
