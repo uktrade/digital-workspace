@@ -1,6 +1,7 @@
 class WpApi
   require 'httparty'
   BASE_URI = ENV['WP_API_URL']
+  BASE_CUSTOM_URI = ENV['WP_API_CUSTOM']
   AUTH_TOKEN = ENV['WP_API_KEY']
 
   class << self
@@ -41,6 +42,19 @@ class WpApi
         body: json,
         headers: { 'Authorization' => "Basic #{AUTH_TOKEN}" }
       )
+    end
+
+    def get_search_json_body(params)
+      HTTParty.get(
+        URI.join(BASE_CUSTOM_URI, 'search?s=' + params[:s]).to_s,
+        headers: {
+          'Authorization' => "Basic #{AUTH_TOKEN}"
+        }
+      )
+    end
+
+    def get_search_json_headers(params)
+      get_search_json_body(params).headers
     end
   end
 end
