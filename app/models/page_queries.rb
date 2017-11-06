@@ -8,7 +8,7 @@ class PageQueries
   end
 
   def main_comments_query
-    WpApi.get_json_body('comments')
+    WpApi.get_json_body('comments?per_page=100')
   end
 
   def main_comment_headers
