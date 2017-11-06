@@ -13,7 +13,6 @@
         %hr{:class => 'rule-small rule-top'}
     .grid-row
       .column-two-thirds
-        = @test
         - if @content.present?
           - @content.each do |p|
             %h2.heading-large
@@ -46,7 +45,7 @@
                     - template_slug = link_template_content
                   - elsif (template == 'standard_index')
                     - template_slug = link_template_standard_index
-                  = link_to( content_m["title"]["rendered"], template_slug + content_m["slug"])
+                  = link_to( content_m["title"]["rendered"], '/' + @slug + '/' + template_slug + content_m["slug"])
                 %p
                   = content["acf"]["excerpt"]
 
