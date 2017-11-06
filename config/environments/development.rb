@@ -19,7 +19,7 @@ Rails.application.configure do
     config.cache_store = :readthis_store, {
       expires_in: 90.minutes,
       namespace: 'workspace:cache:',
-      redis: { url: ENV.fetch('REDIS_CACHE_URL') }
+      redis: { url: URI.join(ENV.fetch('REDIS_URL'), '/o/cache').to_s }
     }
   else
     config.action_controller.perform_caching = false
