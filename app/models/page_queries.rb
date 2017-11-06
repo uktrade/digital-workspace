@@ -3,6 +3,10 @@ class PageQueries
     @slug = slug
   end
 
+  def header_menu
+    WpApi.get_json_body('menus?slug=header-menu')
+  end
+
   def main_query
     WpApi.get_json_body("news?slug=#{@slug}")
   end

@@ -21,10 +21,7 @@
     .content
       = link_to "Digital Workspace", root_path, id: "proposition-name"
 
-    - if current_page?(root_path)
-      = render partial: "widgets/nav_homepage"
-    - else
-      = render partial: "widgets/nav"
+    = render partial: "widgets/nav"
 
     .search
       %form{:action => "/search", :method => "get", :role => "search"}
