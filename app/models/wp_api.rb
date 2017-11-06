@@ -5,11 +5,15 @@ class WpApi
 
   class << self
     def get_json_body(path)
-      JSON.parse(get_json(path).body)
+      Rails.cache.fetch("#{path}_body", expires: 1.minute) do
+        JSON.parse(get_json(path).body)
+      end
     end
 
     def get_headers(path)
-      get_json(path).headers
+      Rails.cache.fetch("#{path}_headers", expires: 1.minute) do
+        get_json(path).headers
+      end
     end
 
     def get_json(path)

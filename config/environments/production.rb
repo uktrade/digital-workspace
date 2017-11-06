@@ -71,6 +71,13 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
+
+  config.cache_store = :readthis_store, {
+    expires_in: 90.minutes,
+    namespace: 'workspace:cache:',
+    redis: { url: URI.join(ENV.fetch('REDIS_URL'), '/o/cache').to_s }
+  }
+
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter

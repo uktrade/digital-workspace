@@ -1,4 +1,4 @@
-class User
+class AuthUser
   include ActiveModel::Model
 
   attr_accessor(
@@ -7,7 +7,7 @@ class User
 
   class << self
     def from_omniauth_hash(auth_hash = {})
-      User.new(email: auth_hash[:info] ? auth_hash[:info][:email] : nil)
+      AuthUser.new(email: auth_hash[:info] ? auth_hash[:info][:email] : nil)
     end
   end
 end
