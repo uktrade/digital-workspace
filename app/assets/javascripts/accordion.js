@@ -62,7 +62,6 @@
 	function toggle_single(){
 		var self = this;
 		var accordions = document.querySelectorAll('.accordion');
-		var accordions_length = accordions.length -1;
 		var visible = document.querySelectorAll('.visible');
 		var accordion = self.parentNode;
 		var accordions_inner = document.querySelectorAll('.accordion-inner');
@@ -86,7 +85,7 @@
 
 
 			// Reset 'Close all'
-			if (accordions_length === visible.length) {
+			if (accordions.length === ( visible.length -1) ) {
 				flag = true;
 				accordion_all_cta[0].innerHTML = 'Close all';
 			}
