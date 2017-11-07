@@ -1,0 +1,36 @@
+.global-notification {
+	background-color: $brand_color_c;
+
+	p {
+		position: relative;
+		font-size: 16px;
+		line-height: 22px;
+		margin: 0;
+		color: #FFFFFF;
+		padding-left: 65px;
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			background-image: asset-data-url("urgent-icon.png");
+			background-repeat: no-repeat;
+			background-size: cover;
+			width:51px;
+			height: 35px;
+			margin-top: 4px;
+		}
+	}
+
+	a {
+		color: #FFFFFF;
+		font-weight: 700;
+	}
+}
+
+.global-notification-inner {
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 20px 5px;
+}
