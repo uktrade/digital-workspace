@@ -5,7 +5,7 @@
 
 		font-size: 18px;
 		font-weight: 700;
-		color: $brand_color_a;
+		color: $brand_color_c;
 		line-height: 1;
 
 		&:before {
@@ -25,5 +25,5 @@
 .policy-notification-content {
 	padding: 20px 30px;
 	border: 2px solid #000000;
-	background-color: lighten($brand_color_a, 45%);
+	background-color: lighten($brand_color_c, 50%);
 }
