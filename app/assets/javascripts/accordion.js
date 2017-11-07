@@ -62,13 +62,16 @@
 	function toggle_single(){
 		var self = this;
 		var accordions = document.querySelectorAll('.accordion');
-		var visible = document.querySelectorAll('.visible');
 		var accordion = self.parentNode;
 		var accordions_inner = document.querySelectorAll('.accordion-inner');
 		var accordion_inner = self.parentNode.querySelector(':scope > .accordion-inner');
 
 		// Remove classes
 		for (i = 0; i < accordions.length; ++i) {
+
+			// Reset 'Open all'
+			flag = false;
+			accordion_all_cta[0].innerHTML = 'Open all';
 
 			// Add class
 			if ( accordion.className === 'accordion visible' ) {
@@ -79,13 +82,10 @@
 				accordion_inner.style.height = accordion_inner.scrollHeight + 'px';
 			}
 
-			// Reset 'Open all'
-			flag = false;
-			accordion_all_cta[0].innerHTML = 'Open all';
-
+			var visible = document.querySelectorAll('.visible');
 
 			// Reset 'Close all'
-			if (accordions.length === ( visible.length -1) ) {
+			if (accordions.length === ( visible.length) ) {
 				flag = true;
 				accordion_all_cta[0].innerHTML = 'Close all';
 			}
