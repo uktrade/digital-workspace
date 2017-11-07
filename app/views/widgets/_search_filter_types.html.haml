@@ -11,24 +11,18 @@
       .checkbox-container{:id => "types-filter"}
         %ul
           %li
-            %input{:type => "checkbox", :name => "filter_types[]", :value => "forms-and-templates", :id => "forms-and-templates"}
+            %input{:type => "checkbox", :name => "filter_types", :value => "forms-and-templates", :id => "forms-and-templates"}
             %label{:for => "forms-and-templates"}
               Forms and Templates
           %li
-            %input{:type => "checkbox", :name => "filter_types[]", :value => "guidance", :id => "guidance"}
+            %input{:type => "checkbox", :name => "filter_types", :value => "policy", :id => "policy"}
             %label{:for => "guidance"}
-              Guidance
+              Policies & Guidance
           %li
-            %input{:type => "checkbox", :name => "filter_types[]", :value => "how-do-i", :id => "how-do-i"}
-            %label{:for => "how-do-i"}
+            %input{:type => "checkbox", :name => "filter_types", :value => "howdoi", :id => "howdoi"}
+            %label{:for => "howdoi"}
               How Do I?
           %li
-            %input{:type => "checkbox", :name => "filter_types[]", :value => "news", :id => "news"}
+            %input{:type => "checkbox", :name => "filter_types", :value => "news", :id => "news"}
             %label{:for => "news"}
               News and Views
-          %li
-            %input{:type => "checkbox", :name => "filter_types[]", :value => "policies", :id => "policies"}
-            %label{:for => "policies"}
-              Policies
-    .submit.js-live-search-fallback
-      %input{:type => "submit", :class => "button", :value => "Submit filters"}

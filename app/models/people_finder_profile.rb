@@ -15,10 +15,10 @@ class PeopleFinderProfile
 
   class << self
     def from_api(user)
-      @email = user.is_a?(AuthUser) ? user.email : user.to_s
-      retrieve_user
-      assign_user
-      @profile
+      # @email = user.is_a?(AuthUser) ? user.email : user.to_s
+      # retrieve_user
+      # assign_user
+      # @profile
     end
 
     private
