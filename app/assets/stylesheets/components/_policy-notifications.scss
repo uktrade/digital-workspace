@@ -1,0 +1,29 @@
+.policy-notification-update {
+	p {
+		position: relative;
+		padding-left: 26px;
+
+		font-size: 18px;
+		font-weight: 700;
+		color: $brand_color_a;
+		line-height: 1;
+
+		&:before {
+			content: '';
+			display: inline-block;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 16px;
+			height: 16px;
+			background-image: asset-data-url("policy-update.png");
+			background-repeat: no-repeat;
+		}
+	}
+}
+
+.policy-notification-content {
+	padding: 20px 30px;
+	border: 2px solid #000000;
+	background-color: lighten($brand_color_a, 45%);
+}
