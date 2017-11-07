@@ -45,12 +45,28 @@ class WpApi
     end
 
     def get_search_json_body(params)
+      path = 'search?s=' + params[:s]
+      path = search_filter_types(params, path)
+      path = search_filter_news(params, path)
+      path = search_filter_themes(params, path)
       HTTParty.get(
-        URI.join(BASE_CUSTOM_URI, 'search?s=' + params[:s]).to_s,
+        URI.join(BASE_CUSTOM_URI, path).to_s,
         headers: {
           'Authorization' => "Basic #{AUTH_TOKEN}"
         }
       )
+    end
+
+    def search_filter_types(params, path)
+      path + '&type=' + params[:filter_types] if params[:filter_types]
+    end
+
+    def search_filter_news(params, path)
+      path + '&news_category=' + params[:filter_news] if params[:filter_news]
+    end
+
+    def search_filter_themes(params, path)
+      path + '&theme_taxonomy=' + params[:filter_themes] if params[:filter_themes]
     end
 
     def get_search_json_headers(params)

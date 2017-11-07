@@ -4,14 +4,10 @@ class SearchResultsQuery
   end
 
   def results_query
-  	if !@params[:s].nil?
-  	  WpApi.get_search_json_body(@params)
-  	end
+    WpApi.get_search_json_body(@params) unless @params[:s].nil?
   end
 
   def results_headers
-    if !@params[:s].nil?
-      WpApi.get_search_json_headers(@params)
-    end
+    WpApi.get_search_json_headers(@params) unless @params[:s].nil?
   end
 end
