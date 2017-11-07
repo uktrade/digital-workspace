@@ -47,6 +47,6 @@
                     - template_slug = link_template_standard_index
                   = link_to( content_m["title"]["rendered"], '/' + @slug + '/' + template_slug + content_m["slug"])
                 %p
-                  = content["acf"]["excerpt"]
+                  = content_m["acf"]["excerpt"]
 
 = render partial: "widgets/zendesk_footer"
