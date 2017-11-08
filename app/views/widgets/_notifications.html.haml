@@ -1,6 +1,6 @@
-.global-notification
-  .global-notification-inner
-    - if @global_notification.present?
+- if @global_notification.present?
+  .global-notification
+    .global-notification-inner
       - message = @global_notification["notification"]["message"]
       - link_title = @global_notification["notification"]["link"]["title"]
       - link_url = @global_notification["notification"]["link"]["url"]
