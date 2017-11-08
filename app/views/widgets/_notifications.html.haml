@@ -1,4 +1,10 @@
 .global-notification
   .global-notification-inner
-    %p
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum, dolor. Illum earum officia provident cupiditate unde aperiam, sint! Blanditiis <a href="#">ipsa doloremque ex minus</a> quasi sint dolor quo vel fuga. Laborum.
+    - if @global_notification.present?
+      - message = @global_notification["notification"]["message"]
+      - link_title = @global_notification["notification"]["link"]["title"]
+      - link_url = @global_notification["notification"]["link"]["url"]
+      - link_target = @global_notification["notification"]["link"]["target"]
+      - link = link_to(link_title, link_url, target: link_target)
+      %p
+        = "#{message} #{link}".html_safe
