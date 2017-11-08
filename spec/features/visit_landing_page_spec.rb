@@ -12,8 +12,7 @@ describe 'visit the landing page', vcr: true do
     expect(page).to have_css('h2', text: 'What\'s popular?')
 
     within('.profile-overview') do
-      expect(page).to have_css('h3', text: 'Alice Arnold')
-      expect(page).to have_link('Update')
+      expect(page).to have_link('Update', href: "#{ENV['PEOPLEFINDER_URL']}/my/profile")
     end
 
     within('.welcome-people-finder') do
