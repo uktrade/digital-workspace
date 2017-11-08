@@ -18,6 +18,8 @@ VCR.configure do |config|
 
   config.filter_sensitive_data('<PEOPLEFINDER_URL>') { ENV['PEOPLEFINDER_URL'] }
   config.filter_sensitive_data('<PEOPLEFINDER_AUTH_TOKEN>') { ENV['PEOPLEFINDER_AUTH_TOKEN'] }
+  config.filter_sensitive_data('<TWITTER_KEY>') { ENV['TWITTER_KEY'] }
+  config.filter_sensitive_data('<TWITTER_SECRET>') { ENV['TWITTER_SECRET'] }
   config.filter_sensitive_data('<WP_API_URL>') { ENV['WP_API_URL'] }
   config.filter_sensitive_data('<WP_API_KEY>') { ENV['WP_API_KEY'] }
 end
