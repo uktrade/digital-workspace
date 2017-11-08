@@ -1,0 +1,18 @@
+- if @categories.class == Array && @categories.count > 0
+  .filter-form
+    .inner-block
+      .filter.checkbox-filter.js-openable-filter
+        .head
+          %span.legend
+            News and Views
+          .controls
+            %a.clear-selected.js-hidden
+              Remove filters
+            .toggle
+        .checkbox-container{:id => "news-views-filter"}
+          %ul
+            - @categories.each do |cat|
+              %li
+                %input{:type => "checkbox", :name => "filter_news", :value => cat['slug'], :id => cat['slug']}
+                %label{:for => cat['slug']}
+                  = cat['name']

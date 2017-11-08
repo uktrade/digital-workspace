@@ -1,0 +1,18 @@
+- if @work_categories.class == Array && @work_categories.count > 0
+  .filter-form
+    .inner-block
+      .filter.checkbox-filter.js-openable-filter
+        .head
+          %span.legend
+            Working at DIT
+          .controls
+            %a.clear-selected.js-hidden
+              Remove filters
+            .toggle
+        .checkbox-container{:id => "theme-filter"}
+          %ul
+            - @work_categories.each do |cat|
+              %li
+                %input{:type => "checkbox", :name => "filter_themes", :value => cat['slug'], :id => cat['slug']}
+                %label{:for => cat['slug']}
+                  = cat['name']
