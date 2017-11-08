@@ -17,9 +17,8 @@ VCR.configure do |config|
   config.configure_rspec_metadata!
 
   config.before_record do |i|
-    i.response.body = '<HIDDEN>' if i.response.body.match(/\[{\"id\":/)
-    i.response.body = '<HIDDEN>' if i.response.body.match(/\{\"token_type\":\"bearer\"/)
-    i.response.headers['Authorization'] = '<HIDDEN>'
+    i.response.body = '[]' if i.response.body =~ /^\[{\"id\":/
+    i.response.body = '{}' if i.response.body =~ /^\{\"token_type\":\"bearer\"/
     i.response.headers['Link'] = ['http://test.local'] if i.response.headers['Link']
   end
   config.filter_sensitive_data('<PEOPLEFINDER_URL>') { ENV['PEOPLEFINDER_URL'] }
