@@ -3,7 +3,7 @@
     %form{action: "#{ENV['PEOPLEFINDER_URL']}/search", method: 'get', role: 'search', id: 'people_search', class: 'search-people-form' }
       .govuk-search
         %label.search-label
-          Search people
+          Search people, teams and skills
         .search-wrapper
           %input#search_filters_{:name => "search_filters[]", :type => "hidden", :value => "people"}/
           %input#search_filters_{:name => "search_filters[]", :type => "hidden", :value => "teams"}/
