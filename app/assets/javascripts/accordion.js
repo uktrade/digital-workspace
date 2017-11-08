@@ -68,17 +68,27 @@
 
 		// Remove classes
 		for (i = 0; i < accordions.length; ++i) {
-			accordions[i].classList.remove('visible');
-			accordions_inner[i].style.height = '0px';
 
 			// Reset 'Open all'
 			flag = false;
 			accordion_all_cta[0].innerHTML = 'Open all';
-		}
-		// Add class
-		if ( accordion_inner.className === 'accordion-inner' ) {
-			accordion.classList.add('visible');
-			accordion_inner.style.height = accordion_inner.scrollHeight + 'px';
+
+			// Add class
+			if ( accordion.className === 'accordion visible' ) {
+				accordion.classList.remove('visible');
+				accordion_inner.style.height = '0px';
+			} else { // Remove class
+				accordion.classList.add('visible');
+				accordion_inner.style.height = accordion_inner.scrollHeight + 'px';
+			}
+
+			var visible = document.querySelectorAll('.visible');
+
+			// Reset 'Close all'
+			if (accordions.length === ( visible.length) ) {
+				flag = true;
+				accordion_all_cta[0].innerHTML = 'Close all';
+			}
 		}
 	};
 

@@ -13,10 +13,10 @@ Rails.application.routes.draw do
 
   get '/working-at-dit', to: 'accordion#index'
   get '/working-at-dit/*path', to: 'topics#index'
-  # get '/working-at-dit/*path/*path', to: 'topics#index'
 
   get '/about-dit', to: 'standard#index'
-  get '/about-dit/*path', to: 'content#content'
+  get '/about-dit/standard-index/*path', to: 'standard#index'
+  get '/about-dit/content/*path', to: 'content#content'
 
   get '/tools', to: 'standard#index'
   get '/tools/*path', to: 'content#content'
