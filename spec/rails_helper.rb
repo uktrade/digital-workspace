@@ -15,6 +15,11 @@ VCR.configure do |config|
   config.cassette_library_dir = 'fixtures/vcr_cassettes'
   config.hook_into :webmock
   config.configure_rspec_metadata!
+
+  config.filter_sensitive_data('<PEOPLEFINDER_URL>') { ENV['PEOPLEFINDER_URL'] }
+  config.filter_sensitive_data('<PEOPLEFINDER_AUTH_TOKEN>') { ENV['PEOPLEFINDER_AUTH_TOKEN'] }
+  config.filter_sensitive_data('<WP_API_URL>') { ENV['WP_API_URL'] }
+  config.filter_sensitive_data('<WP_API_KEY>') { ENV['WP_API_KEY'] }
 end
 
 Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |file| require file }
