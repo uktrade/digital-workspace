@@ -16,6 +16,10 @@ class SingleController < ApplicationController
       comments_print_cache
     end
     @categories = @api_call.other_categories_query
+
+    @global_notifications = @api_call.main_query
+    @global_notification = @global_notifications.first if @global_notifications.first.is_a?(Hash)
+
   end
 
   def comments_post
