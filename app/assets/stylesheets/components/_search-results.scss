@@ -13,6 +13,10 @@
 		}
 	}
 
+	p.info {
+		margin-top: 0;
+	}
+
 	.filter-form {
 		.filter {
 			margin-bottom: 10px;
@@ -41,6 +45,14 @@
 			position: relative;
 			.controls {
 				display: none;
+			}
+		}
+		&.closed {
+			.checkbox-container {
+				position: absolute;
+				left: -9999px;
+				padding: 0;
+				margin: 0;
 			}
 		}
 		.checkbox-container {

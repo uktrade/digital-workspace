@@ -1,6 +1,21 @@
 var filters = document.getElementById('filter-search');
 
 if(filters) {
+  var filterBoxes = document.getElementsByClassName('head');
+  for (var i = 0; i < filterBoxes.length; i++) {
+    filterBoxes[i].addEventListener("click", function() {
+      var headEl = this;
+      var thisClasses = headEl.parentNode.className;
+      if(thisClasses.indexOf('closed') > 0) {
+        var newClass = thisClasses.replace(' closed', '');
+        headEl.parentNode.className = newClass;
+      } else {
+        var newClass = thisClasses + ' closed';
+        headEl.parentNode.className = newClass;
+      }
+    });
+  };
+
   var presetTypesStr = getParameterByName('filter_types'),
       presetNewsStr = getParameterByName('filter_news'),
       presetThemesStr = getParameterByName('filter_themes');
