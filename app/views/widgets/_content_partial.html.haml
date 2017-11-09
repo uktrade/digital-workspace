@@ -16,9 +16,6 @@
       - @content.each do |content|
         .column-two-thirds
           %hr{:class => 'rule-small rule-top'}
-            .policy-notification-update
-              %p
-                This policy is being updated. It is current, but will soon be replaced.
             %h2.heading-large.heading-top
               = content["title"]["rendered"]
             %div.dates-published-updated
@@ -29,12 +26,6 @@
                 %li
                   Last updated:
                   = get_date( content["date"] )
-
-            .policy-notification-content
-              %p
-                %strong
-                  Please note:<br />
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi fugiat inventore sunt sapiente quam magni harum nulla temporibus quod, rem eveniet aut repellendus quae, perspiciatis aperiam natus. Ipsa, distinctio, mollitia.
 
             = content["content"]["rendered"].html_safe
           - if content["acf"].present? && content["acf"]["documents"].present?
