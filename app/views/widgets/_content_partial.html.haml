@@ -16,6 +16,10 @@
       - @content.each do |content|
         .column-two-thirds
           %hr{:class => 'rule-small rule-top'}
+            - if content["acf"].present? && content["acf"]["content_under_review"] == true
+              .policy-notification-update
+                %p
+                  This policy is being updated. It is current, but will soon be replaced.
             %h2.heading-large.heading-top
               = content["title"]["rendered"]
             %div.dates-published-updated
@@ -26,6 +30,15 @@
                 %li
                   Last updated:
                   = get_date( content["date"] )
+
+            - if content["acf"].present? && content["acf"]["content_under_review"] == true
+              .policy-notification-content
+                %p
+                  %strong
+                    Please note:<br />
+                  Over the coming months, this policy will be updated and refreshed to reflect our vision of One DIT. In the meanwhile, this policy is relevant and appropriate to all DIT staff whilst it undergoes the process of being updated.
+                %p
+                  Delete all of your previous favorites or bookmarked items on the old DIT and the BIS intranets. Only use bookmarks to content on Digital Workspace from now on.
 
             = content["content"]["rendered"].html_safe
           - if content["acf"].present? && content["acf"]["documents"].present?
