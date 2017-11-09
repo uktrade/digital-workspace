@@ -9,12 +9,7 @@ class SingleController < ApplicationController
     @slug = params[:path].split('/').last
     @api_call = PageQueries.new(@slug)
     @posts = @api_call.main_query
-    if params[:commit] == 'Submit comment'
-      comments_post
-      comments_print
-    else
-      comments_print_cache
-    end
+    process_form_submission
     @categories = @api_call.other_categories_query
 
     @global_notifications = @api_call.main_query
@@ -41,5 +36,16 @@ class SingleController < ApplicationController
   def comments_print_cache
     @comments = @api_call.main_comments_query_cache
     @comments_headers = @api_call.main_comment_headers_cache
+  end
+  
+  protected
+  
+  def process_form_submission
+    if params[:commit] == 'Submit comment'
+      comments_post
+      comments_print
+    else
+      comments_print_cache
+    end
   end
 end
