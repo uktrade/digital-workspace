@@ -2,9 +2,11 @@
   Menu
 - @header_menu_content = header_menu_content
 - if !@header_menu_content.nil?
-  %nav{:id => 'proposition-menu'}
-    %ul{:id => 'proposition-links'}
-      - if @header_menu_content.count > 0
-        - @header_menu_content.each do |menu_link|
-          %li
-            = link_to(menu_link['menu_item']['title'], menu_link['menu_item']['url'], target: menu_link['menu_item']['target'])
+  %nav{:id => "proposition-menu"}
+    %ul{:id => "proposition-links"}
+      - @header_menu = header_menu
+      - if !@header_menu.nil?
+        - @header_menu.each do |header_menu_link|
+          - header_menu_link["acf"]["menu"].each do |link|
+            %li
+              = link_to(link['menu_item']['title'], link['menu_item']['url'], target: link['menu_item']['target'])

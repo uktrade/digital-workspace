@@ -3,16 +3,28 @@ class PageQueries
     @slug = slug
   end
 
+  def header_menu
+    WpApi.get_json_body('menus?slug=header-menu')
+  end
+
   def main_query
     WpApi.get_json_body("news?slug=#{@slug}")
   end
 
   def main_comments_query
-    WpApi.get_json_body('comments')
+    WpApi.get_json_body('comments?per_page=100', false)
   end
 
   def main_comment_headers
-    WpApi.get_headers('comments')
+    WpApi.get_headers('comments', false)
+  end
+
+  def main_comments_query_cache
+    WpApi.get_json_body('comments?per_page=100', true)
+  end
+
+  def main_comment_headers_cache
+    WpApi.get_headers('comments', true)
   end
 
   def other_categories_query

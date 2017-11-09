@@ -135,16 +135,13 @@
 	#logo {
 		background-image: asset-data-url("dit-logo_000@2x.png");
 		background-size: 137px 65px;
+		font-size: 0px;
 		margin-top: 15px;
-
 		width: 137px;
 		height: 65px;
 
 		img {
 			max-width: 100%;
-			&:first-child {
-				display: none;
-			}
 		}
 	}
 	#proposition-name {
@@ -195,7 +192,7 @@
 						padding-top: 0px;
 						li {
 							width: auto;
-							margin-right: 15px;
+							margin-right: 25px;
 						}
 					}
 				}

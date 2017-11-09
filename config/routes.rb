@@ -2,16 +2,21 @@ Rails.application.routes.draw do
   match '/auth/:provider/callback', to: 'sessions#create', via: %i[get post]
 
   root to: 'home#index'
+
+  get '/search/', to: 'search#index'
+
   get '/news-and-views', to: 'archive#index'
   get '/news-and-views/category/*path', to: 'archive#news_type'
   get '/news-and-views/*path', to: 'single#news'
 
+  post '/news-and-views/*path', to: 'single#news'
+
   get '/working-at-dit', to: 'accordion#index'
   get '/working-at-dit/*path', to: 'topics#index'
-  # get '/working-at-dit/*path/*path', to: 'topics#index'
 
   get '/about-dit', to: 'standard#index'
-  get '/about-dit/*path', to: 'content#content'
+  get '/about-dit/standard-index/*path', to: 'standard#index'
+  get '/about-dit/content/*path', to: 'content#content'
 
   get '/tools', to: 'standard#index'
   get '/tools/*path', to: 'content#content'

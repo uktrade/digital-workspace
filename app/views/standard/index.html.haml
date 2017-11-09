@@ -13,7 +13,6 @@
         %hr{:class => 'rule-small rule-top'}
     .grid-row
       .column-two-thirds
-        = @test
         - if @content.present?
           - @content.each do |p|
             %h2.heading-large
@@ -24,31 +23,35 @@
         %hr{:class => 'rule-small'}
     .grid-row
       - if @content_children.present?
-        - @content_children.each_with_index do |content, index|
-          - case index
-          - when 0..10
-            .column-third.card
-              %h3
-                = link_to( content["title"]["rendered"], content["slug"])
-              %p
-                = content["acf"]["excerpt"]
+
+        - child_count = @content_children.count
+        - multiple_of = (child_count / 3)
 
         - @content_children.each_with_index do |content, index|
-          - case index
-          - when 11..20
-            .column-third.card
-              %h3
-                = link_to( content["title"]["rendered"], content["slug"])
-              %p
-                = content["acf"]["excerpt"]
+          - from = index
+          - to = from + multiple_of
 
-        - @content_children.each_with_index do |content, index|
-          - case index
-          - when 21..30
+          - if (index % 3 === 0)
+
+            - case index
+            - when from..to
+
             .column-third.card
-              %h3
-                = link_to( content["title"]["rendered"], content["slug"])
-              %p
-                = content["acf"]["excerpt"]
+              %h3.heading-small
+              - @content_children[from..to].each_with_index do |content_m, index_m|
+                - uri = URI(content_m["link"])
+                - parent_slug = "#{uri.path}".split('/')[1]
+                - slug = "#{uri.path}".split('/').last
+                - template = content_m["type"]
+                - if (template == 'content')
+                  - template_slug = link_template_content
+                - elsif (template == 'standard_index')
+                  - template_slug = link_template_standard_index
+                - link = '/' + parent_slug + '/' + template_slug + slug
+                %h3
+
+                  = link_to( content_m["title"]["rendered"], link)
+                %p
+                  = content_m["acf"]["excerpt"]
 
 = render partial: "widgets/zendesk_footer"

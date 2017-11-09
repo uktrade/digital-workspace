@@ -1,0 +1,28 @@
+.filter-form
+  .inner-block
+    .filter.checkbox-filter.js-openable-filter
+      .head
+        %span.legend
+          Content Types
+        .controls
+          %a.clear-selected.js-hidden
+            Remove filters
+          .toggle
+      .checkbox-container{:id => "types-filter"}
+        %ul
+          %li
+            %input{:type => "checkbox", :name => "filter_types", :value => "forms-and-templates", :id => "forms-and-templates"}
+            %label{:for => "forms-and-templates"}
+              Forms and Templates
+          %li
+            %input{:type => "checkbox", :name => "filter_types", :value => "policy", :id => "policy"}
+            %label{:for => "guidance"}
+              Policies & Guidance
+          %li
+            %input{:type => "checkbox", :name => "filter_types", :value => "howdoi", :id => "howdoi"}
+            %label{:for => "howdoi"}
+              How Do I?
+          %li
+            %input{:type => "checkbox", :name => "filter_types", :value => "news", :id => "news"}
+            %label{:for => "news"}
+              News and Views

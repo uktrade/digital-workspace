@@ -7,7 +7,16 @@ class StandardQueries
     WpApi.get_json_body("pages?type=standard_index&slug=#{@slug}")
   end
 
-  def standard_child_query(parent_id)
+  def standard_child_content_query(parent_id)
     WpApi.get_json_body("pages?type=content&orderby=title&order=asc&per_page=100&parent=#{parent_id}")
+  end
+
+  def standard_child_standard_query(parent_id)
+    WpApi.get_json_body("pages?type=standard_index&orderby=title&order=asc&per_page=100&parent=#{parent_id}")
+  end
+
+  def content_children(arr_a, arr_b)
+    array = arr_a + arr_b
+    array.sort_by { |hash| hash['title'].to_s }
   end
 end

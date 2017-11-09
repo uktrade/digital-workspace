@@ -1,0 +1,44 @@
+/= render partial: "widgets/zendesk_header"
+%div{:id => 'page', :class => 'page-content'}
+  - if @string.nil?
+    %main#content.search-results
+      .grid-row
+        .column-full
+          %h2.heading-medium
+            Search by using the dialog box above
+  - else 
+    %main#content.search-results
+      .grid-row
+        .column-full
+          %h2.heading-medium
+            Search results for '#{@string}'
+      .grid-row
+        .column-third
+          %p.info
+            .div
+            Filter by:
+            = render partial: "widgets/search_filter_types"
+            = render partial: "widgets/search_filter_news_views"
+            = render partial: "widgets/search_filter_working_at_dit"
+            = form_tag('/search', id: 'filter-search', method: 'GET')
+            = hidden_field_tag('s', @string)
+            = hidden_field_tag('filter_types')
+            = hidden_field_tag('filter_news')
+            = hidden_field_tag('filter_themes')
+            .submit.js-live-search-fallback
+              = submit_tag('Submit filters', class: 'button')
+        .column-two-thirds
+          - if !@posts.nil?
+            .result-count
+              - @headers.to_json
+              = "#{@headers['x-wp-total']} results found"
+            %ol.results-list
+              - @posts.each do |p|
+                %li.search-result
+                  %h3.heading-medium
+                    %a{:href => p['slug']}
+                      = p['title']
+                  %p.content
+                    = p['excerpt'].html_safe
+  
+= render partial: "widgets/zendesk_footer"

@@ -22,4 +22,12 @@ module LinksHelper
   def link_news_category
     'category/'
   end
+
+  def link_template_standard_index
+    'standard-index/'
+  end
+
+  def link_template_content
+    'content/'
+  end
 end
