@@ -23,7 +23,6 @@ class StandardController < ApplicationController
     @api_call = ContentSingleQuery.new(@slug)
     @content = @api_call.type_query
     render template: 'content/content'
-
   end
 
   protected
@@ -40,8 +39,6 @@ class StandardController < ApplicationController
     @content = @api_call.page_query(@slug)
     @type = @content.first['type']
 
-    if (@type == 'standard_index')
-      return true
-    end
+    return true if @type == 'standard_index'
   end
 end

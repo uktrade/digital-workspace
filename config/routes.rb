@@ -36,11 +36,9 @@ Rails.application.routes.draw do
   get '/regions', to: 'standard#index'
   get '/regions/*path', to: 'content#content'
 
-
   # deprecate lines 41-44 after about-us slug change in CMS is complete
   get '/about-dit', to: 'standard#index'
   get '/about-dit/*path', to: 'standard#index'
 
   get '*path', to: 'content#content'
-
 end
