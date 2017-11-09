@@ -4,10 +4,10 @@ module HeaderMenuHelper
   end
 
   def header_menu_content
-    header_menu.first['acf']['menu']
+    header_menu.first['acf']['menu'] if header_menu.first
   end
 
   def header_menu_title
-    header_menu.first['title']['rendered']
+    header_menu.first['title']['rendered'] if header_menu.first
   end
 end
