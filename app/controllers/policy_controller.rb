@@ -1,7 +1,6 @@
 class PolicyController < ApplicationController
   def index
     @api_call = PolicyQueries.new
-    init_posts
   end
 
   def content
@@ -9,11 +8,8 @@ class PolicyController < ApplicationController
     @api_call = PolicyQueries.new(@slug)
     @content = @api_call.policy_query
     @related_news = @api_call.topics_related_news
-  end
 
-  protected
-
-  def init_posts
-    @posts = @api_call.main_query
+    @global_notifications = @api_call.main_query(@slug)
+    @global_notification = @global_notifications.first if @global_notifications.first.is_a?(Hash)
   end
 end

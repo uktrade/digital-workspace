@@ -32,6 +32,9 @@ class ArchiveController < ApplicationController
   def init_posts
     @posts = @api_call.main_query(@page)
 
+    @global_notifications = @api_call.main_query(@page)
+    @global_notification = @global_notifications.first if @global_notifications.first.is_a?(Hash)
+
     @hero_post = @posts.first if @posts.first.is_a?(Hash)
     @posts = @posts[1..-1] || []
   end
