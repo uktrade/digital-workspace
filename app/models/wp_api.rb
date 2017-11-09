@@ -48,6 +48,10 @@ class WpApi
       path = search_filter_news(params, path) if params[:filter_news]
       path = search_filter_themes(params, path) if params[:filter_themes]
       path = search_filter_page(params, path) if params[:page]
+      search_json_request(path)
+    end
+
+    def search_json_request(path)
       HTTParty.get(
         URI.join(BASE_CUSTOM_URI, path).to_s,
         headers: {
