@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   get '/working-at-dit/*path', to: 'topics#index'
 
   get '/about-us', to: 'standard#index'
-  get '/about-us/standard-index/*path', to: 'standard#index'
-  get '/about-us/content/*path', to: 'content#content'
+  get '/about-us/*path', to: 'standard#index'
+  # get '/about-us/content/*path', to: 'content#content'
 
   get '/tools', to: 'standard#index'
   get '/tools/standard-index/*path', to: 'standard#index'
@@ -36,10 +36,11 @@ Rails.application.routes.draw do
   get '/regions', to: 'standard#index'
   get '/regions/*path', to: 'content#content'
 
-  get '*path', to: 'content#content'
 
   # deprecate lines 41-44 after about-us slug change in CMS is complete
   get '/about-dit', to: 'standard#index'
-  get '/about-dit/standard-index/*path', to: 'standard#index'
-  get '/about-dit/content/*path', to: 'content#content'
+  get '/about-dit/*path', to: 'standard#index'
+
+  get '*path', to: 'content#content'
+
 end

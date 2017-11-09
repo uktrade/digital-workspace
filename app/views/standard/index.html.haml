@@ -39,17 +39,8 @@
             .column-third.card
               %h3.heading-small
               - @content_children[from..to].each_with_index do |content_m, index_m|
-                - uri = URI(content_m["link"])
-                - parent_slug = "#{uri.path}".split('/')[1]
-                - slug = "#{uri.path}".split('/').last
-                - template = content_m["type"]
-                - if (template == 'content')
-                  - template_slug = link_template_content
-                - elsif (template == 'standard_index')
-                  - template_slug = link_template_standard_index
-                - link = '/' + parent_slug + '/' + template_slug + slug
+                - link = content_m["link"]
                 %h3
-
                   = link_to( content_m["title"]["rendered"], link)
                 %p
                   = content_m["acf"]["excerpt"]
