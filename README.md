@@ -67,8 +67,8 @@ Ensure that the keys are set so that the Twitter feed is enabled
 `TWITTER_SECRET`
 
 ## Caching
-The strategy is to cache API calls for 1 minute. Currently this is done against the Word Press API:
-See `Rails.cache.fetch` in `wp_api.rb`.
+The strategy is to cache API calls for 1 minute. Currently this is done against the Word Press API and Twitter API:
+See `Rails.cache.fetch` in `wp_api.rb` and `twitter_feed.rb`.
 
 To enable the redis cache in development and test:
 `rake dev:cache`
