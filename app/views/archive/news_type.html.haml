@@ -95,7 +95,7 @@
                     1
               - else
                 %li
-                  = link_to( "1", link_news_top + link_news_category + "#{@slug}?page=1")
+                  = link_to( "1", link_news_top + "page=1")
               - if @paginator.last_page_no >= 2
                 - if @paginator.current_page_no == 2
                   %li
@@ -103,13 +103,13 @@
                       2
                 - else
                   %li
-                    = link_to( "2", link_news_top + link_news_category + "#{@slug}?page=2")
+                    = link_to( "2", link_news_top + "page=2")
               - if @paginator.current_page_no - 5 >= 1
                 %li
-                  = link_to("…", link_news_top + link_news_category + "#{@slug}?page=#{@paginator.current_page_no - 5}")
+                  = link_to("…", link_news_top + "page=#{@paginator.current_page_no - 5}")
               - if not [0, 1, 2, @paginator.last_page_no, @paginator.last_page_no - 1].include?(@paginator.current_page_no - 1)
                 %li
-                  = link_to( "#{@paginator.current_page_no - 1}", link_news_top + link_news_category + "#{@slug}?page=#{@paginator.current_page_no - 1}" )
+                  = link_to( "#{@paginator.current_page_no - 1}", link_news_top + "page=#{@paginator.current_page_no - 1}" )
               - if not [0, 1, 2, @paginator.last_page_no, @paginator.last_page_no - 1].include?(@paginator.current_page_no)
                 %li
                   %span.current
@@ -117,10 +117,10 @@
               - if not [0, 1, 2, @paginator.last_page_no, @paginator.last_page_no - 1].include?(@paginator.current_page_no + 1)
                 - if @paginator.current_page_no < @paginator.last_page_no - 1
                   %li
-                    = link_to( "#{@paginator.current_page_no + 1}", link_news_top + link_news_category + "#{@slug}?page=#{@paginator.current_page_no + 1}" )
+                    = link_to( "#{@paginator.current_page_no + 1}", link_news_top + "page=#{@paginator.current_page_no + 1}" )
               - if @paginator.current_page_no + 5 <= @paginator.last_page_no
                 %li
-                  = link_to("…", link_news_top + link_news_category + "#{@slug}?page=#{@paginator.current_page_no + 5}")
+                  = link_to("…", "page=#{@paginator.current_page_no + 5}")
               - if @paginator.last_page_no - 1 > 2
                 - if @paginator.last_page_no - 1 == @paginator.current_page_no
                   %li
@@ -128,7 +128,7 @@
                       = @paginator.last_page_no - 1
                 - else
                   %li
-                    = link_to( "#{@paginator.last_page_no - 1}", link_news_top + link_news_category + "#{@slug}?page=#{@paginator.last_page_no - 1}")
+                    = link_to( "#{@paginator.last_page_no - 1}", link_news_top + "page=#{@paginator.last_page_no - 1}")
               - if @paginator.last_page_no > 2
                 - if @paginator.last_page_no == @paginator.current_page_no
                   %li
@@ -136,7 +136,7 @@
                       = @paginator.last_page_no
                 - else
                   %li
-                    = link_to( "#{@paginator.last_page_no}", link_news_top + link_news_category + "#{@slug}?page=#{@paginator.last_page_no}")
+                    = link_to( "#{@paginator.last_page_no}", link_news_top + "page=#{@paginator.last_page_no}")
 
       .column-third.news-category
         %hr{:class => 'rule-large'}

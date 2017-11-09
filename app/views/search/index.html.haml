@@ -15,18 +15,17 @@
       .grid-row
         .column-third
           %p.info
-            .div
             Filter by:
-            = render partial: "widgets/search_filter_types"
-            = render partial: "widgets/search_filter_news_views"
-            = render partial: "widgets/search_filter_working_at_dit"
-            = form_tag('/search', id: 'filter-search', method: 'GET')
-            = hidden_field_tag('s', @string)
-            = hidden_field_tag('filter_types')
-            = hidden_field_tag('filter_news')
-            = hidden_field_tag('filter_themes')
-            .submit.js-live-search-fallback
-              = submit_tag('Submit filters', class: 'button')
+          = render partial: "widgets/search_filter_types"
+          = render partial: "widgets/search_filter_news_views"
+          = render partial: "widgets/search_filter_working_at_dit"
+          = form_tag('/search', id: 'filter-search', method: 'GET')
+          = hidden_field_tag('s', @string)
+          = hidden_field_tag('filter_types')
+          = hidden_field_tag('filter_news')
+          = hidden_field_tag('filter_themes')
+          .submit.js-live-search-fallback
+            = submit_tag('Submit filters', class: 'button')
         .column-two-thirds
           - if !@posts.nil?
             .result-count
@@ -40,5 +39,6 @@
                       = p['title']
                   %p.content
                     = p['excerpt'].html_safe
+            = render partial: "widgets/search_pagination"
   
 = render partial: "widgets/zendesk_footer"
