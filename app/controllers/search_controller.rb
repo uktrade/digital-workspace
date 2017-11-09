@@ -7,7 +7,7 @@ class SearchController < ApplicationController
     @headers = @api_call.results_headers
     @categories = news_categories
     @work_categories = working_at_dit_categories
-    init_defaults
+    init_defaults unless @string.nil?
   end
 
   def init_defaults
