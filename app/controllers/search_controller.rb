@@ -3,14 +3,14 @@ class SearchController < ApplicationController
     @query_str = params
     (@string = params['s']) unless params['s'].nil?
     @api_call = SearchResultsQuery.new(params)
-    @posts = @api_call.results_query
-    @headers = @api_call.results_headers
-    @categories = news_categories
-    @work_categories = working_at_dit_categories
     init_defaults unless @string.nil?
   end
 
   def init_defaults
+    @posts = @api_call.results_query
+    @headers = @api_call.results_headers
+    @categories = news_categories
+    @work_categories = working_at_dit_categories
     @page = (params[:page] || 1).to_i
     init_pagination
   end
