@@ -54,7 +54,7 @@
                       = news_cats( cat["name"], cat["slug"] ) + ', '
 
               %h3.heading-medium
-                - heading = truncate_home_news_title(p["title"]["rendered"])
+                - heading = truncate_home_news_title(p["title"]["rendered"].html_safe)
                 = link_to(heading, link_news_top + p["slug"])
 
                 .news-item-excerpt
@@ -77,7 +77,7 @@
           .column-third.popular-page-summary
             %span{:class => "image-holder"}
               %a{:title => p["title"]["rendered"], :class => "img", :href => p["slug"]}
-                %img{:src => p['acf']['image']['sizes']['medium'], :alt => p["title"]["rendered"]}
+                %img{:src => p['acf']['image']['sizes']['medium'], :alt => p["title"]["rendered"].html_safe}
             .popular-page-text
               %h3.heading-medium
                 = link_to(p["title"]["rendered"].html_safe, p["slug"])

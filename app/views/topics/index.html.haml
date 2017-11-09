@@ -22,14 +22,14 @@
         /     - if @topic_selector.present?
         /       - @topic_selector.each do |c|
         /         %option{:value => link_topics_top + c["slug"]}
-        /           = link_to( c["title"]["rendered"] )
+        /           = link_to( c["title"]["rendered"].html_safe )
     .grid-row
       .column-two-thirds
         %hr{:class => 'rule-small rule-top'}
         - if @topic.present?
           - @topic.each do |topic|
             %h2.heading-large
-              = topic["title"]["rendered"]
+              = topic["title"]["rendered"].html_safe
             = topic["content"]["rendered"].html_safe
 
         %hr{:class => 'rule-small'}
@@ -42,13 +42,13 @@
               %ul.list-style-a.topics-list
                 - @topic_howdoi[0..4].each_with_index do |how, i|
                   %li
-                    = link_to(how["title"]["rendered"], how["link"])
+                    = link_to(how["title"]["rendered"].html_safe, how["link"])
                 .topics-list-extra
                   - if @topic_howdoi[5..-1].present?
                     - @topic_howdoi[5..-1].each_with_index do |how_extra, i|
                       %li
                         = how_extra["link"]
-                        = link_to(how_extra["title"]["rendered"], how_extra["link"])
+                        = link_to(how_extra["title"]["rendered"].html_safe, how_extra["link"])
                 - if @topic_howdoi[5..-1].present?
                   %li.topic-controls
                     %span{class: 'topic-toggle'}View more
@@ -60,12 +60,12 @@
               %ul.list-style-a.topics-list
                 - @topic_policies[0..4].each_with_index do |pol, i|
                   %li
-                    = link_to(pol["title"]["rendered"], pol["link"])
+                    = link_to(pol["title"]["rendered"].html_safe, pol["link"])
                 .topics-list-extra
                   - if @topic_policies[5..-1].present?
                     - @topic_policies[5..-1].each_with_index do |pol_extra, i|
                       %li
-                        = link_to(pol_extra["title"]["rendered"], pol_extra["link"])
+                        = link_to(pol_extra["title"]["rendered"].html_safe, pol_extra["link"])
                 - if @topic_policies[5..-1].present?
                   %li.topic-controls
                     %span{class: 'topic-toggle'}View more
@@ -79,7 +79,7 @@
                 - p["acf"]["documents"].each do |d|
                   %ul.list-style-a
                     %li
-                      = link_to( d["title"], d["file"]["url"])
+                      = link_to( d["title"].html_safe, d["file"]["url"])
                 %hr{:class => 'rule-small'}
 
       .column-third.related-content

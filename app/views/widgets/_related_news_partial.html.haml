@@ -7,7 +7,7 @@
       - @related_news.each do |p|
         %ul.list-style-a
           %li
-            = link_to(p["title"]["rendered"], link_news_top + p["slug"])
+            = link_to(p["title"]["rendered"].html_safe, link_news_top + p["slug"])
             .post-meta
               = succeed ', ' do
                 = get_date(p["date"])
