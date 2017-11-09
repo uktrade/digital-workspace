@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   post '/news-and-views/*path', to: 'single#news'
 
   get '/working-at-dit', to: 'accordion#index'
+  get '/working-at-dit/how-do-i/*path', to: 'howdoi#content'
+  get '/working-at-dit/policies-and-guidance/*path', to: 'policy#content'
   get '/working-at-dit/*path', to: 'topics#index'
 
   get '/about-dit', to: 'standard#index'
@@ -19,8 +21,8 @@ Rails.application.routes.draw do
   get '/about-dit/content/*path', to: 'content#content'
 
   get '/tools', to: 'standard#index'
-  get '/tools/*path', to: 'content#content'
-  get '/tools/topic/*path', to: 'topics#index'
+  get '/tools/standard-index/*path', to: 'standard#index'
+  get '/tools/content/*path', to: 'content#content'
 
   get '/teams', to: 'standard#index'
   get '/teams/*path', to: 'content#content'
@@ -34,10 +36,5 @@ Rails.application.routes.draw do
   get '/regions', to: 'standard#index'
   get '/regions/*path', to: 'content#content'
 
-  get '/howdoi/*path', to: 'howdoi#content'
-  get '/policies-guidance/*path', to: 'policy#content'
-  get '/topic/*path', to: 'topics#index'
-  get '/standard/*path', to: 'standard#index'
-  get '/preview', to: 'preview#index'
-  get '*path', to: 'content#index'
+  get '*path', to: 'content#content'
 end
