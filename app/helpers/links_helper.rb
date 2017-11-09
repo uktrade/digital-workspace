@@ -1,6 +1,6 @@
 module LinksHelper
   def link_howdoi_top
-    '/howdoi/'
+    '/how-do-i/'
   end
 
   def link_topics_top

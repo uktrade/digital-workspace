@@ -42,12 +42,13 @@
               %ul.list-style-a.topics-list
                 - @topic_howdoi[0..4].each_with_index do |how, i|
                   %li
-                    = link_to(how["title"]["rendered"], + link_howdoi_top + how["slug"])
+                    = link_to(how["title"]["rendered"], how["link"])
                 .topics-list-extra
                   - if @topic_howdoi[5..-1].present?
                     - @topic_howdoi[5..-1].each_with_index do |how_extra, i|
                       %li
-                        = link_to(how_extra["title"]["rendered"], '/' + link_howdoi_top + how_extra["slug"])
+                        = how_extra["link"]
+                        = link_to(how_extra["title"]["rendered"], how_extra["link"])
                 - if @topic_howdoi[5..-1].present?
                   %li.topic-controls
                     %span{class: 'topic-toggle'}View more
@@ -59,12 +60,12 @@
               %ul.list-style-a.topics-list
                 - @topic_policies[0..4].each_with_index do |pol, i|
                   %li
-                    = link_to(pol["title"]["rendered"], link_policies_top + pol["slug"])
+                    = link_to(pol["title"]["rendered"], pol["link"])
                 .topics-list-extra
                   - if @topic_policies[5..-1].present?
                     - @topic_policies[5..-1].each_with_index do |pol_extra, i|
                       %li
-                        = link_to(pol_extra["title"]["rendered"], link_policies_top + pol_extra["slug"])
+                        = link_to(pol_extra["title"]["rendered"], pol_extra["link"])
                 - if @topic_policies[5..-1].present?
                   %li.topic-controls
                     %span{class: 'topic-toggle'}View more

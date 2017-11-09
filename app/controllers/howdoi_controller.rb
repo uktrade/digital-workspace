@@ -10,8 +10,7 @@ class HowdoiController < ApplicationController
     @content = @api_call.howdoi_query
     @related_news = @api_call.topics_related_news
 
-    @global_notifications = @api_call.howdoi_query
-    @global_notification = @global_notifications.first if @global_notifications.first.is_a?(Hash)
+    @global_notification = @content.first if @content.first.is_a?(Hash)
   end
 
   protected

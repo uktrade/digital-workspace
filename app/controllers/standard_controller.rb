@@ -4,7 +4,10 @@ class StandardController < ApplicationController
   end
 
   def index
-    @slug = current_url_without_parameters.split('/').last
+    slug_is_standard? ? standard : content
+  end
+
+  def standard
     @api_call = StandardQueries.new(@slug)
     @content = @api_call.main_query(@slug)
     @parent_id = @content.first['id']
@@ -15,10 +18,27 @@ class StandardController < ApplicationController
     build_global_notification
   end
 
+  def content
+    build_global_notification
+    @api_call = ContentSingleQuery.new(@slug)
+    @content = @api_call.type_query
+    render template: 'content/content'
+  end
+
   protected
 
   def build_global_notification
-    @global_notifications = @api_call.main_query(@slug)
+    @test_slug = current_url_without_parameters.split('/').last
+    @global_notifications = @api_call.notifications_query(@test_slug)
     @global_notification = @global_notifications.first if @global_notifications.first.is_a?(Hash)
+  end
+
+  def slug_is_standard?
+    @slug = current_url_without_parameters.split('/').last
+    @api_call = StandardQueries.new(@slug)
+    @content = @api_call.page_query(@slug)
+    @type = @content.first['type']
+
+    return true if @type == 'standard_index'
   end
 end
