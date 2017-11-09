@@ -2,7 +2,6 @@ class ArchiveController < ApplicationController
   def index
     @api_call = NewsQueries.new
 
-
     init_defaults
   end
 

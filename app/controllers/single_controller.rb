@@ -13,8 +13,10 @@ class SingleController < ApplicationController
     @categories = @api_call.other_categories_query
 
     @global_notifications = @api_call.main_query
-    @global_notification = @global_notifications.first if @global_notifications.first.is_a?(Hash)
 
+    if @global_notifications.first.is_a?(Hash)
+      @global_notification = @global_notifications.first
+    end
   end
 
   def comments_post
@@ -37,9 +39,9 @@ class SingleController < ApplicationController
     @comments = @api_call.main_comments_query_cache
     @comments_headers = @api_call.main_comment_headers_cache
   end
-  
+
   protected
-  
+
   def process_form_submission
     if params[:commit] == 'Submit comment'
       comments_post

@@ -1,4 +1,4 @@
-- if !@global_notification["notification"].nil?
+- if @global_notification &&  @global_notification["notification"].present?
   - message = @global_notification["notification"]["message"]
   - link_title = @global_notification["notification"]["link"]["title"]
   - link_url = @global_notification["notification"]["link"]["url"]
