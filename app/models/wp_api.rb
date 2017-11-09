@@ -6,9 +6,8 @@ class WpApi
 
   class << self
     def get_json_body(path, use_cache = true)
-      use_cache = false # until we test it properly
       if use_cache
-        Rails.cache.fetch("#{path}_body", expires: 1.minute) do
+        Rails.cache.fetch("#{path}_body", expires_in: 60) do
           JSON.parse(get_json(path).body)
         end
       else
@@ -17,9 +16,8 @@ class WpApi
     end
 
     def get_headers(path, use_cache = true)
-      use_cache = false # until we test it properly
       if use_cache
-        Rails.cache.fetch("#{path}_headers", expires: 1.minute) do
+        Rails.cache.fetch("#{path}_headers", expires_in: 60) do
           get_json(path).headers
         end
       else

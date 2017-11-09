@@ -1,0 +1,10 @@
+- if @global_notification && @global_notification["notification"].present?
+  - message = @global_notification["notification"]["message"]
+  - link_title = @global_notification["notification"]["link"]["title"]
+  - link_url = @global_notification["notification"]["link"]["url"]
+  - link_target = @global_notification["notification"]["link"]["target"]
+  - link = link_to(link_title, link_url, target: link_target)
+  .global-notification
+    .global-notification-inner
+      %p
+        = "#{message} #{link}".html_safe

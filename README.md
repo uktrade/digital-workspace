@@ -61,9 +61,14 @@ Currently the app expects (in production):
 `REDIS_URL` (defines the Redis cache store)
 Note that this must be SSL/TLS and defined as: `rediss://...`.
 
+## Twitter Feed
+Ensure that the keys are set so that the Twitter feed is enabled
+`TWITTER_KEY`
+`TWITTER_SECRET`
+
 ## Caching
-The strategy is to cache API calls for 1 minute. Currently this is done against the Word Press API:
-See `Rails.cache.fetch` in `wp_api.rb`.
+The strategy is to cache API calls for 1 minute. Currently this is done against the Word Press API and Twitter API:
+See `Rails.cache.fetch` in `wp_api.rb` and `twitter_feed.rb`.
 
 To enable the redis cache in development and test:
 `rake dev:cache`

@@ -4,10 +4,10 @@ module FooterMenuHelper
   end
 
   def footer_menu_content
-    footer_menu.first['acf']['menu']
+    footer_menu.first['acf']['menu'] if footer_menu.first
   end
 
   def footer_menu_title
-    footer_menu.first['title']['rendered']
+    footer_menu.first['title']['rendered'] if footer_menu.first
   end
 end

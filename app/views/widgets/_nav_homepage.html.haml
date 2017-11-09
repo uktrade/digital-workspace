@@ -1,14 +1,11 @@
 %a{:href => "#proposition-links", :class => "js-header-toggle menu"}
   Menu
-%nav{:id => "proposition-menu"}
-  %ul{:id => "proposition-links"}
-    %li
-      = link_to "News and views", link_news_top
-    %li
-      = link_to "Working at DIT", "/working-at-dit/"
-    %li
-      = link_to "About DIT", "/about-dit/"
-    %li
-      = link_to "Tools", "/tools/"
-    %li
-      = link_to "Data Hub", "/tools/data-hub/"
+- @header_menu_content = header_menu_content
+- if !@header_menu_content.nil?
+  %nav{:id => 'proposition-menu'}
+    %ul{:id => 'proposition-links'}
+      - if @header_menu_content.count > 0
+        - @header_menu_content.each do |menu_link|
+          %li
+            = link_to(menu_link['menu_item']['title'], menu_link['menu_item']['url'], target: menu_link['menu_item']['target'])
+

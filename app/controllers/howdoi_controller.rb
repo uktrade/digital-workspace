@@ -9,6 +9,8 @@ class HowdoiController < ApplicationController
     @api_call = HowdoiQueries.new(@slug)
     @content = @api_call.howdoi_query
     @related_news = @api_call.topics_related_news
+
+    @global_notification = @content.first if @content.first.is_a?(Hash)
   end
 
   protected

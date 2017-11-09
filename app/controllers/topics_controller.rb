@@ -16,6 +16,9 @@ class TopicsController < ApplicationController
     @api_call = TopicQueries.new(@slug)
     @topic = @api_call.topic_query
     @topic_selector = @api_call.topic_selector
+
+    @global_notifications = @api_call.topic_query
+    @global_notification = @global_notifications.first if @global_notifications.first.is_a?(Hash)
   end
 
   def init_related_news
