@@ -49,12 +49,17 @@ class WpApi
       path = search_filter_types(params, path) if params[:filter_types]
       path = search_filter_news(params, path) if params[:filter_news]
       path = search_filter_themes(params, path) if params[:filter_themes]
+      path = search_filter_page(params, path) if params[:page]
       HTTParty.get(
         URI.join(BASE_CUSTOM_URI, path).to_s,
         headers: {
           'Authorization' => "Basic #{AUTH_TOKEN}"
         }
       )
+    end
+
+    def search_filter_page(params, path)
+      path + '&page=' + params[:page]
     end
 
     def search_filter_types(params, path)

@@ -7,6 +7,18 @@ class SearchController < ApplicationController
     @headers = @api_call.results_headers
     @categories = news_categories
     @work_categories = working_at_dit_categories
+    init_defaults
+  end
+
+  def init_defaults
+    @page = (params[:page] || 1).to_i
+    init_pagination
+  end
+
+  def init_pagination
+    headers = @headers
+    @paginator =
+      Paginator.new(@page, headers['x-wp-total'], headers['x-wp-totalpages'])
   end
 
   def news_categories

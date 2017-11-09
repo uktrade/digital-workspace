@@ -40,5 +40,6 @@
                       = p['title']
                   %p.content
                     = p['excerpt'].html_safe
+            = render partial: "widgets/search_pagination"
   
 = render partial: "widgets/zendesk_footer"
