@@ -18,7 +18,6 @@ Rails.application.routes.draw do
 
   get '/about-us', to: 'standard#index'
   get '/about-us/*path', to: 'standard#index'
-  # get '/about-us/content/*path', to: 'content#content'
 
   get '/tools', to: 'standard#index'
   get '/tools/standard-index/*path', to: 'standard#index'
