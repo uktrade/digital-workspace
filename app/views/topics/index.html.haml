@@ -50,7 +50,6 @@
                   - if @topic_howdoi[5..-1].present?
                     - @topic_howdoi[5..-1].each_with_index do |how_extra, i|
                       %li
-                        = how_extra["link"]
                         = link_to(how_extra["title"]["rendered"].html_safe, how_extra["link"])
                 - if @topic_howdoi[5..-1].present?
                   %li.topic-controls
@@ -86,10 +85,10 @@
                 %hr{:class => 'rule-small'}
 
       .column-third.related-content
-        %hr{:class => 'rule-large rule-top'}
-        %h2.heading-medium
-          Tools
         - if @tools.present?
+          %hr{:class => 'rule-large rule-top'}
+          %h2.heading-medium
+            Tools
           %ul.list-style-a
             - @tools.each do |tool|
               %li
