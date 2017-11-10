@@ -86,10 +86,10 @@
         %hr{:class => 'rule-large rule-top'}
         %h2.heading-medium
           Tools
-        %ul.list-style-a
-          %li
-            = link_to('Cirrus Office 365', '/')
-          %li
-            = link_to('Oracle', '/')
+        - if @tools.present?
+          %ul.list-style-a
+            - @tools.each do |tool|
+              %li
+                = link_to( tool["title"]["rendered"].html_safe, '/')
       = render partial: "widgets/related_news_partial"
 = render partial: "widgets/zendesk_footer"
