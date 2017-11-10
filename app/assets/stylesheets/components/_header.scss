@@ -239,6 +239,37 @@
 	}
 }
 
+// ------------------------------------
+// Current section in nav from body class
+
+.section-news-and-views {
+	#global-header {
+		.header-proposition {
+			#proposition-links {
+				li:first-child {
+					a {
+						color: $brand_color_a;
+					}
+				}
+			}
+		}
+	}
+}
+
+.section-working-at-dit {
+	#global-header {
+		.header-proposition {
+			#proposition-links {
+				li:nth-child(2) {
+					a {
+						color: $brand_color_a;
+					}
+				}
+			}
+		}
+	}
+}
+
 
 // ------------------------------------
 // Homepage
