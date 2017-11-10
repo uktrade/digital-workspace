@@ -1,6 +1,6 @@
 .filter-form
   .inner-block
-    .filter.checkbox-filter.js-openable-filter
+    .filter.checkbox-filter.js-openable-filter.closed
       .head
         %span.legend
           Content Types
@@ -10,10 +10,10 @@
           .toggle
       .checkbox-container{:id => "types-filter"}
         %ul
-          %li
-            %input{:type => "checkbox", :name => "filter_types", :value => "attachment", :id => "attachment"}
-            %label{:for => "forms-and-templates"}
-              Forms and Templates
+          /%li
+          /  %input{:type => "checkbox", :name => "filter_types", :value => "attachment", :id => "attachment"}
+          /  %label{:for => "forms-and-templates"}
+          /    Forms and Templates
           %li
             %input{:type => "checkbox", :name => "filter_types", :value => "policy", :id => "policy"}
             %label{:for => "guidance"}

@@ -4,7 +4,6 @@
 - search_slug_top = search_slug_top + 'filter_news=' + params['filter_news'] + '&' unless params['filter_news'].nil?
 - search_slug_top = search_slug_top + 'filter_themes=' + params['filter_themes'] + '&' unless params['filter_themes'].nil?
 
-%hr{:class => 'rule-small'}
 .pagination
   .prev
     - if @paginator.previous_page_no
@@ -18,53 +17,3 @@
         Next
         %span.paging-count
           = "#{@paginator.next_page_no} of #{@paginator.last_page_no}"
-  .numbered-paging
-    %ul
-      - if @paginator.current_page_no == 1
-        %li
-          %span.current
-            1
-      - else
-        %li
-          = link_to( "1", search_slug_top + "page=1")
-      - if @paginator.last_page_no >= 2
-        - if @paginator.current_page_no == 2
-          %li
-            %span.current
-              2
-        - else
-          %li
-            = link_to( "2", search_slug_top + "page=2")
-      - if @paginator.current_page_no - 5 >= 1
-        %li
-          = link_to("…", search_slug_top + "page=#{@paginator.current_page_no - 5}")
-      - if not [0, 1, 2, @paginator.last_page_no, @paginator.last_page_no - 1].include?(@paginator.current_page_no - 1)
-        %li
-          = link_to( "#{@paginator.current_page_no - 1}", search_slug_top + "page=#{@paginator.current_page_no - 1}" )
-      - if not [0, 1, 2, @paginator.last_page_no, @paginator.last_page_no - 1].include?(@paginator.current_page_no)
-        %li
-          %span.current
-            = @paginator.current_page_no
-      - if not [0, 1, 2, @paginator.last_page_no, @paginator.last_page_no - 1].include?(@paginator.current_page_no + 1)
-        - if @paginator.current_page_no < @paginator.last_page_no - 1
-          %li
-            = link_to( "#{@paginator.current_page_no + 1}", search_slug_top + "page=#{@paginator.current_page_no + 1}" )
-      - if @paginator.current_page_no + 5 <= @paginator.last_page_no
-        %li
-          = link_to("…", "page=#{@paginator.current_page_no + 5}")
-      - if @paginator.last_page_no - 1 > 2
-        - if @paginator.last_page_no - 1 == @paginator.current_page_no
-          %li
-            %span.current
-              = @paginator.last_page_no - 1
-        - else
-          %li
-            = link_to( "#{@paginator.last_page_no - 1}", search_slug_top + "page=#{@paginator.last_page_no - 1}")
-      - if @paginator.last_page_no > 2
-        - if @paginator.last_page_no == @paginator.current_page_no
-          %li
-            %span.current
-              = @paginator.last_page_no
-        - else
-          %li
-            = link_to( "#{@paginator.last_page_no}", search_slug_top + "page=#{@paginator.last_page_no}")

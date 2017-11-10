@@ -25,7 +25,7 @@
           = hidden_field_tag('s', @string)
           = hidden_field_tag('filter_types')
           = hidden_field_tag('filter_news')
-          = hidden_field_tag('filter_themes')
+          = hidden_field_tag('filter_topics')
           .submit.js-live-search-fallback
             = submit_tag('Submit filters', class: 'button')
         .column-two-thirds
@@ -35,20 +35,21 @@
               = "#{@headers['x-wp-total']} results found"
             %ol.results-list
               - @posts.each do |p|
-                - date = DateTime.parse(p['date_gmt'])
+                - date = DateTime.parse(p['modified_gmt'])
                 - formatted_date = date.strftime('%e %b %Y')
                 - formatted_time = date.strftime('%H:%M')
                 - if p['type'] == 'news'
                   - (top_level_slug = link_to('News', '/news-and-views/'))
-                  - if p['news_categories']
-                    - category_slug = ' > ' + link_to(p['news_categories'][0]['name'], '/news-and-views/category/' + p['news_categories'][0]['slug'])
+                  /- if p['news_categories']
+                  /  - category_slug = ' > ' + link_to(p['news_categories'][0]['name'], '/news-and-views/category/' + p['news_categories'][0]['slug'])
                 - elsif p['type'] == 'policy'
-                  - top_level_slug = link_to('Policies and Guidance', '/working-at-dit/')
-                  - category_slug = ''
+                  - top_level_slug = link_to('Working at DIT', '/working-at-dit/')
+                  /- category_slug = ''
                 - elsif p['type'] == 'howdoi'
-                  - top_level_slug = link_to('How Do I?', '/working-at-dit/')
+                  - top_level_slug = link_to('Working at DIT', '/working-at-dit/')
                   - if p['topic_taxonomy']
-                    - category_slug = ' > ' + link_to(p['topic_taxonomy'][0]['name'], '/working-at-dit/' + p['topic_taxonomy'][0]['slug'])
+                    - top_level_slug = link_to(p['topic_taxonomy'][0]['name'], '/working-at-dit/' + p['topic_taxonomy'][0]['slug'])
+                  /  - category_slug = ' > ' + link_to(p['topic_taxonomy'][0]['name'], '/working-at-dit/' + p['topic_taxonomy'][0]['slug'])
                 -else
                   - top_level_slug = ''
                   - category_slug = ''

@@ -31,7 +31,7 @@ if(filters) {
 
   var presetTypesStr = getParameterByName('filter_types'),
       presetNewsStr = getParameterByName('filter_news'),
-      presetThemesStr = getParameterByName('filter_themes');
+      presetTopicsStr = getParameterByName('filter_topics');
   if (presetTypesStr) {
     var presetTypes = presetTypesStr.slice(0, -1).split(',');
     presetTypes.forEach(function(type){
@@ -52,13 +52,13 @@ if(filters) {
       show_remove_filters(removeFiltersLinks);
     }
   }
-  if (presetThemesStr) {
-    var presetThemes = presetThemesStr.slice(0, -1).split(',');
-    presetThemes.forEach(function(theme){
-      if(document.getElementById(theme))
-        document.getElementById(theme).checked = true;
+  if (presetTopicsStr) {
+    var presetTopics = presetTopicsStr.slice(0, -1).split(',');
+    presetTopics.forEach(function(topic){
+      if(document.getElementById(topic))
+        document.getElementById(topic).checked = true;
     });
-    if(presetThemes.length > 0) {
+    if(presetTopics.length > 0) {
       show_remove_filters(removeFiltersLinks);
     }
   }
@@ -73,10 +73,10 @@ if(filters) {
       checkboxes = [],
       types = [],
       news = [],
-      themes = [],
+      topics = [],
       types_input = document.getElementById('filter_types'),
       news_input = document.getElementById('filter_news'),
-      themes_input = document.getElementById('filter_themes');
+      topics_input = document.getElementById('filter_topics');
 
   for(var i = 0; i < inputs.length; i++) {
     if(inputs[i].type == "checkbox") {
@@ -88,7 +88,7 @@ if(filters) {
       elem.addEventListener("change", function() {
           types = [];
           news = [];
-          themes = [];
+          topics = [];
           checkboxes.forEach(function(elem) {
             if(elem.checked) {
               if(elem.name.includes('filter_types')) {
@@ -97,8 +97,8 @@ if(filters) {
               if(elem.name.includes('filter_news')) {
                 news.push(elem.value);
               }
-              if(elem.name.includes('filter_themes')) {
-                themes.push(elem.value);
+              if(elem.name.includes('filter_topics')) {
+                topics.push(elem.value);
               }
             }
 
@@ -110,9 +110,9 @@ if(filters) {
             for(i = 0; i < news.length; i++) {
               news_input.value += news[i] + ',';
             }
-            themes_input.value = '';
-            for(i = 0; i < themes.length; i++) {
-              themes_input.value += themes[i] + ',';
+            topics_input.value = '';
+            for(i = 0; i < topics.length; i++) {
+              topics_input.value += topics[i] + ',';
             }
           });
           show_remove_filters(removeFiltersLinks);

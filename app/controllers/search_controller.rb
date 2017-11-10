@@ -26,6 +26,6 @@ class SearchController < ApplicationController
   end
 
   def working_at_dit_categories
-    WpApi.get_json_body('theme_taxonomy')
+    WpApi.get_json_body('topic_taxonomy')
   end
 end
