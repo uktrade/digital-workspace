@@ -132,7 +132,7 @@
 
 .people-search-inner-page {
 	background: #454a4c;
-	background-image: asset-data-url("find-people-pattern.png");
+	@include background-image('find-people-pattern', png, 1495px, 490px);
 	@extend %clearfix;
 
 	.homepage-top-inner {

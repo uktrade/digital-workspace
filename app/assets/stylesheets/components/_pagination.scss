@@ -15,7 +15,7 @@
 				position: absolute;
 				top: 0px;
 				left: 0px;
-				background-image: asset-data-url("arrow-left.png");
+				@include background-image('arrow-left', png, 19px, 14px);
 				background-repeat: no-repeat;
 				width: 19px;
 				height: 14px;
@@ -58,6 +58,7 @@
 				position: absolute;
 				top: 0px;
 				right: 0px;
+				@include background-image('arrow-right', png, 19px, 14px);
 				background-image: asset-data-url("arrow-right.png");
 				background-repeat: no-repeat;
 				width: 19px;

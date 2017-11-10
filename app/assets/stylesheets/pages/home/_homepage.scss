@@ -178,14 +178,18 @@
 	}
 	.stat-number {
 		display: block;
-		font-size: 82px;
-		font-weight: bold;
-		line-height: 90px;
+		/*font-size: 82px;*/
+		/*font-weight: bold;*/
+		/*line-height: 90px;*/
+		visibility: hidden;
 	}
 	.stat-description {
 		display: block;
 		font-size: 16px;
-		margin-top: 0;
+		line-height: 19px;
+		font-weight: bold;
+		margin-top: 50px;
+		margin-bottom: 10px;
 		color: #ffffff;
 	}
 }
@@ -204,17 +208,20 @@
 		}
 		&.graph-summary-a {
 			.stat {
-				background-image: asset-data-url("graph-dots.png");
+				@include background-image('3745_members', png, 227px, 154px);
+				background-position: center 45px;
 			}
 		}
 		&.graph-summary-b {
 			.stat {
-				background-image: asset-data-url("graph-pie.png");
+				@include background-image('108_markets', png, 157px, 182px);
+				background-position: center 30px;
 			}
 		}
 		&.graph-summary-c {
 			.stat {
-				background-image: asset-data-url("graph-line.png");
+				@include background-image('87_people_survey', png, 159px, 159px);
+				background-position: center 30px;
 			}
 		}
 	}

@@ -14,9 +14,8 @@
 			position: absolute;
 			top: 0px;
 			left: 0px;
-			background-image: asset-data-url("urgent-icon.png");
+			@include background-image('urgent-icon', png, 51px, 35px);
 			background-repeat: no-repeat;
-			background-size: cover;
 			width:51px;
 			height: 35px;
 			margin-top: 4px;
