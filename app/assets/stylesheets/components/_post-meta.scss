@@ -16,4 +16,11 @@
 
 .dates-published-updated {
 	margin-bottom: 30px;
+
+	li {
+		color: $brand_chrome_e;
+		&:last-of-type {
+			font-weight: 700;
+		}
+	}
 }
