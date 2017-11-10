@@ -41,7 +41,7 @@
               - @content_children[from..to].each_with_index do |content_m, index_m|
                 - link = content_m["link"]
                 %h3
-                  = link_to( content_m["title"]["rendered"], link)
+                  = link_to( content_m["title"]["rendered"].html_safe, link)
                 %p
                   = content_m["acf"]["excerpt"]
 

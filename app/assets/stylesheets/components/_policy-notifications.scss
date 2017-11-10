@@ -16,7 +16,7 @@
 			left: 0px;
 			width: 16px;
 			height: 16px;
-			background-image: asset-data-url("policy-update.png");
+			@include background-image('policy-update', png, 16px, 16px);
 			background-repeat: no-repeat;
 		}
 	}

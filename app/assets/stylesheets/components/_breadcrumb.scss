@@ -19,7 +19,7 @@ ul.breadcrumb {
 			position: absolute;
 			top: 7px;
 			left: -7px;
-			background-image: asset-data-url("spacer.png");
+			@include background-image('spacer', png, 7px, 12px);
 			background-repeat: no-repeat;
 			width: 7px;
 			height: 12px;

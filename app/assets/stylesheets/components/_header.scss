@@ -6,6 +6,7 @@
 #global-header.with-proposition {
 	background-color: #FFFFFF;
 	.header-wrapper {
+		position: relative;
 		background-color: #FFFFFF;
 		.header-global {
 			float: left;
@@ -243,7 +244,7 @@
 // Homepage
 .homepage-top {
 	background: $brand_chrome_d;
-	background-image: asset-data-url("find-people-pattern.png");
+	@include background-image('find-people-pattern', png, 1495px, 490px);
 	color: #ffffff;
 
 	.homepage-top-inner {

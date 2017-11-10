@@ -7,10 +7,15 @@
       - @related_news.each do |p|
         %ul.list-style-a
           %li
-            = link_to(p["title"]["rendered"], link_news_top + p["slug"])
+            = link_to(p["title"]["rendered"].html_safe, link_news_top + p["slug"])
             .post-meta
-              = succeed ', ' do
-                = get_date(p["date"])
-                - if p["news_categories"].present?
-                  - p["news_categories"].each do |cat|
+              = get_date(p["date"])
+              - if p["news_categories"].present?
+                - cat_length = p["news_categories"].length - 1
+                - p["news_categories"].each_with_index do |cat, i|
+                  - if cat_length == 0
                     = news_cats( cat["name"], cat["slug"] )
+                  - elsif i == cat_length
+                    = news_cats( cat["name"], cat["slug"] )
+                  - else
+                    = news_cats( cat["name"], cat["slug"] ) + ', '

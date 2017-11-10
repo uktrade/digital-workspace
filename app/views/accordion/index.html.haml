@@ -13,7 +13,7 @@
         - if @accordion.present?
           - @accordion.each do |page|
             %h2.heading-large
-              = page["title"]["rendered"]
+              = page["title"]["rendered"].html_safe
             %div
               = page["acf"]["excerpt"].html_safe
 
@@ -40,6 +40,6 @@
                     %ul.list-style-a
                       - accordion_topics.each do |topic|
                         %li
-                          = link_to( topic["title"]["rendered"], topic["slug"])
+                          = link_to( topic["title"]["rendered"].html_safe, topic["slug"])
 
 = render partial: "widgets/zendesk_footer"

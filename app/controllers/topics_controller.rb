@@ -7,6 +7,7 @@ class TopicsController < ApplicationController
     init_topics
     init_topic_children
     init_related_news
+    init_tools
   end
 
   protected
@@ -16,9 +17,21 @@ class TopicsController < ApplicationController
     @api_call = TopicQueries.new(@slug)
     @topic = @api_call.topic_query
     @topic_selector = @api_call.topic_selector
+    @parent_id = @topic.first['id']
 
     @global_notifications = @api_call.topic_query
     @global_notification = @global_notifications.first if @global_notifications.first.is_a?(Hash)
+  end
+
+  def init_tools
+    @api_call = ToolQueries.new
+    @topic_tools = @api_call.topic_query
+    @tools_id = @topic_tools.first['id']
+    @taxonomy = 'it-tech-support'
+
+    @tools_children_content = @api_call.tools_content_query(@tools_id, @taxonomy)
+    @tools_children_standard = @api_call.tools_standard_query(@tools_id, @taxonomy)
+    @tools = @api_call.tools_children(@tools_children_content, @tools_children_standard)
   end
 
   def init_related_news
