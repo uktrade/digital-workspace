@@ -1,20 +1,33 @@
 var filters = document.getElementById('filter-search');
 
 if(filters) {
-  var filterBoxes = document.getElementsByClassName('head');
+  var filterBoxes = document.getElementsByClassName('legend'),
+      removeFiltersLinks = document.getElementsByClassName('clear-selected');
   for (var i = 0; i < filterBoxes.length; i++) {
     filterBoxes[i].addEventListener("click", function() {
       var headEl = this;
-      var thisClasses = headEl.parentNode.className;
+      var thisClasses = headEl.parentNode.parentNode.className;
       if(thisClasses.indexOf('closed') > 0) {
         var newClass = thisClasses.replace(' closed', '');
-        headEl.parentNode.className = newClass;
+        headEl.parentNode.parentNode.className = newClass;
       } else {
         var newClass = thisClasses + ' closed';
-        headEl.parentNode.className = newClass;
+        headEl.parentNode.parentNode.className = newClass;
       }
     });
   };
+
+  for (var i = 0; i < removeFiltersLinks.length; i++) {
+    removeFiltersLinks[i].addEventListener("click", function(){
+      var inputs = document.getElementsByTagName("input");
+      for(var i = 0; i < inputs.length; i++) {
+        if(inputs[i].type == "checkbox") {
+          inputs[i].checked = false;
+          filters.submit();
+        }
+      }
+    });
+  }
 
   var presetTypesStr = getParameterByName('filter_types'),
       presetNewsStr = getParameterByName('filter_news'),
