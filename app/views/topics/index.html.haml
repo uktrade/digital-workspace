@@ -90,6 +90,6 @@
           %ul.list-style-a
             - @tools.each do |tool|
               %li
-                = link_to( tool["title"]["rendered"].html_safe, '/')
+                = link_to( tool["title"]["rendered"].html_safe, tool["link"])
       = render partial: "widgets/related_news_partial"
 = render partial: "widgets/zendesk_footer"
