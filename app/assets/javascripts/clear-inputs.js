@@ -12,7 +12,6 @@
 		var input_value = self.value
 		if(input_value)
 		  self.classList.add('focus');
-		console.log(input_value);
 
 		search_element_el[i].addEventListener('click', function(){
 			var self = this;

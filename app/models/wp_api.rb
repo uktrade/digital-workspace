@@ -46,7 +46,7 @@ class WpApi
       path = 'search?s=' + params[:s]
       path = search_filter_types(params, path) if params[:filter_types]
       path = search_filter_news(params, path) if params[:filter_news]
-      path = search_filter_themes(params, path) if params[:filter_themes]
+      path = search_filter_topics(params, path) if params[:filter_topics]
       path = search_filter_page(params, path) if params[:page]
       search_json_request(path)
     end
@@ -72,8 +72,8 @@ class WpApi
       path + '&news_category=' + params[:filter_news]
     end
 
-    def search_filter_themes(params, path)
-      path + '&theme_taxonomy=' + params[:filter_themes]
+    def search_filter_topics(params, path)
+      path + '&topic_taxonomy=' + params[:filter_topics]
     end
 
     def get_search_json_headers(params)
