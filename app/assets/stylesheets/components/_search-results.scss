@@ -1,4 +1,7 @@
 .search-results {
+	.breadcrumb {
+		border-bottom: 1px solid #000;
+	}
 	.results-list {
 		list-style: none;
 		margin: 0;
@@ -21,7 +24,18 @@
 		}
 	}
 
+	.result-count {
+		color: #454a4c;
+		font-size: 16px;
+	}
+
+	.heading-large {
+		margin-bottom: 60px;
+	}
+
 	p.info {
+		color: #454a4c;
+		font-size: 16px;
 		margin-top: 0;
 	}
 
@@ -111,6 +125,7 @@
 					.clear-selected {
 						display: -moz-inline-stack;
 						display: inline-block;
+						font-size: 16px;
 						margin-right: 5px;
 						&.js-hidden {
 							left: -9999em;
@@ -139,6 +154,18 @@
 	#filter-search {
 		.submit {
 			display: none;
+		}
+	}
+	.pagination {
+		.prev, .next {
+			font-size: 24px;
+			a {
+				text-decoration: none;
+			}
+			.paging-count {
+				display: block;
+				font-size: 16px;
+			}
 		}
 	}
 }

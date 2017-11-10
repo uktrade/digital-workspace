@@ -38,6 +38,9 @@ if(filters) {
       if(document.getElementById(type))
         document.getElementById(type).checked = true;
     });
+    if(presetTypes.length > 0) {
+      show_remove_filters(removeFiltersLinks);
+    }
   }
   if (presetNewsStr) {
     var presetNews = presetNewsStr.slice(0, -1).split(',');
@@ -45,6 +48,9 @@ if(filters) {
       if(document.getElementById(news))
         document.getElementById(news).checked = true;
     });
+    if(presetNews.length > 0) {
+      show_remove_filters(removeFiltersLinks);
+    }
   }
   if (presetThemesStr) {
     var presetThemes = presetThemesStr.slice(0, -1).split(',');
@@ -52,6 +58,15 @@ if(filters) {
       if(document.getElementById(theme))
         document.getElementById(theme).checked = true;
     });
+    if(presetThemes.length > 0) {
+      show_remove_filters(removeFiltersLinks);
+    }
+  }
+
+  function show_remove_filters(removeFiltersLinks){
+    for (var i = 0; i < removeFiltersLinks.length; i++) {
+      removeFiltersLinks[i].className = removeFiltersLinks[i].className.replace('js-hidden','');
+    }
   }
 
   var inputs = document.getElementsByTagName("input"),
@@ -100,6 +115,7 @@ if(filters) {
               themes_input.value += themes[i] + ',';
             }
           });
+          show_remove_filters(removeFiltersLinks);
           filters.submit();
       });
   });
