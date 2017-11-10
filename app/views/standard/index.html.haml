@@ -1,3 +1,8 @@
+- content_for :body_classes do
+  - 'section-about-us' if request.original_fullpath.start_with?('/about-us')
+  - 'section-tools' if request.original_fullpath.start_with?('/tools')
+  - 'section-datahub' if request.original_fullpath.start_with?('/tools/data-hub')
+
 %div{:id => 'standard', :class => 'page-content'}
   = render partial: "widgets/people_search_inner_page"
   /= render partial: "widgets/zendesk_header"
