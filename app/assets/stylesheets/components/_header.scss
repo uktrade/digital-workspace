@@ -239,6 +239,79 @@
 	}
 }
 
+// ------------------------------------
+// Current section in nav from body class
+
+.section-news-and-views {
+	#global-header {
+		.header-proposition {
+			#proposition-links {
+				li:first-child {
+					a {
+						color: $brand_color_a;
+					}
+				}
+			}
+		}
+	}
+}
+
+.section-working-at-dit {
+	#global-header {
+		.header-proposition {
+			#proposition-links {
+				li:nth-child(2) {
+					a {
+						color: $brand_color_a;
+					}
+				}
+			}
+		}
+	}
+}
+
+.section-about-us {
+	#global-header {
+		.header-proposition {
+			#proposition-links {
+				li:nth-child(3) {
+					a {
+						color: $brand_color_a;
+					}
+				}
+			}
+		}
+	}
+}
+
+.section-tools {
+	#global-header {
+		.header-proposition {
+			#proposition-links {
+				li:nth-child(4) {
+					a {
+						color: $brand_color_a;
+					}
+				}
+			}
+		}
+	}
+}
+
+.section-datahub {
+	#global-header {
+		.header-proposition {
+			#proposition-links {
+				li:nth-child(5) {
+					a {
+						color: $brand_color_a;
+					}
+				}
+			}
+		}
+	}
+}
+
 
 // ------------------------------------
 // Homepage
