@@ -1,16 +1,18 @@
-/= render partial: "widgets/zendesk_header"
+= render partial: "widgets/people_search_inner_page"
 %div{:id => 'page', :class => 'page-content'}
-  - if @string.nil?
-    %main#content.search-results
+  %main#content.search-results
+    %ul.breadcrumb
+      %li
+        = link_to('Home', '/')
+    - if @string.nil?
       .grid-row
         .column-full
-          %h2.heading-medium
+          %h2.heading-large
             Search by using the dialog box above
-  - else 
-    %main#content.search-results
+    - else 
       .grid-row
         .column-full
-          %h2.heading-medium
+          %h2.heading-large
             Search results for '#{@string}'
       .grid-row
         .column-third

@@ -7,6 +7,13 @@
 	}
 
 	for(i = 0; i < search_element_el.length; i++) {
+		
+		var self = search_element_el[i];
+		var input_value = self.value
+		if(input_value)
+		  self.classList.add('focus');
+		console.log(input_value);
+
 		search_element_el[i].addEventListener('click', function(){
 			var self = this;
 			var input_value = self.value
