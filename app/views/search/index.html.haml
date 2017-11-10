@@ -47,6 +47,8 @@
                   /- category_slug = ''
                 - elsif p['type'] == 'howdoi'
                   - top_level_slug = link_to('Working at DIT', '/working-at-dit/')
+                - elsif p['type'] == 'attachment'
+                  - top_level_slug = 'Forms and Templates'
                   - if p['topic_taxonomy']
                     - top_level_slug = link_to(p['topic_taxonomy'][0]['name'], '/working-at-dit/' + p['topic_taxonomy'][0]['slug'])
                   /  - category_slug = ' > ' + link_to(p['topic_taxonomy'][0]['name'], '/working-at-dit/' + p['topic_taxonomy'][0]['slug'])
