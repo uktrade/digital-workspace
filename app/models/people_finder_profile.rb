@@ -31,7 +31,7 @@ class PeopleFinderProfile
         }
       )
 
-      response = JSON.parse(response.body)
+      response = response.success? ? JSON.parse(response.body) : {}
       @links = response['data'] ? response['data']['links'] : {}
       @attributes = response['data'] ? response['data']['attributes'] : {}
     end
