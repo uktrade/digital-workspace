@@ -1,16 +1,14 @@
 class ToolQueries
-
-
   def topic_query
-     WpApi.get_json_body("pages?slug=tools")
+    WpApi.get_json_body('pages?slug=tools')
   end
 
-  def tools_content_query(parent_id)
-    WpApi.get_json_body("pages?type=content&orderby=title&order=asc&per_page=100&parent=#{parent_id}&filter[topic_taxonomy]=it-tech-support")
+  def tools_content_query(parent_id, taxonomy)
+    WpApi.get_json_body("pages?type=content&parent=#{parent_id}&filter[topic_taxonomy]=#{taxonomy}")
   end
 
-  def tools_standard_query(parent_id)
-    WpApi.get_json_body("pages?type=standard_index&orderby=title&order=asc&per_page=100&parent=#{parent_id}&filter[topic_taxonomy]=it-tech-support")
+  def tools_standard_query(parent_id, taxonomy)
+    WpApi.get_json_body("pages?type=standard_index&parent=#{parent_id}&filter[topic_taxonomy]=#{taxonomy}")
   end
 
   def tools_children(arr_a, arr_b)
