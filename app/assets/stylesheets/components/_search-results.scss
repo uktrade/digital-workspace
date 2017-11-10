@@ -177,6 +177,9 @@
 		.prev {
 			a {
 				padding: 15px;
+				&:visited {
+					background-color: $brand_color_c;
+				}
 				&:before {
 					background-image: none;
 					height: 0px;
@@ -185,7 +188,7 @@
 				}
 				.link-title {
 					position: relative;
-					padding-left: 24px;
+					padding-left: 26px;
 					&:before {
 						content: '';
 					    position: absolute;
@@ -206,6 +209,9 @@
 		.next {
 			a {
 				padding: 15px;
+				&:visited {
+					background-color: $brand_color_c;
+				}
 				&:after {
 					background-image: none;
 					height: 0px;
@@ -214,7 +220,7 @@
 				}
 				.link-title {
 					position: relative;
-					padding-right: 24px;
+					padding-right: 26px;
 					&:after {
 						content: '';
 					    position: absolute;
