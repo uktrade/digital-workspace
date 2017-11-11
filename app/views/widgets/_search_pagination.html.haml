@@ -4,7 +4,7 @@
 - search_slug_top = search_slug_top + 'filter_news=' + params['filter_news'] + '&' unless params['filter_news'].nil?
 - search_slug_top = search_slug_top + 'filter_themes=' + params['filter_themes'] + '&' unless params['filter_themes'].nil?
 
-.pagination
+.pagination-b
   .prev
     - if @paginator.previous_page_no
       %a{:href => search_slug_top + "page=#{@paginator.previous_page_no}"}

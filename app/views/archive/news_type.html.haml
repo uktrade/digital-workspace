@@ -95,7 +95,7 @@
               /     = comments(link_news_top + p["slug"], comment_count)
 
         %hr{:class => 'rule-small'}
-        .pagination
+        .pagination-a
           .prev
             - if @paginator.previous_page_no
               = link_to( "Prev Page", link_news_top + link_news_category + "#{@slug}?page=#{@paginator.previous_page_no}" )
