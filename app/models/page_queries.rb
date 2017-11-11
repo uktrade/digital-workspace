@@ -11,20 +11,20 @@ class PageQueries
     WpApi.get_json_body("news?slug=#{@slug}")
   end
 
-  def main_comments_query(_id)
-    WpApi.get_json_body("comments?per_page=100&post=#{_id}", false)
+  def main_comments_query(id)
+    WpApi.get_json_body("comments?per_page=100&post=#{id}", false)
   end
 
-  def self.comment_count_query(_id)
-    WpApi.get_json_body("comments?per_page=100&post=#{_id}", false)
+  def self.comment_count_query(id)
+    WpApi.get_json_body("comments?per_page=100&post=#{id}", false)
   end
 
   # def main_comment_headers
   #   WpApi.get_headers('comments', false)
   # end
 
-  def main_comments_query_cache(_id)
-    WpApi.get_json_body("comments?per_page=100&post=#{_id}", false)
+  def main_comments_query_cache(id)
+    WpApi.get_json_body("comments?per_page=100&post=#{id}", false)
   end
 
   # def main_comment_headers_cache
