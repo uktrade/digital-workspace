@@ -40,7 +40,9 @@ class ArchiveController < ApplicationController
   end
 
   def init_categories
+    @slug = params[:path].split('/').last
     @categories = @api_call.other_categories_query
+    @category_title = @api_call.category_title_query(@slug)
   end
 
   def init_comment_headers
