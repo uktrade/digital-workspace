@@ -13,7 +13,8 @@
           %li
             = link_to( 'News and views', link_news_top )
           %li
-            = @category_title.first["name"]
+            - if @category_title.present?
+              = @category_title.first["name"]
 
       .column-half
         .form-group.select-category
