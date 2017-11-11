@@ -10,6 +10,7 @@ class ArchiveController < ApplicationController
     @api_call = NewsTypeQueries.new(@slug)
 
     init_defaults
+    init_category_titles
   end
 
   protected
@@ -40,8 +41,11 @@ class ArchiveController < ApplicationController
   end
 
   def init_categories
-    @slug = params[:path].split('/').last
     @categories = @api_call.other_categories_query
+  end
+
+  def init_category_titles
+    @slug = params[:path].split('/').last
     @category_title = @api_call.category_title_query(@slug)
   end
 
