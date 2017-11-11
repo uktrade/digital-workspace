@@ -41,9 +41,11 @@
                     - if @hero_post["acf"].present?
                       = truncate_excerpt(@hero_post["acf"]["excerpt"])
                   = read_more(link_news_top + @hero_post["slug"])
-                  - if @comments_headers["x-wp-total"].present?
+                  - comment_id = @hero_post["id"]
+                  - get_comment_count = PageQueries.comment_count_query(comment_id)
+                  - if get_comment_count.present?
+                    - comment_count = get_comment_count.count
                     = precede ' - ' do
-                      - comment_count = Integer(@comments_headers["x-wp-total"])
                       = comments(link_news_top + @hero_post["slug"], comment_count)
               .hero-news-image-container
                 - if image_exists?(@hero_post)
@@ -78,9 +80,11 @@
                     - if p["acf"].present?
                       = truncate_excerpt(p["acf"]["excerpt"])
                   = read_more(link_news_top + p["slug"])
-                  - if @comments_headers["x-wp-total"].present?
+                  - comment_id = p["id"]
+                  - get_comment_count = PageQueries.comment_count_query(comment_id)
+                  - if get_comment_count.present?
+                    - comment_count = get_comment_count.count
                     = precede ' - ' do
-                      - comment_count = Integer(@comments_headers["x-wp-total"])
                       = comments(link_news_top + p["slug"], comment_count)
 
         %hr{:class => 'rule-small'}
