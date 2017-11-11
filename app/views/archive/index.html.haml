@@ -41,9 +41,11 @@
                     - if @hero_post["acf"].present?
                       = truncate_excerpt(@hero_post["acf"]["excerpt"])
                   = read_more(link_news_top + @hero_post["slug"])
-                  - if @comments.present?
+                  - comment_id = @hero_post["id"]
+                  - get_comment_count = PageQueries.comment_count_query(comment_id)
+                  - if get_comment_count.present?
+                    - comment_count = get_comment_count.count
                     = precede ' - ' do
-                      - comment_count = Integer(@comments.count)
                       = comments(link_news_top + @hero_post["slug"], comment_count)
               .hero-news-image-container
                 - if image_exists?(@hero_post)

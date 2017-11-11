@@ -1,12 +1,9 @@
 #comments.comments-area
   .posted-comments
     %h2.heading-medium
-    = @posts
     - if @comments.class == Array && @comments.count > 0
       - if @comments.count
         - comment_count = Integer(@comments.count)
-        = comments_heading(comment_count)
-
       - @comments.each do |comment|
         - if comment['parent'] == 0
           - @top_level_comment = comment['id']
