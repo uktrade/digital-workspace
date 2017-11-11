@@ -19,6 +19,10 @@ class NewsTypeQueries
     WpApi.get_headers('comments')
   end
 
+  def category_title_query(_slug)
+    WpApi.get_json_body("news_categories?slug=#{@slug}")
+  end
+
   def other_categories_query
     WpApi.get_json_body('news_categories')
   end
