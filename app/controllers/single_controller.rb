@@ -31,13 +31,21 @@ class SingleController < ApplicationController
   end
 
   def comments_print
-    @comments = @api_call.main_comments_query
-    @comments_headers = @api_call.main_comment_headers
+    @slug = params[:path].split('/').last
+    @api_call = PageQueries.new(@slug)
+    @comments = @api_call.main_query
+    @comments_id = @comments.first['id']
+    @comments = @api_call.main_comments_query(@comments_id)
+    # @comments_headers = @api_call.main_comment_headers(@comments_id)
   end
 
   def comments_print_cache
-    @comments = @api_call.main_comments_query_cache
-    @comments_headers = @api_call.main_comment_headers_cache
+    @slug = params[:path].split('/').last
+    @api_call = PageQueries.new(@slug)
+    @comments = @api_call.main_query
+    @comments_id = @comments.first['id']
+    @comments = @api_call.main_comments_query_cache(@comments_id)
+    # @comments_headers = @api_call.main_comment_headers_cache(@comments_id)
   end
 
   protected

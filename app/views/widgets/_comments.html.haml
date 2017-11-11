@@ -1,16 +1,11 @@
 #comments.comments-area
   .posted-comments
-    / %pre
-    / headers: #{@comments_headers}
-    / %pre
-    / x-wp-totalpages: #{@comments_headers["x-wp-totalpages"]}
-    / %pre
-    / x-wp-total: #{@comments_headers["x-wp-total"]}
     %h2.heading-medium
-      - if @comments_headers["x-wp-total"].present?
-        - comment_count = Integer(@comments_headers["x-wp-total"])
-        = comments_heading(comment_count)
+    = @posts
     - if @comments.class == Array && @comments.count > 0
+      - if @comments.count
+        - comment_count = Integer(@comments.count)
+        = comments_heading(comment_count)
 
       - @comments.each do |comment|
         - if comment['parent'] == 0
@@ -56,4 +51,4 @@
       = hidden_field_tag("comment_parent", 0)
       = text_area_tag('comment_content', nil, class: 'leave-comment-textarea')
       = submit_tag('Submit comment', class: 'button')
-      
+
