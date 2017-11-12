@@ -1,3 +1,9 @@
 .zendesk-container.zendesk-footer
   %p
     = link_to('Is there anything wrong with this page?', '#')
+  = form_tag('/report_problem', method: :post)
+  = text_field_tag('problem_report_goal', 'What were you trying to do?')
+  = text_field_tag('problem_report_problem', 'What was the problem?')
+  = hidden_field_tag('problem_report_origin', "#{request.original_url}")
+  = hidden_field_tag('problem_report_browser', "#{request.env['HTTP_USER_AGENT']}")
+  = submit_tag('Report')
