@@ -8,20 +8,6 @@
 %div{:id => 'homepage', :class => 'homepage-content'}
   /= render partial: "widgets/zendesk_header"
   %main#content.root-index 
-
-    - require 'zendesk_api'
-    - require 'json'
-
-    - client = ZendeskAPI::Client.new do |config|
-      - config.url = ENV['ZD_URL']
-      - config.username = ENV['ZD_USER']
-      - config.password = ENV['ZD_PASS']
-      - config.retry = true
-      - require 'logger'
-      - config.logger = Logger.new(STDOUT)
-      
-      - client.tickets.create(:subject => "Test Ticket", :comment => { :value => "This is a test"}, :submitter_id => client.current_user.id, :priority => "normal", :type => "incident", :custom_fields => {:id => "21833683", :value => "Halo 4"}, :tags => ["test1", "test2", "test3"])
-
     .grid-row
       .column-full
         .hero-news
