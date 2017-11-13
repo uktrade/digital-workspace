@@ -13,6 +13,6 @@ module NewsHelper
 
   def get_date(date)
     date = DateTime.parse(date)
-    date.strftime('%d %B %Y') + date.strftime(' @ %I:%M GMT')
+    date.strftime('%d %B %Y') + date.strftime(' @ %H:%M GMT')
   end
 end
