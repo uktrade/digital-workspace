@@ -10,7 +10,7 @@ class ReportController < ApplicationController
       submitter_id: client.current_user.id,
       priority: 'normal', type: 'incident', custom_fields: zendesk_request_fields
     )
-    flash[:notice] = "Thank you for your submission. Your problem has been reported."
+    flash[:notice] = 'Thank you for your submission. Your problem has been reported.'
     redirect_back fallback_location: '/'
   end
 
