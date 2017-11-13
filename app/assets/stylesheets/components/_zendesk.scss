@@ -25,7 +25,7 @@
 #feedback_container {
 	max-width: 960px;
 	margin: 0 auto;
-	padding: 0 10px;
+	padding: 0px;
 
 	.form-label {
 		display: block;
@@ -34,7 +34,16 @@
 		line-height: 1.31579;
 	}
 
+	#new_problem_report {
+		height: 0px;
+		margin-bottom: 85px;
+		overflow: hidden;
+		padding: 0 10px;
+		transition: height 1s;
+	}
+
 	#feedbackToggle {
+		margin-left: 10px;
 		&:before {
 			content: "\25BC ";
 		}
@@ -43,6 +52,13 @@
 				content: "\25B2 ";
 			}
 		}
+		&:visited {
+			color: $brand_color_a;
+		}
+	}
+
+	.button {
+		margin-bottom: 5px;
 	}
 
 	textarea {
@@ -54,12 +70,8 @@
 		}
 	}
 
-	.button {
-		font-size: 16px;
-	}
-
 	@media (min-width: $screen_large) {
-		padding: 0 10px;
+		padding: 0;
 	}
 
 	.form-group {
