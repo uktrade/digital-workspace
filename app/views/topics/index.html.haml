@@ -96,6 +96,14 @@
           %ul.list-style-a
             - @tools.each do |tool|
               %li
-                = link_to( tool["title"]["rendered"].html_safe, tool["mapped_path"])
+                - if tool["acf"]["redirect_url"].present?
+                  - link = tool["acf"]["redirect_url"]["url"]
+                  - title = tool["acf"]["redirect_url"]["title"]
+                  - target = tool["acf"]["redirect_url"]["target"]
+                  = link_to( title, link, target: target)
+                - else
+                  - link = tool["link"]
+                  - title = tool["title"]["rendered"].html_safe 
+                  = link_to( title, link)
       = render partial: "widgets/related_news_partial"
 = render partial: "widgets/zendesk_footer"

@@ -29,7 +29,7 @@
                   = get_date( content["date"] )
                 %li
                   Last updated:
-                  = get_date( content["date"] )
+                  = get_date( content["modified"] )
 
             - if content["acf"].present? && content["acf"]["content_under_review"] == true
               .policy-notification-content
