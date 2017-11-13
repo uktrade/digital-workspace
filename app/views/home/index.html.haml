@@ -5,6 +5,9 @@
         = render partial: "widgets/people_search"
         = render partial: "widgets/profile_overview"
 = render partial: "widgets/beta_bar"
+- if flash[:notice]
+  .notice
+    = flash[:notice]
 %div{:id => 'homepage', :class => 'homepage-content'}
   /= render partial: "widgets/zendesk_header"
   %main#content.root-index 

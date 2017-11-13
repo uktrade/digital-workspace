@@ -21,3 +21,21 @@
 .zendesk-footer {
 	padding-bottom: 10px;
 }
+
+#feedback_container {
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 0 10px 88px;
+
+	@media (min-width: $screen_large) {
+		padding: 0;
+	}
+
+	hr {
+		margin: 0px;
+	}
+
+	p {
+		margin: 5px 0;
+	}
+}
