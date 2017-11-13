@@ -53,7 +53,10 @@
 					line-height: 1em;
 					margin-top: 0;
 					a {
-						word-break: break-all;
+						word-break: inherit;
+						span {
+							display: block;
+						}
 					}
 				}
 				span {
