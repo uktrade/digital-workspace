@@ -44,9 +44,9 @@
     .leave-comment
       %h2.heading-medium{:id => 'comment-reply'}
         Leave a comment
-      = form_tag(request.url , method: :post, class: 'comment_post', id: 'comment-post')
-      = hidden_field_tag("post", @posts.first["id"])
-      = hidden_field_tag("comment_parent", 0)
-      = text_area_tag('comment_content', nil, class: 'leave-comment-textarea')
-      = submit_tag('Submit comment', class: 'button')
+      = form_tag(request.url , method: :post, class: 'comment_post', id: 'comment-post') do
+        = hidden_field_tag("post", @posts.first["id"])
+        = hidden_field_tag("comment_parent", 0)
+        = text_area_tag('comment_content', nil, class: 'leave-comment-textarea')
+        = submit_tag('Submit comment', class: 'button')
 
