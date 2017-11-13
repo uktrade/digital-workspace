@@ -1,18 +1,6 @@
 #feedback_container.feedback_container
   %a{:href => '#feedback', :id => 'feedbackToggle'}
     Is there anything wrong with this page?
-<<<<<<< HEAD
-  = form_tag('/report_problem', method: :post, class: 'new_problem_report', id: 'new_problem_report')
-  .form-group
-    = label_tag('problem_report_goal', 'What were you trying to do?', {:class => 'form-label'})
-    = text_area_tag('problem_report_goal', '', {:class => 'form-control', :id => 'problem_report_goal'})
-  .form-group
-    = label_tag('problem_report_problem', 'What went wrong?', {:class => 'form-label'})
-    = text_area_tag('problem_report_problem', '', {:class => 'form-control', :id => 'problem_report_problem'})
-  = hidden_field_tag('problem_report_origin', "#{request.original_url}")
-  = hidden_field_tag('problem_report_browser', "#{request.env['HTTP_USER_AGENT']}")
-  = submit_tag('Report', class: 'button')
-=======
   = form_tag('/report_problem', method: :post, class: 'new_problem_report', id: 'new_problem_report') do
     .form-group
       = label_tag('problem_report_goal', 'What were you trying to do?', {:class => 'form-label'})
@@ -23,4 +11,3 @@
     = hidden_field_tag('problem_report_origin', "#{request.original_url}")
     = hidden_field_tag('problem_report_browser', "#{request.env['HTTP_USER_AGENT']}")
     = submit_tag('Report', class: 'button')
->>>>>>> get through rubo and correct syntax problem that led to multi form nesting on news articles
