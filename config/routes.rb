@@ -22,24 +22,19 @@ Rails.application.routes.draw do
   get '/about-us/*path', to: 'standard#index'
 
   get '/tools', to: 'standard#index'
-  get '/tools/standard-index/*path', to: 'standard#index'
-  get '/tools/content/*path', to: 'content#content'
+  get '/tools/*path', to: 'standard#index'
 
   get '/teams', to: 'standard#index'
-  get '/teams/*path', to: 'content#content'
+  get '/teams/*path', to: 'standard#index'
 
   get '/networks', to: 'standard#index'
-  get '/networks/*path', to: 'content#content'
+  get '/networks/*path', to: 'standard#index'
 
   get '/sectors', to: 'standard#index'
-  get '/sectors/*path', to: 'content#content'
+  get '/sectors/*path', to: 'standard#index'
 
   get '/regions', to: 'standard#index'
-  get '/regions/*path', to: 'content#content'
-
-  # deprecate lines 41-44 after about-us slug change in CMS is complete
-  get '/about-dit', to: 'standard#index'
-  get '/about-dit/*path', to: 'standard#index'
+  get '/regions/*path', to: 'standard#index'
 
   get '*path', to: 'content#content'
 end

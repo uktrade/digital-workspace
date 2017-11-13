@@ -7,6 +7,8 @@ class PeopleFinderProfile
   attr_accessor(
     :email,
     :name,
+    :given_name,
+    :surname,
     :team,
     :completion_score,
     :profile_image_url,
@@ -40,6 +42,8 @@ class PeopleFinderProfile
       @profile = PeopleFinderProfile.new
       @profile.email = @email
       @profile.name = @attributes['name']
+      @profile.given_name = @attributes['given_name']
+      @profile.surname = @attributes['surname']
       @profile.team = @attributes['team']
       @profile.completion_score = @attributes['completion-score'] || 0
       @profile.profile_image_url = @links['profile-image-url']

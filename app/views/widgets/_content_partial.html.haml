@@ -9,7 +9,7 @@
         /     - if bcs["breadcrumb"].present?
         /       - bcs["breadcrumb"].each do |bc|
         /         %li
-        /           = link_to( bc["title"], link_topics_top + bc["slug"] )
+        /           = link_to( bc["title"], bc["slug"] )
 
   .grid-row
     - if @content.present?
@@ -29,7 +29,7 @@
                   = get_date( content["date"] )
                 %li
                   Last updated:
-                  = get_date( content["date"] )
+                  = get_date( content["modified"] )
 
             - if content["acf"].present? && content["acf"]["content_under_review"] == true
               .policy-notification-content

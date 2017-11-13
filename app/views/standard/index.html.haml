@@ -12,6 +12,12 @@
         %ul.breadcrumb
           %li
             = link_to( 'Home', "/" )
+          - if @topic.present?
+            - @topic.each do |bcs|
+              - if bcs["breadcrumb"].present?
+                - bcs["breadcrumb"].each do |bc|
+                  %li
+                    = link_to( bc["title"], bc["slug"] )
 
     .grid-row
       .column-full
@@ -44,9 +50,16 @@
             .column-third.card
               %h3.heading-small
               - @content_children[from..to].each_with_index do |content_m, index_m|
-                - link = content_m["link"]
                 %h3
-                  = link_to( content_m["title"]["rendered"].html_safe, link)
+                  - if content_m["acf"]["redirect_url"].present?
+                    - link = content_m["acf"]["redirect_url"]["url"]
+                    - title = content_m["acf"]["redirect_url"]["title"]
+                    - target = content_m["acf"]["redirect_url"]["target"]
+                    = link_to( title, link, target: target)
+                  - else
+                    - link = content_m["link"]
+                    - title = content_m["title"]["rendered"].html_safe 
+                    = link_to( title, link)
                 %p
                   = content_m["acf"]["excerpt"]
 

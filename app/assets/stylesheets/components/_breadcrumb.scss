@@ -17,8 +17,8 @@ ul.breadcrumb {
 		&:before {
 			content: '';
 			position: absolute;
-			top: 7px;
-			left: -7px;
+			top: 5px;
+			left: -4px;
 			@include background-image('spacer', png, 7px, 12px);
 			background-repeat: no-repeat;
 			width: 7px;
