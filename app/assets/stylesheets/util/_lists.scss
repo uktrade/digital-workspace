@@ -23,3 +23,9 @@ ol.list-style-a {
 	padding: 0px;
 	list-style-type: none;
 }
+
+.list-style-a {
+	.related-content & {
+		margin-bottom: 20px;
+	}
+}

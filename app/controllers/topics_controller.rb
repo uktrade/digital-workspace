@@ -27,7 +27,7 @@ class TopicsController < ApplicationController
     @api_call = ToolQueries.new
     @topic_tools = @api_call.topic_query
     @tools_id = @topic_tools.first['id']
-    @taxonomy = 'it-tech-support'
+    @taxonomy = 'it-and-technical-support'
 
     @tools_children_content = @api_call.tools_content_query(@tools_id, @taxonomy)
     @tools_children_standard = @api_call.tools_standard_query(@tools_id, @taxonomy)
