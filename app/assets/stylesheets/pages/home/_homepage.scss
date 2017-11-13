@@ -188,7 +188,7 @@
 		font-size: 16px;
 		line-height: 19px;
 		font-weight: bold;
-		margin: 20px 0;
+		margin: 80px 0px 0px 0px;
 
 		color: #ffffff;
 
@@ -204,7 +204,7 @@
 	margin-top: 0;
 }
 
-@media (min-width: $screen_small) {
+// @media (min-width: $screen_small) {
 	.graph-summary {
 		.stat {
 			background-size: 60%;
@@ -225,11 +225,15 @@
 		&.graph-summary-c {
 			.stat {
 				@include background-image('87_people_survey', png, 159px, 159px);
-				background-position: center 30px;
+				background-position: center 40px;
+
+				@media (min-width: $screen_medium) {
+					background-position: center 30px;
+				}			
 			}
 		}
 	}
-}
+// }
 
 // ------------------------------------
 // homepage how to links
