@@ -6,7 +6,7 @@ class TwitterApi
     # we only display 3 tweets, but "count" is taken before filtering out replies and rts, so overegged this
     # client.user_timeline('DannnBeckett', count: 3)
     Rails.cache.fetch('twitter_feed', expires_in: 60) do
-      client.user_timeline('GOVUK', count: 100, exclude_replies: true, include_rts: false)
+      client.user_timeline('tradegovuk', count: 100, exclude_replies: true, include_rts: false)
     end
   end
 
