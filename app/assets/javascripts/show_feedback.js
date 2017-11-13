@@ -42,9 +42,11 @@
 			if ( feedback.className === 'feedback_container visible' ) {
 				feedback.classList.remove('visible');
 				feedback_inner.style.height = '0px';
+				self.classList.remove('open');
 			} else { // Remove class
 				feedback.classList.add('visible');
 				feedback_inner.style.height = feedback_inner.scrollHeight + 'px';
+				self.classList.add('open');
 			}
 
 			var visible = document.querySelectorAll('.visible');
