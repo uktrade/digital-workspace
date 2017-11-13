@@ -27,3 +27,13 @@
 	border: 2px solid #000000;
 	background-color: lighten($brand_color_c, 50%);
 }
+
+.policy-meta {
+	display: block;
+	font-size: 14px;
+	color: $brand_chrome_d;
+}
+
+.policy-meta-type {
+	text-transform: capitalize;
+}

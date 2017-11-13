@@ -15,7 +15,7 @@
               - if bcs["breadcrumb"].present?
                 - bcs["breadcrumb"].each do |bc|
                   %li
-                    = link_to( bc["title"], link_topics_top + bc["slug"] )
+                    = link_to( bc["title"], bc["slug"] )
       .column-half
         / .form-group.select-category
         /   %label{:class => 'form-label', :for => 'select-topic'} Topics
@@ -63,11 +63,15 @@
                 - @topic_policies[0..4].each_with_index do |pol, i|
                   %li
                     = link_to(pol["title"]["rendered"].html_safe, pol["link"])
+                    - policy_or_guidance = pol["acf"]["policy_or_guidance"]
+                    = "<span class='policy-meta'>Last updated:  #{get_date( pol["date"] )} − <span class='policy-meta-type'>#{policy_or_guidance}</span></span>".html_safe
                 .topics-list-extra
                   - if @topic_policies[5..-1].present?
                     - @topic_policies[5..-1].each_with_index do |pol_extra, i|
                       %li
                         = link_to(pol_extra["title"]["rendered"].html_safe, pol_extra["link"])
+                        - policy_or_guidance_extra = pol_extra["acf"]["policy_or_guidance"]
+                        = "<span class='policy-meta'>Last updated:  #{get_date( pol_extra["date"] )} − <span class='policy-meta-type'> #{policy_or_guidance_extra}</span></span>".html_safe                    
                 - if @topic_policies[5..-1].present?
                   %li.topic-controls
                     %span{class: 'topic-toggle'}View more
@@ -92,6 +96,14 @@
           %ul.list-style-a
             - @tools.each do |tool|
               %li
-                = link_to( tool["title"]["rendered"].html_safe, tool["link"])
+                - if tool["acf"]["redirect_url"].present?
+                  - link = tool["acf"]["redirect_url"]["url"]
+                  - title = tool["acf"]["redirect_url"]["title"]
+                  - target = tool["acf"]["redirect_url"]["target"]
+                  = link_to( title, link, target: target)
+                - else
+                  - link = tool["link"]
+                  - title = tool["title"]["rendered"].html_safe 
+                  = link_to( title, link)
       = render partial: "widgets/related_news_partial"
 = render partial: "widgets/zendesk_footer"
