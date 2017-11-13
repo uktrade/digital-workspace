@@ -5,7 +5,7 @@ class ReportController < ApplicationController
   def index
     client = zendesk_client
     client.tickets.create(
-      subject: "Website error submission #{Time.now}",
+      subject: "Website error submission #{Time.current}",
       comment: { value: params['problem_report_problem'] },
       submitter_id: client.current_user.id,
       priority: 'normal', type: 'incident', custom_fields: zendesk_request_fields
