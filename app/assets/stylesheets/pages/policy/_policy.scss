@@ -1,0 +1,17 @@
+.policy-type {
+    position: relative;
+    text-transform: capitalize;
+    padding-left: 15px;
+    font-weight: 700;
+
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 2px;
+        left: 0;
+        width: 7px;
+        height: 20px;
+        background-color: $brand_color_a;
+    }
+}

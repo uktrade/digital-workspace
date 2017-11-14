@@ -22,6 +22,9 @@
                   This policy is being updated. It is current, but will soon be replaced.
             %h2.heading-large.heading-top
               = content["title"]["rendered"].html_safe
+            - if content["acf"]["policy_or_guidance"].present?
+              %p.policy-type
+                = content["acf"]["policy_or_guidance"]
             %div.dates-published-updated
               %ul.list-style-a
                 %li
@@ -36,9 +39,9 @@
                 %p
                   %strong
                     Please note:<br />
-                  Over the coming months, this page will be updated and refreshed to reflect our vision of One DIT. In the meantime, this page and its content remains relevant and appropriate to all DIT staff.
+                  Over the coming months, this page will be updated and refreshed to reflect our vision of One DIT. In the meantime, this page and its content remain relevant and appropriate to all DIT staff.  
                 %p                    
-                  Delete all of your previous favorites or bookmarked items on the old DIT and BIS intranets. Only bookmark content on Digital Workspace from now on.
+                  Delete all of your previous favourites or bookmarked items on the old DIT and BIS intranets. Only bookmark content on Digital Workspace from now on.
 
             = content["content"]["rendered"].html_safe
           - if content["acf"].present? && content["acf"]["documents"].present?
