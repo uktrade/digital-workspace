@@ -12,9 +12,33 @@
     - if @string.nil?
       .grid-row
         .column-full
+          .mobile-search
+            %form{:action => "/search", :method => "get", :role => "search"}
+              .proposition-search.govuk-search
+                %label.search-label
+                  Search site
+                .search-wrapper
+                  %input{:type => 'search', :title => 'Search Workspace', :name => 's', :id => 'mobile-site-search', :class => 'search-element search-input js-class-toggle'}
+                  .search-element.search-submit-wrapper
+                    %button{:type => 'submit', :class => 'search-submit'}
+                      Search
+      .grid-row
+        .column-full
           %h2.heading-large
             Search by using the dialog box above
     - else 
+      .grid-row
+        .column-full
+          .mobile-search
+            %form{:action => "/search", :method => "get", :role => "search"}
+              .proposition-search.govuk-search
+                %label.search-label
+                  Search site
+                .search-wrapper
+                  %input{:type => 'search', :title => 'Search Workspace', :name => 's', :id => 'mobile-site-search', :class => 'search-element search-input js-class-toggle', :value => @string}
+                  .search-element.search-submit-wrapper
+                    %button{:type => 'submit', :class => 'search-submit'}
+                      Search
       .grid-row
         .column-full
           %h2.heading-large
