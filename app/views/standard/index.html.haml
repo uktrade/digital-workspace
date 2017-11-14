@@ -12,12 +12,12 @@
         %ul.breadcrumb
           %li
             = link_to( 'Home', "/" )
-          - if @topic.present?
-            - @topic.each do |bcs|
+          - if @content.present?
+            - @content.each do |bcs|
               - if bcs["breadcrumb"].present?
                 - bcs["breadcrumb"].each do |bc|
                   %li
-                    = link_to( bc["title"], bc["slug"] )
+                    = link_to( bc["title"].html_safe, bc["mapped_path"] )
 
     .grid-row
       .column-full
@@ -27,7 +27,7 @@
         - if @content.present?
           - @content.each do |p|
             %h2.heading-large
-              = p["title"]["rendered"]
+              = p["title"]["rendered"].html_safe
             = p["acf"]["excerpt"]
     .grid-row
       .column-full

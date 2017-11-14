@@ -15,7 +15,7 @@
               - if bcs["breadcrumb"].present?
                 - bcs["breadcrumb"].each do |bc|
                   %li
-                    = link_to( bc["title"], bc["slug"] )
+                    = link_to( bc["title"].html_safe, bc["mapped_path"] )
       .column-half
         / .form-group.select-category
         /   %label{:class => 'form-label', :for => 'select-topic'} Topics
