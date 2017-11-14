@@ -34,6 +34,8 @@ class ReportController < ApplicationController
       id: '45522345', value: params['problem_report_origin']
     }, {
       id: '34146805', value: params['problem_report_browser']
+    }, {
+      id: '45522485', value: params['problem_report_email']
     }]
   end
 end
