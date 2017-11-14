@@ -1,4 +1,9 @@
 = render partial: "widgets/people_search_inner_page"
+
+- if flash[:notice]
+  .zd-confirmation
+    span
+      = flash[:notice]
 %div{:id => 'page', :class => 'page-content'}
   %main#content.search-results
     %ul.breadcrumb
