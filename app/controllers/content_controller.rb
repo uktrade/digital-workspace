@@ -13,8 +13,8 @@ class ContentController < ApplicationController
     @api_call = ContentSingleQuery.new(@slug)
     @content = @api_call.type_query
 
-    render file: '/public/404.html',  status: 404 if @content.empty?
-      
+    render file: '/public/404.html', status: 404 if @content.empty?
+
     @global_notifications = @api_call.type_query
     @global_notification = @global_notifications.first if @global_notifications.first.is_a?(Hash)
   end
