@@ -10,7 +10,8 @@
 
   = stylesheet_link_tag "application", media: "all"
   = csrf_meta_tag
-
+  = render partial: "widgets/tracking_code"
+  
 - content_for :header_class do
   = "with-proposition"
 
@@ -43,7 +44,7 @@
 
 - content_for :body_end do
   = javascript_include_tag 'application'
-
+  
 - content_for :footer_top do
 
 - content_for :footer_support_links do
@@ -57,5 +58,4 @@
     .acknowledgements
       %p
         = "Built by the #{link_to('DIT Digital', '#')} team".html_safe
-
 = render file: 'layouts/govuk_template'
