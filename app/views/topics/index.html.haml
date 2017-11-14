@@ -1,6 +1,11 @@
 - content_for :body_classes do
   - 'section-working-at-dit'
 
+- if flash[:notice]
+  .zd-confirmation
+    span
+      = flash[:notice]
+
 %div{:id => 'topics', :class => 'page-content'}
   = render partial: "widgets/people_search_inner_page"
   /= render partial: "widgets/zendesk_header"

@@ -3,6 +3,11 @@
   - 'section-tools' if request.original_fullpath.start_with?('/tools')
   - 'section-datahub' if request.original_fullpath.start_with?('/tools/data-hub')
 
+- if flash[:notice]
+  .zd-confirmation
+    span
+      = flash[:notice]
+
 %div{:id => 'generic_content', :class => 'page-content'}
   = render partial: "widgets/people_search_inner_page"
   /= render partial: "widgets/zendesk_header"
