@@ -8,6 +8,7 @@
     .form-group
       = label_tag('problem_report_problem', 'What went wrong?', {:class => 'form-label'})
       = text_area_tag('problem_report_problem', '', {:class => 'form-control', :id => 'problem_report_problem'})
+    = hidden_field_tag('problem_report_email', "#{@people_finder_profile.email}")
     = hidden_field_tag('problem_report_origin', "#{request.original_url}")
     = hidden_field_tag('problem_report_browser', "#{request.env['HTTP_USER_AGENT']}")
     = submit_tag('Report', class: 'button')
