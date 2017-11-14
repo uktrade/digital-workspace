@@ -40,6 +40,7 @@ if(filters) {
     });
     if(presetTypes.length > 0) {
       show_remove_filters(removeFiltersLinks);
+      document.getElementById('filters_types').className = document.getElementById('filters_types').className.replace(' closed', '');
     }
   }
   if (presetNewsStr) {
@@ -50,6 +51,7 @@ if(filters) {
     });
     if(presetNews.length > 0) {
       show_remove_filters(removeFiltersLinks);
+      document.getElementById('filters_news').className = document.getElementById('filters_news').className.replace(' closed', '');
     }
   }
   if (presetTopicsStr) {
@@ -60,6 +62,7 @@ if(filters) {
     });
     if(presetTopics.length > 0) {
       show_remove_filters(removeFiltersLinks);
+      document.getElementById('filters_themes').className = document.getElementById('filters_themes').className.replace(' closed', '');
     }
   }
 
