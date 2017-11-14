@@ -1,10 +1,11 @@
 /= render partial: "widgets/zendesk_header"
-- if flash[:notice]
-  .zd-confirmation
-    %span
-      = flash[:notice]
 
 %div{:id => 'page', :class => 'page-content'}
+  - if flash[:notice]
+    .zd-confirmation
+      %span
+        = flash[:notice]
+
   %main#content.root-index
     .grid-row
       .column-full
