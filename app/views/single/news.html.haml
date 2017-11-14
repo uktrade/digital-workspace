@@ -63,9 +63,6 @@
                 - else
                   = news_cats( cat["name"], cat["slug"] ) + ', '
 
-            - if image_exists?(p)
-              = large_image_tag(p)
-
             = p["content"]["rendered"].html_safe
 
           = render partial: 'widgets/comments'
