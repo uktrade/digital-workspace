@@ -95,12 +95,13 @@
                 %hr{:class => 'rule-small'}
 
       .column-third.related-content
-        - if @tools.present?
+        /= @topic_tools
+        - if @topic_tools.present?
           %hr{:class => 'rule-large rule-top'}
           %h2.heading-medium
             Tools
           %ul.list-style-a
-            - @tools.each do |tool|
+            - @topic_tools.each do |tool|
               %li
                 - if tool["acf"]["redirect_url"].present?
                   - link = tool["acf"]["redirect_url"]["url"]
