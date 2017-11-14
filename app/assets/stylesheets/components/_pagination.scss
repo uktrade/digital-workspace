@@ -123,16 +123,17 @@
 		}
 	}
 	.prev {
+		float: left;
 		a {
 			padding: 15px;
-			&:visited {
-				background-color: $brand_color_c;
-			}
 			&:before {
 				background-image: none;
 				height: 0px;
 				width: 0px;
 				margin: 0px;
+			}
+			&:visited {
+				color: $brand_color_a;
 			}
 			.link-title {
 				position: relative;
@@ -155,16 +156,18 @@
 		}
 	}
 	.next {
+		float: right;
 		a {
 			padding: 15px;
-			&:visited {
-				background-color: $brand_color_c;
-			}
+			text-align: right;
 			&:after {
 				background-image: none;
 				height: 0px;
 				width: 0px;
 				margin: 0px;
+			}
+			&:visited {
+				color: $brand_color_a;
 			}
 			.link-title {
 				position: relative;
