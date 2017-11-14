@@ -1,14 +1,15 @@
 - content_for :body_classes do
   - 'section-news-and-views'
 
-- if flash[:notice]
-  .zd-confirmation
-    %span
-      = flash[:notice]
 
 %div{:id => 'page', :class => 'page-content'}
   = render partial: "widgets/people_search_inner_page"
   /= render partial: "widgets/zendesk_header"
+
+  - if flash[:notice]
+    .zd-confirmation
+      %span
+        = flash[:notice]
 
   - if params[:commit] == "Submit comment"
     - if @response.parsed_response['status'] == 'approved'
