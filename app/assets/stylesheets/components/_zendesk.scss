@@ -1,5 +1,17 @@
 /* Zendesk */
 
+.zd-confirmation {
+	background-color: $brand_color_a;
+	color: #fff;
+	font-weight: 700;
+	margin: 10px auto 0;
+	max-width: 960px;
+	width: 100%;
+	span {
+		padding: 20px;
+	}
+}
+
 .zendesk-container {
 	max-width: 960px;
 	margin: 0 auto;
