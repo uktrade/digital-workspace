@@ -22,6 +22,9 @@
                   This policy is being updated. It is current, but will soon be replaced.
             %h2.heading-large.heading-top
               = content["title"]["rendered"].html_safe
+            - if content["acf"]["policy_or_guidance"].present?
+              %p.policy-type
+                = content["acf"]["policy_or_guidance"]
             %div.dates-published-updated
               %ul.list-style-a
                 %li
