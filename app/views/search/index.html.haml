@@ -21,13 +21,13 @@
           = render partial: "widgets/search_filter_types"
           = render partial: "widgets/search_filter_news_views"
           = render partial: "widgets/search_filter_working_at_dit"
-          = form_tag('/search', id: 'filter-search', method: 'GET')
-          = hidden_field_tag('s', @string)
-          = hidden_field_tag('filter_types')
-          = hidden_field_tag('filter_news')
-          = hidden_field_tag('filter_topics')
-          .submit.js-live-search-fallback
-            = submit_tag('Submit filters', class: 'button')
+          = form_tag('/search', id: 'filter-search', method: 'GET') do
+            = hidden_field_tag('s', @string)
+            = hidden_field_tag('filter_types')
+            = hidden_field_tag('filter_news')
+            = hidden_field_tag('filter_topics')
+            .submit.js-live-search-fallback
+              = submit_tag('Submit filters', class: 'button')
         .column-two-thirds
           - if !@posts.nil?
             .result-count
@@ -59,8 +59,12 @@
                   %h3.heading-medium
                     %a{:href => p['mapped_path']}
                       = p['title']
-                  %span.search-meta
-                    = "#{formatted_date} @ #{formatted_time} GMT in #{top_level_slug} #{category_slug}".html_safe
+                  - if p['type'] == 'news' || p['type'] == 'howdoi' || p['type'] == 'policy' || p['type'] == 'attachment'
+                    %span.search-meta
+                      = "#{formatted_date} @ #{formatted_time} GMT in #{top_level_slug} #{category_slug}".html_safe
+                  - else
+                    %span.search-meta
+                      = "#{formatted_date} @ #{formatted_time} GMT"
                   %p.content
                     = p['excerpt'].html_safe
             = render partial: "widgets/search_pagination"
