@@ -36,8 +36,8 @@
             %ol.results-list
               - @posts.each do |p|
                 - date = DateTime.parse(p['modified_gmt'])
-                - formatted_date = date.strftime('%e %b %Y')
-                - formatted_time = date.strftime('%H:%M')
+                /- formatted_date = date.strftime('%e %b %Y')
+                /- formatted_time = date.strftime('%H:%M')
                 - if p['type'] == 'news'
                   - (top_level_slug = link_to('News', '/news-and-views/'))
                   /- if p['news_categories']
@@ -61,10 +61,10 @@
                       = p['title']
                   - if p['type'] == 'news' || p['type'] == 'howdoi' || p['type'] == 'policy' || p['type'] == 'attachment'
                     %span.search-meta
-                      = "#{formatted_date} @ #{formatted_time} GMT in #{top_level_slug} #{category_slug}".html_safe
+                      = "#{get_date(p['modified_gmt'])} in #{top_level_slug} #{category_slug}".html_safe
                   - else
                     %span.search-meta
-                      = "#{formatted_date} @ #{formatted_time} GMT"
+                      = "#{get_date(p['modified_gmt'])}"
                   %p.content
                     = p['excerpt'].html_safe
             = render partial: "widgets/search_pagination"
