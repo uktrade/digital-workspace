@@ -156,6 +156,21 @@
 			display: none;
 		}
 	}
+
+	.mobile-search {
+		margin-top: 40px;
+		.govuk-search.proposition-search {
+			float: left;
+			margin-bottom: 0;
+			width: 100%;
+			.search-wrapper {
+				width: 100%;
+			}
+		}
+		@media (min-width: $screen-medium) {
+			display: none;
+		}
+	}
 }
 
 @media (min-width: $screen-small) {
