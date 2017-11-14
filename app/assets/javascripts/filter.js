@@ -1,7 +1,7 @@
 var filters = document.getElementById('filter-search');
 
 if(filters) {
-  var filterBoxes = document.getElementsByClassName('legend'),
+  var filterBoxes = document.querySelectorAll('.controls, .legend'),
       removeFiltersLinks = document.getElementsByClassName('clear-selected');
   for (var i = 0; i < filterBoxes.length; i++) {
     filterBoxes[i].addEventListener("click", function() {
