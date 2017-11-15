@@ -25,9 +25,6 @@ class TopicsController < ApplicationController
 
   def init_tools
     @api_call = ToolQueries.new(@slug)
-    # @api_topics_call = TopicQueries.new(@slug)
-    # @topic_api = @api_topics_call.topic_query
-    # @tools_parent_id = @topic_api.first['id']
     @topic_tools = @api_call.tools_query
   end
 
