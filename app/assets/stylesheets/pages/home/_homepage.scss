@@ -37,16 +37,11 @@
 
 	&-image {
 		position: relative;
-		// height: 100%;
-
+		overflow: hidden;
+		
 		@media(min-width: $screen_medium) {
 			max-width: 300px;
-			max-height: 195px;
-			overflow-y: hidden;
-
-			img {
-				// height: auto;
-			}
+			height: 195px;
 		}
 
 		img {
@@ -55,6 +50,15 @@
 			max-width: 100%;
 			width: 100%;
 			height: auto;
+
+			@media(min-width: $screen_medium) {				
+				position: absolute;
+				top: 0;
+				left: 50%;
+				transform: translateX(-50%);
+				height: 100%;
+				object-fit: cover;
+			}
 		}
 	}
 
