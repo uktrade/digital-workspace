@@ -1,6 +1,6 @@
 module LinksHelper
   def link_howdoi_top
-    '/how-do-i/'
+    '/working-at-dit/how-do-i/'
   end
 
   def link_topics_top
