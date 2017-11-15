@@ -62,7 +62,7 @@ if(filters) {
     });
     if(presetTopics.length > 0) {
       show_remove_filters(removeFiltersLinks);
-      document.getElementById('filters_themes').className = document.getElementById('filters_themes').className.replace(' closed', '');
+      document.getElementById('filters_topics').className = document.getElementById('filters_topics').className.replace(' closed', '');
     }
   }
 
