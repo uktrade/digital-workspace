@@ -16,6 +16,6 @@ class AccordionQueries
   end
 
   def self.accordion_topic_query(theme_slug)
-    WpApi.get_json_body("topics/?filter[theme_taxonomy]=#{theme_slug}")
+    WpApi.get_json_body("topics/?filter[theme_taxonomy]=#{theme_slug}&orderby=title&order=asc")
   end
 end
