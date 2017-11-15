@@ -5,8 +5,15 @@
 	var toggle_length = toggle_cta.length;
 	var flag = null;
 
+	// Set default cookies
+	document.cookie = hdi_view_more_cookie=false;
+	document.cookie = policy_view_more_cookie=false;
+
 	// Initialise
 	function init_topics(){
+
+		console.log('POLICY COOKIE: ' + policy_view_more_cookie);
+		
 		if (typeof(toggle_cta) != 'undefined' && toggle_cta != null) {
 			topics_events();
 		}
@@ -23,6 +30,15 @@
 	function toggle_topics(){
 		var self = this;
 		var container = self.parentNode.parentNode.querySelector(':scope > .topics-list-extra');
+
+		document.cookie = hdi_view_more_cookie=true;
+		document.cookie = policy_view_more_cookie=true;
+
+		if (policy_view_more_cookie == true) {
+			console.log('POLICY TRUE');
+			self.parentNode.parentNode.classList.add('visible');
+			container.style.height = container.scrollHeight + 'px';
+		}
 
 		if (self.flag !== true) {	// open
 			self.parentNode.parentNode.classList.add('visible');
