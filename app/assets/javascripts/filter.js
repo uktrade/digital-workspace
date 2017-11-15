@@ -3,6 +3,7 @@ var filters = document.getElementById('filter-search');
 if(filters) {
   var filterBoxes = document.querySelectorAll('.controls, .legend'),
       removeFiltersLinks = document.getElementsByClassName('clear-selected');
+      
   for (var i = 0; i < filterBoxes.length; i++) {
     filterBoxes[i].addEventListener("click", function() {
       var headEl = this;
@@ -66,8 +67,10 @@ if(filters) {
     }
   }
 
-  function show_remove_filters(removeFiltersLinks){
+  function show_remove_filters(removeFiltersLinks, ){
     for (var i = 0; i < removeFiltersLinks.length; i++) {
+      var inputName = removeFiltersLinks[i].getAttribute('name'),
+          inputValue = document.getElementById(inputName).value;
       removeFiltersLinks[i].className = removeFiltersLinks[i].className.replace('js-hidden','');
     }
   }
