@@ -38,4 +38,10 @@ module ApplicationHelper
     text = count == 1 ? 'comment' : 'comments'
     "#{count} #{text}"
   end
+
+  def page_title
+    (
+      [@page_title] << 'Digital Workspace'
+    ).compact.join(' - ')
+  end
 end
