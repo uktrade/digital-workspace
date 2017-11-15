@@ -27,6 +27,8 @@ gem 'rails_12factor'
 gem 'redis-session-store'
 gem 'readthis'
 
+gem 'foreman'
+
 group :development, :test do
   gem 'bundler-audit'
   gem 'byebug'

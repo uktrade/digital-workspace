@@ -76,6 +76,9 @@ GEM
     faraday (0.11.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.18)
+    foreman (0.63.0)
+      dotenv (>= 0.7)
+      thor (>= 0.13.6)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     govuk_elements_rails (3.1.0)
@@ -319,6 +322,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   dotenv-rails
+  foreman
   govuk_elements_rails
   govuk_template
   haml-rails (~> 1.0)
@@ -350,4 +354,4 @@ RUBY VERSION
    ruby 2.4.1p111
 
 BUNDLED WITH
-   1.16.0.pre.2
+   1.16.0
