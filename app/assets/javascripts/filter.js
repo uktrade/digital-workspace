@@ -70,8 +70,18 @@ if(filters) {
   function show_remove_filters(removeFiltersLinks, ){
     for (var i = 0; i < removeFiltersLinks.length; i++) {
       var inputName = removeFiltersLinks[i].getAttribute('name'),
-          inputValue = document.getElementById(inputName).value;
-      removeFiltersLinks[i].className = removeFiltersLinks[i].className.replace('js-hidden','');
+          thisCheckboxes = document.querySelectorAll('[name=' + inputName + ']'),
+          checkedEls = [];
+      thisCheckboxes.forEach(function(elem){
+        if (elem.checked == true) {
+          checkedEls.push(elem);
+        }
+      });
+      if (checkedEls.length > 0) {
+        removeFiltersLinks[i].classList.remove('js-hidden');
+      } else {
+        removeFiltersLinks[i].classList.add('js-hidden');
+      }
     }
   }
 
