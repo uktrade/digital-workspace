@@ -38,7 +38,7 @@
         - if @topic.present?
           - @topic.each do |topic|
             %h2.heading-large
-              = topic["title"]["rendered"].html_safe
+              = @page_title = topic["title"]["rendered"].html_safe
             = topic["content"]["rendered"].html_safe
 
         %hr{:class => 'rule-small'}
