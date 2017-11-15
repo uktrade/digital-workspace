@@ -1,4 +1,4 @@
 ---
 applications:
 - name: digital-workspace
-  command : bundle exec rails server -p $PORT
+  command : foreman start
