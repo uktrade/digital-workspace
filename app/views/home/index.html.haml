@@ -43,8 +43,9 @@
         - @posts[1..6].each_with_index do |p, i|
           .column-third.eh-target
             .news-item
-              - if image_exists?(p)
-                = large_image_tag(p)
+              .news-item-image
+                - if image_exists?(p)
+                  = large_image_tag(p)
 
               .news-item-text
                 .post-meta
@@ -112,6 +113,7 @@
             87%
           %p.stat-description
             of staff have responded to the People Survey
+    .grid-row
     %hr{:id => 'statistics', :class => 'rule-large'}
 
     .grid-row

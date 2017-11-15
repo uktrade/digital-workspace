@@ -5,6 +5,10 @@
 	margin-top: 30px;
 }
 
+#homepage .hero-news-image-container {
+	position: relative;
+}
+
 .news-column {
 	h2 {
 		border-top: 1px solid #bfc1c3;
@@ -19,14 +23,45 @@
 	}
 }
 
-.news-item {
+#homepage .news-item {
 	margin-bottom: 30px;
-	overflow: auto;
-
-	img {
-		display: block;
-		width: 100%;
+	// overflow: auto;
+	// height: 100%;
+	
+	.post-meta {
+		position: relative;
 	}
+	heading-medium {
+		position: relative;
+	}
+
+	&-image {
+		position: relative;
+		// height: 100%;
+
+		@media(min-width: $screen_medium) {
+			max-width: 300px;
+			max-height: 195px;
+			overflow-y: hidden;
+
+			img {
+				// height: auto;
+			}
+		}
+
+		img {
+			position: relative;
+			display: block;
+			max-width: 100%;
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	.news-item-text {
+		position: relative;
+	}
+
 	.image-holder {
 		float: left;
 		width: 33.33333%;
