@@ -69,7 +69,7 @@
       }
     }
 
-    function show_remove_filters(removeFiltersLinks, ){
+    function show_remove_filters(removeFiltersLinks){
       for (var i = 0; i < removeFiltersLinks.length; i++) {
         var inputName = removeFiltersLinks[i].getAttribute('name'),
             thisCheckboxes = document.querySelectorAll('[name=' + inputName + ']'),
