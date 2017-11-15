@@ -24,16 +24,19 @@ class TopicsController < ApplicationController
   end
 
   def init_tools
-    @slug = params[:path].split('/').last
-    @api_call = ToolQueries.new
+    @api_call = ToolQueries.new(@slug)
     # @topic_tools = @api_call.topic_query
     # @tools_id = @topic_tools.first['id']
     # @taxonomy = 'it-and-technical-support'
+    @api_topics_call = TopicQueries.new(@slug)
+    @topic_api = @api_topics_call.topic_query
+    @tools_parent_id = @topic_api.first['id']
+    
 
     # @tools_children_content = @api_call.tools_content_query(@tools_id, @taxonomy)
     # @tools_children_standard = @api_call.tools_standard_query(@tools_id, @taxonomy)
     # @tools = @api_call.tools_children(@tools_children_content, @tools_children_standard)
-    @topic_tools = @api_call.topic_query
+    @topic_tools = @api_call.tools_query(@tools_parent_id)
   end
 
   def init_related_news
