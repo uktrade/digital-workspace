@@ -1,5 +1,4 @@
 ---
 applications:
 - name: digital-workspace
-  memory: 1G
   command : bundle exec rails server -p $PORT
