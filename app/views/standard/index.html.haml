@@ -43,7 +43,7 @@
       - if @content_children.present?
 
         - child_count = @content_children.count
-        - multiple_of = (child_count / 3) - 1
+        - multiple_of = (child_count / 3)
 
         - @content_children.each_with_index do |content, index|
           - from = index
