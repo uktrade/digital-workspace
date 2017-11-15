@@ -13,8 +13,7 @@
               Search
     .user-account
       - if @people_finder_profile.name
-        %a{:href => @people_finder_profile.profile_url}
-          = @people_finder_profile.name
+        = "Hi, #{link_to(@people_finder_profile.name, @people_finder_profile.profile_url)}"
       - if @people_finder_profile.profile_image_url
         = image_tag @people_finder_profile.profile_image_url, class: 'user-account-profile-img', alt: @people_finder_profile.name
 
