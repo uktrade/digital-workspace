@@ -3,6 +3,7 @@ var filters = document.getElementById('filter-search');
 if(filters) {
   var filterBoxes = document.querySelectorAll('.controls, .legend'),
       removeFiltersLinks = document.getElementsByClassName('clear-selected');
+      
   for (var i = 0; i < filterBoxes.length; i++) {
     filterBoxes[i].addEventListener("click", function() {
       var headEl = this;
@@ -62,13 +63,25 @@ if(filters) {
     });
     if(presetTopics.length > 0) {
       show_remove_filters(removeFiltersLinks);
-      document.getElementById('filters_themes').className = document.getElementById('filters_themes').className.replace(' closed', '');
+      document.getElementById('filters_topics').className = document.getElementById('filters_topics').className.replace(' closed', '');
     }
   }
 
-  function show_remove_filters(removeFiltersLinks){
+  function show_remove_filters(removeFiltersLinks, ){
     for (var i = 0; i < removeFiltersLinks.length; i++) {
-      removeFiltersLinks[i].className = removeFiltersLinks[i].className.replace('js-hidden','');
+      var inputName = removeFiltersLinks[i].getAttribute('name'),
+          thisCheckboxes = document.querySelectorAll('[name=' + inputName + ']'),
+          checkedEls = [];
+      thisCheckboxes.forEach(function(elem){
+        if (elem.checked == true) {
+          checkedEls.push(elem);
+        }
+      });
+      if (checkedEls.length > 0) {
+        removeFiltersLinks[i].classList.remove('js-hidden');
+      } else {
+        removeFiltersLinks[i].classList.add('js-hidden');
+      }
     }
   }
 

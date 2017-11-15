@@ -73,7 +73,7 @@ class WpApi
     end
 
     def search_filter_topics(params, path)
-      path + '&topic_taxonomy=' + params[:filter_topics]
+      path + '&topic=' + params[:filter_topics]
     end
 
     def get_search_json_headers(params)

@@ -1,18 +1,18 @@
 - if @work_categories.class == Array && @work_categories.count > 0
   .filter-form
     .inner-block
-      #filters_themes.filter.checkbox-filter.js-openable-filter.closed
+      #filters_topics.filter.checkbox-filter.js-openable-filter.closed
         .head
           %span.legend
             Working at DIT
           .controls
-            %a.clear-selected.js-hidden
+            %a.clear-selected.js-hidden{:name => "filter_topics"}
               Remove filters
             .toggle
-        .checkbox-container{:id => "theme-filter"}
+        .checkbox-container{:id => "topic-filter"}
           %ul
             - @work_categories.each do |cat|
               %li
-                %input{:type => "checkbox", :name => "filter_themes", :value => cat['slug'], :id => cat['slug']}
+                %input{:type => "checkbox", :name => "filter_topics", :value => cat['slug'], :id => cat['slug']}
                 %label{:for => cat['slug']}
                   = cat['name']
