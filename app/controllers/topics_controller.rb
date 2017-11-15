@@ -24,14 +24,8 @@ class TopicsController < ApplicationController
   end
 
   def init_tools
-    @api_call = ToolQueries.new
-    @topic_tools = @api_call.topic_query
-    @tools_id = @topic_tools.first['id']
-    @taxonomy = 'it-and-technical-support'
-
-    @tools_children_content = @api_call.tools_content_query(@tools_id, @taxonomy)
-    @tools_children_standard = @api_call.tools_standard_query(@tools_id, @taxonomy)
-    @tools = @api_call.tools_children(@tools_children_content, @tools_children_standard)
+    @api_call = ToolQueries.new(@slug)
+    @topic_tools = @api_call.tools_query
   end
 
   def init_related_news
