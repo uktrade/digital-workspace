@@ -1,5 +1,6 @@
 .cta-comment-reply {
-	font-size: 16px;
+	font-size: $text_xsmall;
+	line-height: 1.25;
 }
 
 .comment-replies {
@@ -30,7 +31,8 @@
 	padding: 20px;
 	margin: 0px 0px 20px 0px;
 	min-height: 100px;
-	font-size: 16px;
+	font-size: $text_xsmall;
+	line-height: 1.25;
 }
 
 .comment-notification {
@@ -59,7 +61,8 @@
 
 @media (min-width: $screen_medium) {
 	.comment-notification {
-		font-size: 16px;
+		font-size: $text_xsmall;
+		line-height: 1.25;
 	}
 }
 

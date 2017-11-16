@@ -81,7 +81,9 @@
                     - else
                       = news_cats( cat["name"], cat["slug"] ) + ', '
 
-
+                - if image_exists?(p)
+                  .news-item-image-container
+                    = large_image_tag(p)
                 .news-item-excerpt
                   %p
                     - if p["acf"].present?
