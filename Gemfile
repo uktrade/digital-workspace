@@ -29,6 +29,7 @@ gem 'readthis'
 
 gem 'foreman'
 gem 'health_check'
+gem 'sentry-raven'
 
 group :development, :test do
   gem 'bundler-audit'
