@@ -44,17 +44,17 @@
 		}
 
 		for (i = 0; i < accordions.length; ++i) {
-				var self = this;
+			var self = this;
 
-				if (flag === true) {		// open
-					self.innerHTML = 'Close all';
-					accordions[i].parentNode.classList.add('visible');
-					accordions[i].style.height = accordions[i].scrollHeight + 'px';
-				} else {														// close
-					self.innerHTML = 'Open all';
-					accordions[i].parentNode.classList.remove('visible');
-					accordions[i].style.height = '0px';
-				}
+			if (flag === true) {		// open
+				self.innerHTML = 'Close all';
+				accordions[i].parentNode.classList.add('visible');
+				accordions[i].style.height = accordions[i].scrollHeight + 'px';
+			} else {														// close
+				self.innerHTML = 'Open all';
+				accordions[i].parentNode.classList.remove('visible');
+				accordions[i].style.height = '0px';
+			}
 		}
 	};
 
@@ -65,9 +65,11 @@
 		var accordion = self.parentNode;
 		var accordions_inner = document.querySelectorAll('.accordion-inner');
 		var accordion_inner = self.parentNode.querySelector(':scope > .accordion-inner');
+		var selection = 0;
 
 		// Remove classes
 		for (i = 0; i < accordions.length; ++i) {
+			selection += i;
 
 			// Reset 'Open all'
 			flag = false;
@@ -90,6 +92,19 @@
 				accordion_all_cta[0].innerHTML = 'Close all';
 			}
 		}
+
+		console.log('I = ' + selection);
+
+		// Cookies
+		// var date = new Date();
+		// var name = 'accordion_single';
+		// var value = true;
+		// date.setTime( date.getTime() + 60 * 60 * 24 * 1000 );
+		// var expires = "; expires="+date.toGMTString(); // expires after 24 hours
+		// // Set cookie
+		// document.cookie = name+"="+value+expires+";";
+		// console.log('ACCORDION COOKIE = ' + document.cookie );
+
 	};
 
 	init_accordion();
