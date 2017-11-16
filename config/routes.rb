@@ -36,5 +36,7 @@ Rails.application.routes.draw do
   get '/regions', to: 'standard#index'
   get '/regions/*path', to: 'standard#index'
 
+  health_check_routes
+
   get '*path', to: 'content#content'
 end
