@@ -41,36 +41,21 @@
         %hr{:class => 'rule-small'}
     .grid-row
       - if @content_children.present?
-
-        - child_count = @content_children.count
-        - if child_count == 3
-          - multiple_of = 3
-        - else
-          - multiple_of = (child_count / 3)
-
-        - @content_children.each_with_index do |content, index|
-          - from = index
-          - to = from + multiple_of
-
-          - if (index % 3 === 0)
-
-            - case index
-            - when from..to
-
-            .column-third.card
+        - multiple_of = (@content_children.count.to_f / 3).ceil
+        - @content_children.in_groups_of(multiple_of).each do |contents|
+          .column-third.card
+            - contents.compact.each do |content|          
               %h3.heading-small
-              - @content_children[from..to].each_with_index do |content_m, index_m|
-                %h3
-                  - if content_m["acf"]["redirect_url"].present?
-                    - link = content_m["acf"]["redirect_url"]["url"]
-                    - title = content_m["acf"]["redirect_url"]["title"]
-                    - target = content_m["acf"]["redirect_url"]["target"]
-                    = link_to( title, link, target: target)
-                  - else
-                    - link = content_m["link"]
-                    - title = content_m["title"]["rendered"].html_safe 
-                    = link_to( title, link)
-                %p
-                  = content_m["acf"]["excerpt"]
+                - if content["acf"]["redirect_url"].present?
+                  - link = content["acf"]["redirect_url"]["url"]
+                  - title = content["acf"]["redirect_url"]["title"]
+                  - target = content["acf"]["redirect_url"]["target"]
+                  = link_to( title, link, target: target)
+                - else
+                  - link = content["link"]
+                  - title = content["title"]["rendered"].html_safe 
+                  = link_to( title, link)
+              %p
+                = content["acf"]["excerpt"]
 
-= render partial: "widgets/zendesk_footer"
+    = render partial: "widgets/zendesk_footer"
