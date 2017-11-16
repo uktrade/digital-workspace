@@ -28,6 +28,7 @@ gem 'redis-session-store'
 gem 'readthis'
 
 gem 'foreman'
+gem 'health_check'
 
 group :development, :test do
   gem 'bundler-audit'

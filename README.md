@@ -73,3 +73,7 @@ See `Rails.cache.fetch` in `wp_api.rb` and `twitter_feed.rb`.
 To enable the redis cache in development and test:
 `rake dev:cache`
 NOTE: if the cache is enabled this might affect test behaviour!
+
+## Health Check
+There is a basic health check page, currently asserting that the People Finder, Word Press and Redis services are available:
+`/health_check.json` or `/health_check.xml`
