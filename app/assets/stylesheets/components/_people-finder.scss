@@ -179,6 +179,14 @@
 		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=$brand_color_c, endColorstr=$brand_color_c)"; /* IE8 */
 		text-align: right;
 
+		.maginot {
+			float: right;
+			a {
+				display: block;
+				padding: 0;
+			}
+		}
+
 		a {
 			position: relative;
 			padding: 18px 18px 18px 0px;
