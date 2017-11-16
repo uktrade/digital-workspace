@@ -118,7 +118,8 @@
 		}
 		.paging-count {
 			display: block;
-			font-size: 16px;
+			font-size: $text_xsmall;
+			line-height: 1.25;
 			text-decoration: underline;
 		}
 	}

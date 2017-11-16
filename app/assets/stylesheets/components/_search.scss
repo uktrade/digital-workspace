@@ -35,7 +35,7 @@
 		font-family: $font_family_main;
 		font-weight: 400;
 		text-transform: none;
-		font-size: 16px !important; /* override */
+		font-size: $text_xsmall !important; /* override */
 		line-height: 1.75;
 		background: #fff;
 		border-radius: 0;
@@ -85,7 +85,7 @@
 			font-family: $font_family_main;
 			font-weight: 400;
 			text-transform: none;
-			font-size: 16px;
+			font-size: $text_xsmall;
 			line-height: 40px;
 			color: #6f777b;
 		}

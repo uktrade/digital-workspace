@@ -26,7 +26,8 @@
 
 	.result-count {
 		color: #454a4c;
-		font-size: 16px;
+		font-size: $text_xsmall;
+		line-height: 1.25;
 	}
 
 	.heading-large {
@@ -35,7 +36,8 @@
 
 	p.info {
 		color: #454a4c;
-		font-size: 16px;
+		font-size: $text_xsmall;
+		line-height: 1.25;
 		margin-top: 0;
 	}
 
@@ -46,7 +48,7 @@
 			padding: 5px;
 			.legend {
 				font-family: "nta", Arial, sans-serif;
-				font-size: 16px;
+				font-size: $text_xsmall;
 				line-height: 1.25;
 				font-weight: 400;
 				text-transform: none;
@@ -101,7 +103,8 @@
 				label {
 					display: -moz-inline-stack;
 					display: inline-block;
-					font-size: 16px;
+					font-size: $text_xsmall;
+					line-height: 1.25;
 					margin-left: 20px;
 				}
 			}
@@ -125,7 +128,8 @@
 					.clear-selected {
 						display: -moz-inline-stack;
 						display: inline-block;
-						font-size: 16px;
+						font-size: $text_xsmall;
+						line-height: 1.25;
 						margin-right: 5px;
 						&.js-hidden {
 							left: -9999em;
@@ -179,7 +183,7 @@
 			.filter {
 				.legend {
 					font-size: 19px;
-					line-height: 1.31579;
+					line-height: 1.251579;
 				}
 			}
 		}
