@@ -22,8 +22,8 @@ class SingleController < ApplicationController
   def comments_post
     post_body = {
       'post' => params[:post],
-      'author_email' => @people_finder_profile.email,
-      'author_name' => @people_finder_profile.name,
+      'author_email' => params[:author_email],
+      'author_name' => params[:author_name],
       'content' => params[:comment_content],
       'parent' => params[:comment_parent]
     }
