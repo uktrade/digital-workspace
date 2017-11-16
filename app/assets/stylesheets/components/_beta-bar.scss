@@ -16,8 +16,8 @@
 		padding: 2px 5px 0;
 		font-weight: 700;
 		text-transform: none;
-		font-size: 16px;
-		line-height: 1.14286;
+		font-size: $text_xsmall;
+		line-height: 1.25;
 		text-transform: uppercase;
 		letter-spacing: 1px;
 		text-decoration: none;
@@ -45,7 +45,7 @@
 
 @media (min-width: $screen_medium) {
 	.beta-bar {
-		font-size: 16px;
+		font-size: $text_xsmall;
 		.beta-label {
 			float: none;
 			margin-bottom: 0;

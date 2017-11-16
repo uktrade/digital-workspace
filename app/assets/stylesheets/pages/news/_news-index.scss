@@ -57,8 +57,15 @@
 
 .news-item-excerpt {
 	p {
-		font-size: $text_xsmall;
+		font-size: $text_small;
 		line-height: $text_medium;
+	}
+}
+
+.news-item-image-container {
+	max-width: 100%;
+	img {
+		max-width: 100%;
 	}
 }
 
