@@ -64,12 +64,13 @@
 		for (i = 0; i < key_val_pairs.length; ++i) {
 			var result = pattern_a.test(key_val_pairs[i]);
 			
+
 			if (result === true) {
 				var number = key_val_pairs[i].split('=');
 				var selected = number[1];
 
 				selections_array.push(selected);
-				accordions[selected].parentNode.classList.add('visible', 'animate-false');
+				accordions[selected].parentNode.classList.add('visible');
 				accordions[selected].style.height = accordions[i].scrollHeight + 'px';
 			}
 		}
