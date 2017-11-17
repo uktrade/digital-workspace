@@ -17,9 +17,19 @@
 		if (accordion_container_length !== 0 || accordion_container_length > 0) {
 			accordion_events();
 			get_cookies();
+			enable_animation();
 		} else {
 			return;
 		}
+	}
+
+	function enable_animation(){
+		window.wait = setTimeout( function (){
+			for (i = 0; i < accordions.length; i++) {
+				accordions[i].classList.remove('no-animate');
+			};
+			clearTimeout(window.wait);
+		}, 200);
 	}
 
 	// Events
@@ -84,6 +94,7 @@
 				}
 			}
 		}
+
 		//console.log('selections_array ' + selections_array);
 	}
 

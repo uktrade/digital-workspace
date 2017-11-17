@@ -2,6 +2,7 @@
 
 	// Set some variables
 	var toggle_cta = document.getElementsByClassName("topic-toggle");
+	var toggle_animators = document.getElementsByClassName("topics-list-extra");
 	var toggle_length = toggle_cta.length;
 	var flag = null;
 
@@ -11,7 +12,17 @@
 		if (typeof(toggle_cta) != 'undefined' && toggle_cta != null) {
 			topics_events();
 			get_cookies();
+			enable_animation();
 		}
+	}
+
+	function enable_animation(){
+		window.wait = setTimeout( function (){
+			for (i = 0; i < toggle_animators.length; i++) {
+				toggle_animators[i].classList.remove('no-animate');
+			};
+			clearTimeout(window.wait);
+		}, 200);
 	}
 
 	// Events

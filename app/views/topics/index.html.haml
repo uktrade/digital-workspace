@@ -52,7 +52,7 @@
                 - @topic_howdoi[0..4].each_with_index do |how, i|
                   %li
                     = link_to(how["title"]["rendered"].html_safe, how["link"])
-                .topics-list-extra
+                .topics-list-extra.no-animate
                   - if @topic_howdoi[5..-1].present?
                     - @topic_howdoi[5..-1].each_with_index do |how_extra, i|
                       %li
@@ -71,7 +71,7 @@
                     = link_to(pol["title"]["rendered"].html_safe, pol["link"])
                     - policy_or_guidance = pol["acf"]["policy_or_guidance"]
                     = "<span class='policy-meta'>Last updated:  #{get_date( pol["date"] )} − <span class='policy-meta-type'>#{policy_or_guidance}</span></span>".html_safe
-                .topics-list-extra
+                .topics-list-extra.no-animate
                   - if @topic_policies[5..-1].present?
                     - @topic_policies[5..-1].each_with_index do |pol_extra, i|
                       %li
