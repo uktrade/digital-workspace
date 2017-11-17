@@ -59,7 +59,7 @@
                         = link_to(how_extra["title"]["rendered"].html_safe, how_extra["link"])
                 - if @topic_howdoi[5..-1].present?
                   %li.topic-controls
-                    %span{class: 'topic-toggle'}View more
+                    %span{id: "toggle-howdoi", class: 'topic-toggle'}View more
             %hr{:class => 'rule-small'}
           - if @topic_policies.present?
             .topic
@@ -80,7 +80,7 @@
                         = "<span class='policy-meta'>Last updated:  #{get_date( pol_extra["date"] )} − <span class='policy-meta-type'> #{policy_or_guidance_extra}</span></span>".html_safe                    
                 - if @topic_policies[5..-1].present?
                   %li.topic-controls
-                    %span{class: 'topic-toggle'}View more
+                    %span{id: "toggle-policy", class: 'topic-toggle'}View more
             %hr{:class => 'rule-small'}
 
           - @topic_forms.each do |p|
