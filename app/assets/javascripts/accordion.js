@@ -1,5 +1,5 @@
 (function() {
-
+	
 	// Set some variables
 	var accordion_container_length = document.getElementsByClassName('accordion-container').length;
 	var accordions = document.querySelectorAll('.accordion-inner'), i;
@@ -40,11 +40,9 @@
 	}
 
 	function set_cookies(i) {
-		console.log('SELECTION = ' + i);
-
 		// Cookies
 		var date = new Date();
-		var name = 'accordion_single_selection';
+		var name = 'accordion_single_selection_'+i;
 		var value = i;
 		date.setTime( date.getTime() + 60 * 60 * 24 * 1000 );
 		var expires = "; expires="+date.toGMTString(); // expires after 24 hours
@@ -54,29 +52,29 @@
 		document.cookie = name+"="+value+expires+"; path=/;";
 	}
 
-	function get_cookies(accordion_single_selection){
-		console.log("get_cookies");
-		var pattern = RegExp(name + "=.[^;]*")
-		console.log("name" + name);
-		matched = document.cookie.match(pattern)
-		if(matched){
-			var cookie = matched[0].split('=')
-			console.log('COOKIE: ' + cookie[1])
-		}
-		// return false
-	}
-	
+	function get_cookies() {
+		var cookies = {};
+		var key_val_pairs = document.cookie.split(';');
+		var pattern_a = /accordion_single_selection_(\d*)/;
+		// var pattern_a = /^((?!accordion_single_selection_).)*$/;
+		var selections_array = [];
 
-	// function get_cookies(name) {
-	// 	console.log("get_cookies");
-	// 	var value = "; " + document.cookie;
-	// 	var parts = value.split("; " + name + "=");
-	// 	console.log("value: " + value);
-	// 	console.log("parts: " + parts);
-	// 	if (parts.length == 2) {
-	// 		console.log("COOKIE: " + parts.pop().split(";").shift() );
-	// 	} 
-	// }
+		
+		// Collect selections
+		for (i = 0; i < key_val_pairs.length; ++i) {
+			var result = pattern_a.test(key_val_pairs[i]);
+			
+			if (result === true) {
+				var number = key_val_pairs[i].split('=');
+				var selected = number[1];
+
+				selections_array.push(selected);
+				accordions[selected].parentNode.classList.add('visible', 'animate-false');
+				accordions[selected].style.height = accordions[i].scrollHeight + 'px';
+			}
+		}
+		console.log('selections_array ' + selections_array);
+	}
 
 	// Toggle all topics
 	function toggle_all(){
@@ -136,7 +134,7 @@
 			}
 		}
 	};
-
+	
 	init_accordion();
 
 }).call(this);
