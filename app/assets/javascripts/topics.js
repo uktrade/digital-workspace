@@ -7,6 +7,7 @@
 
 	// Initialise
 	function init_topics(){
+		
 		if (typeof(toggle_cta) != 'undefined' && toggle_cta != null) {
 			topics_events();
 		}
