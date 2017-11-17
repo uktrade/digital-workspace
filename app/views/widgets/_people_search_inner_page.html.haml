@@ -12,7 +12,10 @@
             %button{type: 'submit', class: 'search-submit', id:'people_search_submit' }
               Search
     .user-account
-      - if @people_finder_profile.name
+      - if @people_finder_profile.given_name
+        %a{:href => @people_finder_profile.profile_url}
+          = "Hi, #{@people_finder_profile.given_name}"
+      - elsif @people_finder_profile.name
         %a{:href => @people_finder_profile.profile_url}
           = "Hi, #{@people_finder_profile.name}"
       - if @people_finder_profile.profile_image_url
