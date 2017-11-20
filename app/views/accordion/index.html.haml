@@ -49,7 +49,7 @@
                     - if theme_title.present?
                       - theme_title.each do |title|
                         = title["acf"]["excerpt"]
-                .accordion-inner
+                .accordion-inner.no-animate
                   - accordion_topics = AccordionQueries.accordion_topic_query(theme_slug)
                   - if accordion_topics.present?
                     %ul.list-style-a
