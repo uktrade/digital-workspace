@@ -45,7 +45,7 @@
 					var accordion_classes = elem.srcElement.parentNode.parentNode.classList;
 						rem_cookies(index);
 					if (accordion_classes.contains('visible')) {
-						var sH = elem.srcElement.parentNode.nextSibling.nextElementSibling.scrollHeight;
+						var sH = elem.srcElement.parentNode.nextElementSibling.scrollHeight;
 						set_cookies(index, sH);
 					}
 				}
@@ -74,12 +74,11 @@
 		var pattern_a = /accordion_single_selection_(\d*)/;
 		// var pattern_a = /^((?!accordion_single_selection_).)*$/;
 		var selections_array = [];
-		
 		// Collect selections
 		for (i = 0; i < key_val_pairs.length; ++i) {
 			var result = pattern_a.test(key_val_pairs[i]);
 			if (result === true) {
-				if(key_val_pairs[i].includes(slug)){
+				if(key_val_pairs[i].indexOf(slug) >= 0){
 					var values = key_val_pairs[i].split('=');
 					var valuesArr = values[1].split('sh-');
 					var number = valuesArr[0];
@@ -146,7 +145,7 @@
 		var accordions = document.querySelectorAll('.accordion');
 		var accordion = self.parentNode;
 		var accordions_inner = document.querySelectorAll('.accordion-inner');
-		var accordion_inner = self.parentNode.querySelector(':scope > .accordion-inner');
+		var accordion_inner = self.nextElementSibling;
 
 		// Remove classes
 		for (var i = 0; i < accordions.length; ++i) {

@@ -35,7 +35,7 @@
 	// Toggle topics
 	function toggle_topics(){
 		var self = this;
-		var container = self.parentNode.parentNode.querySelector(':scope > .topics-list-extra');
+		var container = self.parentNode.previousElementSibling;
 
 		if (self.flag !== true) {	// open
 			self.parentNode.parentNode.classList.add('visible');
@@ -86,7 +86,7 @@
 		for (i = 0; i < key_val_pairs.length; ++i) {
 			var result = pattern_a.test(key_val_pairs[i]);
 			if (result === true) {
-				if(key_val_pairs[i].includes(slug)){
+				if(key_val_pairs[i].indexOf(slug) >= 0){
 					var values = key_val_pairs[i].split('=');
 					var valuesArr = values[1].split('sh-');
 					var number = valuesArr[0];
@@ -96,17 +96,15 @@
 						height = height + 'px';
 					}
 					var element = document.getElementById(selected);
-					if(element !== null) {
-						var container = element.parentNode.parentNode.querySelector(':scope > .topics-list-extra');
-						element.parentNode.parentNode.classList.add('visible');
-						container.style.height = height;
-						element.innerHTML = 'View less';
-						element.flag = true;
-						element.wait = setTimeout( function (){
-							element.parentNode.parentNode.classList.add('in');
-							clearTimeout(element.wait);
-						}, 100);
-					}
+					var container = element.parentNode.previousElementSibling;
+					element.parentNode.parentNode.classList.add('visible');
+					container.style.height = height;
+					element.innerHTML = 'View less';
+					element.flag = true;
+					element.wait = setTimeout( function (){
+						element.parentNode.parentNode.classList.add('in');
+						clearTimeout(element.wait);
+					}, 100);
 				}
 			}
 		}
