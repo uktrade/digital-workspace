@@ -10,7 +10,6 @@
     %span
       = flash[:notice]
 %div{:id => 'homepage', :class => 'homepage-content'}
-  /= render partial: "widgets/zendesk_header"
   %main#content.root-index 
     .grid-row
       .column-full
@@ -19,7 +18,7 @@
             - if @posts.present?
               - @posts[0..0].each_with_index do |p, i|
                 .hero-news-copy
-                  %h1.heading-medium
+                  %h3.heading-medium
                     = link_to(p["title"]["rendered"].html_safe, link_news_top + p["slug"])
                   .hero-news-excerpt
                     %p
@@ -84,7 +83,11 @@
           .column-third.popular-page-summary
             %span{:class => "image-holder"}
               %a{:title => p["title"]["rendered"], :class => "img", :href => p["slug"]}
-                %img{:src => p['acf']['image']['sizes']['medium'], :alt => p["title"]["rendered"].html_safe}
+                - if p['acf']['image']['alt'].present?
+                  - (img_alt = p['acf']['image']['alt'].html_safe)
+                - else 
+                  - (img_alt = p['title']['rendered'].html_safe)
+                %img{:src => p['acf']['image']['sizes']['medium'], :alt => img_alt}
             .popular-page-text
               %h3.heading-medium
                 = link_to(p["title"]["rendered"].html_safe, p["slug"])

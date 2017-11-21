@@ -7,4 +7,7 @@
       - if @header_menu_content.count > 0
         - @header_menu_content.each do |menu_link|
           %li
-            = link_to(menu_link['menu_item']['title'], menu_link['menu_item']['url'], target: menu_link['menu_item']['target'])
+            - if menu_link['menu_item']['target'] != ''
+              = link_to(menu_link['menu_item']['title'], menu_link['menu_item']['url'], target: menu_link['menu_item']['target'], title: menu_link['menu_item']['title'])
+            - else
+              = link_to(menu_link['menu_item']['title'], menu_link['menu_item']['url'], title: menu_link['menu_item']['title'])

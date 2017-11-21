@@ -1,19 +1,16 @@
-- content_for :body_start do
-  = render partial: "widgets/notifications"
+- @omit_header = true;
 
-- content_for :page_title, page_title
+- content_for :header_class do
+  = "with-proposition"
 
 - content_for :homepage_url do
   = '/'
 
-- content_for :head do
+- content_for :global_header_text do
+  = 'Digital Workspace'
 
-  = stylesheet_link_tag "application", media: "all"
-  = csrf_meta_tag
-  = render partial: "widgets/tracking_code"
-  
-- content_for :header_class do
-  = "with-proposition"
+- content_for :logo_link_title do
+  = 'Go to the Digital Workspace homepage'
 
 - content_for :proposition_header do
   %ul.mobile-header
@@ -24,7 +21,7 @@
       = link_to "Search", '/search', class: "mobile-search-button"
   .header-proposition
     .content
-      = link_to "Digital Workspace", root_path, id: "proposition-name"
+      = link_to "Digital Workspace", root_path, id: "proposition-name", title: "Digital Workspace"
 
     = render partial: "widgets/nav"
 
@@ -42,6 +39,26 @@
               %button{:type => 'submit', :class => 'search-submit'}
                 Search
 
+- content_for :body_start do
+  = render partial: "widgets/notifications"
+  %header{role: "banner", id: "global-header", class: yield(:header_class)}
+    .header-wrapper
+      .header-global
+        .header-logo
+          %a{href: content_for?(:homepage_url) ? yield(:homepage_url) : "https://www.gov.uk/", title: content_for?(:logo_link_title) ? yield(:logo_link_title) : "Go to the GOV.UK homepage", id: "logo", class: "content"}
+
+            = "Digital Workspace"
+        = yield(:inside_header)
+      = yield(:proposition_header)
+
+- content_for :page_title, page_title
+
+- content_for :head do
+
+  = stylesheet_link_tag "application", media: "all"
+  = csrf_meta_tag
+  = render partial: "widgets/tracking_code"
+
 - content_for :body_end do
   = javascript_include_tag 'application'
   
@@ -53,7 +70,10 @@
       - if !@footer_menu_content.nil?
         - @footer_menu_content.each do |menu_link|
           %li
-            = link_to(menu_link['menu_item']['title'], menu_link['menu_item']['url'], target: menu_link['menu_item']['target'])
+            - if menu_link['menu_item']['target'] != ''
+              = link_to(menu_link['menu_item']['title'], menu_link['menu_item']['url'], target: menu_link['menu_item']['target'], title: menu_link['menu_item']['title'])
+            - else
+              = link_to(menu_link['menu_item']['title'], menu_link['menu_item']['url'], title: menu_link['menu_item']['title'])
 
     .acknowledgements
       %p
