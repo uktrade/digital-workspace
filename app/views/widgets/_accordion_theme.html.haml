@@ -1,0 +1,18 @@
+.accordion
+  .accordion-header
+    - theme_slug = theme['slug']
+    %h2.heading-medium
+      = theme["name"]
+    %p
+      /@accordion_theme[ix]['slug']
+      = @accordion_themes
+      - theme_title = AccordionQueries.accordion_theme_title_query(theme_slug)
+      - if theme_title.present?
+        - theme_title.each do |title|
+          = title["acf"]["excerpt"]
+  .accordion-inner.no-animate
+    - accordion_topics = AccordionQueries.accordion_topic_query(theme_slug)
+    - if accordion_topics.present?
+      %ul.list-style-a
+        - accordion_topics.each do |topic|
+          = render partial: 'widgets/accordion_topic', locals: {topic: topic}

@@ -36,25 +36,8 @@
           %span.accordion-open-all
             Open all
         .accordion-container
-
           - if @accordion_theme.present?
-            - @accordion_theme.each do |theme|
-              .accordion
-                .accordion-header
-                  - theme_slug = theme['slug']
-                  %h2.heading-medium
-                    = theme["name"]
-                  %p
-                    - theme_title = AccordionQueries.accordion_theme_title_query(theme_slug)
-                    - if theme_title.present?
-                      - theme_title.each do |title|
-                        = title["acf"]["excerpt"]
-                .accordion-inner.no-animate
-                  - accordion_topics = AccordionQueries.accordion_topic_query(theme_slug)
-                  - if accordion_topics.present?
-                    %ul.list-style-a
-                      - accordion_topics.each do |topic|
-                        %li
-                          = link_to( topic["title"]["rendered"].html_safe, topic["slug"])
+            - @accordion_theme.each_with_index do |theme, ix|
+              = render partial: "widgets/accordion_theme", locals: { theme: theme, ix: ix }
 
 = render partial: "widgets/zendesk_footer"
