@@ -30,7 +30,7 @@
 		var self = this;
 		var fb_forms = document.querySelectorAll('.feedback_container');
 		var feedback = self.parentNode;
-		var feedback_inner = self.parentNode.querySelector(':scope > .new_problem_report');
+		var feedback_inner = self.nextElementSibling;
 
 		// Remove classes
 		for (i = 0; i < fb_forms.length; ++i) {
