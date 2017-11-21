@@ -11,5 +11,4 @@ class AccordionController < ApplicationController
     @global_notifications = @api_call.main_query(@slug)
     @global_notification = @global_notifications.first if @global_notifications.first.is_a?(Hash)
   end
-
 end
