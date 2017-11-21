@@ -95,3 +95,16 @@ a.cta-comments {
 		}
 	}
 }
+
+@media (min-width: $screen_medium) {
+	.news-section {
+		.news-item {
+			&:first-child {
+				.heading-medium {
+					margin-top: 0;
+					padding-top: 0;
+				}
+			}
+		}
+	}
+}
