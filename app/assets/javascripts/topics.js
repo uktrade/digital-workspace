@@ -98,14 +98,14 @@
 					var element = document.getElementById(selected);
 					if(element !== null) {
 						var container = element.parentNode.parentNode.querySelector(':scope > .topics-list-extra');
-							element.parentNode.parentNode.classList.add('visible');
-							container.style.height = height;
-							element.innerHTML = 'View less';
-							element.flag = true;
-							element.wait = setTimeout( function (){
-								element.parentNode.parentNode.classList.add('in');
-								clearTimeout(element.wait);
-							}, 100);
+						element.parentNode.parentNode.classList.add('visible');
+						container.style.height = height;
+						element.innerHTML = 'View less';
+						element.flag = true;
+						element.wait = setTimeout( function (){
+							element.parentNode.parentNode.classList.add('in');
+							clearTimeout(element.wait);
+						}, 100);
 					}
 				}
 			}
