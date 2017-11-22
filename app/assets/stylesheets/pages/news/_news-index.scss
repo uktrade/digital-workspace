@@ -52,6 +52,13 @@
 	p {
 		font-size: $text_small;
 		line-height: $text_medium;
+		&.wp-caption-text {
+			background-color: #F8F8F8;
+			font-size: $text_xsmall;
+			line-height: 1.25; 
+			margin: 0 0 30px 0;
+			padding: 20px;
+		}
 	}
 }
 

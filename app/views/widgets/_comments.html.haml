@@ -7,39 +7,40 @@
           = comments_heading(comment_count)
       - @comments.each do |comment|
         - if comment['parent'] == 0
-          - @top_level_comment = comment['id']
-          .post-meta
-            - if !comment['author_name'].nil?
-              %span.comment-name
-                = "#{comment['author_name']}"
-            - if !comment['date'].nil?
-              %span.comment-date
-                = precede ', ' do
-                  = get_date(comment["date"])
-          - if !comment['content'].nil? && !comment['content']['rendered'].nil?
-            = comment["content"]["rendered"].html_safe
-          - if !comment['id'].nil?
-            %a{:href => '#comment-reply', :class => 'cta-comment-reply', :id => "reply-to-#{comment['id']}"  }
-              Reply
-          - @children = @comments.select{|key, hash| key['parent'] == comment['id']}
-          - if @children.class == Array && @children.count > 0
-            .replies
-              .comment-replies
-                - @children.each do |child_comment|
-                  .comment{:id => "comment-reply-#{child_comment['id']}"}
-                    .post-meta
-                      - if !child_comment['author_name'].nil?
-                        %span.comment-name
-                          = child_comment['author_name']
-                      - if !child_comment['date'].nil?
-                        %span.comment-date
-                          = precede ', ' do
-                            = get_date(child_comment["date"])
-                    - if !child_comment['content'].nil? && !child_comment['content']['rendered'].nil?
-                      %p
-                        = child_comment['content']['rendered'].html_safe
-                %a{:href => '#comment-reply', :class => 'cta-comment-reply', :id => "threaded-reply-to-#{@top_level_comment}"  }
-                  Reply
+          .comment
+            - @top_level_comment = comment['id']
+            .post-meta
+              - if !comment['author_name'].nil?
+                %span.comment-name
+                  = "#{comment['author_name']}"
+              - if !comment['date'].nil?
+                %span.comment-date
+                  = precede ', ' do
+                    = get_date(comment["date"])
+            - if !comment['content'].nil? && !comment['content']['rendered'].nil?
+              = comment["content"]["rendered"].html_safe
+            - if !comment['id'].nil?
+              %a{:href => '#comment-reply', :class => 'cta-comment-reply', :id => "reply-to-#{comment['id']}"  }
+                Reply
+            - @children = @comments.select{|key, hash| key['parent'] == comment['id']}
+            - if @children.class == Array && @children.count > 0
+              .replies
+                .comment-replies
+                  - @children.each do |child_comment|
+                    .comment{:id => "comment-reply-#{child_comment['id']}"}
+                      .post-meta
+                        - if !child_comment['author_name'].nil?
+                          %span.comment-name
+                            = child_comment['author_name']
+                        - if !child_comment['date'].nil?
+                          %span.comment-date
+                            = precede ', ' do
+                              = get_date(child_comment["date"])
+                      - if !child_comment['content'].nil? && !child_comment['content']['rendered'].nil?
+                        %p
+                          = child_comment['content']['rendered'].html_safe
+                  %a{:href => '#comment-reply', :class => 'cta-comment-reply', :id => "threaded-reply-to-#{@top_level_comment}"  }
+                    Reply
 
     .leave-comment
       %h2.heading-medium{:id => 'comment-reply'}
@@ -50,6 +51,7 @@
         = hidden_field_tag("author_email", @people_finder_profile.email)
         = hidden_field_tag("post", @posts.first["id"])
         = hidden_field_tag("comment_parent", 0)
-        = text_area_tag('comment_content', nil, class: 'leave-comment-textarea')
+        .comment_content_wrap
+          = text_area_tag('comment_content', nil, class: 'leave-comment-textarea')
         = submit_tag('Submit comment', class: 'button')
 
