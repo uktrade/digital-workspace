@@ -25,14 +25,19 @@
 	font-weight: 700;
 }
 
-.leave-comment-textarea {
-	width: 100%;
-	border: 2px solid #000000;
-	padding: 20px;
+.comment_content_wrap {
 	margin: 0px 0px 20px 0px;
-	min-height: 100px;
-	font-size: $text_xsmall;
-	line-height: 1.25;
+	.leave-comment-textarea {
+		border: 2px solid #000000;
+		padding: 20px;
+		min-height: 100px;
+		font-size: $text_xsmall;
+		line-height: 1.25;
+		width: 100%;
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+	}
 }
 
 .comment-notification {
