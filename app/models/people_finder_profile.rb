@@ -42,7 +42,7 @@ class PeopleFinderProfile
       @profile = PeopleFinderProfile.new
       @profile.email = @email
       @profile.name = @attributes['name']
-      @profile.given_name = @attributes['given_name']
+      @profile.given_name = @attributes['given-name']
       @profile.surname = @attributes['surname']
       @profile.team = @attributes['team']
       @profile.completion_score = @attributes['completion-score'] || 0
