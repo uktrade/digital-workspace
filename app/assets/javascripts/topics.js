@@ -9,7 +9,8 @@
 	// Initialise
 	function init_topics(){
 		
-		if (typeof(toggle_cta) != 'undefined' && toggle_cta != null) {
+		//if (typeof(toggle_cta) != 'undefined' && toggle_cta != null) {
+		if(toggle_length > 0) {
 			topics_events();
 			get_cookies();
 			enable_animation();
