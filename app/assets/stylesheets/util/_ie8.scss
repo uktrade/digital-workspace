@@ -1,0 +1,29 @@
+html.lte-ie8 {
+	#global-header {
+		&.with-proposition {
+			.header-wrapper {
+				.header-global {
+					float: left;
+					width: 25%;
+				}
+				.mobile-header {
+					display: none;
+				}
+				.header-proposition {
+					clear: none;
+					width: 75%;
+					float: left;
+					#proposition-menu {
+						#proposition-links {
+							li {
+								float: left;
+								margin-right: 20px;
+								width: auto;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
