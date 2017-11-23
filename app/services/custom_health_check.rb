@@ -32,7 +32,7 @@ class CustomHealthCheck
 
   def check_wordpress_api
     response = HTTParty.get(
-      URI.join(ENV['WP_API_URL'], '/news').to_s,
+      ENV['WP_API_URL'],
       headers: {
         'Authorization' => "Basic #{ENV['WP_API_KEY']}"
       }
