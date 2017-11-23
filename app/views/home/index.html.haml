@@ -13,7 +13,7 @@
     %span
       = flash[:notice]
 %div{:id => 'homepage', :class => 'homepage-content'}
-  %main#content.root-index 
+  %main#content.root-index
     .grid-row
       .column-full
         .hero-news
@@ -88,7 +88,7 @@
               %a{:title => p["title"]["rendered"], :class => "img", :href => p["slug"]}
                 - if p['acf']['image']['alt'].present?
                   - (img_alt = p['acf']['image']['alt'].html_safe)
-                - else 
+                - else
                   - (img_alt = p['title']['rendered'].html_safe)
                 %img{:src => p['acf']['image']['sizes']['medium'], :alt => img_alt}
             .popular-page-text
