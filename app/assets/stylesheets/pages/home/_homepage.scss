@@ -27,7 +27,7 @@
 	margin-bottom: 30px;
 	// overflow: auto;
 	// height: 100%;
-	
+
 	.post-meta {
 		position: relative;
 	}
@@ -38,7 +38,7 @@
 	&-image {
 		position: relative;
 		overflow: hidden;
-		
+
 		@media(min-width: $screen_medium) {
 			max-width: 300px;
 			height: 195px;
@@ -51,7 +51,7 @@
 			width: 100%;
 			height: auto;
 
-			@media(min-width: $screen_medium) {				
+			@media(min-width: $screen_medium) {
 				position: absolute;
 				top: 0;
 				left: 50%;
@@ -266,12 +266,12 @@
 		}
 		&.graph-summary-c {
 			.stat {
-				@include background-image('87_people_survey', png, 159px, 159px);
+				@include background-image('63_people_survey', png, 159px, 159px);
 				background-position: center 40px;
 
 				@media (min-width: $screen_medium) {
 					background-position: center 30px;
-				}			
+				}
 			}
 		}
 	}
