@@ -266,7 +266,7 @@
 		}
 		&.graph-summary-c {
 			.stat {
-				@include background-image('87_people_survey', png, 159px, 159px);
+				@include background-image('63_people_survey', png, 159px, 159px);
 				background-position: center 40px;
 
 				@media (min-width: $screen_medium) {
