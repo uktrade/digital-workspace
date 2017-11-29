@@ -3,15 +3,29 @@ class ReportController < ApplicationController
   require 'json'
 
   def index
+    perform_zendesk_request
+
+    flash[:notice] = 'Thank you for your submission. Your problem has been reported.'
+    redirect_back fallback_location: '/'
+  end
+
+  protected
+
+  def perform_zendesk_request
     client = zendesk_client
     client.tickets.create(
       subject: "Website error submission #{Time.current}",
       comment: { value: params['problem_report_problem'] },
       submitter_id: client.current_user.id,
-      priority: 'normal', type: 'incident', custom_fields: zendesk_request_fields
+      priority: 'normal', type: 'incident', custom_fields: zendesk_request_fields,
+      requester: { email: requester.email, name: requester.name }
     )
-    flash[:notice] = 'Thank you for your submission. Your problem has been reported.'
-    redirect_back fallback_location: '/'
+  end
+
+  def requester
+    @requester ||= @people_finder_profile
+    @requester.name ||= 'Unknown'
+    @requester
   end
 
   def zendesk_client
