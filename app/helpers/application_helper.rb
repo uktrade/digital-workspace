@@ -42,6 +42,6 @@ module ApplicationHelper
   def page_title
     (
       [@page_title] << 'Digital Workspace'
-    ).compact.join(' - ')
+    ).compact.join(' - ').html_safe
   end
 end
