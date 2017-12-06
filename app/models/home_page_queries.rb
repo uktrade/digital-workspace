@@ -23,6 +23,12 @@ class HomePageQueries
     )
   end
 
+  def visualisations
+    WpApi.get_custom_json_body(
+      'visualisation'
+    )
+  end
+
   def howdois
     WpApi.get_json_body('howdoi?orderby=menu_order&order=desc&per_page=10')
   end
