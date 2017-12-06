@@ -1,7 +1,7 @@
 .welcome-people-finder
   .floated-inner-block
     %h2.heading-large
-      People finder
+      = link_to "People finder", "#{ENV['PEOPLEFINDER_URL']}/teams/department-for-international-trade"
     %p.heading-tag-line
       Search for people, teams, roles, skills and more from across the department and around the world.
     %form{action: "#{ENV['PEOPLEFINDER_URL']}/search", method: 'get', role: 'search', id: 'people_search' }
