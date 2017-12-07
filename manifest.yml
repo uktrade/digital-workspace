@@ -1,4 +1,0 @@
----
-applications:
-- name: digital-workspace
-  command : foreman start
