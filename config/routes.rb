@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get '/about-us/*path', to: 'standard#index'
 
   get '/tools', to: 'standard#index'
-  get '/tools/*path', to: 'standard#index'
+  get '/tools/*path', to: 'tools#index'
 
   get '/teams', to: 'standard#index'
   get '/teams/*path', to: 'standard#index'
