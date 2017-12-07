@@ -2,7 +2,6 @@
   - 'section-about-us' if request.original_fullpath.start_with?('/about-us')
   - 'section-tools' if request.original_fullpath.start_with?('/tools')
   - 'section-datahub' if request.original_fullpath.start_with?('/tools/data-hub')
-
 - if flash[:notice]
   .zd-confirmation
     %span

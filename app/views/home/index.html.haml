@@ -103,7 +103,6 @@
             How are we doing?
       .grid-row
         - @visualisations.each do |visualisation|
-          /= visualisation.inspect
           - if !visualisation["link"].empty?
             - if !visualisation["link"]["url"].empty?
               - tooltip = visualisation["link"]["title"].present? ? visualisation["link"]["title"] : visualisation["text"]
