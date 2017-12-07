@@ -96,30 +96,29 @@
                 = link_to(p["title"]["rendered"].html_safe, p["slug"])
     %hr{:id => 'popular', :class => 'rule-large'}
 
-    .grid-row
-      .column-half
-        %h2.heading-medium
-          How are we doing?
-    .grid-row
-      %div{'aria-label' => '3745 people working at DIT - over 2000 have a people finder profile', :class => 'column-third graph-summary graph-summary-a graph-summary-orange'}
-        .stat
-          %span.stat-number
-            3745
-          %p.stat-description
-            people working at DIT - over 2000 have a people finder profile
-      %div{'aria-label' => '108 markets with a DIT presence across the globe', :class => 'column-third graph-summary graph-summary-b graph-summary-orange'}
-        .stat
-          %span.stat-number
-            108
-          %p.stat-description
-            markets with a DIT presence across the globe
-      %div{'aria-label' => '63% overall engagement score for DIT', :class => 'column-third graph-summary graph-summary-c graph-summary-orange'}
-        .stat
-          %span.stat-number
-            63%
-          %p.stat-description
-            overall engagement score for<br/>DIT
-    %hr{:id => 'statistics', :class => 'rule-large'}
+    - if @visualisations.present?
+      .grid-row
+        .column-half
+          %h2.heading-medium
+            How are we doing?
+      .grid-row
+        - @visualisations.each do |visualisation|
+          /= visualisation.inspect
+          - if !visualisation["link"].empty?
+            - if !visualisation["link"]["url"].empty?
+              - tooltip = visualisation["link"]["title"].present? ? visualisation["link"]["title"] : visualisation["text"]
+              %a{'title' => tooltip, :href => visualisation["link"]["url"], :class => 'column-third graph-summary graph-summary-orange'}
+                .stat{:style => "background-image: url(" + visualisation['image']['url'] + "); background-size: " + visualisation['image']['width'].to_s + "px " + visualisation['image']['height'].to_s + "px; webkit-background-size: " + visualisation['image']['width'].to_s + "px " + visualisation['image']['height'].to_s + "px;"}
+                  / %span.stat-number
+                  %p.stat-description
+                    = visualisation["text"].html_safe
+          - else
+            %div{'aria-label' => visualisation["text"], :class => 'column-third graph-summary graph-summary-orange'}
+              .stat{:style => "background-image: url(" + visualisation['image']['url'] + "); background-size: " + visualisation['image']['width'].to_s + "px " + visualisation['image']['height'].to_s + "px; webkit-background-size: " + visualisation['image']['width'].to_s + "px " + visualisation['image']['height'].to_s + "px;"}
+                / %span.stat-number
+                %p.stat-description
+                  = visualisation["text"].html_safe
+      %hr{:id => 'statistics', :class => 'rule-large'}
 
     .grid-row
       .column-full

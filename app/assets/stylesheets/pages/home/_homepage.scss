@@ -183,7 +183,9 @@
 .graph-summary {
 	color: #ffffff;
 	margin-bottom: 15px;
-
+	&:link {
+		text-decoration: none;
+	}
 	&.graph-summary-orange {
 		.stat {
 			background-color: $brand_color_a;

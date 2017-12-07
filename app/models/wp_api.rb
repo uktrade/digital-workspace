@@ -15,6 +15,16 @@ class WpApi
       end
     end
 
+    def get_custom_json_body(path, use_cache = true)
+      if use_cache
+        Rails.cache.fetch("#{path}_body", expires_in: 60) do
+          JSON.parse(get_custom_json(path).body)
+        end
+      else
+        JSON.parse(get_custom_json(path).body)
+      end
+    end
+
     def get_headers(path, use_cache = true)
       if use_cache
         Rails.cache.fetch("#{path}_headers", expires_in: 60) do
@@ -28,6 +38,15 @@ class WpApi
     def get_json(path)
       HTTParty.get(
         URI.join(BASE_URI, path).to_s,
+        headers: {
+          'Authorization' => "Basic #{AUTH_TOKEN}"
+        }
+      )
+    end
+
+    def get_custom_json(path)
+      HTTParty.get(
+        URI.join(BASE_CUSTOM_URI, path).to_s,
         headers: {
           'Authorization' => "Basic #{AUTH_TOKEN}"
         }
