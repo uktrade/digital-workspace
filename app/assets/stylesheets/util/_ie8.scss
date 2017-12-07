@@ -22,8 +22,84 @@ html.lte-ie8 {
 							}
 						}
 					}
+					.search {
+						display: block;
+						#site-search {
+							width: 206px;
+						}
+						.search-submit-wrapper {
+							width: 38px;
+							.search-submit {
+								height: 40px;
+							}
+						}
+					}
 				}
 			}
 		}
+	}
+
+	.homepage-top {
+		.homepage-top-inner {
+			margin: 0 auto;
+			.welcome-people-finder {
+				width: 633px;
+			}
+			.profile-overview {
+				display: block;
+			}
+		}
+		.heading-tag-line {
+			display: block;
+		}
+	}
+
+	.beta-bar {
+		margin: 0 auto;
+	}
+
+	#content {
+		margin: 0 auto;
+		.grid-row {
+			position: relative;
+		}
+		.column-third {
+			clear: none;
+			float: left;
+			width: 33.3333333333%;
+		}
+		.column-half {
+			clear: none;
+			float: left;
+			width: 50%;
+		}
+		.column-two-thirds {
+			width: 66.6666666667%;
+		}
+		.popular-page-summary {
+			.image-holder {
+				width: 100%;
+			}
+		}
+		.hero-news-copy {
+			float: left;
+		    width: 33.3333%;
+		}
+		.hero-news-image-container {
+			float: left;
+			width: 66.6666%;
+		}
+		.select-category {
+			.form-control {
+				width: 50%;
+			}
+		}
+		.news-category {
+			display: none;
+		}
+	}
+
+	.heading-medium {
+		font-size: 19px;
 	}
 }
