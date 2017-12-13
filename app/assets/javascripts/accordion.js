@@ -111,7 +111,8 @@
 
 	// Toggle all topics
 	function toggle_all(){
-		var self = this;
+		//var self = this;
+		var self = accordion_all_cta[0];
 
 		// Set flags
 		if (flag !== true) {
@@ -121,7 +122,7 @@
 		}
 
 		for (i = 0; i < accordions.length; ++i) {
-			var self = this;
+			//var self = this;
 
 			if (flag === true) {		// open
 				self.innerHTML = 'Close all';
