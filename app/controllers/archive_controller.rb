@@ -1,8 +1,11 @@
 class ArchiveController < ApplicationController
   def index
     @api_call = NewsQueries.new
-
     init_defaults
+  end
+
+  def howdoi
+    @api_call = HowdoiQueryAll.new
   end
 
   def news_type
