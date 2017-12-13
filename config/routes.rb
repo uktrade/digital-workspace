@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   post '/news-and-views/*path', to: 'single#news'
 
   get '/working-at-dit', to: 'accordion#index'
+  get '/working-at-dit/archive/how-do-i/', to: 'archive#howdoi'
   get '/working-at-dit/how-do-i/*path', to: 'howdoi#content'
   get '/working-at-dit/policies-and-guidance/*path', to: 'policy#content'
   get '/working-at-dit/*path', to: 'topics#index'
