@@ -1,0 +1,30 @@
+%main#content.root-index.content-section
+  .grid-row
+    .column-full
+      %ul.breadcrumb
+        %li
+          = link_to( 'Home', '/' )
+        %li
+          = link_to( 'Working at DIT', '/working-at-dit/')
+
+  .grid-row
+    .column-two-thirds
+      %h2.heading-large.heading-top
+        = "All How Do I's"
+      %div
+        = "All our How Do I's, ordered by popularity"
+      - if @api_call.howdoi_1_100.count > 0
+        %ul#how_do_i_archive
+          - @api_call.howdoi_1_100.each_with_index do |howdoi|
+            %li{:id => "how-do-i-#{howdoi['id']}"}
+              = link_to( howdoi['title']['rendered'].html_safe, howdoi['mapped_path'])
+          - if @api_call.howdoi_101_200.count > 0
+            - @api_call.howdoi_101_200.each_with_index do |howdoi|
+              %li{:id => "how-do-i-#{howdoi['id']}"}
+                = link_to( howdoi['title']['rendered'].html_safe, howdoi['mapped_path'])
+          - if @api_call.howdoi_201_300.count > 0
+            - @api_call.howdoi_201_300.each_with_index do |howdoi|
+              %li{:id => "how-do-i-#{howdoi['id']}"}
+                = link_to( howdoi['title']['rendered'].html_safe, howdoi['mapped_path'])
+
+
