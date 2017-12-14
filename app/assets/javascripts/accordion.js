@@ -143,10 +143,9 @@
 		var elem = headers[index];
 
 		var accordion_classes = elem.parentNode.className;
-		var accordion_classes = elem.parentNode.className;
 		rem_cookies(index);
-		
-		if (!(accordion_classes.indexOf('visible')) > -1) {
+
+		if ((accordion_classes.indexOf('visible')) === -1) {
 			var sH = elem.nextElementSibling.scrollHeight;
 			set_cookies(index, sH);
 		}
