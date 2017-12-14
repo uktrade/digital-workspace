@@ -41,12 +41,12 @@
 .accordion-inner {
 	@extend %clearfix;
 
-	.visible & {
+	//.visible & {
 
 		ul {
-			padding-bottom: 40px;
+			padding-bottom: 20px;
 		}
-	}
+	//}
 
 	.js-enabled & {
 		height: 0px;

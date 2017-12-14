@@ -35,19 +35,17 @@
 	// Events
 	function accordion_events(){
 		// Open all
-		accordion_all_cta[0].addEventListener('click', toggle_all, false);
+		//accordion_all_cta[0].addEventListener('click', toggle_all, false);
+		accordion_all_cta[0].onclick = function() {
+			toggle_all();
+		};
 
 		// Open single
 		for (var i = 0; i < accordion_length; i++) {
-			accordion_cta[i].addEventListener('click', toggle_single, false);
+			//accordion_cta[i].addEventListener('click', toggle_single, false);
 			(function(index){
 				accordion_cta[i].onclick = function(elem){
-					var accordion_classes = elem.srcElement.parentNode.parentNode.classList;
-						rem_cookies(index);
-					if (accordion_classes.contains('visible')) {
-						var sH = elem.srcElement.parentNode.nextElementSibling.scrollHeight;
-						set_cookies(index, sH);
-					}
+					toggle_single(index);
 				}
 			})(i);		
 		}
@@ -113,7 +111,8 @@
 
 	// Toggle all topics
 	function toggle_all(){
-		var self = this;
+		//var self = this;
+		var self = accordion_all_cta[0];
 
 		// Set flags
 		if (flag !== true) {
@@ -123,7 +122,7 @@
 		}
 
 		for (i = 0; i < accordions.length; ++i) {
-			var self = this;
+			//var self = this;
 
 			if (flag === true) {		// open
 				self.innerHTML = 'Close all';
@@ -139,9 +138,19 @@
 		}
 	};
 
-	// Toggle single topic
-	function toggle_single(){
-		var self = this;
+	function toggle_single(index){
+		var headers = document.getElementsByClassName('accordion-header');
+		var elem = headers[index];
+
+		var accordion_classes = elem.parentNode.className;
+		rem_cookies(index);
+
+		if ((accordion_classes.indexOf('visible')) === -1) {
+			var sH = elem.nextElementSibling.scrollHeight;
+			set_cookies(index, sH);
+		}
+
+		var self = elem;
 		var accordions = document.querySelectorAll('.accordion');
 		var accordion = self.parentNode;
 		var accordions_inner = document.querySelectorAll('.accordion-inner');
@@ -170,7 +179,41 @@
 				accordion_all_cta[0].innerHTML = 'Close all';
 			}
 		}
-	};
+	}
+
+	// Toggle single topic - old version, deprecated for above
+	// version, which adds support for IE8
+	// function toggle_single(){
+	// 	var self = elem;
+	// 	var accordions = document.querySelectorAll('.accordion');
+	// 	var accordion = self.parentNode;
+	// 	var accordions_inner = document.querySelectorAll('.accordion-inner');
+	// 	var accordion_inner = self.nextElementSibling;
+
+	// 	// Remove classes
+	// 	for (var i = 0; i < accordions.length; ++i) {
+	// 		// Reset 'Open all'
+	// 		flag = false;
+	// 		accordion_all_cta[0].innerHTML = 'Open all';
+
+	// 		// Add class
+	// 		if ( accordion.className === 'accordion visible' ) {
+	// 			accordion.classList.remove('visible');
+	// 			accordion_inner.style.height = '0px';
+	// 		} else { // Remove class
+	// 			accordion.classList.add('visible');
+	// 			accordion_inner.style.height = accordion_inner.scrollHeight + 'px';
+	// 		}
+
+	// 		var visible = document.querySelectorAll('.visible');
+
+	// 		// Reset 'Close all'
+	// 		if (accordions.length === ( visible.length) ) {
+	// 			flag = true;
+	// 			accordion_all_cta[0].innerHTML = 'Close all';
+	// 		}
+	// 	}
+	// };
 	
 	init_accordion();
 

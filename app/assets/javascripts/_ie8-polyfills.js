@@ -1,4 +1,24 @@
 (function() {
+if(!("nextElementSibling" in document.documentElement)){
+    Object.defineProperty(Element.prototype, "nextElementSibling", {
+        get: function(){
+            var e = this.nextSibling;
+            while(e && 1 !== e.nodeType)
+                e = e.nextSibling;
+            return e;
+        }
+    });
+}
+if(!("previousElementSibling" in document.documentElement)){
+    Object.defineProperty(Element.prototype, "previousElementSibling", {
+        get: function(){
+            var e = this.previousSibling;
+            while(e && 1 !== e.nodeType)
+                e = e.previousSibling;
+            return e;
+        }
+    });
+}
 if (!document.getElementsByClassName) {
     var indexOf = [].indexOf || function(prop) {
         for (var i = 0; i < this.length; i++) {
