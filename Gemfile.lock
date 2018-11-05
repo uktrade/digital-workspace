@@ -91,7 +91,7 @@ GEM
       sass (>= 3.2.0)
     govuk_template (0.22.3)
       rails (>= 3.1)
-    haml (5.0.3)
+    haml (5.0.4)
       temple (>= 0.8.0)
       tilt
     haml-rails (1.0.0)
@@ -359,7 +359,7 @@ DEPENDENCIES
   zendesk_api
 
 RUBY VERSION
-   ruby 2.4.4p296
+   ruby 2.5.3p105
 
 BUNDLED WITH
-   1.16.5
+   1.17.1
