@@ -1,4 +1,4 @@
-ruby '2.4.4'
+ruby '2.5.3'
 
 source 'https://rubygems.org'
 
@@ -37,7 +37,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'dotenv-rails'
   gem 'rspec-rails', '~> 3.6'
-  gem 'rubocop', '~> 0.50.0', require: false
+  gem 'rubocop', '~> 0.60.0', require: false
 end
 
 group :development do
