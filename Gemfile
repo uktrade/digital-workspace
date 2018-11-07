@@ -2,12 +2,7 @@ ruby '2.5.3'
 
 source 'https://rubygems.org'
 
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
-end
-
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 5.2.1'
 
 gem 'haml-rails', '~> 1.0'
 gem 'jbuilder', '~> 2.5'
