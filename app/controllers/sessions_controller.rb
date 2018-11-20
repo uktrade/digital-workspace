@@ -4,6 +4,6 @@ class SessionsController < ApplicationController
   def create
     session[:auth_email] =
       AuthUser.from_omniauth_hash(request.env['omniauth.auth']).email
-    redirect_to '/'
+    redirect_to(request.env['omniauth.origin'] || '/')
   end
 end

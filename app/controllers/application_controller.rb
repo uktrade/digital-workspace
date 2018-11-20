@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   private
 
   def ensure_sso_user
-    session[:auth_email] || redirect_to('/auth/ditsso_internal/')
+    session[:auth_email] || redirect_to("/auth/ditsso_internal?origin=#{CGI.escape(request.fullpath)}")
   end
 
   def load_people_finder_profile
