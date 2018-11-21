@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   private
 
   def ensure_sso_user
+    Rails.logger.info("ApplicationController#ensure_sso_user redirect?=<#{session[:auth_email].blank?}> path=<#{request.fullpath}>, encoding=<#{request.fullpath.encoding}>, encoded=<#{CGI.escape(request.fullpath)}>")
     session[:auth_email] || redirect_to("/auth/ditsso_internal?origin=#{CGI.escape(request.fullpath)}")
   end
 
