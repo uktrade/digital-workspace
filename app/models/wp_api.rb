@@ -64,37 +64,26 @@ class WpApi
     end
 
     def get_search_json_body(params)
-      path = 'search?s=' + params[:s]
-      path = search_filter_types(params, path) if params[:filter_types]
-      path = search_filter_news(params, path) if params[:filter_news]
-      path = search_filter_topics(params, path) if params[:filter_topics]
-      path = search_filter_page(params, path) if params[:page]
-      search_json_request(path)
+      filters = {
+        s: params[:s],
+        type: params[:filter_types],
+        news_category: params[:filter_news],
+        topic: params[:filter_topics],
+        page: params[:page]
+      }
+
+      search_json_request('search', filters.compact)
     end
 
-    def search_json_request(path)
+    def search_json_request(base_path, params: {})
+      path = base_path + '?' + params.to_query
+
       HTTParty.get(
         URI.join(BASE_CUSTOM_URI, path).to_s,
         headers: {
           'Authorization' => "Basic #{AUTH_TOKEN}"
         }
       )
-    end
-
-    def search_filter_page(params, path)
-      path + '&page=' + params[:page]
-    end
-
-    def search_filter_types(params, path)
-      path + '&type=' + params[:filter_types]
-    end
-
-    def search_filter_news(params, path)
-      path + '&news_category=' + params[:filter_news]
-    end
-
-    def search_filter_topics(params, path)
-      path + '&topic=' + params[:filter_topics]
     end
 
     def get_search_json_headers(params)
