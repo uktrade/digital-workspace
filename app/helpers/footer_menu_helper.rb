@@ -1,6 +1,6 @@
 module FooterMenuHelper
   def footer_menu
-    WpApi.get_json_body('menus?slug=footer-menu')
+    WpApi.get_json_body('menus', params: { slug: 'footer-menu' })
   end
 
   def footer_menu_content

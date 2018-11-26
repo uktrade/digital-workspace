@@ -4,6 +4,6 @@ class ToolQueries
   end
 
   def tools_query
-    WpApi.get_json_body("pages?filter[topic_taxonomy]=#{@slug}&parent_slug=tools&orderby=title&order=asc")
+    WpApi.get_json_body('pages', params: { 'filter[topic_taxonomy]': @slug, parent_slug: 'tools', orderby: 'title', order: 'asc' })
   end
 end

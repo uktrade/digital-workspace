@@ -1,6 +1,6 @@
 module HeaderMenuHelper
   def header_menu
-    WpApi.get_json_body('menus?slug=header-menu')
+    WpApi.get_json_body('menus', params: { slug: 'header-menu' })
   end
 
   def header_menu_content

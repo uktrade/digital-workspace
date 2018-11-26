@@ -4,9 +4,10 @@ class NewsTypeQueries
   end
 
   def main_query(page)
-    path = "news?_embed&filter[news_category]=#{@slug}"
-    path += "&per_page=#{Paginator::PER_PAGE}&page=#{page}"
-    WpApi.get_json_body(path)
+    WpApi.get_json_body(
+      'news',
+      params: { _embed: 1, 'filter[news_category]': @slug, per_page: Paginator::PER_PAGE, page: page }
+    )
   end
 
   def main_query_headers(page)
@@ -20,7 +21,7 @@ class NewsTypeQueries
   end
 
   def category_title_query(_slug)
-    WpApi.get_json_body("news_categories?slug=#{@slug}")
+    WpApi.get_json_body('news_categories', params: { slug: @slug })
   end
 
   def other_categories_query
