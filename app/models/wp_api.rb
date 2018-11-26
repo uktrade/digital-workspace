@@ -72,7 +72,7 @@ class WpApi
         page: params[:page]
       }
 
-      search_json_request('search', filters.compact)
+      search_json_request('search', params: filters.compact)
     end
 
     def search_json_request(base_path, params: {})
