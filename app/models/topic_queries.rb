@@ -4,7 +4,7 @@ class TopicQueries
   end
 
   def topic_query
-    WpApi.get_json_body("topics?slug=#{@slug}")
+    WpApi.get_json_body('topics', params: { slug: @slug })
   end
 
   def topic_selector
@@ -12,6 +12,6 @@ class TopicQueries
   end
 
   def topics_related_news
-    WpApi.get_json_body("news?filter[topic_taxonomy]=#{@slug}&per_page=5")
+    WpApi.get_json_body('news', params: { 'filter[topic_taxonomy]': @slug, per_page: 5 })
   end
 end

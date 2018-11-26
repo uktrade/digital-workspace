@@ -26,6 +26,6 @@ class SearchController < ApplicationController
   end
 
   def working_at_dit_categories
-    WpApi.get_json_body('topic_taxonomy?per_page=100')
+    WpApi.get_json_body('topic_taxonomy', params: { per_page: 100 })
   end
 end

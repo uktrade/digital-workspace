@@ -5,7 +5,9 @@ class WpApi
   AUTH_TOKEN = ENV['WP_API_KEY']
 
   class << self
-    def get_json_body(path, use_cache = true)
+    def get_json_body(base_path, params: {}, use_cache: true)
+      path = base_path + '?' + params.to_query
+
       if use_cache
         Rails.cache.fetch("#{path}_body", expires_in: 60) do
           JSON.parse(get_json(path).body)
