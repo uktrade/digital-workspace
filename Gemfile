@@ -2,7 +2,7 @@ ruby '2.5.3'
 
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.2.1'
+gem 'rails', '~> 5.2.1', '>= 5.2.1.1'
 
 gem 'haml-rails', '~> 1.0'
 gem 'jbuilder', '~> 2.5'
@@ -13,8 +13,8 @@ gem 'twitter'
 gem 'zendesk_api'
 gem 'json'
 
-gem 'govuk_elements_rails'
-gem 'govuk_template'
+gem 'govuk_elements_rails', '>= 3.1.0'
+gem 'govuk_template', '>= 0.22.3'
 gem 'httparty'
 gem 'omniauth-oauth2'
 
@@ -23,7 +23,7 @@ gem 'redis-session-store'
 gem 'readthis'
 
 gem 'foreman'
-gem 'health_check'
+gem 'health_check', '>= 2.7.0'
 gem 'sentry-raven'
 
 group :development, :test do
