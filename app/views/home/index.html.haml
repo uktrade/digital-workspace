@@ -46,20 +46,12 @@
             .news-item
               .news-item-image
                 - if image_exists?(p)
-                  = large_image_tag(p)
+                  = medium_image_tag(p)
 
               .news-item-text
                 .post-meta
                   = get_date(p["date"])
-
-                  - cat_length = p["news_categories"].length - 1
-                  - p["news_categories"].each_with_index do |cat, i|
-                    - if cat_length == 0
-                      = news_cats( cat["name"], cat["slug"] )
-                    - elsif i == cat_length
-                      = news_cats( cat["name"], cat["slug"] )
-                    - else
-                      = news_cats( cat["name"], cat["slug"] ) + ', '
+                  = raw p["news_categories"].map { |cat| news_cats(cat["name"], cat["slug"]) }.join(", ")
 
               %h3.heading-medium
                 - heading = truncate_home_news_title(p["title"]["rendered"].html_safe)
