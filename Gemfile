@@ -31,6 +31,7 @@ group :development, :test do
   gem 'byebug'
   gem 'capybara', '~> 2.13'
   gem 'dotenv-rails'
+  gem 'pry'
   gem 'rspec-rails', '~> 3.6'
   gem 'rubocop', '~> 0.60.0', require: false
 end
@@ -38,7 +39,6 @@ end
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'pry'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
