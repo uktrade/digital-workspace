@@ -114,33 +114,15 @@
       .column-full
         %h2.heading-medium
           How do I?
-        %p.howdoi-description
-          Top 10 'How do I?' pages
     .grid-row
-
       - if @howdois.present?
+        - @howdois.in_groups(3, false) do |group|
+          .column-third
+            %ul.list-style-a.how-tos
+              - group.each do |item|
+                %li
+                  = link_to(item["title"]["rendered"].html_safe, item["link"])
 
-        .column-third
-          %ul.list-style-a.how-tos
-            - @howdois.each_with_index do |how1, index|
-              - case index
-              - when 0..3
-                %li
-                  = link_to(how1["title"]["rendered"].html_safe, link_howdoi_top + how1["slug"])
-        .column-third
-          %ul.list-style-a.how-tos
-            - @howdois.each_with_index do |how2, index|
-              - case index
-              - when 4..7
-                %li
-                  = link_to(how2["title"]["rendered"].html_safe, link_howdoi_top + how2["slug"])
-        .column-third
-          %ul.list-style-a.how-tos
-            - @howdois.each_with_index do |how3, index|
-              - case index
-              - when 8..10
-                %li
-                  = link_to(how3["title"]["rendered"].html_safe, link_howdoi_top + how3["slug"])
     .grid-row
       .column-full.section-note
         %p
