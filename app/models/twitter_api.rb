@@ -3,10 +3,10 @@ require 'twitter'
 class TwitterApi
   def self.public_tweets
     return [] unless ENV['TWITTER_KEY']
-    # we only display 3 tweets, but "count" is taken before filtering out replies and rts, so overegged this
-    # client.user_timeline('DannnBeckett', count: 3)
+
+    # `count` parameter includes replies and RTs
     Rails.cache.fetch('twitter_feed', expires_in: 60) do
-      client.user_timeline('tradegovuk', count: 100, exclude_replies: true, include_rts: false)
+      client.user_timeline('tradegovuk', count: 25, exclude_replies: true, include_rts: false).first(3)
     end
   end
 
