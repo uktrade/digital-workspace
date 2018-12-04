@@ -153,20 +153,18 @@
         %h2.heading-medium
           Latest tweets
     .grid-row
-      - TwitterApi.public_tweets.each_with_index do |tweet, index|
-        - case index
-          - when 0..2
-            .column-third.tweet
-              .tweet-profile-image
-                %img{:src => tweet.user.profile_image_url_https, :alt => tweet.user.screen_name}
-              .tweet-body
-                .tweet-meta
-                  %span.tweet-username
-                    = tweet.user.name
-                  %a{:href => 'https://www.twitter.com/' + tweet.user.screen_name }
-                    = '@' + tweet.user.screen_name
-                  %date.tweet-date
-                    = tweet.created_at.strftime('%b %d')
-                %p.tweet-content
-                  = parsed_tweet tweet
+      - TwitterApi.public_tweets.each do |tweet|
+        .column-third.tweet
+          .tweet-profile-image
+            %img{:src => tweet.user.profile_image_url_https, :alt => tweet.user.screen_name}
+          .tweet-body
+            .tweet-meta
+              %span.tweet-username
+                = tweet.user.name
+              %a{:href => 'https://www.twitter.com/' + tweet.user.screen_name }
+                = '@' + tweet.user.screen_name
+              %date.tweet-date
+                = tweet.created_at.strftime('%b %d')
+            %p.tweet-content
+              = parsed_tweet tweet
 = render partial: "widgets/zendesk_footer"
