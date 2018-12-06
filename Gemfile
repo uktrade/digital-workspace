@@ -15,7 +15,7 @@ gem 'json'
 
 gem 'govuk_elements_rails'
 gem 'govuk_template'
-gem 'httparty'
+gem 'typhoeus'
 gem 'omniauth-oauth2'
 
 gem 'rails_12factor'

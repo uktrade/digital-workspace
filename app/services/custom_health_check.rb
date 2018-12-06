@@ -1,6 +1,4 @@
 class CustomHealthCheck
-  require 'httparty'
-
   def self.perform_check
     health_check = CustomHealthCheck.new
     health_check.response
@@ -19,7 +17,7 @@ class CustomHealthCheck
   private
 
   def check_peoplefinder_api
-    response = HTTParty.get(
+    response = Typhoeus.get(
       "#{URI.join(ENV['PEOPLEFINDER_URL'], '/api/people')}?email=something-random",
       headers: {
         'Authorization' => "Token token=#{ENV['PEOPLEFINDER_AUTH_TOKEN']}"
@@ -31,7 +29,7 @@ class CustomHealthCheck
   end
 
   def check_wordpress_api
-    response = HTTParty.get(
+    response = Typhoeus.get(
       ENV['WP_API_URL'],
       headers: {
         'Authorization' => "Basic #{ENV['WP_API_KEY']}"
