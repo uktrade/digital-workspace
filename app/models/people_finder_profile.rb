@@ -1,5 +1,3 @@
-require 'httparty'
-
 class PeopleFinderProfile
   BASE_URL = ENV['PEOPLEFINDER_URL']
   AUTH_TOKEN = ENV['PEOPLEFINDER_AUTH_TOKEN']
@@ -26,7 +24,7 @@ class PeopleFinderProfile
     private
 
     def retrieve_user
-      response = HTTParty.get(
+      response = Typhoeus.get(
         "#{URI.join(BASE_URL, '/api/people')}?email=#{@email}",
         headers: {
           'Authorization' => "Token token=#{AUTH_TOKEN}"

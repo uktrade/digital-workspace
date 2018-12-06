@@ -1,5 +1,4 @@
 class WpApi
-  require 'httparty'
   BASE_URI = ENV['WP_API_URL']
   BASE_CUSTOM_URI = ENV['WP_API_CUSTOM']
   AUTH_TOKEN = ENV['WP_API_KEY']
@@ -38,7 +37,7 @@ class WpApi
     end
 
     def get_json(path)
-      HTTParty.get(
+      Typhoeus.get(
         URI.join(BASE_URI, path).to_s,
         headers: {
           'Authorization' => "Basic #{AUTH_TOKEN}"
@@ -47,7 +46,7 @@ class WpApi
     end
 
     def get_custom_json(path)
-      HTTParty.get(
+      Typhoeus.get(
         URI.join(BASE_CUSTOM_URI, path).to_s,
         headers: {
           'Authorization' => "Basic #{AUTH_TOKEN}"
@@ -56,7 +55,7 @@ class WpApi
     end
 
     def post_comment_json(json)
-      HTTParty.post(
+      Typhoeus.post(
         URI.join(BASE_URI, 'comments').to_s,
         body: json,
         headers: { 'Authorization' => "Basic #{AUTH_TOKEN}" }
@@ -78,7 +77,7 @@ class WpApi
     def search_json_request(base_path, params: {})
       path = base_path + '?' + params.to_query
 
-      HTTParty.get(
+      Typhoeus.get(
         URI.join(BASE_CUSTOM_URI, path).to_s,
         headers: {
           'Authorization' => "Basic #{AUTH_TOKEN}"

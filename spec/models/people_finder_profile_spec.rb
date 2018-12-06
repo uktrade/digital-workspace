@@ -10,7 +10,7 @@ describe PeopleFinderProfile do
       before do
         response = double(:response, body: people_finder_hash, success?: true)
 
-        allow(HTTParty)
+        allow(Typhoeus)
           .to receive(:get)
           .and_return(response)
       end
@@ -78,7 +78,7 @@ describe PeopleFinderProfile do
       let(:response) { double('Response', success?: false, body: 'Internal server error') }
 
       before do
-        allow(HTTParty)
+        allow(Typhoeus)
           .to receive(:get)
           .and_return(response)
       end
