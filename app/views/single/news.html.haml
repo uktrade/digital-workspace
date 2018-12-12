@@ -12,11 +12,11 @@
         = flash[:notice]
 
   - if params[:commit] == "Submit comment"
-    - if @response.parsed_response['status'] == 'approved'
+    - if @response['status'] == 'approved'
       .comment-notification.thanks
         %span
           Thanks for your comment!
-    - elsif @response.parsed_response['code'] == 'comment_duplicate'
+    - elsif @response['code'] == 'comment_duplicate'
       .comment-notification.error
         %span
           Sorry, duplicate comment detected - it looks like that's already been posted.

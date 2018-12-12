@@ -55,14 +55,23 @@ class WpApi
     end
 
     def post_comment_json(json)
-      Typhoeus.post(
+      response = Typhoeus.post(
         URI.join(BASE_URI, 'comments').to_s,
         body: json,
         headers: { 'Authorization' => "Basic #{AUTH_TOKEN}" }
       )
+      JSON.parse(response.body)
     end
 
     def get_search_json_body(params)
+      JSON.parse(get_search_json(params).body)
+    end
+
+    def get_search_json_headers(params)
+      get_search_json(params).headers
+    end
+
+    def get_search_json(params)
       filters = {
         s: params[:s],
         type: params[:filter_types],
@@ -83,10 +92,6 @@ class WpApi
           'Authorization' => "Basic #{AUTH_TOKEN}"
         }
       )
-    end
-
-    def get_search_json_headers(params)
-      get_search_json_body(params).headers
     end
   end
 end
