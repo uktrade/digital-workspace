@@ -23,7 +23,7 @@ class CustomHealthCheck
         'Authorization' => "Token token=#{ENV['PEOPLEFINDER_AUTH_TOKEN']}"
       }
     )
-    return if response['error'] =~ /person was not found/
+    return if JSON.parse(response.body)['error'] =~ /person was not found/
 
     @errors << 'Unable to connect to the People Finder API'
   end
