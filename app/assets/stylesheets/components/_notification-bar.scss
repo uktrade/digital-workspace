@@ -1,0 +1,44 @@
+.notification-bar {
+	font-size: 14px;
+	margin: 0 15px;
+	padding: 10px;
+	position: relative;
+	overflow: hidden;
+	max-width: 940px;
+	text-align: left;
+	border-bottom: 1px solid #bfc1c3;
+  background-color: $notification_bar_colour;
+
+  a {
+    font-weight: bold;
+    color: #000;
+  }
+	a:link {
+		color: #000;
+	}
+	span {
+		display: inline;
+		margin-left: 4px;
+	}
+}
+
+@media (min-width: $screen_small) {
+	.notification-bar {
+		margin: 0 30px;
+		span {
+			display: inline-block;
+		}
+	}
+}
+
+@media (min-width: $screen_medium) {
+	.notification-bar {
+		font-size: $text_xsmall;
+	}
+}
+
+@media (min-width: $screen_large) {
+	.notification-bar {
+		margin: 0 auto;
+	}
+}
