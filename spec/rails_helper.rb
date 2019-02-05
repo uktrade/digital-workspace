@@ -23,6 +23,7 @@ VCR.configure do |config|
     i.response.headers['Link'] = ['http://test.local'] if i.response.headers['Link']
   end
   config.filter_sensitive_data('<PEOPLEFINDER_URL>') { ENV['PEOPLEFINDER_URL'] }
+  config.filter_sensitive_data('<PEOPLEFINDER_API_URL>') { ENV['PEOPLEFINDER_API_URL'] }
   config.filter_sensitive_data('<PEOPLEFINDER_AUTH_TOKEN>') { ENV['PEOPLEFINDER_AUTH_TOKEN'] }
   config.filter_sensitive_data('<TWITTER_KEY>') { ENV['TWITTER_KEY'] }
   config.filter_sensitive_data('<TWITTER_SECRET>') { ENV['TWITTER_SECRET'] }

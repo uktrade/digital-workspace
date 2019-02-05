@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: "<PEOPLEFINDER_URL>/api/people?email="
+    uri: "<PEOPLEFINDER_API_URL>/api/people?email="
     body:
       encoding: US-ASCII
       string: ''
@@ -51,7 +51,7 @@ http_interactions:
   recorded_at: Thu, 07 Dec 2017 10:11:10 GMT
 - request:
     method: get
-    uri: "<PEOPLEFINDER_URL>/api/people?email=alice@example.com"
+    uri: "<PEOPLEFINDER_API_URL>/api/people?email=alice@example.com"
     body:
       encoding: US-ASCII
       string: ''

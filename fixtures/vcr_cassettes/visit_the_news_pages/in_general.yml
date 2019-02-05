@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: "<PEOPLEFINDER_URL>/api/people?email="
+    uri: "<PEOPLEFINDER_API_URL>/api/people?email="
     body:
       encoding: US-ASCII
       string: ''
@@ -51,7 +51,7 @@ http_interactions:
   recorded_at: Thu, 07 Dec 2017 10:11:17 GMT
 - request:
     method: get
-    uri: "<PEOPLEFINDER_URL>/api/people?email=alice@example.com"
+    uri: "<PEOPLEFINDER_API_URL>/api/people?email=alice@example.com"
     body:
       encoding: US-ASCII
       string: ''
@@ -1020,7 +1020,7 @@ http_interactions:
   recorded_at: Thu, 07 Dec 2017 10:11:22 GMT
 - request:
     method: get
-    uri: "<PEOPLEFINDER_URL>/api/people?email=alice@example.com"
+    uri: "<PEOPLEFINDER_API_URL>/api/people?email=alice@example.com"
     body:
       encoding: US-ASCII
       string: ''
@@ -1304,7 +1304,7 @@ http_interactions:
   recorded_at: Thu, 07 Dec 2017 10:11:26 GMT
 - request:
     method: get
-    uri: "<PEOPLEFINDER_URL>/api/people?email=dennis.flood@rainmaker.solutions"
+    uri: "<PEOPLEFINDER_API_URL>/api/people?email=dennis.flood@rainmaker.solutions"
     body:
       encoding: US-ASCII
       string: ''
@@ -1400,7 +1400,7 @@ http_interactions:
   recorded_at: Thu, 07 Dec 2017 10:11:26 GMT
 - request:
     method: get
-    uri: "<PEOPLEFINDER_URL>/api/people?email=<removed>"
+    uri: "<PEOPLEFINDER_API_URL>/api/people?email=<removed>"
     body:
       encoding: US-ASCII
       string: ''
@@ -1496,7 +1496,7 @@ http_interactions:
   recorded_at: Thu, 07 Dec 2017 10:11:27 GMT
 - request:
     method: get
-    uri: "<PEOPLEFINDER_URL>/api/people?email=<removed>"
+    uri: "<PEOPLEFINDER_API_URL>/api/people?email=<removed>"
     body:
       encoding: US-ASCII
       string: ''
@@ -1592,7 +1592,7 @@ http_interactions:
   recorded_at: Thu, 07 Dec 2017 10:11:27 GMT
 - request:
     method: get
-    uri: "<PEOPLEFINDER_URL>/api/people?email=<removed>"
+    uri: "<PEOPLEFINDER_API_URL>/api/people?email=<removed>"
     body:
       encoding: US-ASCII
       string: ''
@@ -1688,7 +1688,7 @@ http_interactions:
   recorded_at: Thu, 07 Dec 2017 10:11:28 GMT
 - request:
     method: get
-    uri: "<PEOPLEFINDER_URL>/api/people?email=<removed>"
+    uri: "<PEOPLEFINDER_API_URL>/api/people?email=<removed>"
     body:
       encoding: US-ASCII
       string: ''
@@ -1784,7 +1784,7 @@ http_interactions:
   recorded_at: Thu, 07 Dec 2017 10:11:28 GMT
 - request:
     method: get
-    uri: "<PEOPLEFINDER_URL>/api/people?email=<removed>"
+    uri: "<PEOPLEFINDER_API_URL>/api/people?email=<removed>"
     body:
       encoding: US-ASCII
       string: ''
@@ -1880,7 +1880,7 @@ http_interactions:
   recorded_at: Thu, 07 Dec 2017 10:11:29 GMT
 - request:
     method: get
-    uri: "<PEOPLEFINDER_URL>/api/people?email=dennis.flood@rainmaker.solutions"
+    uri: "<PEOPLEFINDER_API_URL>/api/people?email=dennis.flood@rainmaker.solutions"
     body:
       encoding: US-ASCII
       string: ''

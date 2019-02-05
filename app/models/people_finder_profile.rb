@@ -1,5 +1,5 @@
 class PeopleFinderProfile
-  BASE_URL = ENV['PEOPLEFINDER_URL']
+  BASE_URL = ENV['PEOPLEFINDER_API_URL']
   AUTH_TOKEN = ENV['PEOPLEFINDER_AUTH_TOKEN']
 
   attr_accessor(
