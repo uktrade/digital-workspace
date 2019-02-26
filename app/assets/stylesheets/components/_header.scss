@@ -320,37 +320,6 @@
 	@include background-image('find-people-pattern', png, 1495px, 490px);
 	color: #ffffff;
 
-	.homepage-top-inner {
-		margin: 0 15px;
-		overflow: hidden;
-		position: relative;
-		max-width: 980px;
-		text-align: left;
-	}
-	.welcome-block {
-		width: 100%;
-		.welcome-people-finder {
-			margin: 0 10px;
-			p {
-				display: none;
-			}
-			.heading-large {
-				font-size: 24px;
-				margin-top: 18px;
-			}
-			.govuk-search {
-				margin-bottom: 26px;
-			}
-		}
-	}
-
-	.heading-tag-line {
-		margin-top: 0px;
-		max-width: 550px;
-		font-size: $text_small;
-		line-height: 1.31579;
-	}
-
 	p,
 	a {
 		color: #ffffff;

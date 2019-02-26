@@ -1,12 +1,8 @@
 - content_for :body_classes do
   - 'home'
 
-%header.homepage-top
-  .homepage-top-inner
-    .welcome-block
-      .inner-block.floated-children
-        = render partial: "widgets/people_search"
-        = render partial: "widgets/profile_overview"
+%header
+  = render partial: "widgets/people_search"
 = render partial: "widgets/notification_bar"
 - if flash[:notice]
   .zd-confirmation
