@@ -18,6 +18,8 @@ describe PeopleFinderProfile do
       context 'with an existing people finder profile' do
         let(:people_finder_hash) { existing_user_json }
 
+        it { is_expected.to be_present }
+
         it 'assigns the name' do
           expect(subject.name).to eq('Alice Arnold')
         end
@@ -50,6 +52,8 @@ describe PeopleFinderProfile do
 
       context 'when that person is not found in peoplefinder' do
         let(:people_finder_hash) { user_not_found }
+
+        it { is_expected.to_not be_present }
 
         it 'does not assign the name' do
           expect(subject.name).to be_blank
@@ -98,6 +102,7 @@ def existing_user_json # rubocop:disable Metrics/MethodLength
       attributes: {
         email: 'alice@example.com',
         name: 'Alice Arnold',
+        'given-name': 'Alice',
         team: 'Scientists',
         'completion-score' => 12
       },

@@ -13,6 +13,10 @@ class PeopleFinderProfile
     :profile_url
   )
 
+  def present?
+    given_name.present?
+  end
+
   class << self
     def from_api(user)
       @email = user.is_a?(AuthUser) ? user.email : user.to_s
