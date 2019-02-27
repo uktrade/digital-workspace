@@ -19,7 +19,7 @@
             - if @people_finder_profile.completion_score < 100
               = "Set up your profile (#{@people_finder_profile.completion_score}% complete)"
             - else
-              Edit your profile
+              View your profile
           - if @people_finder_profile.profile_image_url
             .maginot
               %a{:href => @people_finder_profile.profile_url}
