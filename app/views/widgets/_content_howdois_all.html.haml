@@ -10,9 +10,9 @@
   .grid-row
     .column-two-thirds
       %h2.heading-large.heading-top
-        = "All How Do I's"
+        = "All How Do I? guides"
       %div
-        = "All our How Do I's, ordered by popularity"
+        = "All our How Do I? guides, ordered by popularity"
       - if @api_call.howdoi_1_100.count > 0
         %ul#how_do_i_archive
           - @api_call.howdoi_1_100.each_with_index do |howdoi|
