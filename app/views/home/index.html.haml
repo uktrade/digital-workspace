@@ -11,30 +11,35 @@
 %div{:id => 'homepage', :class => 'homepage-content'}
   %main#content.root-index
     .grid-row
-      .column-full
+      %div{class: @quick_links_menu_content ? 'column-two-thirds' : 'column-full'}
         .hero-news
           .news-item
-            - if @posts.present?
-              - @posts[0..0].each_with_index do |p, i|
-                .hero-news-copy
-                  %h3.heading-medium
-                    = link_to(p["title"]["rendered"].html_safe, link_news_top + p["slug"])
-                  .hero-news-excerpt
-                    %p
-                      - if p["acf"].present?
-                        = truncate_excerpt_hero(p["acf"]["excerpt"])
+            - if @posts.present? && p = @posts.first
+              .hero-news-copy
+                %h3.heading-medium
+                  = link_to(p["title"]["rendered"].html_safe, link_news_top + p["slug"])
+                .hero-news-excerpt
+                  %p
+                    - if p["acf"].present?
+                      = truncate_excerpt_hero(p["acf"]["excerpt"])
 
-                    = read_more(link_news_top + p["slug"])
-                    - comment_id = p["id"]
-                    - get_comment_count = PageQueries.comment_count_query(comment_id)
-                    - if get_comment_count.present?
-                      - comment_count = get_comment_count.count
-                      = precede ' - ' do
-                        = comments(link_news_top + p["slug"], comment_count)
+                  = read_more(link_news_top + p["slug"])
+                  - comment_id = p["id"]
+                  - get_comment_count = PageQueries.comment_count_query(comment_id)
+                  - if get_comment_count.present?
+                    - comment_count = get_comment_count.count
+                    = precede ' - ' do
+                      = comments(link_news_top + p["slug"], comment_count)
 
-                .hero-news-image-container
-                  - if image_exists?(p)
-                    = large_image_tag(p)
+              .hero-news-image-container
+                - if image_exists?(p)
+                  = large_image_tag(p)
+      - if @quick_links_menu_content
+        .column-third
+          %nav.quick-links
+            %h3.heading-xsmall= @quick_links_menu_title
+            - @quick_links_menu_content.each do |link|
+              = link_to link['menu_item']['title'], link['menu_item']['url'], target: link['menu_item']['target']
 
     .grid-row.eh-container
       - if @posts.present?

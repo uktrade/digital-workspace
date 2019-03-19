@@ -45,4 +45,16 @@ class HomePageQueries
   def main_comments_headers
     WpApi.get_headers('comments')
   end
+
+  def quick_links_menu
+    @quick_links_menu ||= WpApi.get_json_body('menus', params: { slug: 'homepage-quick-links-menu' })
+  end
+
+  def quick_links_menu_content
+    quick_links_menu.first['acf']['menu'] if quick_links_menu.first
+  end
+
+  def quick_links_menu_title
+    quick_links_menu.first['title']['rendered'] if quick_links_menu.first
+  end
 end
