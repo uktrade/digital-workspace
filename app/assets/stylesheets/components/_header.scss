@@ -260,7 +260,7 @@
 	#global-header {
 		.header-proposition {
 			#proposition-links {
-				li:nth-child(2) {
+				li:nth-child(3) {
 					a {
 						color: $brand_color_a;
 					}
@@ -274,20 +274,6 @@
 	#global-header {
 		.header-proposition {
 			#proposition-links {
-				li:nth-child(3) {
-					a {
-						color: $brand_color_a;
-					}
-				}
-			}
-		}
-	}
-}
-
-.section-tools {
-	#global-header {
-		.header-proposition {
-			#proposition-links {
 				li:nth-child(4) {
 					a {
 						color: $brand_color_a;
@@ -298,7 +284,7 @@
 	}
 }
 
-.section-datahub {
+.section-tools {
 	#global-header {
 		.header-proposition {
 			#proposition-links {
