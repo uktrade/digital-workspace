@@ -1,12 +1,8 @@
 // ------------------------------------
 // homepage news, what's popular
 
-#homepage .hero-news {
-	margin-top: 30px;
-}
-
-#homepage .hero-news-image-container {
-	position: relative;
+#homepage .root-index {
+  padding-top: 30px;
 }
 
 .news-column {
@@ -179,11 +175,19 @@
 
 // ------------------------------------
 // homepage quick links box
+
+#homepage .column-quick-links {
+  @media(min-width: $screen_medium) {
+    order: 3;
+  }
+  margin: 0 auto;
+}
+
 #homepage .quick-links {
   border-top: 5px solid $brand_color_a;
   border-bottom: 1px solid $brand_chrome_b;
-  margin: 30px 0;
   padding: 30px;
+  margin-bottom: 30px;
   background-color: $brand_chrome_a;
 
   h3 {

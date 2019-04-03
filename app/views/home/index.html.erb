@@ -1,0 +1,163 @@
+<% content_for(:body_classes) { 'home' } %>
+
+<header>
+  <%= render partial: "widgets/people_search" %>
+</header>
+
+<%= render partial: "widgets/notification_bar" %>
+
+<% if flash[:notice] %>
+  <div class="zd-confirmation">
+    <span>
+      <%= flash[:notice] %>
+    </span>
+  </div>
+<% end %>
+
+<div class="homepage-content" id="homepage">
+  <main class="root-index" id="content">
+    <% if @quick_links_menu_content %>
+      <div class="grid-row eh-container">
+        <div class="column-third eh-target column-quick-links">
+          <nav class="quick-links">
+            <h3 class="heading-medium">
+              <%= @quick_links_menu_title %>
+            </h3>
+            <% @quick_links_menu_content.each do |link| %>
+              <%= link_to link['menu_item']['title'], link['menu_item']['url'], target: link['menu_item']['target'] %>
+            <% end %>
+          </nav>
+        </div>
+
+        <% @posts[0..1].each do |p| %>
+          <div class="column-third eh-target">
+            <%= render partial: 'news_item', locals: { p: p } %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="grid-row eh-container">
+      <% posts = @quick_links_menu_content ? @posts[2..7] : @posts[0..8] %>
+      <% posts.each do |p| %>
+        <div class="column-third eh-target">
+          <%= render partial: 'news_item', locals: { p: p } %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="grid-row">
+      <div class="column-full section-note">
+        <p>
+          <%= link_to("View all News", link_news_top) %>
+        </p>
+      </div>
+    </div>
+
+    <hr class="rule-large" id="news"/>
+
+    <div class="grid-row">
+      <div class="column-full">
+        <h2 class="heading-medium">
+          What's popular?
+        </h2>
+      </div>
+    </div>
+
+    <div class="grid-row">
+      <% if @popular_posts.present? %>
+        <% @popular_posts.each do |p| %>
+          <div class="column-third popular-page-summary">
+            <span class="image-holder">
+              <a class="img" href="<%= p["slug"] %>" title="<%= p["title"]["rendered"] %>">
+                <% if p['acf']['image']['alt'].present? %>
+                  <% (img_alt = p['acf']['image']['alt'].html_safe) %>
+                <% else %>
+                  <% (img_alt = p['title']['rendered'].html_safe) %>
+                <% end %>
+                <img alt="<%= img_alt %>" src="<%= p['acf']['image']['sizes']['medium'] %>"/>
+              </a>
+            </span>
+            <div class="popular-page-text">
+              <h3 class="heading-medium">
+                <%= link_to(p["title"]["rendered"].html_safe, p["slug"]) %>
+              </h3>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <hr class="rule-large" id="popular"/>
+
+    <div class="grid-row">
+      <div class="column-full">
+        <h2 class="heading-medium">
+          How do I?
+        </h2>
+      </div>
+    </div>
+
+    <div class="grid-row">
+      <% if @howdois.present? %>
+        <% @howdois.in_groups(3, false) do |group| %>
+          <div class="column-third">
+            <ul class="list-style-a how-tos">
+              <% group.each do |item| %>
+                <li>
+                  <%= link_to(item["title"]["rendered"].html_safe, item["link"]) %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="grid-row">
+      <div class="column-full section-note">
+        <p>
+          <%= link_to('View all How do I? guides', '/working-at-dit/archive/how-do-i/') %>
+        </p>
+      </div>
+    </div>
+
+    <hr class="rule-large" id="tweets"/>
+
+    <div class="grid-row">
+      <div class="column-full">
+        <h2 class="heading-medium">
+          Latest tweets
+        </h2>
+      </div>
+    </div>
+
+    <div class="grid-row">
+      <% TwitterApi.public_tweets.each do |tweet| %>
+        <div class="column-third tweet">
+          <div class="tweet-profile-image">
+            <img alt="<%= tweet.user.screen_name %>" src="<%= tweet.user.profile_image_url_https %>"/>
+          </div>
+          <div class="tweet-body">
+            <div class="tweet-meta">
+              <span class="tweet-username">
+                <%= tweet.user.name %>
+              </span>
+              <a href="https://www.twitter.com/<%= tweet.user.screen_name %>">
+                @<%= "#{tweet.user.screen_name}" %>
+              </a>
+              <date class="tweet-date">
+                <%= tweet.created_at.strftime('%b %d') %>
+              </date>
+            </div>
+            <p class="tweet-content">
+              <%= parsed_tweet tweet %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </main>
+</div>
+
+<%= render partial: "widgets/zendesk_footer" %>
