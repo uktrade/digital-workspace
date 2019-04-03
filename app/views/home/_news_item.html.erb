@@ -1,19 +1,19 @@
 <div class="news-item">
   <div class="news-item-image">
     <% if image_exists?(p) %>
-      <%= large_image_tag(p) %>
+      <%= link_to(large_image_tag(p), link_news_top + p["slug"]) %>
     <% end %>
   </div>
+  <h3 class="heading-medium">
+    <% heading = truncate_home_news_title(p["title"]["rendered"].html_safe) %>
+    <%= link_to(heading, link_news_top + p["slug"]) %>
+  </h3>
   <div class="news-item-text">
     <div class="post-meta">
       <%= get_date(p["date"]) %>
       <%= raw p["news_categories"].map { |cat| news_cats(cat["name"], cat["slug"]) }.join(", ") %>
     </div>
   </div>
-  <h3 class="heading-medium">
-    <% heading = truncate_home_news_title(p["title"]["rendered"].html_safe) %>
-    <%= link_to(heading, link_news_top + p["slug"]) %>
-  </h3>
   <div class="news-item-excerpt">
     <p>
       <% if p["acf"].present? %>

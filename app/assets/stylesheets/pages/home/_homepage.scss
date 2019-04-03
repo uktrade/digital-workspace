@@ -21,13 +21,9 @@
 
 #homepage .news-item {
 	margin-bottom: 30px;
-	// overflow: auto;
-	// height: 100%;
 
 	.post-meta {
-		position: relative;
-	}
-	heading-medium {
+    margin: 4px 0 8px 0;
 		position: relative;
 	}
 
@@ -58,6 +54,12 @@
 		}
 	}
 
+  .news-item-excerpt {
+    p {
+      margin-bottom: 5px;
+    }
+  }
+
 	.news-item-text {
 		position: relative;
 	}
@@ -75,16 +77,8 @@
 
 	.heading-medium {
 		margin: 0;
-		padding-top: 6px;
+		padding-top: 15px;
 		padding-bottom: 4px;
-	}
-
-	&:first-child {
-		.heading-medium {
-			margin-top: 0px;
-			padding-top: 0px;
-		}
-		/*margin-bottom: 0;*/
 	}
 }
 
