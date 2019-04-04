@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: "<PEOPLEFINDER_URL>/api/people?email="
+    uri: "<PEOPLEFINDER_URL>/api/people?ditsso_user_id="
     body:
       encoding: US-ASCII
       string: ''
@@ -47,11 +47,11 @@ http_interactions:
       string: 'HTTP Token: Access denied.
 
 '
-    http_version: 
+    http_version:
   recorded_at: Thu, 07 Dec 2017 10:11:10 GMT
 - request:
     method: get
-    uri: "<PEOPLEFINDER_URL>/api/people?email=alice@example.com"
+    uri: "<PEOPLEFINDER_URL>/api/people?ditsso_user_id=deadbeef"
     body:
       encoding: US-ASCII
       string: ''
@@ -96,7 +96,7 @@ http_interactions:
       string: 'HTTP Token: Access denied.
 
 '
-    http_version: 
+    http_version:
   recorded_at: Thu, 07 Dec 2017 10:11:11 GMT
 - request:
     method: get
@@ -143,7 +143,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: "[]"
-    http_version: 
+    http_version:
   recorded_at: Thu, 07 Dec 2017 10:11:12 GMT
 - request:
     method: get
@@ -190,7 +190,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: "[]"
-    http_version: 
+    http_version:
   recorded_at: Thu, 07 Dec 2017 10:11:12 GMT
 - request:
     method: get
@@ -237,7 +237,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: "[]"
-    http_version: 
+    http_version:
   recorded_at: Thu, 07 Dec 2017 10:11:13 GMT
 - request:
     method: get
@@ -284,7 +284,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: "[]"
-    http_version: 
+    http_version:
   recorded_at: Thu, 07 Dec 2017 10:11:14 GMT
 - request:
     method: get
@@ -334,7 +334,7 @@ http_interactions:
         which could be used for the title attribute to get a tooltip?","url":"http:\/\/www.google.com","target":""}},{"image":{"ID":12694,"id":12694,"title":"visualisation3","filename":"visualisation3.png","url":"https:\/\/dit-workspace-staging.s3-eu-west-1.amazonaws.com\/wp-content\/uploads\/2017\/12\/06100756\/visualisation3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIBGJDZ6XYFQH4R6A%2F20171207%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20171207T101114Z&X-Amz-SignedHeaders=Host&X-Amz-Expires=900&X-Amz-Signature=98efa787ca89ab3b0eb6bd728e2e321ef7ea75ea0ba4c95a371e5a23716091bf","alt":"","author":"1","description":"","caption":"","name":"visualisation3","date":"2017-12-06
         10:07:56","modified":"2017-12-06 10:07:56","mime_type":"image\/png","type":"image","icon":"\/wp-includes\/images\/media\/default.png","width":159,"height":159,"sizes":{"thumbnail":"https:\/\/dit-workspace-staging.s3-eu-west-1.amazonaws.com\/wp-content\/uploads\/2017\/12\/06100756\/visualisation3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIBGJDZ6XYFQH4R6A%2F20171207%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20171207T101114Z&X-Amz-SignedHeaders=Host&X-Amz-Expires=900&X-Amz-Signature=98efa787ca89ab3b0eb6bd728e2e321ef7ea75ea0ba4c95a371e5a23716091bf","thumbnail-width":150,"thumbnail-height":150,"medium":"https:\/\/dit-workspace-staging.s3-eu-west-1.amazonaws.com\/wp-content\/uploads\/2017\/12\/06100756\/visualisation3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIBGJDZ6XYFQH4R6A%2F20171207%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20171207T101114Z&X-Amz-SignedHeaders=Host&X-Amz-Expires=900&X-Amz-Signature=98efa787ca89ab3b0eb6bd728e2e321ef7ea75ea0ba4c95a371e5a23716091bf","medium-width":159,"medium-height":159,"medium_large":"https:\/\/dit-workspace-staging.s3-eu-west-1.amazonaws.com\/wp-content\/uploads\/2017\/12\/06100756\/visualisation3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIBGJDZ6XYFQH4R6A%2F20171207%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20171207T101114Z&X-Amz-SignedHeaders=Host&X-Amz-Expires=900&X-Amz-Signature=98efa787ca89ab3b0eb6bd728e2e321ef7ea75ea0ba4c95a371e5a23716091bf","medium_large-width":159,"medium_large-height":159,"large":"https:\/\/dit-workspace-staging.s3-eu-west-1.amazonaws.com\/wp-content\/uploads\/2017\/12\/06100756\/visualisation3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIBGJDZ6XYFQH4R6A%2F20171207%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20171207T101114Z&X-Amz-SignedHeaders=Host&X-Amz-Expires=900&X-Amz-Signature=98efa787ca89ab3b0eb6bd728e2e321ef7ea75ea0ba4c95a371e5a23716091bf","large-width":159,"large-height":159}},"text":"overall
         engagement score for\r\n<br \/>\r\nDIT ","link":""}]'
-    http_version: 
+    http_version:
   recorded_at: Thu, 07 Dec 2017 10:11:14 GMT
 - request:
     method: get
@@ -381,7 +381,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: "[]"
-    http_version: 
+    http_version:
   recorded_at: Thu, 07 Dec 2017 10:11:15 GMT
 - request:
     method: post
@@ -455,7 +455,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: "{}"
-    http_version: 
+    http_version:
   recorded_at: Thu, 07 Dec 2017 10:11:15 GMT
 - request:
     method: get
@@ -996,7 +996,7 @@ http_interactions:
         for International Trade \u2013 helping businesses\nexport, driving investment,
         opening up markets and championing free trade","url":"https:\/\/t.co\/KMiwpagkWL","entities":{"url":{"urls":[{"url":"https:\/\/t.co\/KMiwpagkWL","expanded_url":"http:\/\/www.gov.uk\/dit","display_url":"gov.uk\/dit","indices":[0,23]}]},"description":{"urls":[]}},"protected":false,"followers_count":106116,"friends_count":3761,"listed_count":1983,"created_at":"Fri
         Apr 18 10:29:28 +0000 2008","favourites_count":688,"utc_offset":0,"time_zone":"London","geo_enabled":false,"verified":true,"statuses_count":19008,"lang":"en","contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"FFFFFF","profile_background_image_url":"http:\/\/pbs.twimg.com\/profile_background_images\/700441044\/4174d13512e47beb737fe6c0f8a92433.jpeg","profile_background_image_url_https":"https:\/\/pbs.twimg.com\/profile_background_images\/700441044\/4174d13512e47beb737fe6c0f8a92433.jpeg","profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/929987679701389312\/Pk9RsQfU_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/929987679701389312\/Pk9RsQfU_normal.jpg","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/14431752\/1509977613","profile_link_color":"CF102D","profile_sidebar_border_color":"FFFFFF","profile_sidebar_fill_color":"E6F6F9","profile_text_color":"CC3366","profile_use_background_image":false,"has_extended_profile":false,"default_profile":false,"default_profile_image":false,"following":null,"follow_request_sent":null,"notifications":null,"translator_type":"none"},"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":55,"favorite_count":48,"favorited":false,"retweeted":false,"possibly_sensitive":false,"lang":"en"}]'
-    http_version: 
+    http_version:
   recorded_at: Thu, 07 Dec 2017 10:11:16 GMT
 - request:
     method: get
@@ -1043,7 +1043,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: "[]"
-    http_version: 
+    http_version:
   recorded_at: Thu, 07 Dec 2017 10:11:16 GMT
 - request:
     method: get
@@ -1090,7 +1090,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: "[]"
-    http_version: 
+    http_version:
   recorded_at: Thu, 07 Dec 2017 10:11:17 GMT
 - request:
     method: get
@@ -1145,6 +1145,6 @@ http_interactions:
     body:
       encoding: UTF-8
       string: "[]"
-    http_version: 
+    http_version:
   recorded_at: Tue, 19 Mar 2019 13:56:52 GMT
 recorded_with: VCR 3.0.3
