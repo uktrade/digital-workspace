@@ -4,13 +4,13 @@ class ApplicationController < ActionController::Base
   before_action :load_people_finder_profile
 
   def current_user
-    AuthUser.new(email: session[:auth_email])
+    AuthUser.new(ditsso_user_id: session[:ditsso_user_id])
   end
 
   private
 
   def ensure_sso_user
-    session[:auth_email] || redirect_to("/auth/ditsso_internal?origin=#{ERB::Util.url_encode(request.fullpath)}")
+    session[:ditsso_user_id] || redirect_to("/auth/ditsso_internal?origin=#{ERB::Util.url_encode(request.fullpath)}")
   end
 
   def load_people_finder_profile

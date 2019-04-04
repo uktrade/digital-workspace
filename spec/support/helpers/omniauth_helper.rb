@@ -5,7 +5,8 @@ def valid_omnniauth_user
       email: 'alice@example.com',
       first_name: 'Alice',
       last_name: 'Arnold'
-    }
+    },
+    uid: 'deadbeef'
   )
 end
 

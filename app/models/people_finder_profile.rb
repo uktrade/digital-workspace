@@ -3,6 +3,7 @@ class PeopleFinderProfile
   AUTH_TOKEN = ENV['PEOPLEFINDER_AUTH_TOKEN']
 
   attr_accessor(
+    :ditsso_user_id,
     :email,
     :name,
     :given_name,
@@ -19,7 +20,7 @@ class PeopleFinderProfile
 
   class << self
     def from_api(user)
-      @email = user.is_a?(AuthUser) ? user.email : user.to_s
+      @ditsso_user_id = user.is_a?(AuthUser) ? user.ditsso_user_id : user.to_s
       retrieve_user
       assign_user
       @profile
@@ -29,7 +30,7 @@ class PeopleFinderProfile
 
     def retrieve_user
       response = Typhoeus.get(
-        "#{URI.join(BASE_URL, '/api/people')}?email=#{@email}",
+        "#{URI.join(BASE_URL, '/api/people')}?ditsso_user_id=#{@ditsso_user_id}",
         headers: {
           'Authorization' => "Token token=#{AUTH_TOKEN}"
         }
@@ -42,7 +43,7 @@ class PeopleFinderProfile
 
     def assign_user
       @profile = PeopleFinderProfile.new
-      @profile.email = @email
+      @profile.email = @attributes['email']
       @profile.name = @attributes['name']
       @profile.given_name = @attributes['given-name']
       @profile.surname = @attributes['surname']
