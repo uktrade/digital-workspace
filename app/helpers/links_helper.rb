@@ -3,6 +3,10 @@ module LinksHelper
     '/working-at-dit/how-do-i/'
   end
 
+  def link_working_at_dit_top
+    '/working-at-dit/'
+  end
+
   def link_topics_top
     '/topic/'
   end
