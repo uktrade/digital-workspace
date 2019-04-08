@@ -1,0 +1,24 @@
+- topics = @content&.first && @content.first['topic_taxonomy']
+
+- if topics.present? || @related_news.present?
+  .column-third.related-content
+    %hr.rule-large.rule-top
+    - if topics.present?
+      %h2.heading-medium
+        Related topics
+      %ul.list-style-a
+        - topics.each do |topic|
+          %li
+            = link_to(topic['name'], link_working_at_dit_top + topic['slug'])
+    - if @related_news.present?
+      .related-content
+        %h2.heading-medium
+          Related news
+        - @related_news.each do |p|
+          %ul.list-style-a
+            %li
+              = link_to(p["title"]["rendered"].html_safe, link_news_top + p["slug"])
+              .post-meta
+                = get_date(p["date"])
+                - if p["news_categories"].present?
+                  = p['news_categories'].map {|cat| news_cats( cat["name"], cat["slug"] ) }.join(', ').html_safe
