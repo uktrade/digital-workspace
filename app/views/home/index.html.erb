@@ -24,7 +24,7 @@
               <%= @quick_links_menu_title %>
             </h3>
             <% @quick_links_menu_content.each do |link| %>
-              <%= link_to link['menu_item']['title'], link['menu_item']['url'], target: link['menu_item']['target'] %>
+              <%= link_to link['menu_item']['title'], link['menu_item']['url'], target: link['menu_item']['target'], class: 'quick-links-link' %>
             <% end %>
           </nav>
         </div>
