@@ -25,5 +25,8 @@ module DigitalWorkspace
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.middleware.insert_after Rails::Rack::Logger, HealthCheck::MiddlewareHealthcheck
+
+    config.gtm_id = ENV['GTM_ID']
+    config.gtm_extra = ENV['GTM_EXTRA']
   end
 end
