@@ -68,10 +68,9 @@
               = link_to(p["title"]["rendered"].html_safe, link_news_top + p["slug"])
             .news-item-text
               .post-meta
-                - profile = PeopleFinderProfile.from_api(p["author_email"])
                 - author_name = p["acf"]["author_name"].present? ? p["acf"]["author_name"] : p["author_name"]
                 = succeed ', ' do
-                  = profile.name || author_name
+                  = author_name
 
                 = get_date(p["date"])
                 - cat_length = p["news_categories"].length - 1

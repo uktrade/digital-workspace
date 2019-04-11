@@ -50,10 +50,9 @@
               %hr{:class => 'rule-small'}
               = @page_title = p["title"]["rendered"].html_safe
             .post-meta
-              - profile = PeopleFinderProfile.from_api(p["author_email"])
               - author_name = p["acf"]["author_name"].present? ? p["acf"]["author_name"] : p["author_name"]
               = succeed ', ' do
-                = profile.name || author_name
+                = author_name
               = get_date(p["date"])
               - cat_length = p["news_categories"].length - 1
               - p["news_categories"].each_with_index do |cat, i|
