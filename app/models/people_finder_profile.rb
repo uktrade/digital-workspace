@@ -1,5 +1,6 @@
 class PeopleFinderProfile
   BASE_URL = ENV['PEOPLEFINDER_API_URL']
+  BASE_END_USER_URL = ENV['PEOPLEFINDER_URL']
   AUTH_TOKEN = ENV['PEOPLEFINDER_AUTH_TOKEN']
 
   attr_accessor(
@@ -54,7 +55,7 @@ class PeopleFinderProfile
     end
 
     def people_finder_my_profile_url
-      URI.join(PeopleFinderProfile::BASE_URL, 'my/profile').to_s
+      URI.join(PeopleFinderProfile::BASE_END_USER_URL, 'my/profile').to_s
     end
   end
 end
