@@ -5,7 +5,7 @@ class AuthUser
 
   class << self
     def from_omniauth_hash(auth_hash = {})
-      AuthUser.new(ditsso_user_id: auth_hash['uid'])
+      AuthUser.new(ditsso_user_id: auth_hash['uid'], email: auth_hash.dig('info', 'email'))
     end
   end
 end
