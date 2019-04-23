@@ -25,7 +25,8 @@ class ReportController < ApplicationController
 
   def requester
     @requester ||= @people_finder_profile
-    @requester.name ||= 'Unknown'
+    @requester.name ||= 'User without profile'
+    @requester.email ||= current_user.email
     @requester
   end
 
