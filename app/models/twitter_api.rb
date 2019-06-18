@@ -1,13 +1,21 @@
 require 'twitter'
 
 class TwitterApi
+  USERS = ['tradegovuk', 'AntoniaRomeoUK']
+
   def self.public_tweets
     return [] unless ENV['TWITTER_KEY']
 
-    # `count` parameter includes replies and RTs
-    Rails.cache.fetch('twitter_feed', expires_in: 60) do
-      client.user_timeline('tradegovuk', count: 25, exclude_replies: true, include_rts: false).first(3)
+    Rails.cache.fetch('twitter_feed', expires_in: 30.minutes) do
+      tweets = USERS.map do |user|
+        # `count` parameter includes replies and RTs, so we aim high to make sure enough
+        # "real" tweets are included
+        client.user_timeline(user, count: 25, exclude_replies: true, include_rts: false)        
+      end.flatten.sort {|a,b| b.created_at <=> a.created_at }.first(3)
     end
+  rescue => error
+    Raven.capture_exception(error)
+    []
   end
 
   def self.client
