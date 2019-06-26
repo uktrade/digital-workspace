@@ -4,6 +4,7 @@ class HomeController < ApplicationController
     @posts = @api_call.main_query
     @howdois = @api_call.howdois
     @popular_posts = @api_call.popular_posts
+    @govuk_news = @api_call.govuk_news
 
     @quick_links_menu_title = @api_call.quick_links_menu_title
     @quick_links_menu_content = @api_call.quick_links_menu_content
