@@ -2,7 +2,7 @@ ruby '2.5.3'
 
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.2.2'
+gem 'rails', '~> 5.2.3'
 
 gem 'haml-rails', '~> 1.0'
 gem 'jbuilder', '~> 2.5'
