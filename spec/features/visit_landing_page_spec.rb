@@ -5,6 +5,10 @@ describe 'visit the landing page', vcr: true do
     login_as_omniauth_user
   end
 
+  it 'fails in order to test CircleCI' do
+    fail
+  end
+
   scenario 'in general' do
     visit '/'
 
