@@ -46,6 +46,10 @@ class HomePageQueries
     WpApi.get_headers('comments')
   end
 
+  def govuk_news
+    GovukFeed.new.news_feed(6)
+  end
+
   def quick_links_menu
     @quick_links_menu ||= WpApi.get_json_body('menus', params: { slug: 'homepage-quick-links-menu' })
   end
