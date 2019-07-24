@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   get '/about-us', to: 'standard#index'
   get '/about-us/*path', to: 'standard#index'
 
+  get '/brexit-hub', to: 'standard#index'
+  get '/brexit-hub/*path', to: 'standard#index'
+
   get '/tools', to: 'standard#index'
   get '/tools/*path', to: 'tools#index'
 
