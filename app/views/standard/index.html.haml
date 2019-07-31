@@ -35,7 +35,7 @@
           - @content.each do |p|
             %h2.heading-large
               = p["title"]["rendered"].html_safe
-            = p["acf"]["excerpt"]
+            = p["content"]["rendered"].html_safe
     .grid-row
       .column-full
         %hr{:class => 'rule-small'}
