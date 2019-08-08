@@ -9,20 +9,20 @@ class WpApi
 
       if use_cache
         Rails.cache.fetch("#{path}_body", expires_in: 60) do
-          JSON.parse(get_json(path).body)
+          WpResponse.new(get_json(path)).to_json
         end
       else
-        JSON.parse(get_json(path).body)
+        WpResponse.new(get_json(path)).to_json
       end
     end
 
     def get_custom_json_body(path, use_cache = true)
       if use_cache
         Rails.cache.fetch("#{path}_body", expires_in: 60) do
-          JSON.parse(get_custom_json(path).body)
+          WpResponse.new(get_custom_json(path)).to_json
         end
       else
-        JSON.parse(get_custom_json(path).body)
+        WpResponse.new(get_custom_json(path)).to_json
       end
     end
 
@@ -64,7 +64,7 @@ class WpApi
     end
 
     def get_search_json_body(params)
-      JSON.parse(get_search_json(params).body)
+      WpResponse.new(get_search_json(params)).to_json
     end
 
     def get_search_json_headers(params)
