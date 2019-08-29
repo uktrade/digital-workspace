@@ -33,7 +33,7 @@
               = page["acf"]["excerpt"].html_safe
 
         .accordion-controls
-          %span.accordion-open-all
+          %a.accordion-open-all{href: '#'}
             Open all
         .accordion-container
           - if @accordion_theme.present?

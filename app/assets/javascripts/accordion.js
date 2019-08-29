@@ -38,6 +38,7 @@
 		//accordion_all_cta[0].addEventListener('click', toggle_all, false);
 		accordion_all_cta[0].onclick = function() {
 			toggle_all();
+			return false;
 		};
 
 		// Open single
