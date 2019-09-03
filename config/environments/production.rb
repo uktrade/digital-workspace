@@ -59,6 +59,12 @@ Rails.application.configure do
   }
   config.rails_semantic_logger.format = :json
 
+  if ENV["RAILS_LOG_TO_STDOUT"].present?
+    STDOUT.sync = true
+    config.rails_semantic_logger.add_file_appender = false
+    config.semantic_logger.add_appender(io: STDOUT, level: config.log_level, formatter: config.rails_semantic_logger.format)  
+  end
+
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
@@ -73,23 +79,13 @@ Rails.application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
-  # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.log_formatter = ::Logger::Formatter.new
-
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
-
 
   config.cache_store = :readthis_store, {
     expires_in: 90.minutes.to_i,
     namespace: 'workspace:cache:',
     redis: { url: URI.join(ENV.fetch('REDIS_URL'), '/o/cache').to_s }
   }
-
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
-    logger           = ActiveSupport::Logger.new(STDOUT)
-    logger.formatter = config.log_formatter
-    config.logger    = ActiveSupport::TaggedLogging.new(logger)
-  end
 end
