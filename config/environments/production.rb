@@ -47,8 +47,17 @@ Rails.application.configure do
   # when problems arise.
   config.log_level = :debug
 
-  # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  # Make logs meet the DIT Cross Application Access Logs format
+  config.log_tags = {
+    request_id: :request_id,
+    sso_user_id: -> request do
+      # At the point in the request where logging commences, Rails hasn't yet
+      # populated `request.session`, so we need to access it through the cookie jar.
+      session_key = Rails.application.config.session_options[:key]
+      request.cookie_jar.encrypted[session_key].try(:[], 'ditsso_user_id')
+    end
+  }
+  config.rails_semantic_logger.format = :json
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -59,7 +68,7 @@ Rails.application.configure do
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
-  config.i18n.fallbacks = true
+  config.i18n.fallbacks = [I18n.default_locale]
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
