@@ -46,6 +46,7 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     arel (9.0.0)
     ast (2.4.0)
+    awesome_print (1.8.0)
     bindex (0.5.0)
     buftok (0.2.0)
     builder (3.2.3)
@@ -134,8 +135,6 @@ GEM
       multi_json (>= 1.2)
     json (2.0.2)
     jwt (1.5.6)
-    launchy (2.4.3)
-      addressable (~> 2.3)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -206,11 +205,10 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
-    rails_12factor (0.0.3)
-      rails_serve_static_assets
-      rails_stdout_logging
-    rails_serve_static_assets (0.0.5)
-    rails_stdout_logging (0.0.5)
+    rails_semantic_logger (4.4.2)
+      rack
+      railties (>= 3.2)
+      semantic_logger (~> 4.4)
     railties (5.2.3)
       actionpack (= 5.2.3)
       activesupport (= 5.2.3)
@@ -274,6 +272,8 @@ GEM
     selenium-webdriver (3.5.2)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
+    semantic_logger (4.5.0)
+      concurrent-ruby (~> 1.0)
     sentry-raven (2.7.1)
       faraday (>= 0.7.6, < 1.0)
     sexp_processor (4.10.0)
@@ -340,6 +340,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   bundler-audit
   byebug
   capybara (~> 2.13)
@@ -351,13 +352,12 @@ DEPENDENCIES
   health_check
   jbuilder (~> 2.5)
   json
-  launchy
   listen (>= 3.0.5, < 3.2)
   omniauth-oauth2
   pry
   puma (~> 3.7)
   rails (~> 5.2.3)
-  rails_12factor
+  rails_semantic_logger
   readthis
   redis-session-store
   rspec-rails (~> 3.6)
@@ -376,7 +376,7 @@ DEPENDENCIES
   zendesk_api
 
 RUBY VERSION
-   ruby 2.5.3p105
+   ruby 2.5.6p201
 
 BUNDLED WITH
    1.17.3

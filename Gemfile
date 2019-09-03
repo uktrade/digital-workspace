@@ -1,4 +1,4 @@
-ruby '2.5.3'
+ruby '2.5.6'
 
 source 'https://rubygems.org'
 
@@ -18,13 +18,15 @@ gem 'govuk_template'
 gem 'typhoeus'
 gem 'omniauth-oauth2'
 
-gem 'rails_12factor'
 gem 'redis-session-store'
 gem 'readthis'
 
 gem 'foreman'
 gem 'health_check'
 gem 'sentry-raven'
+
+gem 'awesome_print'
+gem 'rails_semantic_logger'
 
 group :development, :test do
   gem 'bundler-audit'
@@ -44,7 +46,6 @@ group :development do
 end
 
 group :test do
-  gem 'launchy'
   gem 'selenium-webdriver'
   gem 'vcr'
   gem 'webmock'
