@@ -53,7 +53,7 @@ class WpResponse
   end
 
   def s3_asset_url_regex
-    /#{Regexp.quote(s3_asset_bucket_url)}\\\/(.+?)\?(.+?)X-Amz-Signature=[0-9a-f]+/i
+    /#{Regexp.quote(s3_asset_bucket_url)}\\\/(.+?)\?(.+?)X-Amz-Signature(=|%3D)[0-9a-f]+/i
   end
 
   def response_body
