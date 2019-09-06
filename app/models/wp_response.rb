@@ -5,6 +5,8 @@ class WpResponse
 
   def to_json
     json = JSON.parse(response_body_with_proxy_urls)
+  rescue JSON::ParserError => e
+    binding.pry
   end
 
   private
@@ -53,7 +55,7 @@ class WpResponse
   end
 
   def s3_asset_url_regex
-    /#{Regexp.quote(s3_asset_bucket_url)}\\\/(.+?)\?(.+?)X-Amz-Signature(=|%3D)[0-9a-f]+/i
+    /#{Regexp.quote(s3_asset_bucket_url)}\\\/(.+?)\?([^"']+?)X-Amz-Signature(=|%3D)[0-9a-f]+/i
   end
 
   def response_body
