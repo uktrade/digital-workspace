@@ -5,8 +5,6 @@ class WpResponse
 
   def to_json
     json = JSON.parse(response_body_with_proxy_urls)
-  rescue JSON::ParserError => e
-    binding.pry
   end
 
   private
