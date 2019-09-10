@@ -28,7 +28,7 @@ class WpResponse
     # signed S3 URLs with the equivalent URL on our asset proxy.
 
     if replace_s3_urls_with_proxy_urls?
-      response_body.gsub(s3_asset_url_regex, s3_asset_proxy_url + '\/\1')
+      response_body.gsub(s3_asset_bucket_url, s3_asset_proxy_url)
     else
       response_body
     end
@@ -50,10 +50,6 @@ class WpResponse
 
   def replace_s3_urls_with_proxy_urls?
     s3_asset_proxy_url.present?
-  end
-
-  def s3_asset_url_regex
-    /#{Regexp.quote(s3_asset_bucket_url)}\\\/(.+?)\?([^"']+?)X-Amz-Signature(=|%3D)[0-9a-f]+/i
   end
 
   def response_body
