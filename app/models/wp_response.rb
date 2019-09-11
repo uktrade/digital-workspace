@@ -5,6 +5,15 @@ class WpResponse
 
   def to_json
     json = JSON.parse(response_body_with_proxy_urls)
+  rescue JSON::ParserError => e
+    # Provide extra information to aid in debugging
+    Raven.capture_exception(
+      e,
+      request_url: raw_response.effective_url,
+      response_code: raw_response.response_code,
+      response_body: response_body,
+      response_body_with_proxy_urls: response_body_with_proxy_urls
+    )
   end
 
   private
