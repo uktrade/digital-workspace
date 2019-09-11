@@ -57,5 +57,10 @@
                   = link_to( title, link)
               %p
                 = content["acf"]["excerpt"]
+                %br
+                %span.post-meta
+                  Updated
+                  = get_date(content['modified'])
+
 
 = render partial: "widgets/zendesk_footer"
