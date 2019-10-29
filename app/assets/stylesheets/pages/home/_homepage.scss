@@ -274,37 +274,6 @@
 	margin-top: 0;
 }
 
-// @media (min-width: $screen_small) {
-	.graph-summary {
-		.stat {
-			background-size: 60%;
-			padding-top: 150px;
-		}
-		&.graph-summary-a {
-			.stat {
-				@include background-image('3745_members', png, 227px, 154px);
-				background-position: center 45px;
-			}
-		}
-		&.graph-summary-b {
-			.stat {
-				@include background-image('108_markets', png, 157px, 182px);
-				background-position: center 30px;
-			}
-		}
-		&.graph-summary-c {
-			.stat {
-				@include background-image('63_people_survey', png, 159px, 159px);
-				background-position: center 40px;
-
-				@media (min-width: $screen_medium) {
-					background-position: center 30px;
-				}
-			}
-		}
-	}
-// }
-
 // ------------------------------------
 // homepage how to links
 
