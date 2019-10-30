@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'ditsso_internal'
 
 Rails.application.config.middleware.use OmniAuth::Builder do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PolicyController < ApplicationController
   def index
     @api_call = PolicyQueries.new

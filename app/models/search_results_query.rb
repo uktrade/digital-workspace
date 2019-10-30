@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SearchResultsQuery
   def initialize(params)
     @params = params

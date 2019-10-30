@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HomePageQueries
   def popular_posts
     WpApi.get_json_body(
@@ -9,21 +11,39 @@ class HomePageQueries
   def posts_ministers
     WpApi.get_json_body(
       'news',
-      params: { orderby: 'date', order: 'desc', per_page: 2, 'filter[news_categories]': 'ministers', _embed: 1 }
+      params: {
+        orderby: 'date',
+        order: 'desc',
+        per_page: 2,
+        'filter[news_categories]': 'ministers',
+        _embed: 1
+      }
     )
   end
 
   def posts_antonia
     WpApi.get_json_body(
       'news',
-      params: { orderby: 'date', order: 'desc', per_page: 2, 'filter[news_categories]': 'antonia', _embed: 1 }
+      params: {
+        orderby: 'date',
+        order: 'desc',
+        per_page: 2,
+        'filter[news_categories]': 'antonia',
+        _embed: 1
+      }
     )
   end
 
   def posts_departmental
     WpApi.get_json_body(
       'news',
-      params: { orderby: 'date', order: 'desc', per_page: 2, 'filter[news_categories]': 'departmental', _embed: 1 }
+      params: {
+        orderby: 'date',
+        order: 'desc',
+        per_page: 2,
+        'filter[news_categories]': 'departmental',
+        _embed: 1
+      }
     )
   end
 
@@ -51,7 +71,10 @@ class HomePageQueries
   end
 
   def quick_links_menu
-    @quick_links_menu ||= WpApi.get_json_body('menus', params: { slug: 'homepage-quick-links-menu' })
+    @quick_links_menu ||= WpApi.get_json_body(
+      'menus',
+      params: { slug: 'homepage-quick-links-menu' }
+    )
   end
 
   def quick_links_menu_content

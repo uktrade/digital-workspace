@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
+
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 
 require 'rspec/rails'
@@ -20,8 +23,10 @@ VCR.configure do |config|
     i.request.uri = i.request.uri.gsub(/email=.*gov.uk/, 'email=<removed>')
     i.response.body = '[]' if i.response.body =~ /^\[{\"id\":/
     i.response.body = '{}' if i.response.body =~ /^\{\"token_type\":\"bearer\"/
+
     i.response.headers['Link'] = ['http://test.local'] if i.response.headers['Link']
   end
+
   config.filter_sensitive_data('<PEOPLEFINDER_URL>') { ENV['PEOPLEFINDER_URL'] }
   config.filter_sensitive_data('<PEOPLEFINDER_API_URL>') { ENV['PEOPLEFINDER_API_URL'] }
   config.filter_sensitive_data('<PEOPLEFINDER_AUTH_TOKEN>') { ENV['PEOPLEFINDER_AUTH_TOKEN'] }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HowdoiController < ApplicationController
   def index
     @api_call = HowdoiQueries.new

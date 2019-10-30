@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class StandardController < ApplicationController
   def current_url_without_parameters
     request.base_url + request.path
@@ -13,7 +15,10 @@ class StandardController < ApplicationController
     @parent_id = @content.first['id']
     @content_children_content = @api_call.standard_child_content_query(@parent_id)
     @content_children_standard = @api_call.standard_child_standard_query(@parent_id)
-    @content_children = @api_call.content_children(@content_children_content, @content_children_standard)
+    @content_children = @api_call.content_children(
+      @content_children_content,
+      @content_children_standard
+    )
 
     build_global_notification
   end

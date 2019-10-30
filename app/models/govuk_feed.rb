@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rss'
 
 GovukLink = Struct.new(:title, :url, :summary, :updated_at)
@@ -8,13 +10,24 @@ class GovukFeed
   def news_feed(count = 5)
     Rails.cache.fetch('govuk_rss_feed', expires_in: 30.minutes) do
       URI.parse(FEED_URL).open do |rss|
-        feed = RSS::Parser.parse(rss)
-        feed.items.first(count).map do |item|
-          GovukLink.new(item.title.content, item.link.href, item.summary.content, item.updated.content)
-        end
+        parse_feed(rss, count)
       end
     end
-  rescue
+  rescue StandardError
     []
+  end
+
+  private
+
+  def parse_feed(rss, count)
+    feed = RSS::Parser.parse(rss)
+    feed.items.first(count).map do |item|
+      GovukLink.new(
+        item.title.content,
+        item.link.href,
+        item.summary.content,
+        item.updated.content
+      )
+    end
   end
 end

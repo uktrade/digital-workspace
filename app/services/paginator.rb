@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Paginator
   PER_PAGE = 10
 

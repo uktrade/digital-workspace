@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def valid_omnniauth_user
   OmniAuth::AuthHash.new(
     provider: 'ditsso_internal',

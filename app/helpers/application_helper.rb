@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def parsed_tweet(tweet)
     TweetParser.new(tweet).parse.html_safe
@@ -29,12 +31,14 @@ module ApplicationHelper
 
   def comments(link, count)
     return if count.zero?
+
     text = count == 1 ? 'comment' : 'comments'
     link_to("#{count} #{text}", link + '#comments', class: 'cta-comments')
   end
 
   def comments_heading(count)
     return if count.zero?
+
     text = count == 1 ? 'comment' : 'comments'
     "#{count} #{text}"
   end

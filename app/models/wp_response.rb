@@ -1,18 +1,20 @@
+# frozen_string_literal: true
+
 class WpResponse
   def initialize(raw_response)
     @raw_response = raw_response
   end
 
-  def to_json
-    json = JSON.parse(response_body_with_proxy_urls)
+  def to_json(*_args)
+    JSON.parse(response_body_with_proxy_urls)
   rescue JSON::ParserError => e
     # Provide extra information to aid in debugging
     Raven.capture_exception(
       e,
-      request_url: raw_response.effective_url,
-      response_code: raw_response.response_code,
-      response_body: response_body,
-      response_body_with_proxy_urls: response_body_with_proxy_urls
+      extra: {
+        request_url: raw_response.effective_url,
+        response_code: raw_response.response_code
+      }
     )
   end
 
@@ -52,7 +54,7 @@ class WpResponse
 
   def s3_asset_bucket_url
     return unless ENV['S3_ASSET_BUCKET_URL'].present?
-  
+
     # Forward slashes are escaped in JSON response
     ENV['S3_ASSET_BUCKET_URL'].gsub('/', '\/')
   end

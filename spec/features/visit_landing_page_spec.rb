@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'visit the landing page', vcr: true do
@@ -12,7 +14,10 @@ describe 'visit the landing page', vcr: true do
     expect(page).to have_css('h2', text: 'What\'s popular?')
 
     within('.user-account') do
-      expect(page).to have_link('Please set up your profile', href: "#{ENV['PEOPLEFINDER_URL']}/my/profile")
+      expect(page).to have_link(
+        'Please set up your profile',
+        href: "#{ENV['PEOPLEFINDER_URL']}/my/profile"
+      )
     end
 
     within('.people-search-inner-page') do

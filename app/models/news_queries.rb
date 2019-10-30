@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class NewsQueries
   def main_query(page)
     WpApi.get_json_body(
       'news',
-       params: { _embed: 1, per_page: Paginator::PER_PAGE, page: page }
+      params: { _embed: 1, per_page: Paginator::PER_PAGE, page: page }
     )
   end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module NewsHelper
   def news_cats(name, slug)
     link_to(name, link_news_top + link_news_category + slug)

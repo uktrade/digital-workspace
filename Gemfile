@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ruby '2.6.5'
 
 source 'https://rubygems.org'
@@ -6,26 +8,24 @@ gem 'rails', '~> 6.0.0'
 
 gem 'haml-rails', '~> 2.0'
 gem 'jbuilder', '~> 2.5'
-gem 'puma', '~> 4.2'
-gem 'sass-rails', '~> 6.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'twitter'
-gem 'zendesk_api'
 gem 'json'
+gem 'omniauth-oauth2'
+gem 'puma', '~> 4.2'
+gem 'readthis'
+gem 'redis-session-store'
+gem 'sass-rails', '~> 6.0'
+gem 'twitter'
+gem 'typhoeus'
+gem 'uglifier', '>= 1.3.0'
+gem 'zendesk_api'
 
 gem 'govuk_elements_rails'
 gem 'govuk_template'
-gem 'typhoeus'
-gem 'omniauth-oauth2'
-
-gem 'redis-session-store'
-gem 'readthis'
 
 gem 'foreman'
 gem 'health_check'
 gem 'sentry-raven'
 
-gem 'awesome_print'
 gem 'rails_semantic_logger'
 
 # TODO: Figure out why sprockets upgrade to 4.x breaks SCSS variables
@@ -34,6 +34,7 @@ gem 'rails_semantic_logger'
 gem 'sprockets', '~> 3.7'
 
 group :development, :test do
+  gem 'awesome_print'
   gem 'bundler-audit'
   gem 'byebug'
   gem 'capybara', '~> 2.13'
@@ -44,10 +45,10 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'web-console', '>= 3.3.0'
 end
 
 group :test do

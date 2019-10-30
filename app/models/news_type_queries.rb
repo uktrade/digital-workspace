@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class NewsTypeQueries
   def initialize(slug)
     @slug = slug
@@ -6,7 +8,12 @@ class NewsTypeQueries
   def main_query(page)
     WpApi.get_json_body(
       'news',
-      params: { _embed: 1, 'filter[news_category]': @slug, per_page: Paginator::PER_PAGE, page: page }
+      params: {
+        _embed: 1,
+        'filter[news_category]': @slug,
+        per_page: Paginator::PER_PAGE,
+        page: page
+      }
     )
   end
 

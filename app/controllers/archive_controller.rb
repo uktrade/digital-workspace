@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ArchiveController < ApplicationController
   def index
     @api_call = NewsQueries.new
