@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module FooterMenuHelper
   def footer_menu
     WpApi.get_json_body('menus', params: { slug: 'footer-menu' })

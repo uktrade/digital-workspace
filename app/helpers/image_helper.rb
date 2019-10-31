@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 module ImageHelper
   def large_image_tag(post)
     return unless image_exists?(post)
+
     if alt_exists?(post)
       (img_alt = post['acf']['image']['alt'].html_safe)
     else
@@ -11,6 +14,7 @@ module ImageHelper
 
   def medium_image_tag(post)
     return unless image_exists?(post)
+
     if alt_exists?(post)
       (img_alt = post['acf']['image']['alt'].html_safe)
     else
@@ -21,6 +25,7 @@ module ImageHelper
 
   def small_image_tag(post)
     return unless image_exists?(post)
+
     if alt_exists?(post)
       (img_alt = post['acf']['image']['alt'].html_safe)
     else

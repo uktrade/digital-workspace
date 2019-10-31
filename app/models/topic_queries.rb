@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TopicQueries
   def initialize(slug)
     @slug = slug

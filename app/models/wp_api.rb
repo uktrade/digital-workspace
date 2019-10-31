@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class WpApi
   BASE_URI = ENV['WP_API_URL']
   BASE_CUSTOM_URI = ENV['WP_API_CUSTOM']

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AccordionQueries
   def initialize(slug)
     @slug = slug
@@ -16,6 +18,14 @@ class AccordionQueries
   end
 
   def self.accordion_topic_query(theme_slug)
-    WpApi.get_json_body('topics', params: { 'filter[theme_taxonomy]': theme_slug, orderby: 'title', order: 'asc', per_page: 50 })
+    WpApi.get_json_body(
+      'topics',
+      params: {
+        'filter[theme_taxonomy]': theme_slug,
+        orderby: 'title',
+        order: 'asc',
+        per_page: 50
+      }
+    )
   end
 end

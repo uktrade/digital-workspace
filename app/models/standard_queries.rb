@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class StandardQueries
   def initialize(slug)
     @slug = slug
@@ -16,11 +18,29 @@ class StandardQueries
   end
 
   def standard_child_content_query(parent_id)
-    WpApi.get_json_body('pages', params: { type: 'content', orderby: 'title', order: 'asc', per_page: 100, parent: parent_id })
+    WpApi.get_json_body(
+      'pages',
+      params: {
+        type: 'content',
+        orderby: 'title',
+        order: 'asc',
+        per_page: 100,
+        parent: parent_id
+      }
+    )
   end
 
   def standard_child_standard_query(parent_id)
-    WpApi.get_json_body('pages', params: { type: 'standard_index', orderby: 'title', order: 'asc', per_page: 100, parent: parent_id })
+    WpApi.get_json_body(
+      'pages',
+      params: {
+        type: 'standard_index',
+        orderby: 'title',
+        order: 'asc',
+        per_page: 100,
+        parent: parent_id
+      }
+    )
   end
 
   def content_children(arr_a, arr_b)

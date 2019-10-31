@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if ENV['REDIS_URL'].present? && !Rails.env.test?
   redis_session_store_url =
     {

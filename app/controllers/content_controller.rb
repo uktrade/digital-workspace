@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ContentController < ApplicationController
   def current_url_without_parameters
     request.base_url + request.path

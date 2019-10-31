@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CustomHealthCheck
   def self.perform_check
     health_check = CustomHealthCheck.new

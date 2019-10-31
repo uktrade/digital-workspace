@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PeopleFinderProfile
   BASE_URL = ENV['PEOPLEFINDER_API_URL']
   BASE_END_USER_URL = ENV['PEOPLEFINDER_URL']

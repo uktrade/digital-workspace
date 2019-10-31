@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -30,7 +32,8 @@ Rails.application.configure do
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
-  # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
+  # `config.assets.precompile` and `config.assets.version`
+  # have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
@@ -38,7 +41,6 @@ Rails.application.configure do
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
-
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -50,19 +52,23 @@ Rails.application.configure do
   # Make logs meet the DIT Cross Application Access Logs format
   config.log_tags = {
     request_id: :request_id,
-    sso_user_id: -> request do
+    sso_user_id: lambda { |request|
       # At the point in the request where logging commences, Rails hasn't yet
       # populated `request.session`, so we need to access it through the cookie jar.
       session_key = Rails.application.config.session_options[:key]
       request.cookie_jar.encrypted[session_key].try(:[], 'ditsso_user_id')
-    end
+    }
   }
   config.rails_semantic_logger.format = :json
 
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
+  if ENV['RAILS_LOG_TO_STDOUT'].present?
     STDOUT.sync = true
     config.rails_semantic_logger.add_file_appender = false
-    config.semantic_logger.add_appender(io: STDOUT, level: config.log_level, formatter: config.rails_semantic_logger.format)  
+    config.semantic_logger.add_appender(
+      io: STDOUT,
+      level: config.log_level,
+      formatter: config.rails_semantic_logger.format
+    )
   end
 
   # Use a different cache store in production.

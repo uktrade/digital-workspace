@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SingleController < ApplicationController
   def index
     @slug = params[:path].split('/').last
@@ -13,10 +15,7 @@ class SingleController < ApplicationController
     @categories = @api_call.other_categories_query
 
     @global_notifications = @api_call.main_query
-
-    if @global_notifications.first.is_a?(Hash)
-      @global_notification = @global_notifications.first
-    end
+    @global_notification = @global_notifications.first if @global_notifications.first.is_a?(Hash)
   end
 
   def comments_post

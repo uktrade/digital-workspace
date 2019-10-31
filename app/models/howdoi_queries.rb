@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HowdoiQueries
   def initialize(slug)
     @slug = slug

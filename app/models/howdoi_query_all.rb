@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HowdoiQueryAll
   def howdoi_1_100
     WpApi.get_json_body('howdoi', params: { orderby: 'menu_order', per_page: 100 })

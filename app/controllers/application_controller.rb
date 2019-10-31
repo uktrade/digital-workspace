@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :ensure_sso_user
@@ -10,7 +12,8 @@ class ApplicationController < ActionController::Base
   private
 
   def ensure_sso_user
-    session[:ditsso_user_id] || redirect_to("/auth/ditsso_internal?origin=#{ERB::Util.url_encode(request.fullpath)}")
+    session[:ditsso_user_id] ||
+      redirect_to("/auth/ditsso_internal?origin=#{ERB::Util.url_encode(request.fullpath)}")
   end
 
   def load_people_finder_profile
