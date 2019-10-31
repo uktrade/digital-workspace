@@ -36,16 +36,15 @@ module ImageHelper
 
   def image_exists?(obj)
     # inspect the object's type
-    if obj.key?('acf')
-      # it is a word press image then we know how to check it
-      obj['acf'].present? && obj['acf']['image'] && obj['acf']['image']['sizes'].present?
-    end
+    return unless obj.key?('acf')
+
+    obj['acf'].present? && obj['acf']['image'] && obj['acf']['image']['sizes'].present?
   end
 
   def alt_exists?(obj)
-    if obj.key?('acf')
-      # it is a word press image then we know how to check it
-      obj['acf'].present? && obj['acf']['image'] && obj['acf']['image']['alt'].present?
-    end
+    return unless obj.key?('acf')
+
+    # it is a word press image then we know how to check it
+    obj['acf'].present? && obj['acf']['image'] && obj['acf']['image']['alt'].present?
   end
 end
