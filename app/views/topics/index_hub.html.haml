@@ -1,0 +1,111 @@
+- content_for :body_classes do
+  - 'section-working-at-dit'
+
+%div{:id => 'topics', :class => 'page-content'}
+  = render partial: "widgets/people_search"
+
+  - if flash[:notice]
+    .zd-confirmation
+      %span
+        = flash[:notice]
+
+  %main#content.root-index.content-section
+    .grid-row
+      .column-half
+        %ul.breadcrumb
+          %li
+            = link_to( 'Home', "/" )
+          - if @topic.present?
+            - @topic.each do |bcs|
+              - if bcs["breadcrumb"].present?
+                - bcs["breadcrumb"].each do |bc|
+                  %li
+                    = link_to( bc["title"].html_safe, bc["mapped_path"] )
+    .grid-row
+      .column-full
+        %hr{:class => 'rule-small rule-top'}
+        - if @topic.present?
+          - @topic.each do |topic|
+            %h2.heading-large
+              = @page_title = topic["title"]["rendered"].html_safe
+            = topic["content"]["rendered"].html_safe
+
+        %hr{:class => 'rule-small'}
+        %h2.heading-medium
+          Related news
+        .grid-row.eh-container
+          - @related_news[0..5].each do |p|
+            .column-third
+              = render partial: 'home/news_item', locals: { p: p } 
+
+        %hr{:class => 'rule-small'}
+        .topic-container
+          - if @topic_howdoi.present?
+            %title= yield(:parent_slug)
+            .topic
+              %h2
+                How do I?
+              %ul.list-style-a.topics-list
+                - @topic_howdoi[0..4].each_with_index do |how, i|
+                  %li
+                    = link_to(how["title"]["rendered"].html_safe, how["link"])
+                .topics-list-extra.no-animate
+                  - if @topic_howdoi[5..-1].present?
+                    - @topic_howdoi[5..-1].each_with_index do |how_extra, i|
+                      %li
+                        = link_to(how_extra["title"]["rendered"].html_safe, how_extra["link"])
+                - if @topic_howdoi[5..-1].present?
+                  %li.topic-controls
+                    %span{id: "toggle-howdoi", class: 'topic-toggle'}View more
+            %hr{:class => 'rule-small'}
+          - if @topic_policies.present?
+            .topic
+              %h2
+                Policies and Guidance
+              %ul.list-style-a.topics-list
+                - @topic_policies[0..4].each_with_index do |pol, i|
+                  %li
+                    = link_to(pol["title"]["rendered"].html_safe, pol["link"])
+                    - policy_or_guidance = pol["acf"]["policy_or_guidance"]
+                    = "<span class='policy-meta'>Last updated:  #{get_date( pol["modified"] )} − <span class='policy-meta-type'>#{policy_or_guidance}</span></span>".html_safe
+                .topics-list-extra.no-animate
+                  - if @topic_policies[5..-1].present?
+                    - @topic_policies[5..-1].each_with_index do |pol_extra, i|
+                      %li
+                        = link_to(pol_extra["title"]["rendered"].html_safe, pol_extra["link"])
+                        - policy_or_guidance_extra = pol_extra["acf"]["policy_or_guidance"]
+                        = "<span class='policy-meta'>Last updated:  #{get_date( pol_extra["modified"] )} − <span class='policy-meta-type'> #{policy_or_guidance_extra}</span></span>".html_safe                    
+                - if @topic_policies[5..-1].present?
+                  %li.topic-controls
+                    %span{id: "toggle-policy", class: 'topic-toggle'}View more
+            %hr{:class => 'rule-small'}
+
+
+          - if @topic_tools.present?
+            %h2.heading-medium
+              Related pages
+            %ul.list-style-a
+              - @topic_tools.each do |tool|
+                %li
+                  - if tool["acf"]["redirect_url"].present?
+                    - link = tool["acf"]["redirect_url"]["url"]
+                    - title = tool["acf"]["redirect_url"]["title"]
+                    - target = tool["acf"]["redirect_url"]["target"]
+                    = link_to( title, link, target: target)
+                  - else
+                    - link = tool["link"]
+                    - title = tool["title"]["rendered"].html_safe 
+                    = link_to( title, link)
+
+          - @topic_forms.each do |p|
+            - if p["acf"].present? && p["acf"]["documents"].present?
+              .topic
+                %h2.heading-medium
+                  Documents
+                - p["acf"]["documents"].each do |d|
+                  %ul.list-style-a
+                    %li
+                      = link_to( d["title"].html_safe, d["file"]["url"])
+                %hr{:class => 'rule-small'}
+
+= render partial: "widgets/zendesk_footer"

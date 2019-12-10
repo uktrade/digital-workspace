@@ -12,6 +12,19 @@ class TopicsController < ApplicationController
     init_tools
   end
 
+  def index_hub
+    # TODO: This is a proof-of-concept, mostly following the existing code in here.
+    #   If this application is kept around, these controllers need refactoring.
+    @slug = params[:path].split('/').last
+    @api_call = TopicThemeQueries.new(@slug)
+    @topic_theme = @api_call.topic_theme_query
+
+    init_topics
+    init_topic_children
+    init_related_news
+    init_tools
+  end
+
   protected
 
   def init_topics

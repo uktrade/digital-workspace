@@ -6,10 +6,14 @@ Rails.application.routes.draw do
   # Redirects
   get '/working-at-dit/policies-and-guidance/key-eu-exit-information', to: redirect('/brexit-hub')
   get '/working-at-dit/eu-exit', to: redirect('/working-at-dit/brexit')
+  get '/working-at-dit/gti-hub', to: redirect('/hubs/gti-hub')
 
   # On occasion, intermittent OAuth issues will cause users to be redirected to this path,
   # which doesn't exist. This at least gets them to the homepage instead of a 404 page.
   get '/auth/failure' => redirect('/')
+
+  # Special pages
+  get '/hubs/*path', to: 'topics#index_hub'
 
   root to: 'home#index'
 
