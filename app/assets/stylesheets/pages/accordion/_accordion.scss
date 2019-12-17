@@ -14,7 +14,7 @@
 		margin-top: 0px;
 		margin-bottom: 5px;
 		cursor: pointer;
-		color: $brand_color_a;
+		color: $govuk-link-color;
 		padding-right: 30px;
 
 		&:after {
@@ -70,5 +70,5 @@
 
 .accordion-open-all {
 	cursor: pointer;
-		color: $brand_color_a;
+	color: $govuk-link-color;
 }

@@ -92,12 +92,12 @@
 		display: inline-block;
 
 		&:link {
-			color: $brand_color_a;
+			color: $govuk-link-color;
 			text-decoration: underline;
 		}
 
 		&:hover {
-			color: $brand_color_a;
+			color: $govuk-link-color;
 			text-decoration: none;
 		}
 	}
@@ -134,7 +134,7 @@
 				margin: 0px;
 			}
 			&:visited {
-				color: $brand_color_a;
+				color: $govuk-link-color;
 			}
 			.link-title {
 				position: relative;
@@ -168,7 +168,7 @@
 				margin: 0px;
 			}
 			&:visited {
-				color: $brand_color_a;
+				color: $govuk-link-color;
 			}
 			.link-title {
 				position: relative;
