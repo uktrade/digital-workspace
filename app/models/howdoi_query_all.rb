@@ -1,15 +1,24 @@
 # frozen_string_literal: true
 
 class HowdoiQueryAll
-  def howdoi_1_100
-    WpApi.get_json_body('howdoi', params: { orderby: 'menu_order', per_page: 100 })
+  def howdois
+    return @howdois if @howdois
+
+    @howdois = []
+
+    offset = 0
+    while (items = howdoi_query(offset)).count == 100
+      @howdois.push(*items)
+      offset += 100
+    end
   end
 
-  def howdoi_101_200
-    WpApi.get_json_body('howdoi', params: { orderby: 'menu_order', per_page: 100, offset: 100 })
-  end
+  private
 
-  def howdoi_201_300
-    WpApi.get_json_body('howdoi', params: { orderby: 'menu_order', per_page: 100, offset: 200 })
+  def howdoi_query(offset)
+    WpApi.get_json_body(
+      'howdoi',
+      params: { orderby: 'title', order: 'asc', per_page: 100, offset: offset }
+    )
   end
 end
