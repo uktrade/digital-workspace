@@ -20,5 +20,3 @@
               = link_to(p["title"]["rendered"].html_safe, link_news_top + p["slug"])
               .post-meta
                 = get_date(p["date"])
-                - if p["news_categories"].present?
-                  = p['news_categories'].map {|cat| news_cats( cat["name"], cat["slug"] ) }.join(', ').html_safe
