@@ -13,9 +13,11 @@ class ContentController < ApplicationController
   def content
     @slug = current_url_without_parameters.split('/').last
     @api_call = ContentSingleQuery.new(@slug)
-    @content = @api_call.type_query
 
-    render file: '/public/404.html', status: 404 if @content.empty?
+    @content = @api_call.type_query
+    raise ActionController::RoutingError, 'Not Found' if @content.empty?
+
+    return if redirect_from_content!
 
     @global_notifications = @api_call.type_query
     @global_notification = @global_notifications.first if @global_notifications.first.is_a?(Hash)
