@@ -11,7 +11,12 @@ class StandardController < ApplicationController
 
   def standard
     @api_call = StandardQueries.new(@slug)
+
     @content = @api_call.main_query(@slug)
+    raise ActionController::RoutingError, 'Not Found' if @content.empty?
+
+    return if redirect_from_content!
+
     @parent_id = @content.first['id']
     @content_children_content = @api_call.standard_child_content_query(@parent_id)
     @content_children_standard = @api_call.standard_child_standard_query(@parent_id)
@@ -26,7 +31,12 @@ class StandardController < ApplicationController
   def content
     build_global_notification
     @api_call = ContentSingleQuery.new(@slug)
+
     @content = @api_call.type_query
+    raise ActionController::RoutingError, 'Not Found' if @content.empty?
+
+    return if redirect_from_content!
+
     render template: 'content/content'
   end
 

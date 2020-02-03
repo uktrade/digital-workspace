@@ -19,4 +19,14 @@ class ApplicationController < ActionController::Base
   def load_people_finder_profile
     @people_finder_profile = PeopleFinderProfile.from_api(current_user)
   end
+
+  def redirect_from_content!
+    return if @content.blank?
+
+    wp_redirect = @content.first.dig('acf', 'redirect_url').presence || {}
+    wp_redirect_url = wp_redirect['url']
+    return if wp_redirect_url.blank?
+
+    redirect_to(wp_redirect_url)
+  end
 end
