@@ -20,7 +20,7 @@ class CustomHealthCheck
 
   def check_peoplefinder_api
     response = Typhoeus.get(
-      "#{URI.join(ENV['PEOPLEFINDER_API_URL'], '/api/people')}?email=something-random",
+      "#{URI.join(ENV['PEOPLEFINDER_API_URL'], '/api/people')}?ditsso_user_id=does-not-exist",
       headers: {
         'Authorization' => "Token token=#{ENV['PEOPLEFINDER_AUTH_TOKEN']}"
       }
