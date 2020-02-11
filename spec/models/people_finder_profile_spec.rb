@@ -4,7 +4,7 @@ require 'rails_helper'
 
 describe PeopleFinderProfile do
   describe '#from_api' do
-    let(:user) { AuthUser.new(email: 'alice@example.com') }
+    let(:user) { AuthUser.new(email: 'alice@example.com', ditsso_user_id: 'alice') }
 
     subject { described_class.from_api(user) }
 

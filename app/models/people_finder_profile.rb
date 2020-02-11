@@ -32,6 +32,15 @@ class PeopleFinderProfile
     private
 
     def retrieve_user
+      if @ditsso_user_id.blank?
+        # Ensure we don't call PF API without a user ID
+        # TODO: Figure out when this is being called, as it shouldn't be
+        @links = {}
+        @attributes = {}
+
+        return
+      end
+
       response = Typhoeus.get(
         "#{URI.join(BASE_URL, '/api/people')}?ditsso_user_id=#{@ditsso_user_id}",
         headers: {
