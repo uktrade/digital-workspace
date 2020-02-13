@@ -7,11 +7,8 @@ source 'https://rubygems.org'
 gem 'rails', '~> 6.0.0'
 
 gem 'haml-rails', '~> 2.0'
-gem 'jbuilder', '~> 2.5'
-gem 'json'
 gem 'omniauth-oauth2'
 gem 'puma', '~> 4.2'
-gem 'readthis'
 gem 'redis'
 gem 'sass-rails', '~> 6.0'
 gem 'twitter'
@@ -22,7 +19,6 @@ gem 'zendesk_api'
 gem 'govuk_elements_rails'
 gem 'govuk_template'
 
-gem 'foreman'
 gem 'health_check'
 gem 'sentry-raven'
 
@@ -34,7 +30,6 @@ gem 'rails_semantic_logger'
 gem 'sprockets', '~> 3.7'
 
 group :development, :test do
-  gem 'awesome_print'
   gem 'bundler-audit'
   gem 'byebug'
   gem 'capybara', '~> 2.13'
@@ -42,13 +37,6 @@ group :development, :test do
   gem 'pry'
   gem 'rspec-rails', '~> 3.9'
   gem 'rubocop', '~> 0.76.0', require: false
-end
-
-group :development do
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'web-console', '>= 3.3.0'
 end
 
 group :test do
