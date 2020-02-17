@@ -29,4 +29,10 @@ class ApplicationController < ActionController::Base
 
     redirect_to(wp_redirect_url)
   end
+
+  def append_info_to_payload(payload)
+    super
+
+    payload[:sso_user_id] = session[:ditsso_user_id]
+  end
 end
