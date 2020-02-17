@@ -20,9 +20,8 @@ gem 'govuk_elements_rails'
 gem 'govuk_template'
 
 gem 'health_check'
+gem 'lograge'
 gem 'sentry-raven'
-
-gem 'rails_semantic_logger'
 
 # TODO: Figure out why sprockets upgrade to 4.x breaks SCSS variables
 #       Until then, keep it pinned at 3.x.
