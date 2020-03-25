@@ -9,6 +9,7 @@ WORKDIR /workspace
 COPY Gemfile /workspace/Gemfile
 COPY Gemfile.lock /workspace/Gemfile.lock
 
-RUN bundle install
+RUN gem install bundler:2.1.4
+RUN bundle install --jobs=3
 
 COPY . /workspace

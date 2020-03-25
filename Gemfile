@@ -4,7 +4,7 @@ ruby '2.6.5'
 
 source 'https://rubygems.org'
 
-gem 'rails', '~> 6.0.0'
+gem 'rails', '~> 6.0.2'
 
 gem 'haml-rails', '~> 2.0'
 gem 'omniauth-oauth2'
@@ -31,12 +31,12 @@ gem 'sprockets', '~> 3.7'
 group :development, :test do
   gem 'bundler-audit'
   gem 'byebug'
-  gem 'capybara', '~> 2.13'
+  gem 'capybara'
   gem 'dotenv-rails'
   gem 'listen'
   gem 'pry'
-  gem 'rspec-rails', '~> 3.9'
-  gem 'rubocop', '~> 0.76.0', require: false
+  gem 'rspec-rails'
+  gem 'rubocop', '~> 0.80.0', require: false
 end
 
 group :test do
