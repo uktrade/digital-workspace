@@ -33,6 +33,7 @@ group :development, :test do
   gem 'byebug'
   gem 'capybara', '~> 2.13'
   gem 'dotenv-rails'
+  gem 'listen'
   gem 'pry'
   gem 'rspec-rails', '~> 3.9'
   gem 'rubocop', '~> 0.76.0', require: false

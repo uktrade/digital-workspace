@@ -13,6 +13,7 @@ class SingleController < ApplicationController
     @posts = @api_call.main_query
     process_form_submission
     @categories = @api_call.other_categories_query
+    @comments_disabled = @posts.first && @posts.first['comment_status'] == 'closed'
 
     @global_notifications = @api_call.main_query
     @global_notification = @global_notifications.first if @global_notifications.first.is_a?(Hash)

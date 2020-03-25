@@ -42,16 +42,16 @@
                   %a{:href => '#comment-reply', :class => 'cta-comment-reply', :id => "threaded-reply-to-#{@top_level_comment}"  }
                     Reply
 
-    .leave-comment
-      %h2.heading-medium{:id => 'comment-reply'}
-        Leave a comment
+    - unless @comments_disabled
+      .leave-comment
+        %h2.heading-medium{:id => 'comment-reply'}
+          Leave a comment
 
-      = form_tag(request.url , method: :post, class: 'comment_post', id: 'comment-post') do
-        = hidden_field_tag("author_name", @people_finder_profile.name)
-        = hidden_field_tag("author_email", @people_finder_profile.email)
-        = hidden_field_tag("post", @posts.first["id"])
-        = hidden_field_tag("comment_parent", 0)
-        .comment_content_wrap
-          = text_area_tag('comment_content', nil, class: 'leave-comment-textarea')
-        = submit_tag('Submit comment', class: 'button')
-
+        = form_tag(request.url , method: :post, class: 'comment_post', id: 'comment-post') do
+          = hidden_field_tag("author_name", @people_finder_profile.name)
+          = hidden_field_tag("author_email", @people_finder_profile.email)
+          = hidden_field_tag("post", @posts.first["id"])
+          = hidden_field_tag("comment_parent", 0)
+          .comment_content_wrap
+            = text_area_tag('comment_content', nil, class: 'leave-comment-textarea')
+          = submit_tag('Submit comment', class: 'button')
