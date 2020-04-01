@@ -2,6 +2,7 @@ AllCops:
   Exclude:
     - config/initializers/*
     - db/schema.rb
+    - lib/vcap_services.rb
     - spec/spec_helper.rb
     - bin/*
 

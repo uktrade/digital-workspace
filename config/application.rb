@@ -29,13 +29,6 @@ module DigitalWorkspace
 
     config.gtm_id = ENV['GTM_ID']
     config.gtm_extra = ENV['GTM_EXTRA']
-    config.redis_cache_url = ENV['REDIS_URL']
-
-    # Caching and sessions
-    config.cache_store = :redis_cache_store, { url: config.redis_cache_url }
-    config.session_store :cache_store,
-                         key: 'workspace_session',
-                         expire_after: 1.hour,
-                         httponly: true
+    config.redis_cache_url = ENV['REDIS_URL'] # Overridden in production config
   end
 end
