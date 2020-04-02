@@ -12,5 +12,5 @@ HealthCheck.setup do |config|
     CustomHealthCheck.perform_check
   end
 
-  config.redis_url = ENV['REDIS_URL']
+  config.redis_url = Rails.configuration.redis_cache_url
 end
