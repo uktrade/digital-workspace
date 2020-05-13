@@ -1,4 +1,4 @@
-FROM ruby:2.6.5
+FROM ruby:2.7.1
 
 # Install essentials
 RUN apt-get update -qq && apt-get install -y build-essential less nodejs

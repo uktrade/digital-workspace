@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-ruby '2.6.5'
+ruby '2.7.1'
 
 source 'https://rubygems.org'
 
-gem 'rails', '~> 6.0.2'
+gem 'rails', '~> 6.0.3'
 
 gem 'haml-rails', '~> 2.0'
 gem 'omniauth-oauth2'
@@ -36,7 +36,7 @@ group :development, :test do
   gem 'listen'
   gem 'pry'
   gem 'rspec-rails'
-  gem 'rubocop', '~> 0.80.0', require: false
+  gem 'rubocop', require: false
 end
 
 group :test do
