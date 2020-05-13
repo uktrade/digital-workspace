@@ -5,6 +5,7 @@ AllCops:
     - lib/vcap_services.rb
     - spec/spec_helper.rb
     - bin/*
+  NewCops: enable
 
 Style/Documentation:
   Enabled: false

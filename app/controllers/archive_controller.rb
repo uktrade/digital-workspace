@@ -42,7 +42,7 @@ class ArchiveController < ApplicationController
     @global_notification = @global_notifications.first if @global_notifications.first.is_a?(Hash)
 
     @hero_post = @posts.first if @posts.first.is_a?(Hash)
-    @posts = @posts[1..-1] || []
+    @posts = @posts[1..] || []
   end
 
   def init_categories
