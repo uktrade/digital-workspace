@@ -350,6 +350,7 @@ DEPENDENCIES
   govuk_template
   haml-rails (~> 2.0)
   health_check
+  jwt
   listen
   lograge
   omniauth-oauth2

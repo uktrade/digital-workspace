@@ -7,6 +7,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 6.0.3'
 
 gem 'haml-rails', '~> 2.0'
+gem 'jwt'
 gem 'omniauth-oauth2'
 gem 'puma', '~> 4.2'
 gem 'redis'

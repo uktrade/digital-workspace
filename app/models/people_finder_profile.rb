@@ -3,70 +3,45 @@
 class PeopleFinderProfile
   BASE_URL = ENV['PEOPLEFINDER_API_URL']
   BASE_END_USER_URL = ENV['PEOPLEFINDER_URL']
-  AUTH_TOKEN = ENV['PEOPLEFINDER_AUTH_TOKEN']
 
-  attr_accessor(
-    :ditsso_user_id,
-    :email,
-    :name,
-    :given_name,
-    :surname,
-    :team,
-    :completion_score,
-    :profile_image_url,
-    :profile_url
-  )
+  attr_accessor :name, :first_name, :email, :completion_score, :profile_url, :profile_image_url
 
-  def present?
-    given_name.present?
+  def self.from_api(user)
+    # TODO: Figure out if this is still an issue
+    return if user.ditsso_user_id.blank?
+
+    request_path = "/api/v2/people_profiles/#{user.ditsso_user_id}"
+    jwt = JWT.encode(
+      { fullpath: request_path, exp: 1.minute.from_now.to_i },
+      Rails.configuration.people_finder_api_private_key,
+      'RS512'
+    )
+    response = Typhoeus.get(
+      URI.join(BASE_URL, request_path),
+      headers: {
+        'Authorization' => "Bearer #{jwt}"
+      }
+    )
+
+    result = response.success? ? JSON.parse(response.body) : {}
+
+    PeopleFinderProfile.new(result)
   end
 
-  class << self
-    def from_api(user)
-      @ditsso_user_id = user.is_a?(AuthUser) ? user.ditsso_user_id : user.to_s
-      retrieve_user
-      assign_user
-      @profile
-    end
+  def self.my_profile_url
+    URI.join(BASE_END_USER_URL, 'my/profile').to_s
+  end
 
-    private
+  def initialize(params = {})
+    @name = params['name']
+    @first_name = params['first_name']
+    @email = params['email']
+    @completion_score = params['completion_score'] || 0
+    @profile_url = params['profile_url']
+    @profile_image_url = params['profile_image_url']
+  end
 
-    def retrieve_user
-      if @ditsso_user_id.blank?
-        # Ensure we don't call PF API without a user ID
-        # TODO: Figure out when this is being called, as it shouldn't be
-        @links = {}
-        @attributes = {}
-
-        return
-      end
-
-      response = Typhoeus.get(
-        "#{URI.join(BASE_URL, '/api/people')}?ditsso_user_id=#{@ditsso_user_id}",
-        headers: {
-          'Authorization' => "Token token=#{AUTH_TOKEN}"
-        }
-      )
-
-      response = response.success? ? JSON.parse(response.body) : {}
-      @links = response['data'] ? response['data']['links'] : {}
-      @attributes = response['data'] ? response['data']['attributes'] : {}
-    end
-
-    def assign_user
-      @profile = PeopleFinderProfile.new
-      @profile.email = @attributes['email']
-      @profile.name = @attributes['name']
-      @profile.given_name = @attributes['given-name']
-      @profile.surname = @attributes['surname']
-      @profile.team = @attributes['team']
-      @profile.completion_score = @attributes['completion-score'] || 0
-      @profile.profile_image_url = @links['profile-image-url']
-      @profile.profile_url = people_finder_my_profile_url
-    end
-
-    def people_finder_my_profile_url
-      URI.join(PeopleFinderProfile::BASE_END_USER_URL, 'my/profile').to_s
-    end
+  def present?
+    email.present?
   end
 end
