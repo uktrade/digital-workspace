@@ -30,5 +30,16 @@ module DigitalWorkspace
     config.gtm_id = ENV['GTM_ID']
     config.gtm_extra = ENV['GTM_EXTRA']
     config.redis_cache_url = ENV['REDIS_URL'] # Overridden in production config
+
+    def self.rsa_key_from_base64_encoded_pem(value)
+      return nil if value.blank?
+
+      pem = Base64.decode64(value)
+      OpenSSL::PKey::RSA.new(pem)
+    end
+
+    config.people_finder_api_private_key = rsa_key_from_base64_encoded_pem(
+      ENV['PEOPLE_FINDER_API_PRIVATE_KEY']
+    )
   end
 end
