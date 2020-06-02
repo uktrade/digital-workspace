@@ -19,13 +19,19 @@ class CustomHealthCheck
   private
 
   def check_peoplefinder_api
+    request_path = '/api/v2/people_profiles/does-not-exist'
+    jwt = JWT.encode(
+      { fullpath: request_path, exp: 1.minute.from_now.to_i },
+      Rails.configuration.people_finder_api_private_key,
+      'RS512'
+    )
     response = Typhoeus.get(
-      "#{URI.join(ENV['PEOPLEFINDER_API_URL'], '/api/people')}?ditsso_user_id=does-not-exist",
+      URI.join(ENV['PEOPLEFINDER_API_URL'], request_path),
       headers: {
-        'Authorization' => "Token token=#{ENV['PEOPLEFINDER_AUTH_TOKEN']}"
+        'Authorization' => "Bearer #{jwt}"
       }
     )
-    return if JSON.parse(response.body)['error'] =~ /person was not found/
+    return if response.code == 404
 
     @errors << 'Unable to connect to the People Finder API'
   end
