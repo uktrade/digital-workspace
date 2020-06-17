@@ -21,8 +21,8 @@ VCR.configure do |config|
 
   config.before_record do |i|
     i.request.uri = i.request.uri.gsub(/email=.*gov.uk/, 'email=<removed>')
-    i.response.body = '[]' if i.response.body =~ /^\[{\"id\":/
-    i.response.body = '{}' if i.response.body =~ /^\{\"token_type\":\"bearer\"/
+    i.response.body = '[]' if i.response.body =~ /^\[{"id":/
+    i.response.body = '{}' if i.response.body =~ /^\{"token_type":"bearer"/
 
     i.response.headers['Link'] = ['http://test.local'] if i.response.headers['Link']
   end
