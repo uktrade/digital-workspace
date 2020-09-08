@@ -30,7 +30,7 @@ Rails.application.configure do
   config.public_file_server.enabled = true
 
   # Logging
-  config.logger = ActiveSupport::Logger.new(STDOUT)
+  config.logger = ActiveSupport::Logger.new($stdout)
   config.log_level = :info
   config.lograge.enabled = true
   config.lograge.formatter = Lograge::Formatters::Json.new

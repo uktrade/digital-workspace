@@ -7,7 +7,7 @@ class WpApi
 
   class << self
     def get_json_body(base_path, params: {}, use_cache: true)
-      path = base_path + '?' + params.to_query
+      path = "#{base_path}?#{params.to_query}"
 
       if use_cache
         Rails.cache.fetch("#{path}_body", expires_in: 60) do
@@ -86,7 +86,7 @@ class WpApi
     end
 
     def search_json_request(base_path, params: {})
-      path = base_path + '?' + params.to_query
+      path = "#{base_path}?#{params.to_query}"
 
       Typhoeus.get(
         URI.join(BASE_CUSTOM_URI, path).to_s,
