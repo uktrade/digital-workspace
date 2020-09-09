@@ -5,9 +5,9 @@
         %label.search-label
           Search people, teams and skills
         .search-wrapper
-          %input#search_filters_{:name => "search_filters[]", :type => "hidden", :value => "people"}/
-          %input#search_filters_{:name => "search_filters[]", :type => "hidden", :value => "teams"}/
-          %input{name: 'query', id: 'people-search-input', type: 'search', title: 'Search', class: 'search-element search-input js-class-toggle js-search-focus'}
+          %input#search_filters_{:name => "search[filters][]", :type => "hidden", :value => "people"}/
+          %input#search_filters_{:name => "search[filters][]", :type => "hidden", :value => "groups"}/
+          %input{name: 'search[query]', id: 'people-search-input', type: 'search', title: 'Search', class: 'search-element search-input js-class-toggle js-search-focus'}
           .search-element.search-submit-wrapper
             %button{type: 'submit', class: 'search-submit', id:'people_search_submit' }
               Search
