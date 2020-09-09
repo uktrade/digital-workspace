@@ -39,7 +39,7 @@ class ReportController < ApplicationController
       config.password = ENV['ZD_PASS']
       config.retry = true
       require 'logger'
-      config.logger = Logger.new(STDOUT)
+      config.logger = Logger.new($stdout)
     end
   end
 

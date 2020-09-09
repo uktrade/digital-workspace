@@ -33,7 +33,7 @@ module ApplicationHelper
     return if count.zero?
 
     text = count == 1 ? 'comment' : 'comments'
-    link_to("#{count} #{text}", link + '#comments', class: 'cta-comments')
+    link_to("#{count} #{text}", "#{link}#comments", class: 'cta-comments')
   end
 
   def comments_heading(count)
