@@ -3,7 +3,7 @@
 require 'twitter'
 
 class TwitterApi
-  USERS = %w[tradegovuk AntoniaRomeoUK].freeze
+  USERS = %w[tradegovuk].freeze # USERS = %w[tradegovuk AntoniaRomeoUK].freeze
 
   def self.public_tweets
     return [] unless ENV['TWITTER_KEY']
